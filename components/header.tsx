@@ -12,10 +12,10 @@ const navLinks = [
     href: "/buy",
     hasDropdown: true,
     children: [
-      { label: "Homes for Sale", href: "/buy" },
-      { label: "Open Houses", href: "/buy?filter=open-house" },
-      { label: "New Construction", href: "/buy?filter=new" },
-      { label: "Recently Sold", href: "/buy?filter=sold" },
+      { label: "Properties for Sale", href: "/buy" },
+      { label: "Site Visits / Open Houses", href: "/buy?filter=open-house" },
+      { label: "New Projects", href: "/buy?filter=new" },
+      { label: "Sold Properties", href: "/buy?filter=sold" },
     ],
   },
   {
@@ -24,9 +24,9 @@ const navLinks = [
     hasDropdown: true,
     children: [
       { label: "All Rentals", href: "/rent" },
-      { label: "Apartments", href: "/rent?type=apartment" },
-      { label: "Houses", href: "/rent?type=house" },
-      { label: "Condos", href: "/rent?type=condo" },
+      { label: "Residential Rentals", href: "/rent?type=residential" },
+      { label: "Commercial Rentals", href: "/rent?type=commercial" },
+      { label: "Rental Enquiry", href: "/contact" },
     ],
   },
   {
@@ -34,7 +34,7 @@ const navLinks = [
     href: "/sell",
     hasDropdown: true,
     children: [
-      { label: "Get Home Value", href: "/sell" },
+      { label: "Get Property Valuation", href: "/sell" },
       { label: "Seller's Guide", href: "/sell#guide" },
     ],
   },
@@ -43,13 +43,15 @@ const navLinks = [
     href: "/home-loans",
     hasDropdown: true,
     children: [
-      { label: "Mortgage Overview", href: "/home-loans" },
-      { label: "Mortgage Calculator", href: "/home-loans#calculator" },
-      { label: "Refinance Rates", href: "/home-loans#refinance" },
-      { label: "Get Pre-Approved", href: "/home-loans#pre-approved" },
+      { label: "Home Loan Overview", href: "/home-loans" },
+      { label: "EMI Calculator", href: "/home-loans#calculator" },
+      { label: "Bank Partners", href: "/home-loans#banks" },
+      { label: "Apply for Loan", href: "/contact" },
     ],
   },
   { label: "Find an Agent", href: "/agents", hasDropdown: false },
+  { label: "About Us", href: "/about", hasDropdown: false },
+  { label: "Contact", href: "/contact", hasDropdown: false },
 ]
 
 export function Header() {
@@ -124,14 +126,14 @@ export function Header() {
             </Button>
           </a>
           <div className="w-px h-5 bg-border mx-1" />
-          <Link href="/sign-in">
+          <Link href="/contact">
             <Button variant="ghost" size="sm" className="text-sm font-semibold text-foreground">
-              Sign In
+              Enquiry
             </Button>
           </Link>
-          <Link href="/sign-up">
+          <Link href="/contact">
             <Button size="sm" className="text-sm font-semibold">
-              Join
+              Contact Us
             </Button>
           </Link>
         </div>
@@ -166,11 +168,11 @@ export function Header() {
               </Link>
             ))}
             <div className="border-t border-border my-2" />
-            <Link href="/sign-in" className="px-3 py-3 text-sm font-semibold text-foreground hover:bg-muted rounded-md" onClick={() => setMobileOpen(false)}>
-              Sign In
+            <Link href="/contact" className="px-3 py-3 text-sm font-semibold text-foreground hover:bg-muted rounded-md" onClick={() => setMobileOpen(false)}>
+              Enquiry
             </Link>
-            <Link href="/sign-up" className="px-3 py-3 text-sm font-semibold text-primary hover:bg-primary/5 rounded-md" onClick={() => setMobileOpen(false)}>
-              Join
+            <Link href="/contact" className="px-3 py-3 text-sm font-semibold text-primary hover:bg-primary/5 rounded-md" onClick={() => setMobileOpen(false)}>
+              Contact Us
             </Link>
           </nav>
         </div>

@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Heart, Bath, BedDouble, Maximize } from "lucide-react"
+import { Heart, Bath, BedDouble, Maximize, MessageCircle } from "lucide-react"
 import type { PropertyData } from "@/lib/data"
 
 export function PropertyCard({ property }: { property: PropertyData }) {
@@ -59,23 +59,33 @@ export function PropertyCard({ property }: { property: PropertyData }) {
       {/* Info */}
       <Link href={detailHref} className="block p-3">
         <p className="text-lg font-bold text-foreground">{property.price}</p>
-        <div className="flex items-center gap-3 mt-1 text-sm text-foreground">
-          <span className="flex items-center gap-1">
-            <BedDouble className="h-3.5 w-3.5 text-muted-foreground" />
-            <span className="font-semibold">{property.beds}</span>
-            <span className="text-muted-foreground">bds</span>
-          </span>
-          <span className="flex items-center gap-1">
-            <Bath className="h-3.5 w-3.5 text-muted-foreground" />
-            <span className="font-semibold">{property.baths}</span>
-            <span className="text-muted-foreground">ba</span>
-          </span>
-          <span className="flex items-center gap-1">
-            <Maximize className="h-3.5 w-3.5 text-muted-foreground" />
-            <span className="font-semibold">{property.sqft}</span>
-            <span className="text-muted-foreground">sqft</span>
-          </span>
-        </div>
+        {property.beds > 0 || property.baths > 0 ? (
+          <div className="flex items-center gap-3 mt-1 text-sm text-foreground">
+            {property.beds > 0 && (
+              <span className="flex items-center gap-1">
+                <BedDouble className="h-3.5 w-3.5 text-muted-foreground" />
+                <span className="font-semibold">{property.beds}</span>
+                <span className="text-muted-foreground">bds</span>
+              </span>
+            )}
+            {property.baths > 0 && (
+              <span className="flex items-center gap-1">
+                <Bath className="h-3.5 w-3.5 text-muted-foreground" />
+                <span className="font-semibold">{property.baths}</span>
+                <span className="text-muted-foreground">ba</span>
+              </span>
+            )}
+            {property.sqft !== "On Request" && (
+              <span className="flex items-center gap-1">
+                <Maximize className="h-3.5 w-3.5 text-muted-foreground" />
+                <span className="font-semibold">{property.sqft}</span>
+                <span className="text-muted-foreground">sqft</span>
+              </span>
+            )}
+          </div>
+        ) : (
+          <p className="mt-1 text-xs font-medium text-primary">Contact for full details</p>
+        )}
         <p className="mt-1 text-xs text-muted-foreground truncate">
           {property.address}, {property.city}{property.state ? `, ${property.state}` : ""}
         </p>
@@ -87,6 +97,20 @@ export function PropertyCard({ property }: { property: PropertyData }) {
           </p>
         )}
       </Link>
+
+      {/* WhatsApp quick enquiry */}
+      <div className="px-3 pb-3">
+        <a
+          href={`https://wa.me/917767805544?text=${encodeURIComponent(`Hi, I am interested in the property: ${property.address}, ${property.city}. Please share more details.`)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className="flex items-center justify-center gap-2 w-full py-2 text-xs font-semibold rounded-md bg-[#25D366]/10 text-[#128C7E] hover:bg-[#25D366]/20 transition-colors border border-[#25D366]/20"
+        >
+          <MessageCircle className="h-3.5 w-3.5" />
+          Quick WhatsApp Enquiry
+        </a>
+      </div>
     </article>
   )
 }

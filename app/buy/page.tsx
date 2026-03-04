@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Search, Map, List } from "lucide-react"
 import { PropertyCard } from "@/components/property-card"
 import { SearchFilters } from "@/components/search-filters"
@@ -10,6 +10,20 @@ import { buyProperties } from "@/lib/data"
 export default function BuyPage() {
   const [showMap, setShowMap] = useState(true)
   const [searchQuery, setSearchQuery] = useState("")
+
+  // Pick up ?q= URL param on mount
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const q = params.get("q")
+    if (q) setSearchQuery(q)
+  }, [])
+
+  const filtered = searchQuery.trim()
+    ? buyProperties.filter((p) => {
+        const haystack = [p.address, p.city, p.state, p.description ?? "", ...(p.features ?? [])].join(" ").toLowerCase()
+        return searchQuery.toLowerCase().split(" ").every((word) => haystack.includes(word))
+      })
+    : buyProperties
 
   return (
     <div className="flex flex-col flex-1">
@@ -54,7 +68,8 @@ export default function BuyPage() {
       <div className="bg-card px-4 py-2 border-b border-border">
         <div className="mx-auto max-w-[1280px] flex items-center justify-between">
           <p className="text-sm text-foreground">
-            <span className="font-bold">{buyProperties.length}</span> results
+            <span className="font-bold">{filtered.length}</span> {filtered.length === 1 ? "result" : "results"}
+            {searchQuery.trim() && <span className="text-muted-foreground"> for &ldquo;{searchQuery}&rdquo;</span>}
           </p>
           <button
             className="md:hidden flex items-center gap-1 text-sm text-foreground"
@@ -71,38 +86,22 @@ export default function BuyPage() {
         {/* Property list */}
         <div className={`${showMap ? "w-full lg:w-1/2 xl:w-[55%]" : "w-full"} overflow-y-auto bg-background`}>
           <div className={`p-4 grid gap-4 ${showMap ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-[1280px] mx-auto"}`}>
-            {buyProperties.map((property) => (
-              <PropertyCard key={property.id} property={property} />
-            ))}
-          </div>
-
-          {/* Pagination */}
-          <div className="flex items-center justify-center gap-2 py-8 px-4">
-            <button className="px-4 py-2 text-sm font-medium text-muted-foreground border border-border rounded-md cursor-not-allowed opacity-50">
-              Previous
-            </button>
-            {[1, 2, 3, 4, 5].map((page) => (
-              <button
-                key={page}
-                className={`px-3.5 py-2 text-sm font-medium rounded-md transition-colors ${
-                  page === 1
-                    ? "bg-primary text-primary-foreground"
-                    : "text-foreground border border-border hover:bg-muted"
-                }`}
-              >
-                {page}
-              </button>
-            ))}
-            <button className="px-4 py-2 text-sm font-medium text-foreground border border-border rounded-md hover:bg-muted transition-colors">
-              Next
-            </button>
+            {filtered.length > 0 ? (
+              filtered.map((property) => (
+                <PropertyCard key={property.id} property={property} />
+              ))
+            ) : (
+              <div className="col-span-full py-16 text-center">
+                <p className="text-base font-semibold text-foreground mb-2">No properties found</p>
+                <p className="text-sm text-muted-foreground mb-4">Try a different search term or <button onClick={() => setSearchQuery("")} className="text-primary hover:underline">clear your search</button></p>
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Map */}
         {showMap && (
           <div className="hidden lg:block flex-1 sticky top-[60px] h-[calc(100vh-60px)]">
-            <MapView properties={buyProperties} />
+            <MapView properties={filtered} />
           </div>
         )}
       </div>

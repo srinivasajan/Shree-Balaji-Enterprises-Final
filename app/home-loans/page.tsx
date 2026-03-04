@@ -4,7 +4,7 @@ import { useState, useMemo } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import {
-  Calculator, TrendingDown, Shield, Clock, CheckCircle2,
+  Calculator, Shield, Clock, CheckCircle2,
   DollarSign, Percent, Calendar, ArrowRight, Info
 } from "lucide-react"
 import { Footer } from "@/components/footer"
@@ -271,37 +271,52 @@ export default function HomeLoansPage() {
         </div>
       </section>
 
-      {/* Refinance section */}
-      <section className="py-12 bg-muted/50" id="refinance">
+      {/* Bank Partners */}
+      <section className="py-12 bg-muted/50" id="banks">
         <div className="mx-auto max-w-[1280px] px-4">
-          <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="flex-1">
-              <h2 className="text-2xl font-bold text-foreground mb-3">Looking to Refinance?</h2>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-6 max-w-md">
-                Lower your monthly payments, shorten your loan term, or tap into your home equity. Compare refinance rates and see how much you could save.
-              </p>
-              <div className="flex items-center gap-4 mb-6">
-                <div className="flex items-center gap-2">
-                  <TrendingDown className="h-5 w-5 text-primary" />
-                  <span className="text-sm font-semibold text-foreground">Lower Rates</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="h-5 w-5 text-primary" />
-                  <span className="text-sm font-semibold text-foreground">Fast Closing</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Shield className="h-5 w-5 text-primary" />
-                  <span className="text-sm font-semibold text-foreground">No Hidden Fees</span>
-                </div>
+          <div className="text-center mb-10">
+            <h2 className="text-2xl font-bold text-foreground mb-2">Our Bank Partners</h2>
+            <p className="text-sm text-muted-foreground max-w-md mx-auto">
+              We assist you in getting home loans from all major banks and housing finance companies in India.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-10">
+            {[
+              { name: "State Bank of India", short: "SBI", color: "bg-blue-50 border-blue-200 text-blue-800" },
+              { name: "HDFC Bank", short: "HDFC", color: "bg-red-50 border-red-200 text-red-800" },
+              { name: "ICICI Bank", short: "ICICI", color: "bg-orange-50 border-orange-200 text-orange-800" },
+              { name: "Axis Bank", short: "AXIS", color: "bg-purple-50 border-purple-200 text-purple-800" },
+              { name: "LIC Housing Finance", short: "LIC HFL", color: "bg-green-50 border-green-200 text-green-800" },
+              { name: "PNB Housing Finance", short: "PNB HFL", color: "bg-yellow-50 border-yellow-200 text-yellow-800" },
+            ].map((bank) => (
+              <div key={bank.name} className={`flex flex-col items-center justify-center p-4 rounded-xl border ${bank.color} text-center`}>
+                <p className="text-xl font-bold mb-1">{bank.short}</p>
+                <p className="text-[10px] font-medium leading-tight">{bank.name}</p>
               </div>
-              <Button>Check Refinance Rates</Button>
+            ))}
+          </div>
+          <div className="bg-card border border-border rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
+            <div className="flex-1">
+              <h3 className="text-lg font-bold text-foreground mb-2">Need Help Getting a Home Loan?</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Our team at Shree Balaji Enterprises will guide you through the entire home loan process — from bank selection to application and disbursement. We work with all major banks and housing finance companies.
+              </p>
+              <ul className="mt-4 flex flex-col gap-2">
+                {["Free loan consultation", "Compare multiple bank offers", "Documentation assistance", "Fast-track processing support"].map((item) => (
+                  <li key={item} className="flex items-center gap-2 text-sm text-foreground">
+                    <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div className="w-full md:w-[400px] bg-card border border-border rounded-xl p-6">
-              <h3 className="text-base font-bold text-foreground mb-4">Quick Refinance Check</h3>
-              <input type="text" placeholder="Current loan balance" className="w-full px-3 py-2.5 text-sm border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary mb-3" />
-              <input type="text" placeholder="Current interest rate (%)" className="w-full px-3 py-2.5 text-sm border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary mb-3" />
-              <input type="text" placeholder="Home value estimate" className="w-full px-3 py-2.5 text-sm border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary mb-4" />
-              <Button className="w-full">See My Options</Button>
+            <div className="shrink-0 flex flex-col gap-3">
+              <a href="https://wa.me/917767805544?text=Hi%2C%20I%20need%20help%20getting%20a%20home%20loan.%20Please%20guide%20me." target="_blank" rel="noopener noreferrer">
+                <Button className="w-full">WhatsApp for Loan Help</Button>
+              </a>
+              <a href="tel:7767805544">
+                <Button variant="outline" className="w-full">Call 7767805544</Button>
+              </a>
             </div>
           </div>
         </div>

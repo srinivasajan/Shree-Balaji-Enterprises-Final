@@ -4,7 +4,7 @@ import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import {
-  Search, TrendingUp, Users, DollarSign, Home, BarChart3,
+  Search, Users, DollarSign, Home, BarChart3,
   CheckCircle2, ArrowRight, Star, Clock, Shield, Target
 } from "lucide-react"
 import { Footer } from "@/components/footer"
@@ -42,11 +42,11 @@ const sellerResources = [
 
 export default function SellPage() {
   const [address, setAddress] = useState("")
-  const [showEstimate, setShowEstimate] = useState(false)
 
   const handleEstimate = () => {
     if (address.trim()) {
-      setShowEstimate(true)
+      const msg = encodeURIComponent(`Hi, I would like a free property valuation for: ${address}. Please get in touch.`)
+      window.open(`https://wa.me/917767805544?text=${msg}`, "_blank")
     }
   }
 
@@ -85,61 +85,13 @@ export default function SellPage() {
                   />
                 </div>
                 <Button onClick={handleEstimate} className="px-6">
-                  Get Estimate
+                  Request Valuation
                 </Button>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Valuation result */}
-      {showEstimate && (
-        <section className="py-10 bg-primary/5 border-b border-border">
-          <div className="mx-auto max-w-[1280px] px-4">
-            <div className="max-w-2xl mx-auto text-center">
-              <p className="text-sm text-muted-foreground mb-2">Valuation for</p>
-              <h2 className="text-lg font-bold text-foreground mb-4">{address}</h2>
-              <div className="inline-flex items-baseline gap-2 mb-4">
-                <span className="text-5xl md:text-6xl font-bold text-primary">₹50,00,000</span>
-              </div>
-              <div className="flex items-center justify-center gap-6 mb-6 text-sm">
-                <span className="flex items-center gap-1 text-green-600 font-semibold">
-                  <TrendingUp className="h-4 w-4" />
-                  +3.2% (30-day change)
-                </span>
-                <span className="text-muted-foreground">Range: ₹45L – ₹55L</span>
-              </div>
-              <div className="flex items-center justify-center gap-3">
-                <Button>
-                  <Users className="h-4 w-4 mr-2" />
-                  Connect with Agent
-                </Button>
-                <Button variant="outline">View Market Trends</Button>
-              </div>
-            </div>
-
-            {/* Market comparison */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10 max-w-3xl mx-auto">
-              <div className="p-4 bg-card rounded-lg border border-border text-center">
-                <p className="text-xs text-muted-foreground mb-1">Median List Price</p>
-                <p className="text-xl font-bold text-foreground">₹48,00,000</p>
-                <p className="text-xs text-muted-foreground mt-1">Your area</p>
-              </div>
-              <div className="p-4 bg-card rounded-lg border border-border text-center">
-                <p className="text-xs text-muted-foreground mb-1">Avg. Days on Market</p>
-                <p className="text-xl font-bold text-foreground">18 days</p>
-                <p className="text-xs text-muted-foreground mt-1">Your area</p>
-              </div>
-              <div className="p-4 bg-card rounded-lg border border-border text-center">
-                <p className="text-xs text-muted-foreground mb-1">Sale-to-List Ratio</p>
-                <p className="text-xl font-bold text-foreground">98.5%</p>
-                <p className="text-xs text-muted-foreground mt-1">Your area</p>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* How it works */}
       <section className="py-14 md:py-20">

@@ -4,21 +4,22 @@ const footerSections = [
   {
     title: "Quick Links",
     links: [
+      { label: "Home", href: "/" },
       { label: "Browse Properties", href: "/buy" },
-      { label: "Rental Properties", href: "/rent" },
       { label: "Sell Your Property", href: "/sell" },
       { label: "Find an Agent", href: "/agents" },
-      { label: "Home Loans", href: "/home-loans" },
+      { label: "About Us", href: "/about" },
+      { label: "Contact Us", href: "/contact" },
     ],
   },
   {
-    title: "Services",
+    title: "Resources",
     links: [
-      { label: "Buy Property", href: "/buy" },
-      { label: "Sell Property", href: "/sell" },
-      { label: "Rent / Lease", href: "/rent" },
-      { label: "Industrial Properties", href: "/buy?type=land" },
-      { label: "Commercial Spaces", href: "/buy?type=condo" },
+      { label: "Home Loans", href: "/home-loans" },
+      { label: "EMI Calculator", href: "/home-loans#calculator" },
+      { label: "Areas We Serve", href: "/buy" },
+      { label: "RERA Information", href: "/about" },
+      { label: "Enquiry Form", href: "/contact" },
     ],
   },
   {

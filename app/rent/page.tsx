@@ -1,22 +1,33 @@
 "use client"
 
 import { useState } from "react"
-import { Search, Map, List, SlidersHorizontal, ChevronDown, Building2, Home, Building, DollarSign, Shield, Zap } from "lucide-react"
+import { Search, Building2, Home, Building, MessageCircle, Phone, MapPin, Clock } from "lucide-react"
 import { Footer } from "@/components/footer"
-import { PropertyCard } from "@/components/property-card"
-import { MapView } from "@/components/map-view"
-import { rentalProperties } from "@/lib/data"
 import { Button } from "@/components/ui/button"
 
 const rentalTypes = [
-  { icon: Building2, label: "Apartments", count: "850K+" },
-  { icon: Home, label: "Houses", count: "320K+" },
-  { icon: Building, label: "Condos", count: "210K+" },
+  { icon: Building2, label: "Residential" },
+  { icon: Home, label: "1 BHK / 2 BHK" },
+  { icon: Building, label: "Commercial" },
+]
+
+const serviceAreas = [
+  "Ambernath", "Badlapur", "Ulhasnagar", "Kalyan", "Dombivli",
+  "Thane", "Bhiwandi", "Mumbra", "Titwala", "Asangaon",
+  "Shahapur", "Murbad", "Mumbai / Navi Mumbai",
 ]
 
 export default function RentPage() {
-  const [showMap, setShowMap] = useState(true)
   const [activeType, setActiveType] = useState("All")
+  const [name, setName] = useState("")
+  const [phone, setPhone] = useState("")
+  const [rentArea, setRentArea] = useState("")
+  const [budget, setBudget] = useState("")
+
+  const handleEnquiry = () => {
+    const msg = `Hi, I am looking for a rental property.%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0APreferred Area: ${encodeURIComponent(rentArea)}%0AMonthly Budget: ${encodeURIComponent(budget)}%0AType: ${encodeURIComponent(activeType)}`
+    window.open(`https://wa.me/917767805544?text=${msg}`, "_blank")
+  }
 
   return (
     <div className="flex flex-col flex-1">
@@ -24,17 +35,19 @@ export default function RentPage() {
       <div className="bg-primary/5 border-b border-border">
         <div className="mx-auto max-w-[1280px] px-4 py-8 md:py-12">
           <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-2 text-balance">
-            Find Your Perfect Rental
+            Find Your Perfect Rental in MMR
           </h1>
           <p className="text-sm text-muted-foreground mb-6 max-w-lg">
-            Search apartments, houses, and condos for rent in your area. Filter by price, beds, and amenities to find the perfect fit.
+            Shree Balaji Enterprises assists you in finding residential and commercial rental properties across Ambernath, Badlapur, Ulhasnagar and 13+ cities.
           </p>
           <div className="flex items-center gap-3 max-w-2xl">
             <div className="flex-1 flex items-center bg-card border border-border rounded-lg px-3">
               <Search className="h-4 w-4 text-muted-foreground shrink-0" />
-              <input type="text" placeholder="City, neighborhood, or ZIP" className="w-full px-3 py-3 text-sm bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none" />
+              <input type="text" placeholder="City or area (e.g. Ambernath, Badlapur...)" className="w-full px-3 py-3 text-sm bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none" />
             </div>
-            <Button className="px-6 py-3 h-auto">Search</Button>
+            <a href="https://wa.me/917767805544?text=Hi%2C%20I%20am%20looking%20for%20a%20rental%20property.%20Please%20help." target="_blank" rel="noopener noreferrer">
+              <Button className="px-6 py-3 h-auto">Search via WhatsApp</Button>
+            </a>
           </div>
           <div className="flex items-center gap-3 mt-6 overflow-x-auto" style={{ scrollbarWidth: "none" }}>
             <button
@@ -57,69 +70,112 @@ export default function RentPage() {
         </div>
       </div>
 
-      {/* Filters bar */}
-      <div className="bg-card border-b border-border px-4 py-2.5">
-        <div className="mx-auto max-w-[1280px] flex items-center justify-between">
-          <div className="flex items-center gap-2 overflow-x-auto" style={{ scrollbarWidth: "none" }}>
-            {["Price", "Beds", "Pet Friendly"].map((label) => (
-              <button key={label} className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-full border border-border text-foreground hover:border-foreground/30 transition-colors shrink-0">
-                {label} <ChevronDown className="h-3 w-3" />
-              </button>
-            ))}
-            <button className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-full border border-border text-foreground hover:border-foreground/30 transition-colors shrink-0">
-              <SlidersHorizontal className="h-3.5 w-3.5" /> More
-            </button>
-          </div>
-          <div className="hidden md:flex items-center gap-0 border border-border rounded-lg overflow-hidden">
-            <button onClick={() => setShowMap(true)} className={`p-2 transition-colors ${showMap ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted"}`} aria-label="Map view">
-              <Map className="h-4 w-4" />
-            </button>
-            <button onClick={() => setShowMap(false)} className={`p-2 transition-colors ${!showMap ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted"}`} aria-label="List view">
-              <List className="h-4 w-4" />
-            </button>
-          </div>
-        </div>
-      </div>
+      {/* Coming soon + Enquiry */}
+      <div className="mx-auto max-w-[1280px] px-4 py-10 w-full">
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Left: Coming soon notice + areas */}
+          <div className="flex-1">
+            <div className="bg-primary/5 border border-primary/20 rounded-xl p-6 mb-6">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="px-2.5 py-1 text-xs font-bold bg-primary text-primary-foreground rounded-full">Coming Soon</span>
+                <h2 className="text-base font-bold text-foreground">Online Rental Listings</h2>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                We are currently building our online rental listings portal. In the meantime, our team is actively managing rental properties across the Mumbai Metropolitan Region. Send us a WhatsApp message or call us directly — we will help you find the right property.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <a href="https://wa.me/917767805544?text=Hi%2C%20I%20am%20looking%20for%20a%20rental." target="_blank" rel="noopener noreferrer">
+                  <Button size="sm">
+                    <MessageCircle className="h-4 w-4 mr-2" />
+                    WhatsApp Us
+                  </Button>
+                </a>
+                <a href="tel:7767805544">
+                  <Button size="sm" variant="outline">
+                    <Phone className="h-4 w-4 mr-2" />
+                    Call 7767805544
+                  </Button>
+                </a>
+              </div>
+            </div>
 
-      {/* Results */}
-      <div className="flex-1 flex">
-        <div className={`${showMap ? "w-full lg:w-1/2 xl:w-[55%]" : "w-full"} overflow-y-auto`}>
-          <div className="px-4 py-3 border-b border-border">
-            <p className="text-sm text-foreground"><span className="font-bold">{rentalProperties.length}</span> rentals available</p>
-          </div>
-          <div className={`p-4 grid gap-4 ${showMap ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-[1280px] mx-auto"}`}>
-            {rentalProperties.map((property) => (
-              <PropertyCard key={property.id} property={property} />
-            ))}
-          </div>
-
-          {/* Renter resources */}
-          <div className={`px-4 py-10 ${!showMap ? "max-w-[1280px] mx-auto" : ""}`}>
-            <h2 className="text-lg font-bold text-foreground mb-6">Renter Resources</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {[
-                { icon: DollarSign, title: "Affordability Calculator", desc: "Calculate how much rent you can afford based on your income and expenses." },
-                { icon: Shield, title: "Renter's Insurance", desc: "Protect your belongings with affordable renter's insurance options." },
-                { icon: Zap, title: "Application Tips", desc: "Stand out with our guide to completing the perfect rental application." },
-              ].map((res) => (
-                <div key={res.title} className="p-5 border border-border rounded-lg bg-card">
-                  <res.icon className="h-8 w-8 text-primary mb-3" />
-                  <h3 className="text-sm font-bold text-foreground mb-1">{res.title}</h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{res.desc}</p>
-                </div>
+            <h3 className="text-sm font-bold text-foreground mb-3">Areas We Cover for Rentals</h3>
+            <div className="flex flex-wrap gap-2">
+              {serviceAreas.map((sa) => (
+                <span key={sa} className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-card border border-border rounded-full text-foreground">
+                  <MapPin className="h-3 w-3 text-primary" />
+                  {sa}
+                </span>
               ))}
+            </div>
+
+            <div className="mt-6 flex items-center gap-6 text-xs text-muted-foreground">
+              <span className="flex items-center gap-1.5">
+                <Clock className="h-3.5 w-3.5" />
+                Mon–Sat: 9AM–7PM &nbsp;|&nbsp; Sun: 10AM–5PM
+              </span>
+            </div>
+          </div>
+
+          {/* Right: Rental enquiry form */}
+          <div className="lg:w-[380px] shrink-0">
+            <div className="bg-card border border-border rounded-xl p-6 shadow-sm">
+              <h2 className="text-base font-bold text-foreground mb-1">Rental Enquiry</h2>
+              <p className="text-xs text-muted-foreground mb-5">Tell us your requirements and we will find the best match</p>
+              <div className="flex flex-col gap-3">
+                <input
+                  type="text"
+                  placeholder="Your Full Name *"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="w-full px-3 py-2.5 text-sm border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                <input
+                  type="tel"
+                  placeholder="Mobile Number *"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="w-full px-3 py-2.5 text-sm border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                <select
+                  className="w-full px-3 py-2.5 text-sm border border-border rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                  value={activeType}
+                  onChange={(e) => setActiveType(e.target.value)}
+                >
+                  <option value="All">Property Type</option>
+                  <option>Residential</option>
+                  <option>1 BHK / 2 BHK</option>
+                  <option>Commercial</option>
+                  <option>Industrial / Warehouse</option>
+                </select>
+                <input
+                  type="text"
+                  placeholder="Preferred Area (e.g. Ambernath West)"
+                  value={rentArea}
+                  onChange={(e) => setRentArea(e.target.value)}
+                  className="w-full px-3 py-2.5 text-sm border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                <input
+                  type="text"
+                  placeholder="Monthly Budget (₹)"
+                  value={budget}
+                  onChange={(e) => setBudget(e.target.value)}
+                  className="w-full px-3 py-2.5 text-sm border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                <Button className="w-full" onClick={handleEnquiry}>
+                  <MessageCircle className="h-4 w-4 mr-2" />
+                  Submit via WhatsApp
+                </Button>
+              </div>
+              <p className="text-[10px] text-muted-foreground mt-3 leading-relaxed">
+                Clicking submit will open WhatsApp with your details pre-filled. Our team will get back to you within 2 hours.
+              </p>
             </div>
           </div>
         </div>
-
-        {showMap && (
-          <div className="hidden lg:block flex-1 sticky top-[60px] h-[calc(100vh-60px)]">
-            <MapView properties={rentalProperties} />
-          </div>
-        )}
       </div>
 
-      {!showMap && <Footer />}
+      <Footer />
     </div>
   )
 }

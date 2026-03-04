@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { Header } from '@/components/header'
+import { WhatsAppButton } from '@/components/whatsapp-button'
 import './globals.css'
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -9,6 +10,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const metadata: Metadata = {
   title: 'Shree Balaji Enterprises: Real Estate in Mumbai Metropolitan Region',
   description: 'RERA registered real estate agency in Ambernath. Find residential, commercial, and industrial properties across Ambernath, Badlapur, Thane, Mumbai, and 13+ cities.',
+  icons: { icon: '/favicon.ico' },
 }
 
 export const viewport: Viewport = {
@@ -27,6 +29,7 @@ export default function RootLayout({
         <div className="flex-1 flex flex-col">
           {children}
         </div>
+        <WhatsAppButton />
         <Analytics />
       </body>
     </html>

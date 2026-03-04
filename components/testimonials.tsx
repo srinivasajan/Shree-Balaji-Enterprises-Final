@@ -1,0 +1,80 @@
+import { Star, Quote } from "lucide-react"
+
+const testimonials = [
+  {
+    name: "Rajesh Kumar",
+    location: "Ambernath",
+    rating: 5,
+    text: "Shree Balaji Enterprises helped us find our dream home in Ambernath within our budget. Anju ji's expertise and patience made the entire process completely stress-free. We couldn't be happier!",
+    type: "Bought Residential Property",
+    initial: "R",
+  },
+  {
+    name: "Priya Sharma",
+    location: "Badlapur",
+    rating: 5,
+    text: "We were searching for a plot in Badlapur for over a year with no luck. After connecting with Shree Balaji Enterprises, we found the perfect property within a week. Transparent dealings and zero hidden charges.",
+    type: "Purchased Plot",
+    initial: "P",
+  },
+  {
+    name: "Amit Mehta",
+    location: "Ulhasnagar",
+    rating: 5,
+    text: "Sold my commercial property through Shree Balaji Enterprises at a great price. Complete documentation support throughout and the process from listing to registration was incredibly smooth.",
+    type: "Sold Commercial Property",
+    initial: "A",
+  },
+]
+
+export function Testimonials() {
+  return (
+    <section className="py-10 md:py-14 bg-muted/50">
+      <div className="mx-auto max-w-[1280px] px-4">
+        <div className="text-center mb-10">
+          <h2 className="text-xl md:text-2xl font-bold text-foreground mb-2">
+            What Our Clients Say
+          </h2>
+          <p className="text-sm text-muted-foreground max-w-lg mx-auto">
+            Over 1000 happy families across Mumbai Metropolitan Region trust Shree Balaji Enterprises
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {testimonials.map((t) => (
+            <div
+              key={t.name}
+              className="bg-card border border-border rounded-xl p-6 flex flex-col gap-4 hover:shadow-md transition-shadow"
+            >
+              {/* Stars */}
+              <div className="flex items-center gap-1">
+                {Array.from({ length: t.rating }).map((_, i) => (
+                  <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
+                ))}
+              </div>
+
+              {/* Quote */}
+              <div className="relative">
+                <Quote className="h-6 w-6 text-primary/20 absolute -top-1 -left-1" aria-hidden="true" />
+                <p className="text-sm text-foreground leading-relaxed pl-4 italic">
+                  &ldquo;{t.text}&rdquo;
+                </p>
+              </div>
+
+              {/* Person */}
+              <div className="flex items-center gap-3 mt-auto pt-2 border-t border-border">
+                <div className="flex items-center justify-center h-10 w-10 rounded-full bg-primary/10 text-primary font-bold text-sm shrink-0">
+                  {t.initial}
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-foreground">{t.name}</p>
+                  <p className="text-xs text-muted-foreground">{t.type} · {t.location}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
