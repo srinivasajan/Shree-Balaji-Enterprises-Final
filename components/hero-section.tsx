@@ -2,40 +2,21 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { Search } from "lucide-react"
+import { Search, ArrowRight } from "lucide-react"
 import Image from "next/image"
-
-const searchTabs = [
-  { label: "Buy", href: "/buy" },
-  { label: "Rent", href: "/rent" },
-  { label: "Sell", href: "/sell" },
-  { label: "Home Loans", href: "/home-loans" },
-  { label: "Agent Finder", href: "/agents" },
-]
+import Link from "next/link"
 
 export function HeroSection() {
-  const [activeTab, setActiveTab] = useState("Buy")
   const [query, setQuery] = useState("")
   const router = useRouter()
 
   const handleSearch = () => {
-    const tab = searchTabs.find((t) => t.label === activeTab)
-    if (tab) {
-      router.push(`${tab.href}${query ? `?q=${encodeURIComponent(query)}` : ""}`)
-    }
+    router.push(`/buy${query ? `?q=${encodeURIComponent(query)}` : ""}`)
   }
 
-  // Determine if the active tab is the last tab — if so, the search box top-right
-  // corner must be square to visually connect with the tab above it.
-  const activeTabIndex = searchTabs.findIndex((t) => t.label === activeTab)
-  const isLastTabActive = activeTabIndex === searchTabs.length - 1
-
   return (
-    // Fix 6: fallback bg-neutral-800 shown while/if the image fails to load
     <section className="relative bg-neutral-800">
-      {/* Fix 7: taller mobile height so content isn't cramped */}
-      <div className="relative h-[420px] md:h-[480px] lg:h-[540px] overflow-hidden">
-        {/* Fix 2 & 3: local image with accurate alt text */}
+      <div className="relative h-[480px] md:h-[520px] lg:h-[580px] overflow-hidden">
         <Image
           src="/images/hero-bg.jpg"
           alt="Ambernath residential neighbourhood — find your perfect property"
@@ -43,39 +24,20 @@ export function HeroSection() {
           className="object-cover"
           priority
         />
-        {/* Fix 1: reliable black overlay instead of bg-foreground/40 */}
-        <div className="absolute inset-0 bg-black/45" />
+        <div className="absolute inset-0 bg-black/50" />
 
         <div className="relative z-10 flex flex-col items-center justify-center h-full px-4">
-          {/* Fix 8: remove manual <br> that conflicted with text-balance */}
-          <h1 className="text-3xl md:text-5xl lg:text-[56px] font-bold text-white text-center leading-tight text-balance mb-8 max-w-3xl">
-            Find Your Perfect Property With Us
-          </h1>
 
-          <div className="w-full max-w-2xl">
-            {/* Fix 5: flex-wrap so tabs wrap gracefully on very small screens */}
-            <div className="flex flex-wrap gap-0.5 mb-0">
-              {searchTabs.map((tab) => (
-                <button
-                  key={tab.label}
-                  onClick={() => setActiveTab(tab.label)}
-                  className={`px-3 py-2 text-xs md:text-sm font-semibold rounded-t-lg transition-colors ${
-                    activeTab === tab.label
-                      ? "bg-card text-foreground"
-                      : "bg-card/70 text-foreground/80 hover:bg-card/90"
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
+          {/* Headline */}
+          <div className="text-center mb-7 animate-fade-up">
+            <h1 className="text-3xl md:text-5xl lg:text-[56px] font-bold text-white text-center leading-tight text-balance max-w-3xl">
+              Find Your Perfect<br className="hidden md:block" /> Property With Us
+            </h1>
+          </div>
 
-            {/* Fix 4: top-right corner is square when last tab is active, rounded otherwise */}
-            <div
-              className={`flex bg-card overflow-hidden shadow-lg rounded-b-lg ${
-                isLastTabActive ? "rounded-tl-none rounded-tr-none" : "rounded-tr-lg"
-              }`}
-            >
+          {/* Search box */}
+          <div className="w-full max-w-2xl animate-fade-up [animation-delay:100ms]">
+            <div className="flex bg-card overflow-hidden shadow-xl rounded-lg">
               <div className="flex-1 flex items-center px-4">
                 <Search className="h-5 w-5 text-muted-foreground shrink-0" />
                 <input
@@ -100,7 +62,7 @@ export function HeroSection() {
           </div>
 
           {/* Trust badges */}
-          <div className="flex items-center gap-3 mt-5 flex-wrap justify-center">
+          <div className="flex items-center gap-3 mt-6 flex-wrap justify-center animate-fade-up [animation-delay:200ms]">
             {[
               "✓ RERA A51700023633",
               "15+ Years Experience",
@@ -109,12 +71,22 @@ export function HeroSection() {
             ].map((badge) => (
               <span
                 key={badge}
-                className="text-xs font-semibold text-white/90 bg-white/15 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/25"
+                className="text-xs font-semibold text-white/90 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/20"
               >
                 {badge}
               </span>
             ))}
           </div>
+
+          {/* Secondary CTA */}
+          <Link
+            href="/buy"
+            className="mt-5 flex items-center gap-1.5 text-sm font-semibold text-white/80 hover:text-white transition-colors group animate-fade-up [animation-delay:300ms]"
+          >
+            Browse all listings
+            <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+          </Link>
+
         </div>
       </div>
     </section>
