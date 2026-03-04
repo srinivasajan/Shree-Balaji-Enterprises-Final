@@ -61,17 +61,17 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-card border-b border-border">
-      <div className="mx-auto max-w-[1280px] px-4 flex items-center justify-between h-[60px]">
+      <div className="mx-auto max-w-[1280px] px-4 flex items-center justify-between h-[72px]">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 shrink-0" aria-label="Shree Balaji Enterprises">
           <Image
             src="https://raw.githubusercontent.com/srinivasajan/shreebalajienterprises/main/images/logo.png"
             alt="Shree Balaji Enterprises Logo"
-            width={56}
-            height={56}
-            className="h-14 w-14 object-contain"
+            width={64}
+            height={64}
+            className="h-16 w-16 object-contain"
           />
-          <span className="text-xl font-bold text-foreground whitespace-nowrap">
+          <span className="text-2xl font-bold text-foreground whitespace-nowrap">
             Shree <span className="text-primary">Balaji</span> Enterprises
           </span>
         </Link>

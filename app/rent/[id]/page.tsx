@@ -175,7 +175,7 @@ export default function RentalDetailPage() {
 
           {/* Right - Application card */}
           <div className="w-full lg:w-[380px] shrink-0">
-            <div className="sticky top-[80px]">
+            <div className="sticky top-[84px]">
               <div className="border border-border rounded-xl p-5 bg-card mb-4">
                 <h3 className="text-base font-bold text-foreground mb-1">{property.price}</h3>
                 <p className="text-xs text-muted-foreground mb-4">

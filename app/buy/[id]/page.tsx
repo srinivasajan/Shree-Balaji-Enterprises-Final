@@ -308,7 +308,7 @@ export default function PropertyDetailPage() {
 
           {/* Right column - Agent contact card */}
           <div className="w-full lg:w-[380px] shrink-0">
-            <div className="sticky top-[80px] flex flex-col gap-4">
+            <div className="sticky top-[84px] flex flex-col gap-4">
               {/* Contact agent card */}
               {property.listingAgent && (
                 <div className="border border-border rounded-xl p-5 bg-card">
