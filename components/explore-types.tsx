@@ -2,12 +2,12 @@ import Link from "next/link"
 import { Home, Building2, Trees, Building, Warehouse, TentTree } from "lucide-react"
 
 const homeTypes = [
-  { icon: Home, label: "Residential", count: "Flats, Bungalows, Villas", href: "/buy?type=house" },
-  { icon: Building2, label: "Apartments", count: "1/2/3 BHK Flats", href: "/buy?type=apartment" },
-  { icon: Building, label: "Commercial", count: "Shops, Offices, Showrooms", href: "/buy?type=condo" },
-  { icon: Warehouse, label: "Industrial", count: "Warehouses, Godowns", href: "/buy?type=land" },
-  { icon: Trees, label: "Row Houses", count: "Villas & Row Houses", href: "/buy?type=townhome" },
-  { icon: TentTree, label: "Plots & Land", count: "Residential & Commercial", href: "/buy?type=multi-family" },
+  { icon: Home, label: "Residential", count: "Flats, Bungalows, Villas", href: "/buy?q=Residential" },
+  { icon: Building2, label: "Apartments", count: "1/2/3 BHK Flats", href: "/buy?q=Apartment" },
+  { icon: Building, label: "Commercial", count: "Shops, Offices, Showrooms", href: "/buy?q=Commercial" },
+  { icon: Warehouse, label: "Industrial", count: "Warehouses, Godowns", href: "/buy?q=Industrial" },
+  { icon: Trees, label: "Row Houses", count: "Villas & Row Houses", href: "/buy?q=Row+House" },
+  { icon: TentTree, label: "Plots & Land", count: "Residential & Commercial", href: "/buy?q=Plot" },
 ]
 
 export function ExploreTypes() {

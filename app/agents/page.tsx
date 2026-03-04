@@ -3,9 +3,8 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import {
-  Search, Star, MapPin, Phone, Mail, ChevronDown,
-  Award, Home, TrendingUp, Users, MessageSquare
+import { Search, Star, MapPin, Phone, Mail,
+  Award, Home, TrendingUp, Users, MessageSquare, MessageCircle
 } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
@@ -58,20 +57,32 @@ function AgentCard({ agent }: { agent: typeof agents[0] }) {
         </div>
       </div>
 
-      <div className="border-t border-border px-5 py-3 flex items-center gap-2">
-        <Link href={`/agents/${agent.id}`} className="flex-1">
-          <Button size="sm" className="w-full text-xs">Contact Agent</Button>
-        </Link>
-        <a href={`tel:${agent.phone}`}>
-          <Button size="sm" variant="outline" className="text-xs">
-            <Phone className="h-3.5 w-3.5" />
+      <div className="border-t border-border px-5 py-3 flex flex-col gap-2">
+        <a
+          href={`https://wa.me/917767805544?text=${encodeURIComponent(`Hi ${agent.name}, I found your profile on Shree Balaji Enterprises. I would like to discuss my property requirements.`)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-1"
+        >
+          <Button size="sm" className="w-full text-xs">
+            <MessageCircle className="h-3.5 w-3.5 mr-1.5" />
+            Chat on WhatsApp
           </Button>
         </a>
-        <a href={`mailto:${agent.email}`}>
-          <Button size="sm" variant="outline" className="text-xs">
-            <Mail className="h-3.5 w-3.5" />
-          </Button>
-        </a>
+        <div className="flex items-center gap-2">
+          <a href={`tel:${agent.phone}`} className="flex-1">
+            <Button size="sm" variant="outline" className="w-full text-xs">
+              <Phone className="h-3.5 w-3.5 mr-1" />
+              Call
+            </Button>
+          </a>
+          <a href={`mailto:${agent.email}`} className="flex-1">
+            <Button size="sm" variant="outline" className="w-full text-xs">
+              <Mail className="h-3.5 w-3.5 mr-1" />
+              Email
+            </Button>
+          </a>
+        </div>
       </div>
     </div>
   )
@@ -79,9 +90,6 @@ function AgentCard({ agent }: { agent: typeof agents[0] }) {
 
 export default function AgentsPage() {
   const [searchQuery, setSearchQuery] = useState("")
-  const [activeFilter, setActiveFilter] = useState("All")
-
-  const filters = ["All", "Top Rated", "Most Sales", "Buyers", "Sellers"]
 
   return (
     <>
@@ -130,28 +138,7 @@ export default function AgentsPage() {
         </div>
       </section>
 
-      {/* Filters */}
-      <div className="bg-card border-b border-border sticky top-[60px] z-40">
-        <div className="mx-auto max-w-[1280px] px-4 py-3 flex items-center gap-2 overflow-x-auto" style={{ scrollbarWidth: "none" }}>
-          {filters.map((f) => (
-            <button
-              key={f}
-              onClick={() => setActiveFilter(f)}
-              className={`px-4 py-2 text-sm font-semibold rounded-full border transition-colors shrink-0 ${
-                activeFilter === f
-                  ? "border-primary bg-primary text-primary-foreground"
-                  : "border-border text-foreground hover:border-primary"
-              }`}
-            >
-              {f}
-            </button>
-          ))}
-          <div className="flex-1" />
-          <button className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-foreground shrink-0">
-            Sort: Rating <ChevronDown className="h-3 w-3" />
-          </button>
-        </div>
-      </div>
+
 
       {/* Agent Grid */}
       <section className="py-8">

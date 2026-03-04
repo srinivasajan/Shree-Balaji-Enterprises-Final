@@ -84,6 +84,23 @@ export function HeroSection() {
               </button>
             </div>
           </div>
+
+          {/* Trust badges */}
+          <div className="flex items-center gap-3 mt-5 flex-wrap justify-center">
+            {[
+              "✓ RERA A51700023633",
+              "15+ Years Experience",
+              "500+ Properties Sold",
+              "1000+ Happy Clients",
+            ].map((badge) => (
+              <span
+                key={badge}
+                className="text-xs font-semibold text-card/90 bg-card/15 backdrop-blur-sm px-3 py-1.5 rounded-full border border-card/25"
+              >
+                {badge}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

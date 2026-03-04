@@ -7,7 +7,7 @@ import { useParams } from "next/navigation"
 import {
   Heart, Share2, ChevronLeft, ChevronRight, MapPin,
   BedDouble, Bath, Maximize, Calendar, Home, Thermometer,
-  Car, Building2, Clock, Star, Phone, Mail, Check
+  Car, Building2, Clock, Star, Phone, Mail, Check, MessageCircle
 } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { PropertyCard } from "@/components/property-card"
@@ -19,7 +19,8 @@ export default function PropertyDetailPage() {
   const property = getPropertyById(Number(params.id))
   const [currentImage, setCurrentImage] = useState(0)
   const [saved, setSaved] = useState(false)
-  const [contactSent, setContactSent] = useState(false)
+  const [contactName, setContactName] = useState("")
+  const [contactPhone, setContactPhone] = useState("")
 
   if (!property) {
     return (
@@ -35,6 +36,16 @@ export default function PropertyDetailPage() {
       </>
     )
   }
+
+  const handleContact = () => {
+    const msg = encodeURIComponent(`Hi, I am interested in ${property.address}, ${property.city}.\nName: ${contactName}\nPhone: ${contactPhone}\nPlease share more details.`)
+    window.open(`https://wa.me/917767805544?text=${msg}`, "_blank")
+  }
+
+  // Dynamic tour dates
+  const today = new Date()
+  const fmt = (d: Date) => d.toLocaleDateString("en-IN", { weekday: "short", day: "numeric", month: "short" })
+  const tourDays = [today, new Date(today.getTime() + 86400000), new Date(today.getTime() + 172800000)]
 
   const images = property.images || [property.image]
   const similar = buyProperties.filter((p) => p.id !== property.id).slice(0, 4)
@@ -131,21 +142,27 @@ export default function PropertyDetailPage() {
               </div>
 
               <div className="flex items-center gap-6 mt-4 text-foreground">
-                <span className="flex items-center gap-1.5">
-                  <BedDouble className="h-5 w-5 text-muted-foreground" />
-                  <span className="text-lg font-bold">{property.beds}</span>
-                  <span className="text-sm text-muted-foreground">beds</span>
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Bath className="h-5 w-5 text-muted-foreground" />
-                  <span className="text-lg font-bold">{property.baths}</span>
-                  <span className="text-sm text-muted-foreground">baths</span>
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Maximize className="h-5 w-5 text-muted-foreground" />
-                  <span className="text-lg font-bold">{property.sqft}</span>
-                  <span className="text-sm text-muted-foreground">sqft</span>
-                </span>
+                {property.beds > 0 && (
+                  <span className="flex items-center gap-1.5">
+                    <BedDouble className="h-5 w-5 text-muted-foreground" />
+                    <span className="text-lg font-bold">{property.beds}</span>
+                    <span className="text-sm text-muted-foreground">beds</span>
+                  </span>
+                )}
+                {property.baths > 0 && (
+                  <span className="flex items-center gap-1.5">
+                    <Bath className="h-5 w-5 text-muted-foreground" />
+                    <span className="text-lg font-bold">{property.baths}</span>
+                    <span className="text-sm text-muted-foreground">baths</span>
+                  </span>
+                )}
+                {property.sqft && property.sqft !== "0" && (
+                  <span className="flex items-center gap-1.5">
+                    <Maximize className="h-5 w-5 text-muted-foreground" />
+                    <span className="text-lg font-bold">{property.sqft}</span>
+                    <span className="text-sm text-muted-foreground">sqft</span>
+                  </span>
+                )}
               </div>
 
               <p className="flex items-center gap-1.5 mt-3 text-sm text-muted-foreground">
@@ -310,21 +327,26 @@ export default function PropertyDetailPage() {
                     </div>
                   </div>
 
-                  {contactSent ? (
-                    <div className="text-center py-4">
-                      <Check className="h-8 w-8 text-primary mx-auto mb-2" />
-                      <p className="text-sm font-semibold text-foreground">Message Sent!</p>
-                      <p className="text-xs text-muted-foreground mt-1">The agent will contact you shortly.</p>
-                    </div>
-                  ) : (
-                    <>
-                      <input type="text" placeholder="Your name" className="w-full px-3 py-2.5 text-sm border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary mb-2" />
-                      <input type="email" placeholder="Email address" className="w-full px-3 py-2.5 text-sm border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary mb-2" />
-                      <input type="tel" placeholder="Phone number" className="w-full px-3 py-2.5 text-sm border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary mb-2" />
-                      <textarea placeholder={`I am interested in ${property.address}`} rows={3} className="w-full px-3 py-2.5 text-sm border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary mb-3 resize-none" />
-                      <Button className="w-full mb-2" onClick={() => setContactSent(true)}>Contact Agent</Button>
-                    </>
-                  )}
+                  <div className="mb-4">
+                    <input
+                      type="text"
+                      value={contactName}
+                      onChange={(e) => setContactName(e.target.value)}
+                      placeholder="Your full name"
+                      className="w-full px-3 py-2.5 text-sm border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary mb-2"
+                    />
+                    <input
+                      type="tel"
+                      value={contactPhone}
+                      onChange={(e) => setContactPhone(e.target.value)}
+                      placeholder="Your mobile number"
+                      className="w-full px-3 py-2.5 text-sm border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary mb-3"
+                    />
+                    <Button className="w-full mb-2" onClick={handleContact}>
+                      <MessageCircle className="h-4 w-4 mr-2" />
+                      Send Enquiry via WhatsApp
+                    </Button>
+                  </div>
 
                   <div className="flex items-center gap-3 mt-3 pt-3 border-t border-border">
                     <a href={`tel:${property.listingAgent.phone}`} className="flex items-center gap-1.5 text-xs text-primary hover:underline">
@@ -337,27 +359,32 @@ export default function PropertyDetailPage() {
                 </div>
               )}
 
-              {/* Request a tour */}
               <div className="border border-border rounded-xl p-5 bg-card">
-                <h3 className="text-base font-bold text-foreground mb-3">Request a Tour</h3>
+                <h3 className="text-base font-bold text-foreground mb-3">Request a Site Visit</h3>
                 <div className="grid grid-cols-3 gap-2 mb-4">
-                  {["Today", "Tomorrow", "Sat, Mar 1"].map((day, idx) => (
+                  {tourDays.map((day, idx) => (
                     <button
-                      key={day}
-                      className={`px-3 py-2.5 text-xs font-semibold rounded-md border transition-colors ${
+                      key={idx}
+                      className={`px-2 py-2.5 text-xs font-semibold rounded-md border transition-colors text-center ${
                         idx === 0
                           ? "border-primary bg-primary/5 text-primary"
                           : "border-border text-foreground hover:border-primary"
                       }`}
                     >
-                      {day}
+                      {fmt(day)}
                     </button>
                   ))}
                 </div>
-                <div className="flex gap-2">
-                  <Button className="flex-1">In Person</Button>
-                  <Button variant="outline" className="flex-1">Video Chat</Button>
-                </div>
+                <a
+                  href={`https://wa.me/917767805544?text=${encodeURIComponent(`Hi, I would like to schedule a site visit for ${property.address}, ${property.city}. Please let me know the available time slots.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button className="w-full">
+                    <MessageCircle className="h-4 w-4 mr-2" />
+                    Book Site Visit via WhatsApp
+                  </Button>
+                </a>
               </div>
 
               {/* EMI estimate */}
@@ -377,14 +404,28 @@ export default function PropertyDetailPage() {
           </div>
         </div>
 
-        {/* Similar homes */}
         <section className="pb-12 border-t border-border pt-8">
           <h2 className="text-xl font-bold text-foreground mb-6">Similar Homes You May Like</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {similar.map((p) => (
-              <PropertyCard key={p.id} property={p} />
-            ))}
-          </div>
+          {similar.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {similar.map((p) => (
+                <PropertyCard key={p.id} property={p} />
+              ))}
+            </div>
+          ) : (
+            <div className="bg-primary/5 border border-primary/20 rounded-xl p-8 text-center">
+              <p className="text-base font-bold text-foreground mb-2">More Properties Coming Soon</p>
+              <p className="text-sm text-muted-foreground mb-5 max-w-md mx-auto">
+                We regularly add new listings. Contact us via WhatsApp to get notified when new properties matching your requirements are available.
+              </p>
+              <a href={`https://wa.me/917767805544?text=${encodeURIComponent(`Hi, please notify me when new properties similar to ${property.address}, ${property.city} are available.`)}`} target="_blank" rel="noopener noreferrer">
+                <Button>
+                  <MessageCircle className="h-4 w-4 mr-2" />
+                  Get Notified via WhatsApp
+                </Button>
+              </a>
+            </div>
+          )}
         </section>
       </main>
 
