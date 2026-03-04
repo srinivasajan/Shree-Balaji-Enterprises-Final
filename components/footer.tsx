@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 
 const footerSections = [
   {
@@ -74,6 +75,13 @@ export function Footer() {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2" aria-label="Shree Balaji Enterprises">
+              <Image
+                src="https://raw.githubusercontent.com/srinivasajan/shreebalajienterprises/main/images/logo.png"
+                alt="Shree Balaji Enterprises Logo"
+                width={36}
+                height={36}
+                className="h-9 w-9 object-contain"
+              />
               <span className="text-base font-bold text-card leading-tight">
                 Shree <span className="text-primary">Balaji</span> Enterprises
               </span>

@@ -2,8 +2,9 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
-import { ChevronDown, Menu, X, User } from "lucide-react"
+import { ChevronDown, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const navLinks = [
@@ -51,7 +52,6 @@ const navLinks = [
   },
   { label: "Our Expert", href: "/agents", hasDropdown: false },
   { label: "About Us", href: "/about", hasDropdown: false },
-  { label: "Contact", href: "/contact", hasDropdown: false },
 ]
 
 export function Header() {
@@ -63,7 +63,14 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-card border-b border-border">
       <div className="mx-auto max-w-[1280px] px-4 flex items-center justify-between h-[60px]">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-1 shrink-0" aria-label="Shree Balaji Enterprises">
+        <Link href="/" className="flex items-center gap-2 shrink-0" aria-label="Shree Balaji Enterprises">
+          <Image
+            src="https://raw.githubusercontent.com/srinivasajan/shreebalajienterprises/main/images/logo.png"
+            alt="Shree Balaji Enterprises Logo"
+            width={40}
+            height={40}
+            className="h-10 w-10 object-contain"
+          />
           <span className="text-lg font-bold text-foreground leading-tight">
             Shree <span className="text-primary">Balaji</span>
             <span className="block text-xs font-semibold text-muted-foreground tracking-wide">
