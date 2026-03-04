@@ -98,8 +98,14 @@ export function PropertyCard({ property }: { property: PropertyData }) {
         )}
       </Link>
 
-      {/* WhatsApp quick enquiry */}
-      <div className="px-3 pb-3">
+      {/* Action buttons */}
+      <div className="px-3 pb-3 flex flex-col gap-2">
+        <Link
+          href={detailHref}
+          className="flex items-center justify-center w-full py-2 text-xs font-semibold rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+        >
+          View Details
+        </Link>
         <a
           href={`https://wa.me/917767805544?text=${encodeURIComponent(`Hi, I am interested in the property: ${property.address}, ${property.city}. Please share more details.`)}`}
           target="_blank"

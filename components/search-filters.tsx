@@ -10,6 +10,11 @@ interface FilterState {
   bedsMin: string
   bathsMin: string
   homeType: string[]
+  furnishing: string[]
+  possession: string[]
+  facing: string[]
+  sqftMin: string
+  sqftMax: string
   sortBy: string
 }
 
@@ -24,6 +29,11 @@ export function SearchFilters({
     bedsMin: "",
     bathsMin: "",
     homeType: [],
+    furnishing: [],
+    possession: [],
+    facing: [],
+    sqftMin: "",
+    sqftMax: "",
     sortBy: "Newest",
   })
   const [activeFilter, setActiveFilter] = useState<string | null>(null)
@@ -39,6 +49,14 @@ export function SearchFilters({
     onFilterChange?.(next)
   }
 
+  const toggleArrayFilter = (key: keyof FilterState, value: string) => {
+    const current = filters[key] as string[]
+    const next = current.includes(value)
+      ? current.filter((v) => v !== value)
+      : [...current, value]
+    updateFilter(key, next)
+  }
+
   const priceRanges = [
     { label: "Any", min: "", max: "" },
     { label: "Under ₹30L", min: "", max: "3000000" },
@@ -48,8 +66,26 @@ export function SearchFilters({
     { label: "₹2Cr+", min: "20000000", max: "" },
   ]
 
-  const homeTypes = ["House", "Apartment", "Condo", "Townhome", "Land", "Multi-family"]
+  const homeTypes = ["Apartment", "Villa / Bungalow", "Plot / Land", "Shop", "Office", "Warehouse", "Townhome", "Multi-family"]
+  const furnishingOptions = ["Furnished", "Semi-Furnished", "Unfurnished"]
+  const possessionOptions = ["Ready to Move", "Under Construction", "New Launch"]
+  const facingOptions = ["East", "West", "North", "South", "North-East", "South-West"]
+  const sqftRanges = [
+    { label: "Any", min: "", max: "" },
+    { label: "Under 500 sqft", min: "", max: "500" },
+    { label: "500 – 1000 sqft", min: "500", max: "1000" },
+    { label: "1000 – 2000 sqft", min: "1000", max: "2000" },
+    { label: "2000 sqft+", min: "2000", max: "" },
+  ]
   const sortOptions = ["Newest", "Price (Low to High)", "Price (High to Low)", "Beds", "Sqft"]
+
+  const moreActiveCount = [
+    filters.homeType.length > 0,
+    filters.furnishing.length > 0,
+    filters.possession.length > 0,
+    filters.facing.length > 0,
+    filters.sqftMin || filters.sqftMax,
+  ].filter(Boolean).length
 
   return (
     <>
@@ -192,11 +228,145 @@ export function SearchFilters({
           )}
         </div>
 
-        {/* More Filters */}
-        <button className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-full border border-border text-foreground hover:border-foreground/30 transition-colors">
-          <SlidersHorizontal className="h-3.5 w-3.5" />
-          More
-        </button>
+        {/* Filters button */}
+        <div className="relative">
+          <button
+            onClick={() => toggleFilter("more")}
+            className={`flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-full border transition-colors ${
+              moreActiveCount > 0
+                ? "border-primary text-primary bg-primary/5"
+                : "border-border text-foreground hover:border-foreground/30"
+            }`}
+          >
+            <SlidersHorizontal className="h-3.5 w-3.5" />
+            Filters
+            {moreActiveCount > 0 && (
+              <span className="ml-0.5 bg-primary text-primary-foreground text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
+                {moreActiveCount}
+              </span>
+            )}
+          </button>
+
+          {activeFilter === "more" && (
+            <div className="absolute top-full left-0 mt-2 bg-card border border-border rounded-lg shadow-xl p-5 z-50 w-[420px] max-h-[80vh] overflow-y-auto">
+
+              {/* Property Type */}
+              <p className="text-sm font-semibold text-foreground mb-2">Property Type</p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {homeTypes.map((type) => (
+                  <button
+                    key={type}
+                    onClick={() => toggleArrayFilter("homeType", type)}
+                    className={`px-3 py-1.5 text-xs font-medium rounded-full border transition-colors ${
+                      filters.homeType.includes(type)
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "border-border text-foreground hover:bg-muted"
+                    }`}
+                  >
+                    {type}
+                  </button>
+                ))}
+              </div>
+
+              {/* Furnishing */}
+              <p className="text-sm font-semibold text-foreground mb-2">Furnishing</p>
+              <div className="flex gap-2 mb-4 flex-wrap">
+                {furnishingOptions.map((opt) => (
+                  <button
+                    key={opt}
+                    onClick={() => toggleArrayFilter("furnishing", opt)}
+                    className={`px-3 py-1.5 text-xs font-medium rounded-full border transition-colors ${
+                      filters.furnishing.includes(opt)
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "border-border text-foreground hover:bg-muted"
+                    }`}
+                  >
+                    {opt}
+                  </button>
+                ))}
+              </div>
+
+              {/* Possession Status */}
+              <p className="text-sm font-semibold text-foreground mb-2">Possession Status</p>
+              <div className="flex gap-2 mb-4 flex-wrap">
+                {possessionOptions.map((opt) => (
+                  <button
+                    key={opt}
+                    onClick={() => toggleArrayFilter("possession", opt)}
+                    className={`px-3 py-1.5 text-xs font-medium rounded-full border transition-colors ${
+                      filters.possession.includes(opt)
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "border-border text-foreground hover:bg-muted"
+                    }`}
+                  >
+                    {opt}
+                  </button>
+                ))}
+              </div>
+
+              {/* Area (sqft) */}
+              <p className="text-sm font-semibold text-foreground mb-2">Area (sqft)</p>
+              <div className="flex flex-col gap-1.5 mb-4">
+                {sqftRanges.map((range) => (
+                  <button
+                    key={range.label}
+                    onClick={() => {
+                      updateFilter("sqftMin", range.min)
+                      updateFilter("sqftMax", range.max)
+                    }}
+                    className={`text-left px-3 py-2 text-sm rounded-md transition-colors ${
+                      filters.sqftMin === range.min && filters.sqftMax === range.max
+                        ? "bg-primary text-primary-foreground"
+                        : "text-foreground hover:bg-muted"
+                    }`}
+                  >
+                    {range.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Facing */}
+              <p className="text-sm font-semibold text-foreground mb-2">Facing</p>
+              <div className="flex flex-wrap gap-2 mb-5">
+                {facingOptions.map((opt) => (
+                  <button
+                    key={opt}
+                    onClick={() => toggleArrayFilter("facing", opt)}
+                    className={`px-3 py-1.5 text-xs font-medium rounded-full border transition-colors ${
+                      filters.facing.includes(opt)
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "border-border text-foreground hover:bg-muted"
+                    }`}
+                  >
+                    {opt}
+                  </button>
+                ))}
+              </div>
+
+              <div className="flex gap-2">
+                <button
+                  onClick={() => {
+                    updateFilter("homeType", [])
+                    updateFilter("furnishing", [])
+                    updateFilter("possession", [])
+                    updateFilter("facing", [])
+                    updateFilter("sqftMin", "")
+                    updateFilter("sqftMax", "")
+                  }}
+                  className="flex-1 py-2 text-sm font-semibold text-foreground border border-border rounded-md hover:bg-muted transition-colors"
+                >
+                  Clear All
+                </button>
+                <button
+                  onClick={() => setActiveFilter(null)}
+                  className="flex-1 py-2 text-sm font-semibold text-primary-foreground bg-primary rounded-md hover:bg-primary/90 transition-colors"
+                >
+                  Apply Filters
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
 
         <div className="flex-1" />
 
