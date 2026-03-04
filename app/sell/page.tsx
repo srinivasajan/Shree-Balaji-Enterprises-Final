@@ -34,10 +34,10 @@ const steps = [
 ]
 
 const sellerResources = [
-  { title: "Seller's Guide", description: "Step-by-step guide to selling your home for the best price.", href: "#guide" },
-  { title: "Home Staging Tips", description: "Make your home shine with these proven staging techniques.", href: "#staging" },
-  { title: "Understanding Offers", description: "Learn how to evaluate and negotiate offers like a pro.", href: "#offers" },
-  { title: "Closing Costs", description: "What sellers need to know about fees and closing costs.", href: "#costs" },
+  { title: "Free Property Valuation", description: "Get an honest market valuation for your property from our expert — no obligation, no charges.", href: "/contact" },
+  { title: "Assisted Documentation", description: "We help you prepare and verify all necessary property documents for a smooth, dispute-free sale.", href: "/contact" },
+  { title: "Wide Buyer Network", description: "Access Shree Balaji Enterprises' network of serious, pre-qualified buyers across the Mumbai Metropolitan Region.", href: "/contact" },
+  { title: "Loan Assistance for Buyers", description: "We help the buyers of your property secure the right home loan, speeding up the closing process.", href: "/home-loans" },
 ]
 
 export default function SellPage() {
@@ -184,7 +184,7 @@ export default function SellPage() {
               Get Free Valuation
             </Button>
             <Link href="/agents">
-              <Button size="lg" variant="outline">Find an Agent</Button>
+              <Button size="lg" variant="outline">Meet Our Expert</Button>
             </Link>
           </div>
         </div>

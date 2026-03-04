@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Search, Star, MapPin, Phone, Mail,
+import { Star, MapPin, Phone, Mail,
   Award, Home, TrendingUp, Users, MessageSquare, MessageCircle
 } from "lucide-react"
 import { Footer } from "@/components/footer"
@@ -89,8 +89,6 @@ function AgentCard({ agent }: { agent: typeof agents[0] }) {
 }
 
 export default function AgentsPage() {
-  const [searchQuery, setSearchQuery] = useState("")
-
   return (
     <>
 
@@ -103,22 +101,6 @@ export default function AgentsPage() {
           <p className="text-sm md:text-base text-primary-foreground/80 mb-8 max-w-lg">
             Anju Jangiti – Founder &amp; Director of Shree Balaji Enterprises. RERA registered agent with 15+ years of experience in Mumbai Metropolitan Region.
           </p>
-
-          <div className="flex items-center gap-3 max-w-2xl">
-            <div className="flex-1 flex items-center bg-card rounded-lg px-3">
-              <Search className="h-4 w-4 text-muted-foreground shrink-0" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search by name or area"
-                className="w-full px-3 py-3 text-sm bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none"
-              />
-            </div>
-            <Button variant="secondary" className="px-6 py-3 h-auto font-semibold">
-              Search
-            </Button>
-          </div>
 
           {/* Quick stats */}
           <div className="flex items-center gap-8 mt-8">
@@ -143,9 +125,6 @@ export default function AgentsPage() {
       {/* Agent Grid */}
       <section className="py-8">
         <div className="mx-auto max-w-[1280px] px-4">
-          <p className="text-sm text-muted-foreground mb-6">
-            <span className="font-bold text-foreground">{agents.length}</span> agents found
-          </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {agents.map((agent) => (
@@ -158,28 +137,28 @@ export default function AgentsPage() {
       {/* Why work with us */}
       <section className="py-12 bg-muted/50">
         <div className="mx-auto max-w-[1280px] px-4">
-          <h2 className="text-2xl font-bold text-foreground text-center mb-10">Why Work with Our Agents</h2>
+          <h2 className="text-2xl font-bold text-foreground text-center mb-10">Why Work with Shree Balaji Enterprises</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="flex flex-col items-center text-center p-6">
               <div className="flex items-center justify-center h-14 w-14 rounded-full bg-primary/10 mb-4">
                 <TrendingUp className="h-7 w-7 text-primary" />
               </div>
-              <h3 className="text-base font-bold text-foreground mb-2">Local Market Experts</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">Our agents know every neighborhood, school district, and market trend in your area.</p>
+              <h3 className="text-base font-bold text-foreground mb-2">Local Market Expertise</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">Anju Jangiti has 15+ years of deep local knowledge across every major micro-market in the Mumbai Metropolitan Region.</p>
             </div>
             <div className="flex flex-col items-center text-center p-6">
               <div className="flex items-center justify-center h-14 w-14 rounded-full bg-primary/10 mb-4">
                 <Users className="h-7 w-7 text-primary" />
               </div>
-              <h3 className="text-base font-bold text-foreground mb-2">Verified Reviews</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">Read real reviews from past clients to find the perfect agent for your needs.</p>
+              <h3 className="text-base font-bold text-foreground mb-2">1000+ Happy Clients</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">Trusted by hundreds of families and businesses across Ambernath, Badlapur, Thane and beyond. Our track record speaks for itself.</p>
             </div>
             <div className="flex flex-col items-center text-center p-6">
               <div className="flex items-center justify-center h-14 w-14 rounded-full bg-primary/10 mb-4">
                 <MessageSquare className="h-7 w-7 text-primary" />
               </div>
-              <h3 className="text-base font-bold text-foreground mb-2">Direct Communication</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">Contact agents directly by phone, email, or message. No middlemen, no delays.</p>
+              <h3 className="text-base font-bold text-foreground mb-2">Direct & Responsive</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">Reach out directly via WhatsApp, call or email. No waiting queues or middlemen — Anju personally handles every enquiry.</p>
             </div>
           </div>
         </div>

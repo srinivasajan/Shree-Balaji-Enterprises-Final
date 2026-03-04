@@ -49,7 +49,7 @@ const navLinks = [
       { label: "Apply for Loan", href: "/contact" },
     ],
   },
-  { label: "Find an Agent", href: "/agents", hasDropdown: false },
+  { label: "Our Expert", href: "/agents", hasDropdown: false },
   { label: "About Us", href: "/about", hasDropdown: false },
   { label: "Contact", href: "/contact", hasDropdown: false },
 ]
@@ -126,11 +126,6 @@ export function Header() {
             </Button>
           </a>
           <div className="w-px h-5 bg-border mx-1" />
-          <Link href="/contact">
-            <Button variant="ghost" size="sm" className="text-sm font-semibold text-foreground">
-              Enquiry
-            </Button>
-          </Link>
           <Link href="/contact">
             <Button size="sm" className="text-sm font-semibold">
               Contact Us

@@ -7,7 +7,7 @@ const footerSections = [
       { label: "Home", href: "/" },
       { label: "Browse Properties", href: "/buy" },
       { label: "Sell Your Property", href: "/sell" },
-      { label: "Find an Agent", href: "/agents" },
+      { label: "Our Expert", href: "/agents" },
       { label: "About Us", href: "/about" },
       { label: "Contact Us", href: "/contact" },
     ],

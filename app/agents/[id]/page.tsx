@@ -6,7 +6,7 @@ import Link from "next/link"
 import { useParams } from "next/navigation"
 import {
   Star, MapPin, Phone, Mail, Award, Home, Clock,
-  Check, ChevronRight, MessageSquare
+  ChevronRight, MessageCircle
 } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { PropertyCard } from "@/components/property-card"
@@ -22,7 +22,8 @@ const reviews = [
 export default function AgentDetailPage() {
   const params = useParams()
   const agent = agents.find((a) => a.id === Number(params.id))
-  const [messageSent, setMessageSent] = useState(false)
+  const [contactName, setContactName] = useState("")
+  const [contactPhone, setContactPhone] = useState("")
 
   if (!agent) {
     return (
@@ -30,7 +31,7 @@ export default function AgentDetailPage() {
         <div className="flex flex-col items-center justify-center py-32">
           <h1 className="text-2xl font-bold text-foreground mb-2">Agent Not Found</h1>
           <p className="text-muted-foreground mb-6">This agent profile is no longer available.</p>
-          <Link href="/agents"><Button>Find an Agent</Button></Link>
+          <Link href="/agents"><Button>Back to Agent</Button></Link>
         </div>
         <Footer />
       </>
@@ -186,8 +187,8 @@ export default function AgentDetailPage() {
                   </div>
                 ))}
               </div>
-              <button className="mt-4 text-sm font-semibold text-primary hover:underline">
-                View all {agent.reviewCount} reviews
+              <button className="mt-4 text-sm text-muted-foreground">
+                Showing 3 of {agent.reviewCount} client testimonials
               </button>
             </div>
 
@@ -214,40 +215,48 @@ export default function AgentDetailPage() {
                   <div className="relative h-12 w-12 rounded-full overflow-hidden shrink-0">
                     <Image src={agent.image} alt={agent.name} fill className="object-cover" sizes="48px" />
                   </div>
-                  <div>
-                    <p className="text-sm font-bold text-foreground">Contact {agent.name.split(" ")[0]}</p>
-                    <p className="text-xs text-muted-foreground">Typically responds within 1 hour</p>
-                  </div>
+                <div className="text-center">
+                  <p className="text-sm font-bold text-foreground">
+                    {agent.name.split(" ")[0]} will respond via WhatsApp
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-0.5">Typically within 1 hour</p>
                 </div>
+              </div>
 
-                {messageSent ? (
-                  <div className="text-center py-8">
-                    <div className="flex items-center justify-center h-14 w-14 rounded-full bg-primary/10 mx-auto mb-3">
-                      <Check className="h-7 w-7 text-primary" />
-                    </div>
-                    <p className="text-base font-bold text-foreground">Message Sent!</p>
-                    <p className="text-sm text-muted-foreground mt-1">{agent.name.split(" ")[0]} will be in touch shortly.</p>
-                  </div>
-                ) : (
-                  <form onSubmit={(e) => { e.preventDefault(); setMessageSent(true) }} className="flex flex-col gap-2.5">
-                    <input type="text" placeholder="Your name" className="w-full px-3 py-2.5 text-sm border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" required />
-                    <input type="email" placeholder="Email address" className="w-full px-3 py-2.5 text-sm border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" required />
-                    <input type="tel" placeholder="Phone number" className="w-full px-3 py-2.5 text-sm border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
-                    <select className="w-full px-3 py-2.5 text-sm border border-border rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary">
-                      <option value="">{"I'm looking to..."}</option>
-                      <option>Buy a home</option>
-                      <option>Sell my home</option>
-                      <option>Buy & sell</option>
-                      <option>Rent</option>
-                      <option>Other</option>
-                    </select>
-                    <textarea placeholder="Tell the agent about what you're looking for..." rows={4} className="w-full px-3 py-2.5 text-sm border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none" />
-                    <Button type="submit" className="w-full">
-                      <MessageSquare className="h-4 w-4 mr-2" />
-                      Send Message
+                <div className="flex flex-col gap-2.5">
+                  <input
+                    type="text"
+                    value={contactName}
+                    onChange={(e) => setContactName(e.target.value)}
+                    placeholder="Your full name"
+                    className="w-full px-3 py-2.5 text-sm border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                  <input
+                    type="tel"
+                    value={contactPhone}
+                    onChange={(e) => setContactPhone(e.target.value)}
+                    placeholder="Your mobile number"
+                    className="w-full px-3 py-2.5 text-sm border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                  <select className="w-full px-3 py-2.5 text-sm border border-border rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary">
+                    <option value="">I&apos;m looking to...</option>
+                    <option>Buy a property</option>
+                    <option>Sell my property</option>
+                    <option>Rent a property</option>
+                    <option>Get a valuation</option>
+                    <option>Other</option>
+                  </select>
+                  <a
+                    href={`https://wa.me/917767805544?text=${encodeURIComponent(`Hi ${agent.name}, my name is ${contactName}. My number is ${contactPhone}. I would like to discuss my property requirements.`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button className="w-full">
+                      <MessageCircle className="h-4 w-4 mr-2" />
+                      Send via WhatsApp
                     </Button>
-                  </form>
-                )}
+                  </a>
+                </div>
 
                 <div className="flex items-center gap-3 mt-4 pt-4 border-t border-border">
                   <a href={`tel:${agent.phone}`} className="flex items-center gap-1.5 text-xs text-primary hover:underline">
