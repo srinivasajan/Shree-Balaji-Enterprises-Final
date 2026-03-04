@@ -25,27 +25,36 @@ export function HeroSection() {
     }
   }
 
+  // Determine if the active tab is the last tab — if so, the search box top-right
+  // corner must be square to visually connect with the tab above it.
+  const activeTabIndex = searchTabs.findIndex((t) => t.label === activeTab)
+  const isLastTabActive = activeTabIndex === searchTabs.length - 1
+
   return (
-    <section className="relative">
-      <div className="relative h-[340px] md:h-[420px] lg:h-[480px] overflow-hidden">
+    // Fix 6: fallback bg-neutral-800 shown while/if the image fails to load
+    <section className="relative bg-neutral-800">
+      {/* Fix 7: taller mobile height so content isn't cramped */}
+      <div className="relative h-[420px] md:h-[480px] lg:h-[540px] overflow-hidden">
+        {/* Fix 2 & 3: local image with accurate alt text */}
         <Image
-          src="https://raw.githubusercontent.com/srinivasajan/shreebalajienterprises/main/images/locations/ambernath.jpg"
-          alt="Ambernath city aerial view"
+          src="/images/hero-bg.jpg"
+          alt="Ambernath residential neighbourhood — find your perfect property"
           fill
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-foreground/40" />
+        {/* Fix 1: reliable black overlay instead of bg-foreground/40 */}
+        <div className="absolute inset-0 bg-black/45" />
 
         <div className="relative z-10 flex flex-col items-center justify-center h-full px-4">
-          <h1 className="text-3xl md:text-5xl lg:text-[56px] font-bold text-card text-center leading-tight text-balance mb-8">
-            Find Your Perfect
-            <br className="hidden md:block" />
-            Property With Us
+          {/* Fix 8: remove manual <br> that conflicted with text-balance */}
+          <h1 className="text-3xl md:text-5xl lg:text-[56px] font-bold text-white text-center leading-tight text-balance mb-8 max-w-3xl">
+            Find Your Perfect Property With Us
           </h1>
 
           <div className="w-full max-w-2xl">
-            <div className="flex gap-0.5 mb-0">
+            {/* Fix 5: flex-wrap so tabs wrap gracefully on very small screens */}
+            <div className="flex flex-wrap gap-0.5 mb-0">
               {searchTabs.map((tab) => (
                 <button
                   key={tab.label}
@@ -61,7 +70,12 @@ export function HeroSection() {
               ))}
             </div>
 
-            <div className="flex bg-card rounded-b-lg rounded-tr-lg overflow-hidden shadow-lg">
+            {/* Fix 4: top-right corner is square when last tab is active, rounded otherwise */}
+            <div
+              className={`flex bg-card overflow-hidden shadow-lg rounded-b-lg ${
+                isLastTabActive ? "rounded-tl-none rounded-tr-none" : "rounded-tr-lg"
+              }`}
+            >
               <div className="flex-1 flex items-center px-4">
                 <Search className="h-5 w-5 text-muted-foreground shrink-0" />
                 <input
@@ -95,7 +109,7 @@ export function HeroSection() {
             ].map((badge) => (
               <span
                 key={badge}
-                className="text-xs font-semibold text-card/90 bg-card/15 backdrop-blur-sm px-3 py-1.5 rounded-full border border-card/25"
+                className="text-xs font-semibold text-white/90 bg-white/15 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/25"
               >
                 {badge}
               </span>
