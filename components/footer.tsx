@@ -78,9 +78,9 @@ export function Footer() {
               <Image
                 src="https://raw.githubusercontent.com/srinivasajan/shreebalajienterprises/main/images/logo.png"
                 alt="Shree Balaji Enterprises Logo"
-                width={36}
-                height={36}
-                className="h-9 w-9 object-contain"
+                width={48}
+                height={48}
+                className="h-12 w-12 object-contain"
               />
               <span className="text-base font-bold text-card leading-tight">
                 Shree <span className="text-primary">Balaji</span> Enterprises
