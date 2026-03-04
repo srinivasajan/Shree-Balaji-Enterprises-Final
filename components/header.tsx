@@ -50,7 +50,6 @@ const navLinks = [
       { label: "Apply for Loan", href: "/contact" },
     ],
   },
-  { label: "Our Expert", href: "/agents", hasDropdown: false },
   { label: "About Us", href: "/about", hasDropdown: false },
 ]
 
@@ -61,7 +60,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-card border-b border-border">
-      <div className="mx-auto max-w-[1280px] px-4 flex items-center justify-between h-[68px]">
+      <div className="w-full px-16 flex items-center justify-between h-[52px]">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 shrink-0" aria-label="Shree Balaji Enterprises">
           <Image
@@ -69,15 +68,15 @@ export function Header() {
             alt="Shree Balaji Enterprises Logo"
             width={52}
             height={52}
-            className="h-[52px] w-[52px] object-contain"
+            className="h-[48px] w-[48px] object-contain"
           />
-          <span className="text-lg font-bold text-foreground whitespace-nowrap">
+          <span className="text-xl font-bold text-foreground leading-tight whitespace-nowrap">
             Shree <span className="text-primary">Balaji</span> Enterprises
           </span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden xl:flex items-center gap-0.5" aria-label="Main navigation">
+        <nav className="hidden lg:flex items-center gap-0.5" aria-label="Main navigation">
           {navLinks.map((link) => (
             <div
               key={link.label}
@@ -87,7 +86,7 @@ export function Header() {
             >
               <Link
                 href={link.href}
-                className={`flex items-center gap-0.5 px-2.5 py-2 text-sm font-semibold rounded-md transition-colors whitespace-nowrap ${
+                className={`flex items-center gap-0.5 px-3 py-2 text-sm font-semibold rounded-md transition-colors ${
                   pathname.startsWith(link.href)
                     ? "text-primary"
                     : "text-foreground hover:text-primary"
@@ -118,9 +117,16 @@ export function Header() {
         </nav>
 
         {/* Right side */}
-        <div className="hidden xl:flex items-center gap-2">
-          <a href="tel:7767805544" className="text-sm font-semibold text-foreground hover:text-primary transition-colors whitespace-nowrap">
-            📞 7767805544
+        <div className="hidden lg:flex items-center gap-1">
+          <a href="tel:7767805544">
+            <Button variant="ghost" size="sm" className="text-sm font-semibold text-foreground">
+              📞 7767805544
+            </Button>
+          </a>
+          <a href="https://wa.me/917767805544" target="_blank" rel="noopener noreferrer">
+            <Button variant="ghost" size="sm" className="text-sm font-semibold text-foreground">
+              WhatsApp
+            </Button>
           </a>
           <div className="w-px h-5 bg-border mx-1" />
           <Link href="/contact">
@@ -130,9 +136,9 @@ export function Header() {
           </Link>
         </div>
 
-        {/* Mobile/tablet menu button */}
+        {/* Mobile menu button */}
         <button
-          className="xl:hidden p-2 text-foreground"
+          className="lg:hidden p-2 text-foreground"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
         >
@@ -160,9 +166,9 @@ export function Header() {
               </Link>
             ))}
             <div className="border-t border-border my-2" />
-            <a href="tel:7767805544" className="px-3 py-3 text-sm font-semibold text-foreground hover:bg-muted rounded-md block" onClick={() => setMobileOpen(false)}>
-              📞 7767805544
-            </a>
+            <Link href="/contact" className="px-3 py-3 text-sm font-semibold text-foreground hover:bg-muted rounded-md" onClick={() => setMobileOpen(false)}>
+              Enquiry
+            </Link>
             <Link href="/contact" className="px-3 py-3 text-sm font-semibold text-primary hover:bg-primary/5 rounded-md" onClick={() => setMobileOpen(false)}>
               Contact Us
             </Link>

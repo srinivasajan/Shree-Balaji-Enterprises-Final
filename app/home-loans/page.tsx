@@ -203,7 +203,7 @@ export default function HomeLoansPage() {
 
             {/* Result */}
             <div className="lg:w-[340px] shrink-0">
-              <div className="bg-card border border-border rounded-xl p-6 sticky top-[84px]">
+              <div className="bg-card border border-border rounded-xl p-6 sticky top-[80px]">
                 <p className="text-sm text-muted-foreground mb-1">Estimated Monthly Payment</p>
                 <p className="text-4xl font-bold text-foreground mb-6">₹{totalMonthly.toLocaleString('en-IN')}</p>
 

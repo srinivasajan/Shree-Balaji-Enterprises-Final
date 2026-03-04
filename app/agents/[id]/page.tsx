@@ -209,7 +209,7 @@ export default function AgentDetailPage() {
 
           {/* Right column - Contact form */}
           <div className="w-full lg:w-[380px] shrink-0">
-            <div className="sticky top-[84px]">
+            <div className="sticky top-[80px]">
               <div className="border border-border rounded-xl p-5 bg-card">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="relative h-12 w-12 rounded-full overflow-hidden shrink-0">
