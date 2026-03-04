@@ -1,0 +1,23 @@
+import { HeroSection } from "@/components/hero-section"
+import { TrendingHomes } from "@/components/trending-homes"
+import { ExploreTypes } from "@/components/explore-types"
+import { FeaturedListings } from "@/components/featured-listings"
+import { ValueProposition } from "@/components/value-proposition"
+import { PopularSearches } from "@/components/popular-searches"
+import { Footer } from "@/components/footer"
+
+export default function Home() {
+  return (
+    <>
+      <main>
+        <HeroSection />
+        <TrendingHomes />
+        <ExploreTypes />
+        <FeaturedListings />
+        <ValueProposition />
+        <PopularSearches />
+      </main>
+      <Footer />
+    </>
+  )
+}
