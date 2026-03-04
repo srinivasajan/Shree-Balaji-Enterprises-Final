@@ -63,19 +63,16 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-card border-b border-border">
       <div className="mx-auto max-w-[1280px] px-4 flex items-center justify-between h-[60px]">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 shrink-0" aria-label="Shree Balaji Enterprises">
+        <Link href="/" className="flex items-center gap-2.5 shrink-0" aria-label="Shree Balaji Enterprises">
           <Image
             src="https://raw.githubusercontent.com/srinivasajan/shreebalajienterprises/main/images/logo.png"
             alt="Shree Balaji Enterprises Logo"
-            width={48}
-            height={48}
-            className="h-12 w-12 object-contain"
+            width={56}
+            height={56}
+            className="h-14 w-14 object-contain"
           />
-          <span className="text-lg font-bold text-foreground leading-tight">
-            Shree <span className="text-primary">Balaji</span>
-            <span className="block text-xs font-semibold text-muted-foreground tracking-wide">
-              Enterprises
-            </span>
+          <span className="text-xl font-bold text-foreground whitespace-nowrap">
+            Shree <span className="text-primary">Balaji</span> Enterprises
           </span>
         </Link>
 

@@ -74,15 +74,15 @@ export function Footer() {
         <div className="border-t border-card/20 pt-8">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2" aria-label="Shree Balaji Enterprises">
+            <Link href="/" className="flex items-center gap-2.5" aria-label="Shree Balaji Enterprises">
               <Image
                 src="https://raw.githubusercontent.com/srinivasajan/shreebalajienterprises/main/images/logo.png"
                 alt="Shree Balaji Enterprises Logo"
-                width={48}
-                height={48}
-                className="h-12 w-12 object-contain"
+                width={52}
+                height={52}
+                className="h-14 w-14 object-contain"
               />
-              <span className="text-base font-bold text-card leading-tight">
+              <span className="text-lg font-bold text-card whitespace-nowrap">
                 Shree <span className="text-primary">Balaji</span> Enterprises
               </span>
             </Link>
