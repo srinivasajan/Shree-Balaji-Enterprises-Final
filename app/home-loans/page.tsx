@@ -208,18 +208,12 @@ export default function HomeLoansPage() {
             {banks.map((b) => (
               <div key={b.name} className="flex flex-col items-center gap-3 bg-card border border-border rounded-2xl py-6 px-3 hover:shadow-md hover:-translate-y-1 transition-all duration-200">
                 <div className="h-14 w-14 rounded-xl bg-white flex items-center justify-center shadow-md overflow-hidden p-1.5 border border-border">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={b.logo}
                     alt={b.name}
                     className="h-full w-full object-contain"
-                    onError={(e) => {
-                      const t = e.currentTarget
-                      t.style.display = "none"
-                      const span = t.nextElementSibling as HTMLElement | null
-                      if (span) span.style.display = "flex"
-                    }}
                   />
-                  <span className="hidden items-center justify-center text-[8px] font-extrabold text-foreground leading-none text-center">{b.fallback}</span>
                 </div>
                 <p className="text-[10px] text-muted-foreground text-center font-medium leading-tight">{b.name}</p>
               </div>
