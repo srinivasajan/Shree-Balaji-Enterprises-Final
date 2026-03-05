@@ -54,12 +54,12 @@ const stats = [
 ]
 
 const banks = [
-  { name: "State Bank of India", logo: "/images/banks/sbi.png", textLogo: false },
-  { name: "HDFC Bank", logo: "/images/banks/hdfc.png", textLogo: false },
-  { name: "ICICI Bank", logo: "/images/banks/icici.png", textLogo: false },
-  { name: "Axis Bank", logo: "/images/banks/axis.png", textLogo: false },
-  { name: "LIC Housing Finance", logo: "/images/banks/lic-hfl.svg", textLogo: false },
-  { name: "PNB Housing Finance", logo: "/images/banks/pnb-hfl.svg", textLogo: false },
+  { name: "State Bank of India", logo: "/images/banks/sbi.svg" },
+  { name: "HDFC Bank", logo: "/images/banks/hdfc.svg" },
+  { name: "ICICI Bank", logo: "/images/banks/icici.svg" },
+  { name: "Axis Bank", logo: "/images/banks/axis.svg" },
+  { name: "LIC Housing Finance", logo: "/images/banks/lic-hfl.svg" },
+  { name: "PNB Housing Finance", logo: "/images/banks/pnb-hfl.svg" },
 ]
 
 const reasons = [
@@ -207,9 +207,9 @@ export default function HomeLoansPage() {
           <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
             {banks.map((b) => (
               <div key={b.name} className="flex flex-col items-center gap-3 bg-card border border-border rounded-2xl py-6 px-3 hover:shadow-md hover:-translate-y-1 transition-all duration-200">
-                <div className="h-16 w-16 rounded-2xl bg-white border border-border flex items-center justify-center shadow-md overflow-hidden p-2">
+                <div className="h-14 w-full rounded-xl bg-white border border-border flex items-center justify-center shadow-sm overflow-hidden px-3 py-2">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={b.logo} alt={b.name} className="h-full w-full object-contain" />
+                  <img src={b.logo} alt={b.name} className="max-h-full max-w-full object-contain" />
                 </div>
                 <p className="text-[10px] text-muted-foreground text-center font-medium leading-tight">{b.name}</p>
               </div>

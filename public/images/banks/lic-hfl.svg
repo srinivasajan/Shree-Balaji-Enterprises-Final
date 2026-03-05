@@ -1,5 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 60">
-  <rect width="120" height="60" rx="8" fill="#1a6b3c"/>
-  <text x="60" y="22" font-family="Arial,sans-serif" font-size="18" font-weight="900" fill="white" text-anchor="middle" dominant-baseline="middle">LIC</text>
-  <text x="60" y="44" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#a7f3c4" text-anchor="middle" dominant-baseline="middle">Housing</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 60">
+  <rect width="160" height="60" fill="white"/>
+  <rect x="4" y="4" width="52" height="52" rx="6" fill="#006B3F"/>
+  <text x="30" y="24" font-family="Arial,sans-serif" font-size="13" font-weight="900" fill="white" text-anchor="middle" dominant-baseline="middle">LIC</text>
+  <line x1="10" y1="30" x2="50" y2="30" stroke="#FFD700" stroke-width="1.5"/>
+  <text x="30" y="44" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="#a3f0cc" text-anchor="middle" dominant-baseline="middle">HOUSING</text>
+  <text x="105" y="26" font-family="Arial,sans-serif" font-size="11" font-weight="800" fill="#006B3F" text-anchor="middle" dominant-baseline="middle">LIC Housing</text>
+  <text x="105" y="40" font-family="Arial,sans-serif" font-size="10" font-weight="600" fill="#444" text-anchor="middle" dominant-baseline="middle">Finance Ltd.</text>
 </svg>
