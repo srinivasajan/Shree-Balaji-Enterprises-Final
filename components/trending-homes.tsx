@@ -37,27 +37,31 @@ function PlaceholderCard() {
 }
 
 // ---------------------------------------------------------------------------
-// Three animation phases:
-//  idle     – deck at rest, transitions ON
-//  exiting  – top card flies out, others slide forward, transitions ON
-//  resetting– current updated, transitions OFF (instant snap so the
-//             re-queued exiting card never visibly bounces back)
+// Animation phases:
+//  idle      – deck at rest, transitions ON
+//  exiting   – top card flies out + depth cards shift forward, transitions ON
+//  resetting – current index updated, transitions OFF (instant snap)
+//  entering  – new top card starts slightly scaled-down/transparent, no transition
+//              (next frame we go idle and the card animates into place)
 // ---------------------------------------------------------------------------
-type Phase = "idle" | "exiting" | "resetting"
+const TRANSITION_MS = 650
+
+type Phase = "idle" | "exiting" | "resetting" | "entering"
 
 function cardStyle(
   depth: number,
   phase: Phase,
   exitDir: "left" | "right",
 ): React.CSSProperties {
-  const transition =
-    phase === "resetting"
-      ? "none"
-      : "transform 420ms cubic-bezier(0.4,0,0.2,1), opacity 360ms ease"
+  const noTransition = phase === "resetting" || phase === "entering"
+  const transition = noTransition
+    ? "none"
+    : `transform ${TRANSITION_MS}ms cubic-bezier(0.25,0.46,0.45,0.94), opacity ${Math.round(TRANSITION_MS * 0.85)}ms ease`
 
+  // Top card flying out
   if (phase === "exiting" && depth === 0) {
     return {
-      transform: `translateX(${exitDir === "left" ? "-115%" : "115%"}) scale(1)`,
+      transform: `translateX(${exitDir === "left" ? "-115%" : "115%"}) scale(0.9)`,
       opacity: 0,
       zIndex: DECK_DEPTH - depth,
       transition,
@@ -66,14 +70,27 @@ function cardStyle(
     }
   }
 
-  // During exiting, cards behind the top one shift forward by one slot
-  const effectiveDepth = phase === "exiting" && depth > 0 ? depth - 1 : depth
+  // New top card starting position (will animate to idle position)
+  if (phase === "entering" && depth === 0) {
+    return {
+      transform: `translateY(10px) scale(0.97)`,
+      opacity: 0,
+      zIndex: DECK_DEPTH,
+      transition: "none",
+      position: "absolute",
+      inset: 0,
+    }
+  }
+
+  const effectiveDepth =
+    (phase === "exiting" || phase === "entering") && depth > 0 ? depth - 1 : depth
   const offsetPx = effectiveDepth * LAYER_OFFSET
   const scale = 1 - effectiveDepth * LAYER_SCALE
+  const opacity = depth === 0 ? 1 : 1 - effectiveDepth * 0.18
 
   return {
     transform: `translateY(${offsetPx}px) translateX(${offsetPx}px) scale(${scale})`,
-    opacity: 1,
+    opacity,
     zIndex: DECK_DEPTH - depth,
     transition,
     position: "absolute",
@@ -95,16 +112,23 @@ export function TrendingHomes() {
     setPhase("exiting")
 
     setTimeout(() => {
-      // 1. Snap all cards to their new positions with transitions OFF
+      // 1. Snap index + freeze transitions
       setCurrent((prev) =>
         dir === "left" ? (prev + 1) % total : (prev - 1 + total) % total
       )
       setPhase("resetting")
-      // 2. Re-enable transitions after the browser has painted the snap
+
+      // 2. Put new top card in its start position (slightly below, transparent)
       requestAnimationFrame(() =>
-        requestAnimationFrame(() => setPhase("idle"))
+        requestAnimationFrame(() => {
+          setPhase("entering")
+          // 3. One more frame: enable transitions so card glides into place
+          requestAnimationFrame(() =>
+            requestAnimationFrame(() => setPhase("idle"))
+          )
+        })
       )
-    }, 440)
+    }, TRANSITION_MS + 20)
   }
 
   const layers = Array.from({ length: DECK_DEPTH }, (_, depth) => ({
