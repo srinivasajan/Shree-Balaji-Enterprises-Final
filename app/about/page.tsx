@@ -1,8 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
 import {
-  Shield, Users, TrendingUp, MapPin, Phone, Mail,
-  Award, CheckCircle2, Building2, Heart
+  Shield, MapPin, Phone, Mail,
+  Award, CheckCircle2, Building2, Heart, Star, MessageCircle
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -141,30 +141,61 @@ export default function AboutPage() {
             </div>
 
             {/* Founder card */}
-            <div className="w-full lg:w-[360px] shrink-0">
-              <div className="bg-card border border-border rounded-2xl p-6 text-center">
-                <div className="flex items-center justify-center h-24 w-24 rounded-full bg-primary/10 text-primary text-3xl font-bold mx-auto mb-4">
-                  A
+            <div className="w-full lg:w-[360px] shrink-0" id="founder">
+              <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-md">
+                {/* Photo strip */}
+                <div className="relative h-48 w-full bg-primary/5">
+                  <Image
+                    src="https://raw.githubusercontent.com/srinivasajan/shreebalajienterprises/main/images/logo.png"
+                    alt="Anju Jangiti — Founder, Shree Balaji Enterprises"
+                    fill
+                    className="object-contain p-6"
+                    sizes="360px"
+                  />
                 </div>
-                <h3 className="text-xl font-bold text-foreground">Anju Jangiti</h3>
-                <p className="text-sm text-primary font-semibold mt-1">Founder & Director</p>
-                <div className="border-t border-border my-4" />
-                <p className="text-sm text-muted-foreground leading-relaxed text-left">
-                  With over 15 years of experience in real estate, Anju has built Shree Balaji Enterprises
-                  on the foundation of trust and client satisfaction. Her in-depth knowledge of the MMR
-                  market and hands-on approach to every deal has earned her the confidence of hundreds of
-                  families and businesses alike.
-                </p>
-                <div className="mt-4 flex flex-col gap-2">
-                  <a href="tel:7767805544" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
-                    <Phone className="h-4 w-4 shrink-0" /> 7767805544
-                  </a>
-                  <a href="mailto:anjujangiti@gmail.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
-                    <Mail className="h-4 w-4 shrink-0" /> anjujangiti@gmail.com
-                  </a>
-                  <div className="flex items-start gap-2 text-sm text-muted-foreground">
-                    <MapPin className="h-4 w-4 shrink-0 mt-0.5" />
-                    <span>Shop No. 6, Vallabh Bldg, Avdhoot Residency, Ambernath-West, 421505</span>
+                <div className="p-6">
+                  <div className="flex items-start justify-between gap-2 mb-1">
+                    <div>
+                      <h3 className="text-xl font-bold text-foreground">Anju Jangiti</h3>
+                      <p className="text-sm text-primary font-semibold">Founder &amp; Director</p>
+                    </div>
+                    <div className="flex items-center gap-1 shrink-0 mt-0.5">
+                      <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
+                      <span className="text-sm font-bold text-foreground">5.0</span>
+                    </div>
+                  </div>
+
+                  {/* Stats row */}
+                  <div className="flex gap-4 py-3 border-y border-border my-3">
+                    {[{ v: "15+", l: "Years" }, { v: "500+", l: "Sold" }, { v: "1000+", l: "Clients" }].map((s) => (
+                      <div key={s.l} className="flex-1 text-center">
+                        <p className="text-base font-bold text-primary">{s.v}</p>
+                        <p className="text-xs text-muted-foreground">{s.l}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-col gap-2.5">
+                    <a href="https://wa.me/917767805544?text=Hi%20Anju%2C%20I%20found%20your%20profile%20on%20the%20website.%20I%20would%20like%20to%20discuss%20my%20property%20requirements."
+                      target="_blank" rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-sm font-semibold text-white transition-colors hover:opacity-90"
+                      style={{ backgroundColor: "#25D366" }}>
+                      <MessageCircle className="h-4 w-4" /> WhatsApp Anju
+                    </a>
+                    <a href="tel:7767805544"
+                      className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg border-2 border-border text-sm font-semibold text-foreground hover:border-primary hover:text-primary transition-colors">
+                      <Phone className="h-4 w-4" /> 7767805544
+                    </a>
+                  </div>
+
+                  <div className="mt-4 flex flex-col gap-1.5">
+                    <a href="mailto:anjujangiti@gmail.com" className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors">
+                      <Mail className="h-3.5 w-3.5 shrink-0" /> anjujangiti@gmail.com
+                    </a>
+                    <div className="flex items-start gap-2 text-xs text-muted-foreground">
+                      <MapPin className="h-3.5 w-3.5 shrink-0 mt-0.5" />
+                      <span>Shop No. 6, Vallabh Bldg, Avdhoot Residency, Ambernath-West, 421505</span>
+                    </div>
                   </div>
                 </div>
               </div>

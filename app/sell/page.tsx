@@ -182,7 +182,7 @@ export default function SellPage() {
             <Button size="lg" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
               Get Free Valuation
             </Button>
-            <Link href="/agents">
+            <Link href="/about">
               <Button size="lg" variant="outline">Meet Our Expert</Button>
             </Link>
           </div>

@@ -8,7 +8,6 @@ const footerSections = [
       { label: "Home", href: "/" },
       { label: "Browse Properties", href: "/buy" },
       { label: "Sell Your Property", href: "/sell" },
-      { label: "Our Expert", href: "/agents" },
       { label: "About Us", href: "/about" },
       { label: "Contact Us", href: "/contact" },
     ],

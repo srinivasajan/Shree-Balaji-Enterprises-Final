@@ -12,8 +12,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/home-loans`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/about`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/contact`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${BASE}/agents`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
-    { url: `${BASE}/agents/1`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
   ]
 
   const buyRoutes: MetadataRoute.Sitemap = buyProperties.map((p) => ({
