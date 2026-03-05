@@ -58,8 +58,8 @@ const banks = [
   { name: "HDFC Bank", logo: "/images/banks/hdfc.svg" },
   { name: "ICICI Bank", logo: "/images/banks/icici.svg" },
   { name: "Axis Bank", logo: "/images/banks/axis.svg" },
-  { name: "LIC Housing Finance", logo: "/images/banks/lic-hfl-dl.png" },
-  { name: "PNB Housing Finance", logo: "/images/banks/pnb-hfl-dl.png" },
+  { name: "LIC Housing Finance", logo: "/images/banks/lic-hfl.svg" },
+  { name: "PNB Housing Finance", logo: "/images/banks/pnb-hfl.svg" },
 ]
 
 const reasons = [

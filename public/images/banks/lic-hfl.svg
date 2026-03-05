@@ -1,9 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 60">
-  <rect width="160" height="60" fill="white"/>
-  <rect x="4" y="4" width="52" height="52" rx="6" fill="#006B3F"/>
-  <text x="30" y="24" font-family="Arial,sans-serif" font-size="13" font-weight="900" fill="white" text-anchor="middle" dominant-baseline="middle">LIC</text>
-  <line x1="10" y1="30" x2="50" y2="30" stroke="#FFD700" stroke-width="1.5"/>
-  <text x="30" y="44" font-family="Arial,sans-serif" font-size="9" font-weight="600" fill="#a3f0cc" text-anchor="middle" dominant-baseline="middle">HOUSING</text>
-  <text x="105" y="26" font-family="Arial,sans-serif" font-size="11" font-weight="800" fill="#006B3F" text-anchor="middle" dominant-baseline="middle">LIC Housing</text>
-  <text x="105" y="40" font-family="Arial,sans-serif" font-size="10" font-weight="600" fill="#444" text-anchor="middle" dominant-baseline="middle">Finance Ltd.</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 80">
+  <!-- LIC Housing Finance logo -->
+  <!-- Left: Green shield/emblem -->
+  <rect x="0" y="0" width="220" height="80" fill="white"/>
+  <!-- Icon: stylised house in green circle -->
+  <circle cx="36" cy="40" r="30" fill="#006B3F"/>
+  <!-- house shape -->
+  <polygon points="36,14 56,30 56,54 16,54 16,30" fill="none" stroke="#FFD700" stroke-width="2.5"/>
+  <rect x="28" y="38" width="16" height="16" fill="#FFD700"/>
+  <line x1="36" y1="38" x2="36" y2="54" stroke="#006B3F" stroke-width="1.5"/>
+  <!-- Text -->
+  <text x="76" y="30" font-family="Arial,sans-serif" font-size="22" font-weight="900" fill="#006B3F" dominant-baseline="middle">LIC</text>
+  <text x="76" y="52" font-family="Arial,sans-serif" font-size="12" font-weight="600" fill="#333" dominant-baseline="middle" letter-spacing="1">HOUSING FINANCE</text>
+  <line x1="76" y1="39" x2="205" y2="39" stroke="#FFD700" stroke-width="2"/>
 </svg>
