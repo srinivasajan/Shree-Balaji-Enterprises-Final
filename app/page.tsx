@@ -5,7 +5,6 @@ import { FeaturedListings } from "@/components/featured-listings"
 import { ValueProposition } from "@/components/value-proposition"
 import { Testimonials } from "@/components/testimonials"
 import { PopularSearches } from "@/components/popular-searches"
-import { Footer } from "@/components/footer"
 
 export default function Home() {
   return (
@@ -19,7 +18,6 @@ export default function Home() {
         <Testimonials />
         <PopularSearches />
       </main>
-      <Footer />
     </>
   )
 }

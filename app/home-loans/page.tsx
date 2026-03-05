@@ -8,7 +8,6 @@ import {
   BadgeIndianRupee, ClipboardList, Users, Heart,
   ArrowRight, Sparkles, Star
 } from "lucide-react"
-import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 
 const steps = [
@@ -253,8 +252,6 @@ export default function HomeLoansPage() {
           <p className="text-xs text-primary-foreground/40 mt-8">Mon–Sat · 9 AM – 8 PM · We pick up.</p>
         </div>
       </section>
-
-      <Footer />
     </>
   )
 }

@@ -9,7 +9,6 @@ import {
   BedDouble, Bath, Maximize, Calendar, Home, Thermometer,
   Car, Building2, Clock, Star, Phone, Mail, Check, MessageCircle
 } from "lucide-react"
-import { Footer } from "@/components/footer"
 import { PropertyCard } from "@/components/property-card"
 import { Button } from "@/components/ui/button"
 import { getPropertyById, buyProperties, formatAddress } from "@/lib/data"
@@ -32,7 +31,7 @@ export default function PropertyDetailPage() {
             <Button>Browse Homes</Button>
           </Link>
         </div>
-        <Footer />
+
       </>
     )
   }
@@ -428,8 +427,6 @@ export default function PropertyDetailPage() {
           )}
         </section>
       </main>
-
-      <Footer />
     </>
   )
 }

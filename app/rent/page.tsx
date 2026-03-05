@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import { Search, Building2, Building, Warehouse, MessageCircle, Phone, MapPin, Clock } from "lucide-react"
-import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 
 const rentalTypes = [
@@ -174,8 +173,6 @@ export default function RentPage() {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   )
 }

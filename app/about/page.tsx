@@ -4,7 +4,6 @@ import {
   Shield, Users, TrendingUp, MapPin, Phone, Mail,
   Award, CheckCircle2, Building2, Heart
 } from "lucide-react"
-import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 
 const stats = [
@@ -243,7 +242,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <Footer />
     </>
   )
 }

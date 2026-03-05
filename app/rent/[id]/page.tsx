@@ -9,7 +9,6 @@ import {
   BedDouble, Bath, Maximize, Calendar, Check, Phone, Mail,
   Dog, Car, Waves, Dumbbell, Shield, Wifi
 } from "lucide-react"
-import { Footer } from "@/components/footer"
 import { PropertyCard } from "@/components/property-card"
 import { Button } from "@/components/ui/button"
 import { getPropertyById, rentalProperties, formatAddress } from "@/lib/data"
@@ -38,7 +37,7 @@ export default function RentalDetailPage() {
           <p className="text-muted-foreground mb-6">This rental listing is no longer available.</p>
           <Link href="/rent"><Button>Browse Rentals</Button></Link>
         </div>
-        <Footer />
+
       </>
     )
   }
@@ -228,8 +227,6 @@ export default function RentalDetailPage() {
           </div>
         </section>
       </main>
-
-      <Footer />
     </>
   )
 }

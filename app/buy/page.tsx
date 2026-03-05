@@ -1,22 +1,17 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, Suspense } from "react"
+import { useSearchParams } from "next/navigation"
 import { Search, Map, List } from "lucide-react"
 import { PropertyCard } from "@/components/property-card"
 import { SearchFilters } from "@/components/search-filters"
 import { MapView } from "@/components/map-view"
 import { buyProperties } from "@/lib/data"
 
-export default function BuyPage() {
+function BuyPageContent() {
+  const searchParams = useSearchParams()
+  const [searchQuery, setSearchQuery] = useState(searchParams.get("q") ?? "")
   const [showMap, setShowMap] = useState(true)
-  const [searchQuery, setSearchQuery] = useState("")
-
-  // Pick up ?q= URL param on mount
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
-    const q = params.get("q")
-    if (q) setSearchQuery(q)
-  }, [])
 
   const filtered = searchQuery.trim()
     ? buyProperties.filter((p) => {
@@ -106,5 +101,13 @@ export default function BuyPage() {
         )}
       </div>
     </div>
+  )
+}
+
+export default function BuyPage() {
+  return (
+    <Suspense>
+      <BuyPageContent />
+    </Suspense>
   )
 }

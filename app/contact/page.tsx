@@ -3,7 +3,6 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Phone, Mail, MapPin, Clock, CheckCircle2, MessageCircle, Shield, ArrowUpRight } from "lucide-react"
-import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 
 const propertyTypes = [
@@ -28,19 +27,17 @@ export default function ContactPage() {
 
   return (
     <>
-      <section className="bg-background">
-        {/* accent top bar */}
-        <div className="h-1.5 w-full bg-gradient-to-r from-primary via-primary/60 to-transparent" />
-        <div className="mx-auto max-w-[1100px] px-4">
+      <section className="bg-background pt-14 pb-20 px-4">
+        <div className="mx-auto max-w-[1100px]">
 
           {/* Top heading */}
-          <div className="text-center pt-14 mb-12">
+          <div className="text-center mb-12">
             <p className="text-primary text-xs font-bold uppercase tracking-[0.25em] mb-4">Contact Us</p>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-foreground leading-[1.0] tracking-tight mb-6">
               Get in Touch
             </h1>
             <p className="text-muted-foreground text-lg max-w-md mx-auto leading-relaxed">
-              Our team in Ambernath is ready to help you find, buy, sell or rent your next property. We respond within 2 hours.
+              Our team in Ambernath is ready to help you find, buy, sell or rent your next property.
             </p>
 
             {/* Quick reach buttons */}
@@ -60,7 +57,7 @@ export default function ContactPage() {
           </div>
 
           {/* Divider */}
-          <div className="border-t border-border mb-14" />
+          <div className="border-t border-border mb-12" />
 
           {/* Main content: form + sidebar */}
           {submitted ? (
@@ -80,11 +77,9 @@ export default function ContactPage() {
           ) : (
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 xl:gap-16">
 
-              {/* Form — 3 cols */}
+              {/* Form ÔÇö 3 cols */}
               <div className="lg:col-span-3">
-                <div className="bg-muted/40 border-2 border-border rounded-3xl p-8 md:p-10">
-                <h2 className="text-2xl font-black text-foreground mb-1">Send an Enquiry</h2>
-                <p className="text-sm text-muted-foreground mb-7">Fill in your details and we&apos;ll reply on WhatsApp within a few hours.</p>
+                <h2 className="text-2xl font-black text-foreground mb-6">Send an Enquiry</h2>
                 <form onSubmit={handleSubmit} className="flex flex-col gap-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="flex flex-col gap-2">
@@ -121,22 +116,21 @@ export default function ContactPage() {
                       className="px-4 py-3 text-sm border-2 border-border rounded-xl bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary resize-none transition-colors" />
                   </div>
                   <button type="submit"
-                    className="flex items-center justify-center gap-2.5 w-full bg-primary text-primary-foreground font-bold text-[15px] py-4 rounded-2xl hover:opacity-90 active:scale-[0.98] transition-all shadow-lg mt-1">
+                    className="flex items-center justify-center gap-2 w-full bg-primary text-primary-foreground font-bold text-base py-4 rounded-2xl hover:opacity-90 transition-opacity mt-1">
                     <MessageCircle className="h-5 w-5" />
-                    Send Enquiry via WhatsApp
+                    Send via WhatsApp
                   </button>
-                  <p className="text-xs text-muted-foreground text-center -mt-1">
+                  <p className="text-xs text-muted-foreground text-center -mt-2">
                     Opens WhatsApp with your message pre-filled. We never store your data.
                   </p>
                 </form>
-                </div>
               </div>
 
-              {/* Sidebar — 2 cols */}
+              {/* Sidebar ÔÇö 2 cols */}
               <div className="lg:col-span-2 flex flex-col gap-6">
 
                 {/* Map */}
-                <div className="rounded-2xl overflow-hidden border-2 border-border h-64">
+                <div className="rounded-2xl overflow-hidden border-2 border-border h-52">
                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.0!2d73.1909!3d19.1969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7f0b2c4d0a5c9%3A0x1a2b3c4d5e6f7890!2sAmbernath+West%2C+Maharashtra+421505!5e0!3m2!1sen!2sin!4v1000000000000"
                     width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Office" />
                 </div>
@@ -144,11 +138,8 @@ export default function ContactPage() {
                 {/* Info list */}
                 <div className="flex flex-col divide-y divide-border border-2 border-border rounded-2xl overflow-hidden">
                   {[
-                    { icon: Phone, label: "Call", value: "7767805544  ·  9168588575", href: "tel:7767805544" },
-                    { icon: MessageCircle, label: "WhatsApp", value: "Instant replies — tap to chat", href: "https://wa.me/917767805544?text=Hello%2C%20I%20have%20an%20enquiry." },
-                    { icon: Mail, label: "Email", value: "shreebalajienterprisesamb@gmail.com", href: "mailto:shreebalajienterprisesamb@gmail.com" },
                     { icon: MapPin, label: "Address", value: "Shop No. 6, Vallabh Bldg, Avdhoot Residency, Ambernath-West 421505", href: "https://maps.google.com/?q=Ambernath+West+421505" },
-                    { icon: Clock, label: "Hours", value: "Mon–Sat 9AM–7PM  ·  Sun 10AM–5PM", href: null },
+                    { icon: Clock, label: "Hours", value: "MonÔÇôSat 9AMÔÇô7PM  ┬À  Sun 10AMÔÇô5PM", href: null },
                     { icon: Shield, label: "RERA", value: "Reg No: A51700023633", href: null },
                   ].map((item) => (
                     <div key={item.label} className="flex items-start gap-4 px-5 py-4">
@@ -171,10 +162,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* bottom spacing */}
-      <div className="pb-10 bg-background" />
-
-      <Footer />
     </>
   )
 }

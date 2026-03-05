@@ -7,7 +7,6 @@ import {
   Search, Users, DollarSign, Home, BarChart3,
   CheckCircle2, ArrowRight, Star, Clock, Shield, Target
 } from "lucide-react"
-import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 
 const steps = [
@@ -190,7 +189,6 @@ export default function SellPage() {
         </div>
       </section>
 
-      <Footer />
     </>
   )
 }

@@ -6,7 +6,6 @@ import Link from "next/link"
 import { Star, MapPin, Phone, Mail,
   Award, Home, TrendingUp, Users, MessageSquare, MessageCircle
 } from "lucide-react"
-import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { agents } from "@/lib/data"
 
@@ -163,8 +162,6 @@ export default function AgentsPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </>
   )
 }

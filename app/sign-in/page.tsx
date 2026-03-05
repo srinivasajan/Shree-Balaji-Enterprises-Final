@@ -4,7 +4,6 @@ import { useState } from "react"
 import Link from "next/link"
 import { Phone, User, Clock, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Footer } from "@/components/footer"
 
 export default function SignInPage() {
   const [name, setName] = useState("")
@@ -136,8 +135,6 @@ export default function SignInPage() {
           </p>
         </div>
       </main>
-
-      <Footer />
     </>
   )
 }

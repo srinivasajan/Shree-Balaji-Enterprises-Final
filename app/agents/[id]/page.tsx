@@ -8,7 +8,6 @@ import {
   Star, MapPin, Phone, Mail, Award, Home, Clock,
   ChevronRight, MessageCircle
 } from "lucide-react"
-import { Footer } from "@/components/footer"
 import { PropertyCard } from "@/components/property-card"
 import { Button } from "@/components/ui/button"
 import { agents, buyProperties } from "@/lib/data"
@@ -33,7 +32,7 @@ export default function AgentDetailPage() {
           <p className="text-muted-foreground mb-6">This agent profile is no longer available.</p>
           <Link href="/agents"><Button>Back to Agent</Button></Link>
         </div>
-        <Footer />
+
       </>
     )
   }
@@ -271,8 +270,6 @@ export default function AgentDetailPage() {
           </div>
         </div>
       </main>
-
-      <Footer />
     </>
   )
 }

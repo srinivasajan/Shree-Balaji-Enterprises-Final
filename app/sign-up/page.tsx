@@ -4,7 +4,6 @@ import { useState } from "react"
 import Link from "next/link"
 import { Phone, User, Mail, MapPin, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Footer } from "@/components/footer"
 
 export default function SignUpPage() {
   const [name, setName] = useState("")
@@ -131,8 +130,6 @@ export default function SignUpPage() {
           </p>
         </div>
       </main>
-
-      <Footer />
     </>
   )
 }
