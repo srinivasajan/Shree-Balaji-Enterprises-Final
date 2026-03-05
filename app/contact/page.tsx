@@ -85,20 +85,20 @@ export default function ContactPage() {
                     <div className="flex flex-col gap-2">
                       <label className="text-sm font-semibold text-foreground">Name <span className="text-destructive">*</span></label>
                       <input type="text" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
-                        placeholder="Rahul Sharma"
+                        placeholder="Your full name"
                         className="px-4 py-3 text-sm border-2 border-border rounded-xl bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors" />
                     </div>
                     <div className="flex flex-col gap-2">
                       <label className="text-sm font-semibold text-foreground">Phone <span className="text-destructive">*</span></label>
                       <input type="tel" required value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                        placeholder="98765 43210"
+                        placeholder="Your phone number"
                         className="px-4 py-3 text-sm border-2 border-border rounded-xl bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors" />
                     </div>
                   </div>
                   <div className="flex flex-col gap-2">
                     <label className="text-sm font-semibold text-foreground">Email</label>
                     <input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      placeholder="you@example.com"
+                      placeholder="Your email address"
                       className="px-4 py-3 text-sm border-2 border-border rounded-xl bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors" />
                   </div>
                   <div className="flex flex-col gap-2">
@@ -112,7 +112,7 @@ export default function ContactPage() {
                   <div className="flex flex-col gap-2">
                     <label className="text-sm font-semibold text-foreground">Message</label>
                     <textarea rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })}
-                      placeholder="Tell us your budget, preferred location, BHK size, timeline..."
+                      placeholder="Your budget, preferred location, BHK size..."
                       className="px-4 py-3 text-sm border-2 border-border rounded-xl bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary resize-none transition-colors" />
                   </div>
                   <button type="submit"
