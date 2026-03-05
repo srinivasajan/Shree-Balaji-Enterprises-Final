@@ -2,9 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import {
-  Phone, Mail, MapPin, Clock, CheckCircle2, MessageCircle, Shield,
-} from "lucide-react"
+import { Phone, Mail, MapPin, Clock, CheckCircle2, MessageCircle, Shield, ArrowUpRight } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 
@@ -23,174 +21,147 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    const msg = encodeURIComponent(
-      `Hello, I am ${form.name}.\n\nInterest: ${form.interest || "General Enquiry"}\n\nMessage: ${form.message || "Please contact me."}\n\nContact: ${form.phone || form.email}`
-    )
+    const msg = encodeURIComponent(`Hello, I am ${form.name}.\n\nInterest: ${form.interest || "General Enquiry"}\n\nMessage: ${form.message || "Please contact me."}\n\nContact: ${form.phone || form.email}`)
     window.open(`https://wa.me/917767805544?text=${msg}`, "_blank")
     setSubmitted(true)
   }
 
   return (
     <>
-      {/* Full-height split layout */}
-      <div className="min-h-[calc(100vh-64px)] flex flex-col lg:flex-row">
+      <section className="bg-background pt-14 pb-20 px-4">
+        <div className="mx-auto max-w-[1100px]">
 
-        {/* LEFT — Dark info panel */}
-        <div className="relative lg:w-[420px] xl:w-[480px] shrink-0 bg-foreground text-background flex flex-col justify-between px-8 py-14 lg:px-12 lg:py-16 overflow-hidden">
-          {/* decorative blob */}
-          <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
-          <div className="pointer-events-none absolute top-10 right-0 h-48 w-48 rounded-full bg-primary/10 blur-2xl" />
-
-          <div className="relative z-10">
-            <p className="text-primary text-xs font-bold uppercase tracking-[0.2em] mb-4">Shree Balaji Enterprises</p>
-            <h1 className="text-4xl xl:text-5xl font-black text-background leading-[1.1] mb-6">
-              We&apos;re just a<br />message away.
+          {/* Top heading */}
+          <div className="text-center mb-12">
+            <p className="text-primary text-xs font-bold uppercase tracking-[0.25em] mb-4">Contact Us</p>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-foreground leading-[1.0] tracking-tight mb-6">
+              Get in Touch
             </h1>
-            <p className="text-background/60 text-sm leading-relaxed mb-12 max-w-xs">
-              Real estate experts based in Ambernath. We help families buy, sell, rent and finance property across MMR.
+            <p className="text-muted-foreground text-lg max-w-md mx-auto leading-relaxed">
+              Our team in Ambernath is ready to help you find, buy, sell or rent your next property.
             </p>
 
-            <div className="flex flex-col gap-6">
-              <a href="tel:7767805544" className="flex items-center gap-4 group">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary/15 group-hover:bg-primary transition-colors">
-                  <Phone className="h-5 w-5 text-primary group-hover:text-primary-foreground transition-colors" />
-                </div>
-                <div>
-                  <p className="text-xs text-background/40 font-medium mb-0.5">Call Us</p>
-                  <p className="text-background font-bold text-sm">7767805544 &nbsp;/&nbsp; 9168588575</p>
-                </div>
+            {/* Quick reach buttons */}
+            <div className="flex flex-wrap items-center justify-center gap-3 mt-8">
+              <a href="tel:7767805544" className="inline-flex items-center gap-2 rounded-full border-2 border-border px-6 py-2.5 text-sm font-bold text-foreground hover:border-primary hover:text-primary transition-colors">
+                <Phone className="h-4 w-4" /> 7767805544
               </a>
-
-              <a href="https://wa.me/917767805544?text=Hello%2C%20I%20have%20an%20enquiry." target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-green-500/20 group-hover:bg-green-500 transition-colors">
-                  <MessageCircle className="h-5 w-5 text-green-400 group-hover:text-white transition-colors" />
-                </div>
-                <div>
-                  <p className="text-xs text-background/40 font-medium mb-0.5">WhatsApp</p>
-                  <p className="text-background font-bold text-sm">Chat with us instantly</p>
-                </div>
+              <a href="https://wa.me/917767805544?text=Hello%2C%20I%20have%20an%20enquiry." target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-green-500 px-6 py-2.5 text-sm font-bold text-white hover:bg-green-600 transition-colors">
+                <MessageCircle className="h-4 w-4" /> WhatsApp Us
               </a>
-
-              <a href="mailto:shreebalajienterprisesamb@gmail.com" className="flex items-center gap-4 group">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary/15 group-hover:bg-primary transition-colors">
-                  <Mail className="h-5 w-5 text-primary group-hover:text-primary-foreground transition-colors" />
-                </div>
-                <div>
-                  <p className="text-xs text-background/40 font-medium mb-0.5">Email</p>
-                  <p className="text-background font-bold text-sm break-all">shreebalajienterprisesamb@gmail.com</p>
-                </div>
+              <a href="mailto:shreebalajienterprisesamb@gmail.com"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-border px-6 py-2.5 text-sm font-bold text-foreground hover:border-primary hover:text-primary transition-colors">
+                <Mail className="h-4 w-4" /> Email Us
               </a>
-
-              <a href="https://maps.google.com/?q=Ambernath+West+421505" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary/15 group-hover:bg-primary transition-colors">
-                  <MapPin className="h-5 w-5 text-primary group-hover:text-primary-foreground transition-colors" />
-                </div>
-                <div>
-                  <p className="text-xs text-background/40 font-medium mb-0.5">Office</p>
-                  <p className="text-background font-bold text-sm">Shop No. 6, Vallabh Bldg,<br />Ambernath-West 421505</p>
-                </div>
-              </a>
-
-              <div className="flex items-center gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary/15">
-                  <Clock className="h-5 w-5 text-primary" />
-                </div>
-                <div>
-                  <p className="text-xs text-background/40 font-medium mb-0.5">Hours</p>
-                  <p className="text-background font-bold text-sm">Mon–Sat 9AM–7PM</p>
-                  <p className="text-background/60 text-xs">Sun 10AM–5PM</p>
-                </div>
-              </div>
             </div>
           </div>
 
-          {/* RERA badge at bottom */}
-          <div className="relative z-10 mt-12 flex items-center gap-3 pt-8 border-t border-background/10">
-            <Shield className="h-4 w-4 text-primary shrink-0" />
-            <p className="text-xs text-background/50">RERA Registered &middot; Reg No: A51700023633</p>
-          </div>
-        </div>
+          {/* Divider */}
+          <div className="border-t border-border mb-12" />
 
-        {/* RIGHT — Form */}
-        <div className="flex-1 flex items-center justify-center px-6 py-14 md:px-12 lg:px-16 bg-background">
-          <div className="w-full max-w-[560px]">
-            {submitted ? (
-              <div className="flex flex-col items-center justify-center py-16 text-center">
-                <div className="flex h-24 w-24 items-center justify-center rounded-full bg-primary/10 mb-6">
-                  <CheckCircle2 className="h-12 w-12 text-primary" />
-                </div>
-                <h2 className="text-3xl font-black text-foreground mb-3">Enquiry Sent!</h2>
-                <p className="text-muted-foreground mb-8 max-w-xs text-sm leading-relaxed">
-                  We&apos;ve received your message on WhatsApp and will get back to you shortly.
-                </p>
-                <div className="flex gap-3">
-                  <Button onClick={() => setSubmitted(false)} variant="outline">New Enquiry</Button>
-                  <Link href="/buy"><Button>Browse Properties</Button></Link>
-                </div>
+          {/* Main content: form + sidebar */}
+          {submitted ? (
+            <div className="flex flex-col items-center justify-center py-24 text-center">
+              <div className="h-24 w-24 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+                <CheckCircle2 className="h-12 w-12 text-primary" />
               </div>
-            ) : (
-              <>
-                <h2 className="text-3xl font-black text-foreground mb-1">Send an Enquiry</h2>
-                <p className="text-muted-foreground text-sm mb-8">Tell us what you need — we&apos;ll reply on WhatsApp within a few hours.</p>
+              <h2 className="text-3xl font-black text-foreground mb-3">We got your message!</h2>
+              <p className="text-muted-foreground mb-8 max-w-sm text-sm leading-relaxed">
+                Your enquiry was forwarded to our WhatsApp. We&apos;ll reach out within a few hours.
+              </p>
+              <div className="flex gap-3">
+                <Button onClick={() => setSubmitted(false)} variant="outline">Send Another</Button>
+                <Link href="/buy"><Button>Browse Properties</Button></Link>
+              </div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 xl:gap-16">
 
+              {/* Form — 3 cols */}
+              <div className="lg:col-span-3">
+                <h2 className="text-2xl font-black text-foreground mb-6">Send an Enquiry</h2>
                 <form onSubmit={handleSubmit} className="flex flex-col gap-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="flex flex-col gap-2">
                       <label className="text-sm font-semibold text-foreground">Name <span className="text-destructive">*</span></label>
-                      <input type="text" required value={form.name}
-                        onChange={(e) => setForm({ ...form, name: e.target.value })}
+                      <input type="text" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
                         placeholder="Rahul Sharma"
-                        className="px-4 py-3 text-sm border border-border rounded-xl bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition" />
+                        className="px-4 py-3 text-sm border-2 border-border rounded-xl bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors" />
                     </div>
                     <div className="flex flex-col gap-2">
                       <label className="text-sm font-semibold text-foreground">Phone <span className="text-destructive">*</span></label>
-                      <input type="tel" required value={form.phone}
-                        onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      <input type="tel" required value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })}
                         placeholder="98765 43210"
-                        className="px-4 py-3 text-sm border border-border rounded-xl bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition" />
+                        className="px-4 py-3 text-sm border-2 border-border rounded-xl bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors" />
                     </div>
                   </div>
-
                   <div className="flex flex-col gap-2">
                     <label className="text-sm font-semibold text-foreground">Email</label>
-                    <input type="email" value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    <input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
                       placeholder="you@example.com"
-                      className="px-4 py-3 text-sm border border-border rounded-xl bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition" />
+                      className="px-4 py-3 text-sm border-2 border-border rounded-xl bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors" />
                   </div>
-
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm font-semibold text-foreground">Looking For</label>
-                    <select value={form.interest}
-                      onChange={(e) => setForm({ ...form, interest: e.target.value })}
-                      className="px-4 py-3 text-sm border border-border rounded-xl bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition"
-                      title="Property type">
-                      <option value="">Select property type...</option>
+                    <label className="text-sm font-semibold text-foreground">I&apos;m Looking For</label>
+                    <select value={form.interest} onChange={(e) => setForm({ ...form, interest: e.target.value })} title="Property type"
+                      className="px-4 py-3 text-sm border-2 border-border rounded-xl bg-background text-foreground focus:outline-none focus:border-primary transition-colors">
+                      <option value="">Select a category...</option>
                       {propertyTypes.map((t) => <option key={t} value={t}>{t}</option>)}
                     </select>
                   </div>
-
                   <div className="flex flex-col gap-2">
                     <label className="text-sm font-semibold text-foreground">Message</label>
-                    <textarea rows={5} value={form.message}
-                      onChange={(e) => setForm({ ...form, message: e.target.value })}
-                      placeholder="Budget, location preference, BHK, timeline — anything helps us assist you better."
-                      className="px-4 py-3 text-sm border border-border rounded-xl bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none transition" />
+                    <textarea rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })}
+                      placeholder="Tell us your budget, preferred location, BHK size, timeline..."
+                      className="px-4 py-3 text-sm border-2 border-border rounded-xl bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary resize-none transition-colors" />
                   </div>
-
-                  <Button type="submit" size="lg" className="h-14 text-[15px] font-bold gap-2 rounded-xl mt-1">
+                  <button type="submit"
+                    className="flex items-center justify-center gap-2 w-full bg-primary text-primary-foreground font-bold text-base py-4 rounded-2xl hover:opacity-90 transition-opacity mt-1">
                     <MessageCircle className="h-5 w-5" />
                     Send via WhatsApp
-                  </Button>
-                  <p className="text-xs text-muted-foreground text-center -mt-1">
+                  </button>
+                  <p className="text-xs text-muted-foreground text-center -mt-2">
                     Opens WhatsApp with your message pre-filled. We never store your data.
                   </p>
                 </form>
-              </>
-            )}
-          </div>
+              </div>
+
+              {/* Sidebar — 2 cols */}
+              <div className="lg:col-span-2 flex flex-col gap-6">
+
+                {/* Map */}
+                <div className="rounded-2xl overflow-hidden border-2 border-border h-52">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.0!2d73.1909!3d19.1969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7f0b2c4d0a5c9%3A0x1a2b3c4d5e6f7890!2sAmbernath+West%2C+Maharashtra+421505!5e0!3m2!1sen!2sin!4v1000000000000"
+                    width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Office" />
+                </div>
+
+                {/* Info list */}
+                <div className="flex flex-col divide-y divide-border border-2 border-border rounded-2xl overflow-hidden">
+                  {[
+                    { icon: MapPin, label: "Address", value: "Shop No. 6, Vallabh Bldg, Avdhoot Residency, Ambernath-West 421505", href: "https://maps.google.com/?q=Ambernath+West+421505" },
+                    { icon: Clock, label: "Hours", value: "Mon–Sat 9AM–7PM  ·  Sun 10AM–5PM", href: null },
+                    { icon: Shield, label: "RERA", value: "Reg No: A51700023633", href: null },
+                  ].map((item) => (
+                    <div key={item.label} className="flex items-start gap-4 px-5 py-4">
+                      <item.icon className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                      <div className="min-w-0 flex-1">
+                        <p className="text-xs font-bold text-muted-foreground uppercase tracking-wide mb-0.5">{item.label}</p>
+                        <p className="text-sm text-foreground leading-relaxed">{item.value}</p>
+                      </div>
+                      {item.href && (
+                        <a href={item.href} target="_blank" rel="noopener noreferrer" className="shrink-0 text-primary hover:opacity-80">
+                          <ArrowUpRight className="h-4 w-4" />
+                        </a>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
-      </div>
+      </section>
 
       <Footer />
     </>
