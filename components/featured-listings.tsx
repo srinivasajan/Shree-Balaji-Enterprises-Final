@@ -228,9 +228,6 @@ export function FeaturedListings() {
           ))}
         </div>
 
-        <p className="text-xs text-muted-foreground text-center mt-6">
-          More listings being added soon — check back often.
-        </p>
       </div>
     </section>
   )
