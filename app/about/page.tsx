@@ -78,7 +78,7 @@ export default function AboutPage() {
                 </Button>
               </Link>
               <Link href="/buy">
-                <Button size="lg" variant="outline" className="h-12 px-7 text-sm font-bold border-white/25 text-white hover:bg-white/10">
+                <Button size="lg" variant="outline" className="h-12 px-7 text-sm font-bold bg-white/10 border-white/60 text-white hover:bg-white/20 hover:border-white">
                   View Properties
                 </Button>
               </Link>
