@@ -54,12 +54,12 @@ const stats = [
 ]
 
 const banks = [
-  { name: "State Bank of India", logo: "https://www.google.com/s2/favicons?domain=sbi.co.in&sz=128", short: "SBI", bg: "bg-blue-600" },
-  { name: "HDFC Bank", logo: "https://www.google.com/s2/favicons?domain=hdfcbank.com&sz=128", short: "HDFC", bg: "bg-red-600" },
-  { name: "ICICI Bank", logo: "https://www.google.com/s2/favicons?domain=icicibank.com&sz=128", short: "ICICI", bg: "bg-orange-500" },
-  { name: "Axis Bank", logo: "https://www.google.com/s2/favicons?domain=axisbank.com&sz=128", short: "AXIS", bg: "bg-violet-600" },
-  { name: "LIC Housing Finance", logo: "https://www.google.com/s2/favicons?domain=lichousing.com&sz=128", short: "LIC HFL", bg: "bg-emerald-600" },
-  { name: "PNB Housing Finance", logo: "https://www.google.com/s2/favicons?domain=pnbhousing.com&sz=128", short: "PNB HFL", bg: "bg-amber-500" },
+  { name: "State Bank of India", logo: "/images/banks/sbi.png", short: "SBI", bg: "bg-blue-600", textLogo: false },
+  { name: "HDFC Bank", logo: "/images/banks/hdfc.png", short: "HDFC", bg: "bg-red-600", textLogo: false },
+  { name: "ICICI Bank", logo: "/images/banks/icici.png", short: "ICICI", bg: "bg-orange-500", textLogo: false },
+  { name: "Axis Bank", logo: "/images/banks/axis.png", short: "AXIS", bg: "bg-violet-600", textLogo: false },
+  { name: "LIC Housing Finance", logo: "", short: "LIC\nHFL", bg: "bg-emerald-700", textLogo: true },
+  { name: "PNB Housing Finance", logo: "", short: "PNB\nHFL", bg: "bg-amber-600", textLogo: true },
 ]
 
 const reasons = [
@@ -207,14 +207,13 @@ export default function HomeLoansPage() {
           <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
             {banks.map((b) => (
               <div key={b.name} className="flex flex-col items-center gap-3 bg-card border border-border rounded-2xl py-6 px-3 hover:shadow-md hover:-translate-y-1 transition-all duration-200">
-                <div className={`h-16 w-16 rounded-2xl ${b.bg} flex items-center justify-center shadow-md overflow-hidden p-2.5`}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={b.logo}
-                    alt={b.name}
-                    className="h-full w-full object-contain"
-                    style={{ filter: "brightness(0) invert(1)" }}
-                  />
+                <div className={`h-16 w-16 rounded-2xl flex items-center justify-center shadow-md overflow-hidden ${b.textLogo ? b.bg : "bg-white border border-border"} p-2`}>
+                  {b.textLogo ? (
+                    <span className="text-[9px] font-extrabold text-white leading-tight text-center whitespace-pre-line">{b.short}</span>
+                  ) : (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={b.logo} alt={b.name} className="h-full w-full object-contain" />
+                  )}
                 </div>
                 <p className="text-[10px] text-muted-foreground text-center font-medium leading-tight">{b.name}</p>
               </div>
