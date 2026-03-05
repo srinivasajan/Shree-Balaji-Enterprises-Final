@@ -95,7 +95,7 @@ export function Footer() {
                 className="h-9 w-9 object-contain"
               />
               <span className="text-base font-bold text-card leading-tight">
-                Shree <span className="text-primary">Balaji</span> Enterprises
+                <span className="text-amber-500">Shree</span> <span className="text-primary">Balaji</span> Enterprises
               </span>
             </Link>
 

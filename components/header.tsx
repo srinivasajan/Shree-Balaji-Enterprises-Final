@@ -32,7 +32,7 @@ export function Header() {
             className="h-[48px] w-[48px] object-contain"
           />
           <span className="text-xl font-bold text-foreground leading-tight whitespace-nowrap">
-            Shree <span className="text-primary">Balaji</span> Enterprises
+            <span className="text-amber-500">Shree</span> <span className="text-primary">Balaji</span> Enterprises
           </span>
         </Link>
 
