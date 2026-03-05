@@ -1,22 +1,12 @@
 import Image from "next/image"
 import {
   Shield, CheckCircle2,
-  ArrowRight, Info, Phone, MessageCircle,
+  ArrowRight, Phone, MessageCircle,
   FileText, Handshake, Star, UserCheck, Building2,
   BadgeIndianRupee, ClipboardList
 } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
-
-// Indicative market rates — broker uses these as a reference for clients
-const rateData = [
-  { bank: "State Bank of India", tenure: "Up to 30 yrs", rate: "8.50%", note: "Best for salaried govt employees", popular: true },
-  { bank: "HDFC Bank", tenure: "Up to 20 yrs", rate: "8.75%", note: "Fast processing, good for self-employed", popular: false },
-  { bank: "ICICI Bank", tenure: "Up to 20 yrs", rate: "8.90%", note: "Flexible eligibility norms", popular: false },
-  { bank: "Axis Bank", tenure: "Up to 20 yrs", rate: "8.85%", note: "Good for higher loan amounts", popular: false },
-  { bank: "LIC Housing Finance", tenure: "Up to 25 yrs", rate: "8.65%", note: "Suitable for lower income brackets", popular: false },
-  { bank: "PNB Housing Finance", tenure: "Up to 25 yrs", rate: "8.70%", note: "Relaxed documentation for some profiles", popular: false },
-]
 
 // What we do as a broker for the client
 const brokerServices = [
@@ -40,14 +30,6 @@ const brokerServices = [
     title: "Negotiation & Follow-up",
     description: "We negotiate interest rates with the bank on your behalf and follow up from application to disbursement — so you don't have to.",
   },
-]
-
-// Documents clients typically need
-const docList = [
-  { category: "Identity & Address", docs: ["Aadhaar Card", "PAN Card", "Passport / Voter ID (alternate ID)"] },
-  { category: "Income Proof — Salaried", docs: ["Last 3 months salary slips", "Form 16 / ITR (2 years)", "6 months bank statement"] },
-  { category: "Income Proof — Self Employed", docs: ["ITR for last 2–3 years", "Business proof (GST / Udyam)", "Last 12 months bank statement"] },
-  { category: "Property Documents", docs: ["Sale Agreement / Allotment Letter", "Builder NOC / Title Deed", "Approved Building Plan"] },
 ]
 
 // Why use a broker instead of going directly to bank
@@ -119,81 +101,6 @@ export default function HomeLoansPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ── Indicative Bank Rates ── */}
-      <section className="py-12 md:py-16">
-        <div className="mx-auto max-w-[1280px] px-4">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h2 className="text-2xl font-bold text-foreground">Indicative Bank Rates</h2>
-              <p className="text-sm text-muted-foreground mt-1">
-                As of March 2026 — we use this to match you with the right bank for your profile
-              </p>
-            </div>
-            <div className="hidden md:flex items-center gap-1 text-xs text-muted-foreground">
-              <Info className="h-3.5 w-3.5" />
-              Rates vary by CIBIL score & income
-            </div>
-          </div>
-
-          <div className="border border-border rounded-xl overflow-hidden">
-            <div className="grid grid-cols-3 gap-px bg-border">
-              <div className="bg-muted px-4 py-3 text-xs font-semibold text-muted-foreground">Bank</div>
-              <div className="bg-muted px-4 py-3 text-xs font-semibold text-muted-foreground text-center">Rate p.a.</div>
-              <div className="bg-muted px-4 py-3 text-xs font-semibold text-muted-foreground">Best For</div>
-            </div>
-            {rateData.map((r) => (
-              <div key={r.bank} className="grid grid-cols-3 gap-px bg-border">
-                <div className="bg-card px-4 py-4 flex items-center gap-2">
-                  <div>
-                    <p className={`text-sm text-foreground ${r.popular ? "font-bold" : ""}`}>{r.bank}</p>
-                    <p className="text-[11px] text-muted-foreground">{r.tenure}</p>
-                  </div>
-                  {r.popular && (
-                    <span className="text-[10px] font-bold bg-primary text-primary-foreground px-1.5 py-0.5 rounded shrink-0">Popular</span>
-                  )}
-                </div>
-                <div className="bg-card px-4 py-4 text-center">
-                  <span className="text-base font-bold text-primary">{r.rate}</span>
-                </div>
-                <div className="bg-card px-4 py-4">
-                  <span className="text-xs text-muted-foreground">{r.note}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Documents Checklist ── */}
-      <section className="py-12 md:py-16 bg-muted/50">
-        <div className="mx-auto max-w-[1280px] px-4">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl font-bold text-foreground mb-2">Documents You'll Need</h2>
-            <p className="text-sm text-muted-foreground max-w-lg mx-auto">
-              We guide you on every document step-by-step. Here's what banks typically ask for — don't worry, we'll review your file before submission.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {docList.map((cat) => (
-              <div key={cat.category} className="bg-card border border-border rounded-xl p-5">
-                <h3 className="text-xs font-bold text-primary uppercase tracking-wider mb-3">{cat.category}</h3>
-                <ul className="flex flex-col gap-2">
-                  {cat.docs.map((doc) => (
-                    <li key={doc} className="flex items-start gap-2 text-sm text-foreground">
-                      <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-                      {doc}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-          <p className="text-xs text-muted-foreground text-center mt-5">
-            Not sure if your documents are complete? WhatsApp us your property details and we'll give you a personalised checklist.
-          </p>
         </div>
       </section>
 
