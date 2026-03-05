@@ -1,14 +1,14 @@
 "use client"
 
 import { useState } from "react"
-import { Search, Building2, Home, Building, MessageCircle, Phone, MapPin, Clock } from "lucide-react"
+import { Search, Building2, Building, Warehouse, MessageCircle, Phone, MapPin, Clock } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 
 const rentalTypes = [
   { icon: Building2, label: "Residential" },
-  { icon: Home, label: "1 BHK / 2 BHK" },
   { icon: Building, label: "Commercial" },
+  { icon: Warehouse, label: "Industrial" },
 ]
 
 const serviceAreas = [
@@ -38,7 +38,7 @@ export default function RentPage() {
             Find Your Perfect Rental in MMR
           </h1>
           <p className="text-sm text-muted-foreground mb-6 max-w-lg">
-            Shree Balaji Enterprises assists you in finding residential and commercial rental properties across Ambernath, Badlapur, Ulhasnagar and 13+ cities.
+            Shree Balaji Enterprises assists you in finding residential, commercial and industrial rental properties across Ambernath, Badlapur, Ulhasnagar and 13+ cities.
           </p>
           <div className="flex items-center gap-3 max-w-2xl">
             <div className="flex-1 flex items-center bg-card border border-border rounded-lg px-3">
