@@ -103,9 +103,21 @@ export function Footer() {
           <p className="text-xs text-card/40 mt-4">
             &copy; 2026 Shree Balaji Enterprises. All Rights Reserved. &bull; Shop No. 6, Vallabh Bldg, Avdhoot Residency, Ambernath-West, 421505
           </p>
-          <p className="text-xs text-card/30 mt-3">
-            Made by <a href="mailto:srinivasajangiti@gmail.com" className="hover:text-card/50 transition-colors">Srinivas Jangiti</a> &bull; <a href="tel:+918767505121" className="hover:text-card/50 transition-colors">+91 8767505121</a> &bull; <a href="mailto:srinivasajangiti@gmail.com" className="hover:text-card/50 transition-colors">srinivasajangiti@gmail.com</a>
-          </p>
+          <div className="mt-5 flex items-center gap-3 flex-wrap">
+            <span className="text-[10px] uppercase tracking-widest text-card/30 font-semibold">Crafted by</span>
+            <span className="flex items-center gap-2 bg-card/5 border border-card/10 rounded-full px-4 py-1.5 backdrop-blur-sm">
+              <span className="w-5 h-5 rounded-full bg-primary/80 flex items-center justify-center text-[10px] font-bold text-white">SJ</span>
+              <a href="mailto:srinivasajangiti@gmail.com" className="text-xs font-semibold text-card/70 hover:text-primary transition-colors tracking-wide">
+                Srinivas Jangiti
+              </a>
+            </span>
+            <a href="tel:+918767505121" className="text-[11px] text-card/40 hover:text-primary transition-colors flex items-center gap-1">
+              <span>📱</span> +91 8767505121
+            </a>
+            <a href="mailto:srinivasajangiti@gmail.com" className="text-[11px] text-card/40 hover:text-primary transition-colors flex items-center gap-1">
+              <span>✉️</span> srinivasajangiti@gmail.com
+            </a>
+          </div>
         </div>
       </div>
     </footer>
