@@ -210,7 +210,7 @@ export default function HomeLoansPage() {
                 </Button>
               </a>
               <a href="tel:7767805544">
-                <Button size="lg" variant="outline" className="w-full border-white/20 text-white hover:bg-white/10">
+                <Button size="lg" className="w-full bg-transparent border border-white/40 text-white hover:bg-white/10 hover:text-white shadow-none">
                   <Phone className="h-4 w-4 mr-2" /> Call 7767805544
                 </Button>
               </a>
