@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image"
 import {
   Shield, CheckCircle2,
@@ -52,12 +54,12 @@ const stats = [
 ]
 
 const banks = [
-  { name: "State Bank of India", short: "SBI", bg: "bg-blue-600" },
-  { name: "HDFC Bank", short: "HDFC", bg: "bg-red-600" },
-  { name: "ICICI Bank", short: "ICICI", bg: "bg-orange-500" },
-  { name: "Axis Bank", short: "AXIS", bg: "bg-violet-600" },
-  { name: "LIC Housing Finance", short: "LIC HFL", bg: "bg-emerald-600" },
-  { name: "PNB Housing Finance", short: "PNB HFL", bg: "bg-amber-500" },
+  { name: "State Bank of India", logo: "https://logo.clearbit.com/sbi.co.in", fallback: "SBI" },
+  { name: "HDFC Bank", logo: "https://logo.clearbit.com/hdfcbank.com", fallback: "HDFC" },
+  { name: "ICICI Bank", logo: "https://logo.clearbit.com/icicibank.com", fallback: "ICICI" },
+  { name: "Axis Bank", logo: "https://logo.clearbit.com/axisbank.com", fallback: "AXIS" },
+  { name: "LIC Housing Finance", logo: "https://logo.clearbit.com/lichousing.com", fallback: "LIC HFL" },
+  { name: "PNB Housing Finance", logo: "https://logo.clearbit.com/pnbhousing.com", fallback: "PNB HFL" },
 ]
 
 const reasons = [
@@ -205,8 +207,19 @@ export default function HomeLoansPage() {
           <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
             {banks.map((b) => (
               <div key={b.name} className="flex flex-col items-center gap-3 bg-card border border-border rounded-2xl py-6 px-3 hover:shadow-md hover:-translate-y-1 transition-all duration-200">
-                <div className={`h-12 w-12 rounded-xl ${b.bg} flex items-center justify-center shadow-md`}>
-                  <span className="text-[9px] font-extrabold text-white leading-none text-center">{b.short}</span>
+                <div className="h-14 w-14 rounded-xl bg-white flex items-center justify-center shadow-md overflow-hidden p-1.5 border border-border">
+                  <img
+                    src={b.logo}
+                    alt={b.name}
+                    className="h-full w-full object-contain"
+                    onError={(e) => {
+                      const t = e.currentTarget
+                      t.style.display = "none"
+                      const span = t.nextElementSibling as HTMLElement | null
+                      if (span) span.style.display = "flex"
+                    }}
+                  />
+                  <span className="hidden items-center justify-center text-[8px] font-extrabold text-foreground leading-none text-center">{b.fallback}</span>
                 </div>
                 <p className="text-[10px] text-muted-foreground text-center font-medium leading-tight">{b.name}</p>
               </div>
