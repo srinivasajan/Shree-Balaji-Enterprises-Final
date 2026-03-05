@@ -61,7 +61,7 @@ export function Footer() {
           {/* Contact */}
           <div>
             <h3 className="text-sm font-bold mb-4">Contact</h3>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col divide-y divide-card/10">
               {[
                 { href: "tel:7767805544", icon: Phone, label: "7767805544" },
                 { href: "tel:9168588575", icon: Phone, label: "9168588575" },
@@ -72,12 +72,10 @@ export function Footer() {
                   key={label}
                   href={href}
                   {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="flex items-center gap-3 group"
+                  className="flex items-center gap-2.5 py-2.5 text-xs text-card/60 hover:text-card transition-colors group"
                 >
-                  <span className="flex items-center justify-center h-7 w-7 rounded-lg bg-card/10 group-hover:bg-primary/20 transition-colors shrink-0">
-                    <Icon className="h-3.5 w-3.5 text-primary" />
-                  </span>
-                  <span className="text-xs text-card/70 group-hover:text-card transition-colors">{label}</span>
+                  <Icon className="h-3.5 w-3.5 text-primary shrink-0" />
+                  {label}
                 </a>
               ))}
             </div>
