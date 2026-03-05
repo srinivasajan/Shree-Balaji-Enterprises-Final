@@ -3,7 +3,7 @@ import {
   Shield, CheckCircle2,
   ArrowRight, Phone, MessageCircle,
   FileText, Handshake, Star, UserCheck, Building2,
-  BadgeIndianRupee, ClipboardList, Clock, Users
+  BadgeIndianRupee, ClipboardList, Clock, Users, Heart
 } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
@@ -11,35 +11,35 @@ import { Button } from "@/components/ui/button"
 const brokerServices = [
   {
     icon: UserCheck,
-    title: "Eligibility Check",
-    description: "We assess your income, CIBIL score and property value to find which banks will approve your loan and at what amount.",
+    title: "We Check Your Eligibility",
+    description: "Before you walk into any bank, we sit with you, understand your income and CIBIL score, and tell you honestly what you can get — and where.",
     gradient: "from-blue-500 to-blue-600",
   },
   {
     icon: Building2,
-    title: "Bank Matching",
-    description: "We compare multiple banks on your behalf and approach the lender most likely to give you the best rate for your profile.",
+    title: "We Find the Right Bank",
+    description: "We don't send you to just one bank. We knock on 4–6 doors at once and bring you the offer that actually fits your life.",
     gradient: "from-violet-500 to-violet-600",
   },
   {
     icon: FileText,
-    title: "Documentation Support",
-    description: "We tell you exactly which documents to submit — salary slips, ITR, property papers, KYC — and help you prepare a clean file.",
+    title: "We Handle the Paperwork",
+    description: "We tell you exactly what to bring, review everything before submission and make sure your file is clean — so there are no surprises.",
     gradient: "from-emerald-500 to-emerald-600",
   },
   {
     icon: Handshake,
-    title: "Negotiation & Follow-up",
-    description: "We negotiate interest rates with the bank on your behalf and follow up from application to disbursement — so you don't have to.",
+    title: "We Stay With You Until the End",
+    description: "From the day you apply until the money hits your account, we follow up with the bank so you never have to wonder what's happening.",
     gradient: "from-orange-500 to-orange-600",
   },
 ]
 
 const whyBroker = [
-  { icon: Star, title: "We Compare, You Choose", desc: "We approach 4–6 banks at once and bring you the best offer. Going directly means you only get one bank's deal.", accent: "text-yellow-500" },
-  { icon: BadgeIndianRupee, title: "Completely Free for You", desc: "Our home loan assistance is free of cost. We earn a referral from the bank — you pay nothing extra.", accent: "text-green-500" },
-  { icon: Shield, title: "RERA Registered", desc: "RERA No: A51700023633. You're dealing with a verified, regulated real estate agency — not an unknown middleman.", accent: "text-blue-500" },
-  { icon: ClipboardList, title: "One Window for Everything", desc: "Property search, site visits, negotiation, home loan, registration — we handle all of it. No running around.", accent: "text-purple-500" },
+  { icon: Star, title: "You get choices, not just one rate", desc: "We compare multiple banks for you. Most people accept whatever their one bank offers — you don't have to.", accent: "text-yellow-500" },
+  { icon: BadgeIndianRupee, title: "It costs you nothing", desc: "Our help is completely free to you. The bank pays us a small referral fee — you pay zero extra.", accent: "text-green-500" },
+  { icon: Shield, title: "You can trust us", desc: "We're RERA registered (No: A51700023633) — a verified, regulated agency. Not a random middleman.", accent: "text-blue-500" },
+  { icon: ClipboardList, title: "One call handles everything", desc: "Property search, loan, paperwork, registration — we do it all together. No running to different people.", accent: "text-purple-500" },
 ]
 
 const banks = [
@@ -65,32 +65,34 @@ export default function HomeLoansPage() {
             <span className="inline-flex items-center gap-2 text-xs font-bold bg-primary text-primary-foreground px-3 py-1.5 rounded-full mb-6 tracking-wide shadow-lg">
               <Shield className="h-3.5 w-3.5" /> FREE SERVICE · RERA REGISTERED · A51700023633
             </span>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-5">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-5">
               Because Every<br />
               <span className="text-primary">Home Loan Is Personal</span>
             </h1>
-            <p className="text-base md:text-lg text-white/80 mb-8 max-w-xl leading-relaxed">
-              We don't just find you the right home — we connect you with the right bank, handle your paperwork and negotiate the best rate. All at <span className="text-white font-semibold underline underline-offset-2 decoration-primary">zero cost to you.</span>
+            <p className="text-base md:text-lg text-white/80 mb-3 max-w-xl leading-relaxed">
+              Getting a home loan can feel overwhelming — forms, banks, paperwork, follow-ups. We've helped hundreds of families in Ambernath and Badlapur through exactly this.
+            </p>
+            <p className="text-sm text-white/60 mb-8 max-w-xl">
+              Let us take that weight off your shoulders. We handle it all — and we charge you <span className="text-white font-semibold">nothing.</span>
             </p>
             <div className="flex flex-wrap items-center gap-3 mb-10">
               <a href="https://wa.me/917767805544?text=Hi%2C%20I%20need%20help%20getting%20a%20home%20loan.%20Please%20guide%20me." target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="bg-white text-foreground hover:bg-white/90 font-semibold shadow-xl px-6">
-                  <MessageCircle className="h-4 w-4 mr-2" /> Talk to Us on WhatsApp
+                  <MessageCircle className="h-4 w-4 mr-2" /> Let's Talk on WhatsApp
                 </Button>
               </a>
               <a href="tel:7767805544">
                 <Button size="lg" className="bg-transparent border border-white/40 text-white hover:bg-white/10 px-6 shadow-none">
-                  <Phone className="h-4 w-4 mr-2" /> Call Now
+                  <Phone className="h-4 w-4 mr-2" /> Call Us
                 </Button>
               </a>
             </div>
-            {/* Stats strip */}
             <div className="flex flex-wrap gap-6">
               {[
-                { icon: Users, value: "500+", label: "Loans Processed" },
+                { icon: Users, value: "500+", label: "Families Helped" },
                 { icon: Building2, value: "6+", label: "Partner Banks" },
-                { icon: Clock, value: "Free", label: "Our Service" },
-                { icon: Shield, value: "RERA", label: "Registered" },
+                { icon: Clock, value: "Free", label: "Always" },
+                { icon: Heart, value: "Local", label: "Ambernath & MMR" },
               ].map((s) => (
                 <div key={s.label} className="flex items-center gap-2">
                   <div className="h-8 w-8 rounded-lg bg-white/10 flex items-center justify-center">
@@ -107,14 +109,31 @@ export default function HomeLoansPage() {
         </div>
       </section>
 
+      {/* ── Personal Note ── */}
+      <section className="py-10 bg-primary/5 border-y border-primary/10">
+        <div className="mx-auto max-w-[1280px] px-4">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-5 max-w-3xl mx-auto text-center md:text-left">
+            <div className="shrink-0 mx-auto md:mx-0 h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center">
+              <Heart className="h-6 w-6 text-primary" />
+            </div>
+            <div>
+              <p className="text-sm text-foreground leading-relaxed italic">
+                "We know this is one of the biggest financial decisions of your life. So we don't just process your loan — we sit with you, explain every step, and make sure you feel confident throughout. That's how we've always worked."
+              </p>
+              <p className="text-xs text-muted-foreground mt-2 font-medium">— Shree Balaji Enterprises Team, Ambernath</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── What We Do ── */}
       <section className="py-16 md:py-20 bg-muted/30">
         <div className="mx-auto max-w-[1280px] px-4">
           <div className="text-center mb-14">
-            <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">Our Process</p>
-            <h2 className="text-3xl font-extrabold text-foreground mb-3">What We Do For You</h2>
+            <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">How We Help You</p>
+            <h2 className="text-3xl font-extrabold text-foreground mb-3">Here's What We Actually Do</h2>
             <p className="text-sm text-muted-foreground max-w-xl mx-auto">
-              Getting a home loan on your own means one bank at a time, endless paperwork and zero negotiating power. We handle all of that — for free.
+              From the first conversation to the final approval — we're with you at every step. No jargon, no running around.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -136,13 +155,13 @@ export default function HomeLoansPage() {
       </section>
 
       {/* ── Why Us ── */}
-      <section className="py-16 md:py-20 bg-muted/30">
+      <section className="py-16 md:py-20">
         <div className="mx-auto max-w-[1280px] px-4">
           <div className="text-center mb-14">
-            <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">Why Choose Us</p>
-            <h2 className="text-3xl font-extrabold text-foreground mb-3">Why Work With Us?</h2>
+            <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">Why Us</p>
+            <h2 className="text-3xl font-extrabold text-foreground mb-3">Why Families Trust Us</h2>
             <p className="text-sm text-muted-foreground max-w-lg mx-auto">
-              Walking into a bank alone puts you at a disadvantage. Working with us levels the playing field.
+              We're not a call centre or a portal. We're a local team that genuinely cares about getting you the best deal.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -164,7 +183,7 @@ export default function HomeLoansPage() {
           <p className="text-xs font-bold text-primary uppercase tracking-widest text-center mb-2">Our Partners</p>
           <h2 className="text-3xl font-extrabold text-white text-center mb-3">Banks We Work With</h2>
           <p className="text-sm text-white/50 text-center mb-10 max-w-lg mx-auto">
-            We have established relationships with all major lenders across the Mumbai Metropolitan Region.
+            We have established relationships with all major lenders — so we know who to talk to and how to get you the best deal.
           </p>
           <div className="grid grid-cols-3 md:grid-cols-6 gap-4 mb-14">
             {banks.map((b) => (
@@ -177,24 +196,23 @@ export default function HomeLoansPage() {
             ))}
           </div>
 
-          {/* CTA inside dark section */}
           <div className="bg-white/5 border border-white/10 rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center gap-10">
             <div className="flex-1">
-              <span className="text-xs font-bold text-primary uppercase tracking-widest block mb-3">Free Broker Service</span>
+              <span className="text-xs font-bold text-primary uppercase tracking-widest block mb-3">We'd Love to Help</span>
               <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-4 leading-snug">
-                Buying a property?<br />Let us sort your home loan too.
+                Already found a home?<br />Let us handle the loan part.
               </h3>
               <p className="text-sm text-white/60 leading-relaxed mb-6 max-w-lg">
-                Whether you've already chosen a property or are still looking, reach out to us. We'll check your eligibility, shortlist the best bank, manage your paperwork and follow up until the loan is in your account — at absolutely zero cost to you.
+                Just reach out — whether you have a property in mind or are still exploring. We'll have a friendly conversation, understand your situation and guide you step by step. No pressure, no rush, no cost.
               </p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {[
-                  "Compare 4–6 banks at once",
-                  "CIBIL score guidance",
-                  "Document review before submission",
-                  "Rate negotiation on your behalf",
-                  "Follow-up until disbursement",
-                  "No fee — ever",
+                  "We compare 4–6 banks for you",
+                  "Honest CIBIL score guidance",
+                  "We review your documents first",
+                  "We negotiate the rate for you",
+                  "We follow up till disbursement",
+                  "Zero charges — ever",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm text-white/80">
                     <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
@@ -206,7 +224,7 @@ export default function HomeLoansPage() {
             <div className="shrink-0 flex flex-col gap-3 w-full md:w-[220px]">
               <a href="https://wa.me/917767805544?text=Hi%2C%20I%20need%20help%20getting%20a%20home%20loan.%20Please%20guide%20me." target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="w-full shadow-lg">
-                  <MessageCircle className="h-4 w-4 mr-2" /> WhatsApp Us Now
+                  <MessageCircle className="h-4 w-4 mr-2" /> Chat with Us
                 </Button>
               </a>
               <a href="tel:7767805544">
@@ -214,7 +232,7 @@ export default function HomeLoansPage() {
                   <Phone className="h-4 w-4 mr-2" /> Call 7767805544
                 </Button>
               </a>
-              <p className="text-[11px] text-white/30 text-center">Mon–Sat, 9 AM – 8 PM</p>
+              <p className="text-[11px] text-white/30 text-center">Mon–Sat, 9 AM – 8 PM · We pick up.</p>
             </div>
           </div>
         </div>
@@ -223,4 +241,3 @@ export default function HomeLoansPage() {
       <Footer />
     </>
   )
-}
