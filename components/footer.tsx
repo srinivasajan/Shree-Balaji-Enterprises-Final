@@ -103,14 +103,17 @@ export function Footer() {
           <p className="text-xs text-card/40 mt-4">
             &copy; 2026 Shree Balaji Enterprises. All Rights Reserved. &bull; Shop No. 6, Vallabh Bldg, Avdhoot Residency, Ambernath-West, 421505
           </p>
-          <p className="text-[11px] text-card/35 mt-4 text-center border-t border-card/10 pt-4">
-            Designed &amp; developed by{" "}
-            <a href="mailto:srinivasajangiti@gmail.com" className="text-card/60 hover:text-primary font-medium transition-colors">Srinivas Jangiti</a>
-            {" "}·{" "}
-            <a href="tel:+918767505121" className="hover:text-primary transition-colors">+91 8767505121</a>
-            {" "}·{" "}
-            <a href="mailto:srinivasajangiti@gmail.com" className="hover:text-primary transition-colors">srinivasajangiti@gmail.com</a>
-          </p>
+          <div className="mt-6 border-t border-card/10 pt-5 flex flex-col items-center gap-1 text-center">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-card/30 font-medium">Designed &amp; Developed by</p>
+            <p className="text-base font-bold text-card/80 tracking-wide">
+              <a href="mailto:srinivasajangiti@gmail.com" className="hover:text-primary transition-colors">Srinivas Jangiti</a>
+            </p>
+            <div className="flex items-center gap-3 mt-1">
+              <a href="tel:+918767505121" className="text-xs text-card/50 hover:text-primary transition-colors font-medium">+91 8767505121</a>
+              <span className="w-1 h-1 rounded-full bg-card/20 inline-block" />
+              <a href="mailto:srinivasajangiti@gmail.com" className="text-xs text-card/50 hover:text-primary transition-colors font-medium">srinivasajangiti@gmail.com</a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
