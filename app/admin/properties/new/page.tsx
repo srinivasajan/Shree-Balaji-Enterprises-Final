@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { useSearchParams } from "next/navigation"
@@ -9,7 +9,7 @@ import { PropertyFormComponent } from "@/components/admin/property-form"
 import { getAgents } from "@/lib/admin-store"
 import { AgentData } from "@/lib/data"
 
-export default function NewPropertyPage() {
+function NewPropertyForm() {
   const authed = useAdminAuth()
   const [mounted, setMounted] = useState(false)
   const [agents, setAgents] = useState<AgentData[]>([])
@@ -36,5 +36,13 @@ export default function NewPropertyPage() {
       </div>
       <PropertyFormComponent agents={agents} initialType={typeParam} />
     </div>
+  )
+}
+
+export default function NewPropertyPage() {
+  return (
+    <Suspense>
+      <NewPropertyForm />
+    </Suspense>
   )
 }
