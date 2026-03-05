@@ -73,7 +73,7 @@ export default function HomeLoansPage() {
               FREE SERVICE · RERA REGISTERED · A51700023633
             </span>
             <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-4">
-              We'll Help You Get<br />Your Home Loan Done
+              Because Every<br />Home Loan Is Personal
             </h1>
             <p className="text-base md:text-lg text-white/80 mb-3 max-w-xl">
               As your property broker, Shree Balaji Enterprises doesn't just find you the right home — we also connect you with the right bank, handle your paperwork and negotiate the best rate. All at <span className="text-white font-semibold">zero cost to you.</span>
