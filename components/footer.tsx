@@ -61,28 +61,26 @@ export function Footer() {
           {/* Contact */}
           <div>
             <h3 className="text-sm font-bold mb-4">Contact</h3>
-            <ul className="flex flex-col gap-2.5">
-              <li>
-                <a href="tel:7767805544" className="flex items-center gap-2 text-xs text-card/70 hover:text-card transition-colors">
-                  <Phone className="h-3.5 w-3.5 shrink-0" /> 7767805544
+            <div className="flex flex-col gap-3">
+              {[
+                { href: "tel:7767805544", icon: Phone, label: "7767805544" },
+                { href: "tel:9168588575", icon: Phone, label: "9168588575" },
+                { href: "mailto:shreebalajienterprisesamb@gmail.com", icon: Mail, label: "Email Us" },
+                { href: "https://wa.me/917767805544", icon: MessageCircle, label: "WhatsApp", external: true },
+              ].map(({ href, icon: Icon, label, external }) => (
+                <a
+                  key={label}
+                  href={href}
+                  {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className="flex items-center gap-3 group"
+                >
+                  <span className="flex items-center justify-center h-7 w-7 rounded-lg bg-card/10 group-hover:bg-primary/20 transition-colors shrink-0">
+                    <Icon className="h-3.5 w-3.5 text-primary" />
+                  </span>
+                  <span className="text-xs text-card/70 group-hover:text-card transition-colors">{label}</span>
                 </a>
-              </li>
-              <li>
-                <a href="tel:9168588575" className="flex items-center gap-2 text-xs text-card/70 hover:text-card transition-colors">
-                  <Phone className="h-3.5 w-3.5 shrink-0" /> 9168588575
-                </a>
-              </li>
-              <li>
-                <a href="mailto:shreebalajienterprisesamb@gmail.com" className="flex items-center gap-2 text-xs text-card/70 hover:text-card transition-colors">
-                  <Mail className="h-3.5 w-3.5 shrink-0" /> Email Us
-                </a>
-              </li>
-              <li>
-                <a href="https://wa.me/917767805544" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-card/70 hover:text-card transition-colors">
-                  <MessageCircle className="h-3.5 w-3.5 shrink-0" /> WhatsApp
-                </a>
-              </li>
-            </ul>
+              ))}
+            </div>
           </div>
         </div>
 
