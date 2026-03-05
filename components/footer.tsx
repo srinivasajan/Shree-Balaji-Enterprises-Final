@@ -16,10 +16,8 @@ const footerSections = [
     title: "Resources",
     links: [
       { label: "Home Loans", href: "/home-loans" },
-      { label: "EMI Calculator", href: "/home-loans#calculator" },
       { label: "Areas We Serve", href: "/buy" },
       { label: "RERA Information", href: "/about" },
-      { label: "Enquiry Form", href: "/contact" },
     ],
   },
   {
