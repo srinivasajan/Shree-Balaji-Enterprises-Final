@@ -103,6 +103,9 @@ export function Footer() {
           <p className="text-xs text-card/40 mt-4">
             &copy; 2026 Shree Balaji Enterprises. All Rights Reserved. &bull; Shop No. 6, Vallabh Bldg, Avdhoot Residency, Ambernath-West, 421505
           </p>
+          <p className="text-xs text-card/30 mt-3">
+            Made by <a href="mailto:srinivasajangiti@gmail.com" className="hover:text-card/50 transition-colors">Srinivas Jangiti</a> &bull; <a href="tel:+918767505121" className="hover:text-card/50 transition-colors">+91 8767505121</a> &bull; <a href="mailto:srinivasajangiti@gmail.com" className="hover:text-card/50 transition-colors">srinivasajangiti@gmail.com</a>
+          </p>
         </div>
       </div>
     </footer>
