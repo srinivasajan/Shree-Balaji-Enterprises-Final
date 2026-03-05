@@ -14,11 +14,11 @@ const stats = [
   { value: "13+", label: "Cities Covered", sub: "Across Maharashtra", icon: MapPin },
 ]
 
-const timeline = [
-  { year: "2010", title: "Founded in Ambernath", desc: "One desk, one phone, one mission — make property deals honest and simple for everyday people.", color: "from-blue-500/15 to-transparent" },
-  { year: "2014", title: "Expanded Across MMR", desc: "Grew across the Kalyan–Badlapur belt. Became the go-to agency for first-time homebuyers in the region.", color: "from-primary/15 to-transparent" },
-  { year: "2018", title: "RERA Registration", desc: "Earned RERA Reg A51700023633. 500+ transactions built on full transparency and client trust.", color: "from-emerald-500/15 to-transparent" },
-  { year: "2026", title: "1000+ Families Served", desc: "Serving 13+ cities with the same honest, personal approach that started it all in 2010.", color: "from-amber-500/15 to-transparent" },
+const milestones = [
+  { year: "2010", title: "Founded in Ambernath", desc: "One desk, one phone, one mission — make property deals honest and simple for everyday people." },
+  { year: "2014", title: "Expanded Across MMR", desc: "Grew across the Kalyan–Badlapur belt. Became the go-to agency for first-time homebuyers in the region." },
+  { year: "2018", title: "RERA Registration", desc: "Earned RERA Reg A51700023633. 500+ transactions built on full transparency and client trust." },
+  { year: "2026", title: "1000+ Families Served", desc: "Serving 13+ cities with the same honest, personal approach that started it all in 2010." },
 ]
 
 const values = [
@@ -155,7 +155,7 @@ export default function AboutPage() {
             {/* Right — Founder card */}
             <div className="flex justify-center lg:justify-end" id="founder">
               <div className="w-full max-w-[360px] rounded-3xl overflow-hidden border border-border bg-card shadow-2xl">
-                <div className="relative h-52 w-full bg-gradient-to-br from-primary/15 via-primary/8 to-transparent flex items-center justify-center">
+                <div className="relative h-52 w-full bg-gradient-to-br from-primary/15 via-primary/5 to-transparent flex items-center justify-center">
                   <Image
                     src="https://raw.githubusercontent.com/srinivasajan/shreebalajienterprises/main/images/logo.png"
                     alt="Shree Balaji Enterprises"
@@ -214,27 +214,22 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── TIMELINE ─────────────────────────────────────────── */}
+      {/* ── MILESTONES ───────────────────────────────────────── */}
       <section className="py-20 md:py-28 bg-muted/30 border-y border-border">
         <div className="mx-auto max-w-[1280px] px-4">
-          <div className="text-center mb-14">
+          <div className="text-center mb-12">
             <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-3">Our Journey</p>
             <h2 className="text-3xl md:text-4xl font-black text-foreground">
               From One Office to MMR&apos;s Most Trusted
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
-            {timeline.map((t, i) => (
-              <div key={t.year} className={`relative rounded-2xl bg-gradient-to-br ${t.color} border border-border p-6`}>
-                <div className="inline-flex items-center justify-center h-11 w-14 rounded-xl bg-foreground text-primary text-sm font-black mb-4 shrink-0">
-                  {t.year}
-                </div>
-                {i < timeline.length - 1 && (
-                  <div className="hidden md:block absolute top-[2.75rem] -right-2.5 h-0.5 w-5 bg-border z-10" />
-                )}
-                <h3 className="text-sm font-bold text-foreground mb-2">{t.title}</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">{t.desc}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {milestones.map((m) => (
+              <div key={m.year} className="bg-card border border-border rounded-2xl p-6">
+                <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-primary mb-3">{m.year}</p>
+                <h3 className="text-base font-bold text-foreground mb-2">{m.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{m.desc}</p>
               </div>
             ))}
           </div>
@@ -275,7 +270,7 @@ export default function AboutPage() {
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {services.map((s) => (
-                  <div key={s.label} className="flex items-start gap-3 bg-white/5 border border-white/10 rounded-xl px-4 py-3 hover:bg-white/8 hover:border-primary/50 transition-all">
+                  <div key={s.label} className="flex items-start gap-3 bg-white/5 border border-white/10 rounded-xl px-4 py-3 hover:bg-white/10 hover:border-primary/50 transition-all">
                     <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
                     <div>
                       <p className="text-sm font-bold text-white">{s.label}</p>
