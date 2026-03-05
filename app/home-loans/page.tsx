@@ -66,8 +66,8 @@ export default function HomeLoansPage() {
               <Shield className="h-3.5 w-3.5" /> FREE SERVICE · RERA REGISTERED · A51700023633
             </span>
             <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-5">
-              Your Home Loan,<br />
-              <span className="text-primary">Handled Right.</span>
+              Because Every<br />
+              <span className="text-primary">Home Loan Is Personal</span>
             </h1>
             <p className="text-base md:text-lg text-white/80 mb-8 max-w-xl leading-relaxed">
               We don't just find you the right home — we connect you with the right bank, handle your paperwork and negotiate the best rate. All at <span className="text-white font-semibold underline underline-offset-2 decoration-primary">zero cost to you.</span>
