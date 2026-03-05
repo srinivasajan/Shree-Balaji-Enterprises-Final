@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import { Phone, Mail, MessageCircle } from "lucide-react"
 
 const footerSections = [
   {
@@ -31,15 +32,6 @@ const footerSections = [
       { label: "Navi Mumbai", href: "/buy?q=Navi+Mumbai" },
     ],
   },
-  {
-    title: "Contact",
-    links: [
-      { label: "📞 7767805544", href: "tel:7767805544" },
-      { label: "📞 9168588575", href: "tel:9168588575" },
-      { label: "✉️ Email Us", href: "mailto:shreebalajienterprisesamb@gmail.com" },
-      { label: "💬 WhatsApp", href: "https://wa.me/917767805544" },
-    ],
-  },
 ]
 
 export function Footer() {
@@ -65,6 +57,33 @@ export function Footer() {
               </ul>
             </div>
           ))}
+
+          {/* Contact */}
+          <div>
+            <h3 className="text-sm font-bold mb-4">Contact</h3>
+            <ul className="flex flex-col gap-2.5">
+              <li>
+                <a href="tel:7767805544" className="flex items-center gap-2 text-xs text-card/70 hover:text-card transition-colors">
+                  <Phone className="h-3.5 w-3.5 shrink-0" /> 7767805544
+                </a>
+              </li>
+              <li>
+                <a href="tel:9168588575" className="flex items-center gap-2 text-xs text-card/70 hover:text-card transition-colors">
+                  <Phone className="h-3.5 w-3.5 shrink-0" /> 9168588575
+                </a>
+              </li>
+              <li>
+                <a href="mailto:shreebalajienterprisesamb@gmail.com" className="flex items-center gap-2 text-xs text-card/70 hover:text-card transition-colors">
+                  <Mail className="h-3.5 w-3.5 shrink-0" /> Email Us
+                </a>
+              </li>
+              <li>
+                <a href="https://wa.me/917767805544" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-card/70 hover:text-card transition-colors">
+                  <MessageCircle className="h-3.5 w-3.5 shrink-0" /> WhatsApp
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Divider */}
