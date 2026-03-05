@@ -3,7 +3,7 @@ import {
   Shield, CheckCircle2,
   ArrowRight, Phone, MessageCircle,
   FileText, Handshake, Star, UserCheck, Building2,
-  BadgeIndianRupee, ClipboardList, Percent, Clock, Users
+  BadgeIndianRupee, ClipboardList, Clock, Users
 } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
@@ -79,7 +79,7 @@ export default function HomeLoansPage() {
                 </Button>
               </a>
               <a href="tel:7767805544">
-                <Button size="lg" variant="outline" className="border-white/40 text-white hover:bg-white/10 px-6">
+                <Button size="lg" className="bg-transparent border border-white/40 text-white hover:bg-white/10 px-6 shadow-none">
                   <Phone className="h-4 w-4 mr-2" /> Call Now
                 </Button>
               </a>
@@ -89,8 +89,8 @@ export default function HomeLoansPage() {
               {[
                 { icon: Users, value: "500+", label: "Loans Processed" },
                 { icon: Building2, value: "6+", label: "Partner Banks" },
-                { icon: Percent, value: "8.50%", label: "Starting Rate" },
                 { icon: Clock, value: "Free", label: "Our Service" },
+                { icon: Shield, value: "RERA", label: "Registered" },
               ].map((s) => (
                 <div key={s.label} className="flex items-center gap-2">
                   <div className="h-8 w-8 rounded-lg bg-white/10 flex items-center justify-center">
@@ -136,11 +136,11 @@ export default function HomeLoansPage() {
       </section>
 
       {/* ── Why Us ── */}
-      <section className="py-16 md:py-20">
+      <section className="py-16 md:py-20 bg-muted/30">
         <div className="mx-auto max-w-[1280px] px-4">
           <div className="text-center mb-14">
             <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">Why Choose Us</p>
-            <h2 className="text-3xl font-extrabold text-foreground mb-3">Why Get Your Loan Through Us?</h2>
+            <h2 className="text-3xl font-extrabold text-foreground mb-3">Why Work With Us?</h2>
             <p className="text-sm text-muted-foreground max-w-lg mx-auto">
               Walking into a bank alone puts you at a disadvantage. Working with us levels the playing field.
             </p>
@@ -169,8 +169,8 @@ export default function HomeLoansPage() {
           <div className="grid grid-cols-3 md:grid-cols-6 gap-4 mb-14">
             {banks.map((b) => (
               <div key={b.name} className="flex flex-col items-center justify-center gap-2 py-5 px-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-center">
-                <div className={`h-10 w-10 rounded-xl ${b.bg} flex items-center justify-center`}>
-                  <span className="text-[10px] font-extrabold text-white leading-none">{b.short.slice(0, 3)}</span>
+                <div className={`h-10 w-10 rounded-xl ${b.bg} flex items-center justify-center px-1`}>
+                  <span className="text-[9px] font-extrabold text-white leading-none text-center">{b.short}</span>
                 </div>
                 <p className="text-[10px] text-white/60 leading-tight font-medium">{b.name}</p>
               </div>
