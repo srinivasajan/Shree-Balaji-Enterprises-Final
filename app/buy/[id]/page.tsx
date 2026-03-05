@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { useParams } from "next/navigation"
@@ -11,15 +11,25 @@ import {
 } from "lucide-react"
 import { PropertyCard } from "@/components/property-card"
 import { Button } from "@/components/ui/button"
-import { getPropertyById, buyProperties, formatAddress } from "@/lib/data"
+import { getPropertyById as getStaticById, formatAddress } from "@/lib/data"
+import { getPropertyById, getSimilarProperties } from "@/lib/admin-store"
+import { PropertyData } from "@/lib/data"
 
 export default function PropertyDetailPage() {
   const params = useParams()
-  const property = getPropertyById(Number(params.id))
+  const id = Number(params.id)
+  const [property, setProperty] = useState<PropertyData | undefined>(() => getStaticById(id))
+  const [similar, setSimilar] = useState<PropertyData[]>([])
   const [currentImage, setCurrentImage] = useState(0)
   const [saved, setSaved] = useState(false)
   const [contactName, setContactName] = useState("")
   const [contactPhone, setContactPhone] = useState("")
+
+  useEffect(() => {
+    const prop = getPropertyById(id)
+    setProperty(prop)
+    setSimilar(getSimilarProperties(id, "buy"))
+  }, [id])
 
   if (!property) {
     return (
@@ -47,7 +57,6 @@ export default function PropertyDetailPage() {
   const tourDays = [today, new Date(today.getTime() + 86400000), new Date(today.getTime() + 172800000)]
 
   const images = property.images || [property.image]
-  const similar = buyProperties.filter((p) => p.id !== property.id).slice(0, 4)
 
   const nextImage = () => setCurrentImage((prev) => (prev + 1) % images.length)
   const prevImage = () => setCurrentImage((prev) => (prev - 1 + images.length) % images.length)

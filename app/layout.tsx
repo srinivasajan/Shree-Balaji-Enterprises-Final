@@ -1,9 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
-import { Header } from '@/components/header'
-import { Footer } from '@/components/footer'
-import { WhatsAppButton } from '@/components/whatsapp-button'
+import { ConditionalLayout } from '@/components/conditional-layout'
 import './globals.css'
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -61,12 +59,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="font-sans antialiased min-h-screen flex flex-col bg-background text-foreground">
-        <Header />
-        <div className="flex-1 flex flex-col">
+        <ConditionalLayout>
           {children}
-        </div>
-        <Footer />
-        <WhatsAppButton />
+        </ConditionalLayout>
         <Analytics />
       </body>
     </html>

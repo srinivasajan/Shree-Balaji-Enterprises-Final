@@ -33,6 +33,8 @@ export interface PropertyData {
   parking?: string
   lat?: number
   lng?: number
+  isFeatured?: boolean
+  isTrending?: boolean
 }
 
 export interface AgentData {
@@ -102,6 +104,8 @@ export const buyProperties: PropertyData[] = [
     daysOnMarket: 7,
     lat: 19.197,
     lng: 73.191,
+    isFeatured: true,
+    isTrending: true,
   },
   {
     id: 2,
@@ -123,6 +127,8 @@ export const buyProperties: PropertyData[] = [
     daysOnMarket: 3,
     lat: 19.161,
     lng: 73.231,
+    isFeatured: true,
+    isTrending: true,
   },
   {
     id: 3,
@@ -144,6 +150,8 @@ export const buyProperties: PropertyData[] = [
     daysOnMarket: 1,
     lat: 19.205,
     lng: 73.198,
+    isFeatured: true,
+    isTrending: true,
   },
 
 

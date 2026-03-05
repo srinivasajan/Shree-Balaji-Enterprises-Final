@@ -6,12 +6,13 @@ import { Search, Map, List } from "lucide-react"
 import { PropertyCard } from "@/components/property-card"
 import { SearchFilters } from "@/components/search-filters"
 import { MapView } from "@/components/map-view"
-import { buyProperties } from "@/lib/data"
+import { useBuyProperties } from "@/hooks/use-properties"
 
 function BuyPageContent() {
   const searchParams = useSearchParams()
   const [searchQuery, setSearchQuery] = useState(searchParams.get("q") ?? "")
   const [showMap, setShowMap] = useState(true)
+  const buyProperties = useBuyProperties()
 
   const filtered = searchQuery.trim()
     ? buyProperties.filter((p) => {

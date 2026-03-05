@@ -4,8 +4,9 @@ import { useState, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { ChevronLeft, ChevronRight, MapPin, MessageCircle } from "lucide-react"
-import { buyProperties } from "@/lib/data"
+import { useTrendingProperties } from "@/hooks/use-properties"
 import { Button } from "@/components/ui/button"
+import type { PropertyData } from "@/lib/data"
 
 const DECK_DEPTH = 3
 const LAYER_OFFSET = 10
@@ -36,7 +37,7 @@ function PlaceholderCard() {
 // ---------------------------------------------------------------------------
 // Single property card content
 // ---------------------------------------------------------------------------
-function PropertyCard({ prop }: { prop: (typeof buyProperties)[0] }) {
+function PropertyCard({ prop }: { prop: PropertyData }) {
   return (
     <div className="flex h-full w-full rounded-xl border border-border shadow-md bg-card overflow-hidden">
       <div className="relative w-[45%] shrink-0">
@@ -95,7 +96,8 @@ function PropertyCard({ prop }: { prop: (typeof buyProperties)[0] }) {
 // Main component — two-card crossfade, no phase state machine
 // ---------------------------------------------------------------------------
 export function TrendingHomes() {
-  const total = buyProperties.length
+  const trendingProps = useTrendingProperties()
+  const total = trendingProps.length
   const [current, setCurrent] = useState(0)
   const [exiting, setExiting] = useState<{ index: number; dir: "left" | "right" } | null>(null)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -111,7 +113,7 @@ export function TrendingHomes() {
     timerRef.current = setTimeout(() => setExiting(null), ANIM_MS + 50)
   }
 
-  const topProp = buyProperties[current]
+  const topProp = trendingProps[current]
 
   // Background deck layers (depth 1, 2…) — always the cards after current
   const bgLayers = Array.from({ length: DECK_DEPTH - 1 }, (_, i) => {
@@ -119,7 +121,7 @@ export function TrendingHomes() {
     const idx = (current + depth) % total
     const offsetPx = depth * LAYER_OFFSET
     const scale = 1 - depth * LAYER_SCALE
-    return { depth, prop: buyProperties[idx], offsetPx, scale }
+    return { depth, prop: trendingProps[idx], offsetPx, scale }
   })
 
   return (
@@ -183,7 +185,7 @@ export function TrendingHomes() {
               className={`absolute inset-0 ${exiting.dir === "left" ? "card-exit-left" : "card-exit-right"}`}
               style={{ zIndex: DECK_DEPTH + 1 }}
             >
-              <PropertyCard prop={buyProperties[exiting.index]} />
+              <PropertyCard prop={trendingProps[exiting.index]} />
             </div>
           )}
 

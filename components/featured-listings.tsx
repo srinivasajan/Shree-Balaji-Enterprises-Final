@@ -4,7 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { ChevronLeft, ChevronRight, MapPin, MessageCircle, ArrowRight } from "lucide-react"
-import { buyProperties } from "@/lib/data"
+import { useFeaturedProperties } from "@/hooks/use-properties"
 import { Button } from "@/components/ui/button"
 
 // Total visible card layers in the deck (top card + ghost cards peeking below)
@@ -68,9 +68,8 @@ function cardStyle(
   }
 }
 
-const featured = buyProperties.slice(0, 4)
-
 export function FeaturedListings() {
+  const featured = useFeaturedProperties()
   const [current, setCurrent] = useState(0)
   const [phase, setPhase] = useState<Phase>("idle")
   const [exitDir, setExitDir] = useState<"left" | "right">("left")

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { useParams } from "next/navigation"
@@ -11,7 +11,8 @@ import {
 } from "lucide-react"
 import { PropertyCard } from "@/components/property-card"
 import { Button } from "@/components/ui/button"
-import { getPropertyById, rentalProperties, formatAddress } from "@/lib/data"
+import { getPropertyById as getStaticById, formatAddress, PropertyData } from "@/lib/data"
+import { getPropertyById, getSimilarProperties } from "@/lib/admin-store"
 
 const amenities = [
   { icon: Dog, label: "Pet Friendly" },
@@ -24,10 +25,18 @@ const amenities = [
 
 export default function RentalDetailPage() {
   const params = useParams()
-  const property = getPropertyById(Number(params.id))
+  const id = Number(params.id)
+  const [property, setProperty] = useState<PropertyData | undefined>(() => getStaticById(id))
+  const [similar, setSimilar] = useState<PropertyData[]>([])
   const [currentImage, setCurrentImage] = useState(0)
   const [saved, setSaved] = useState(false)
   const [applied, setApplied] = useState(false)
+
+  useEffect(() => {
+    const prop = getPropertyById(id)
+    setProperty(prop)
+    setSimilar(getSimilarProperties(id, "rent"))
+  }, [id])
 
   if (!property) {
     return (
@@ -43,7 +52,6 @@ export default function RentalDetailPage() {
   }
 
   const images = property.images || [property.image]
-  const similar = rentalProperties.filter((p) => p.id !== property.id).slice(0, 4)
 
   return (
     <>
