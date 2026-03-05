@@ -164,9 +164,6 @@ export default function HomeLoansPage() {
               </div>
             ))}
           </div>
-          <p className="text-xs text-muted-foreground mt-3 text-center">
-            We approach the bank that best fits your income, CIBIL score and loan amount — to maximise your chances of approval at the lowest rate.
-          </p>
         </div>
       </section>
 
