@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import { TrendingUp, Building2, Pencil } from "lucide-react"
+import { TrendingUp, Star, Building2, Pencil } from "lucide-react"
 import { useAdminAuth } from "@/hooks/use-admin-auth"
 import { getBuyProperties, getRentProperties, saveProperty } from "@/lib/admin-store"
 import { PropertyData } from "@/lib/data"
@@ -24,8 +24,13 @@ export default function AdminTrendingPage() {
 
   if (!mounted || !authed) return null
 
-  function toggle(p: TaggedProperty) {
+  function toggleTrending(p: TaggedProperty) {
     saveProperty({ ...p, isTrending: !p.isTrending }, p._type)
+    loadData()
+  }
+
+  function toggleFeatured(p: TaggedProperty) {
+    saveProperty({ ...p, isFeatured: !p.isFeatured }, p._type)
     loadData()
   }
 
@@ -58,7 +63,7 @@ export default function AdminTrendingPage() {
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {trending.map(p => (
-              <TrendingToggleCard key={`${p._type}-${p.id}`} p={p} active onToggle={() => toggle(p)} />
+              <TrendingToggleCard key={`${p._type}-${p.id}`} p={p} isTrending isFeatured={!!p.isFeatured} onToggleTrending={() => toggleTrending(p)} onToggleFeatured={() => toggleFeatured(p)} />
             ))}
           </div>
         )}
@@ -72,7 +77,7 @@ export default function AdminTrendingPage() {
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {notTrending.map(p => (
-              <TrendingToggleCard key={`${p._type}-${p.id}`} p={p} active={false} onToggle={() => toggle(p)} />
+              <TrendingToggleCard key={`${p._type}-${p.id}`} p={p} isTrending={false} isFeatured={!!p.isFeatured} onToggleTrending={() => toggleTrending(p)} onToggleFeatured={() => toggleFeatured(p)} />
             ))}
           </div>
         </section>
@@ -82,15 +87,17 @@ export default function AdminTrendingPage() {
 }
 
 function TrendingToggleCard({
-  p, active, onToggle,
+  p, isTrending, isFeatured, onToggleTrending, onToggleFeatured,
 }: {
   p: PropertyData & { _type: "buy" | "rent" }
-  active: boolean
-  onToggle: () => void
+  isTrending: boolean
+  isFeatured: boolean
+  onToggleTrending: () => void
+  onToggleFeatured: () => void
 }) {
   return (
     <div className={`bg-white border rounded-2xl overflow-hidden shadow-sm transition-all ${
-      active
+      isTrending
         ? "border-emerald-300 ring-1 ring-emerald-200"
         : "border-slate-100 hover:border-slate-200"
     }`}>
@@ -119,16 +126,28 @@ function TrendingToggleCard({
         {/* Actions */}
         <div className="flex items-center gap-2 mt-3">
           <button
-            onClick={onToggle}
-            title={active ? "Remove from Trending" : "Add to Trending"}
+            onClick={onToggleTrending}
+            title={isTrending ? "Remove from Trending" : "Add to Trending"}
             className={`flex-1 flex items-center justify-center gap-1.5 text-xs font-semibold py-1.5 rounded-lg border transition-colors ${
-              active
+              isTrending
                 ? "bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100"
                 : "bg-slate-50 border-slate-200 text-slate-500 hover:bg-slate-100"
             }`}
           >
             <TrendingUp className="h-3.5 w-3.5" />
-            {active ? "Remove" : "Set Trending"}
+            {isTrending ? "Trending" : "Trend"}
+          </button>
+          <button
+            onClick={onToggleFeatured}
+            title={isFeatured ? "Remove from Featured" : "Add to Featured"}
+            className={`flex-1 flex items-center justify-center gap-1.5 text-xs font-semibold py-1.5 rounded-lg border transition-colors ${
+              isFeatured
+                ? "bg-amber-50 border-amber-200 text-amber-700 hover:bg-amber-100"
+                : "bg-slate-50 border-slate-200 text-slate-500 hover:bg-slate-100"
+            }`}
+          >
+            <Star className={`h-3.5 w-3.5 ${isFeatured ? "fill-amber-500 text-amber-500" : ""}`} />
+            {isFeatured ? "Featured" : "Feature"}
           </button>
           <Link
             href={`/admin/properties/${p._type}-${p.id}/edit`}

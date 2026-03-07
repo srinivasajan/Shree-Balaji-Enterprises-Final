@@ -149,8 +149,8 @@ export default function AdminPropertiesPage() {
                   <th className="text-left px-5 py-3 font-semibold">Price</th>
                   <th className="text-left px-5 py-3 font-semibold hidden lg:table-cell">Status</th>
                   <th className="text-left px-5 py-3 font-semibold hidden lg:table-cell">Listing</th>
-                  <th className="text-center px-3 py-3 font-semibold hidden xl:table-cell" title="Featured on homepage"><Star className="h-3.5 w-3.5 mx-auto" /></th>
-                  <th className="text-center px-3 py-3 font-semibold hidden xl:table-cell" title="Trending on homepage"><TrendingUp className="h-3.5 w-3.5 mx-auto" /></th>
+                  <th className="text-center px-3 py-3 font-semibold" title="Featured on homepage"><Star className="h-3.5 w-3.5 mx-auto" /></th>
+                  <th className="text-center px-3 py-3 font-semibold" title="Trending on homepage"><TrendingUp className="h-3.5 w-3.5 mx-auto" /></th>
                   <th className="text-right px-5 py-3 font-semibold">Actions</th>
                 </tr>
               </thead>
@@ -189,7 +189,7 @@ export default function AdminPropertiesPage() {
                     <td className="px-5 py-3.5 text-slate-400 text-xs hidden lg:table-cell">
                       {p.daysOnMarket != null ? `${p.daysOnMarket}d ago` : "—"}
                     </td>
-                    <td className="px-3 py-3.5 text-center hidden xl:table-cell">
+                    <td className="px-3 py-3.5 text-center">
                       <button
                         onClick={() => toggleFeatured(p)}
                         title={p.isFeatured ? "Remove from Featured" : "Add to Featured"}
@@ -202,7 +202,7 @@ export default function AdminPropertiesPage() {
                         <Star className={`h-4 w-4 ${p.isFeatured ? "fill-amber-500" : ""}`} />
                       </button>
                     </td>
-                    <td className="px-3 py-3.5 text-center hidden xl:table-cell">
+                    <td className="px-3 py-3.5 text-center">
                       <button
                         onClick={() => toggleTrending(p)}
                         title={p.isTrending ? "Remove from Trending" : "Add to Trending"}

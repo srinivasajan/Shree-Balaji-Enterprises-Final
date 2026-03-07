@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import { Star, Building2, Pencil } from "lucide-react"
+import { Star, TrendingUp, Building2, Pencil } from "lucide-react"
 import { useAdminAuth } from "@/hooks/use-admin-auth"
 import { getBuyProperties, getRentProperties, saveProperty } from "@/lib/admin-store"
 import { PropertyData } from "@/lib/data"
@@ -24,8 +24,13 @@ export default function AdminFeaturedPage() {
 
   if (!mounted || !authed) return null
 
-  function toggle(p: TaggedProperty) {
+  function toggleFeatured(p: TaggedProperty) {
     saveProperty({ ...p, isFeatured: !p.isFeatured }, p._type)
+    loadData()
+  }
+
+  function toggleTrending(p: TaggedProperty) {
+    saveProperty({ ...p, isTrending: !p.isTrending }, p._type)
     loadData()
   }
 
@@ -61,11 +66,10 @@ export default function AdminFeaturedPage() {
               <PropertyToggleCard
                 key={`${p._type}-${p.id}`}
                 p={p}
-                active
-                activeColor="amber"
-                icon={<Star className="h-4 w-4 fill-amber-500 text-amber-500" />}
-                label="Remove from Featured"
-                onToggle={() => toggle(p)}
+                isFeatured
+                isTrending={!!p.isTrending}
+                onToggleFeatured={() => toggleFeatured(p)}
+                onToggleTrending={() => toggleTrending(p)}
               />
             ))}
           </div>
@@ -83,11 +87,10 @@ export default function AdminFeaturedPage() {
               <PropertyToggleCard
                 key={`${p._type}-${p.id}`}
                 p={p}
-                active={false}
-                activeColor="amber"
-                icon={<Star className="h-4 w-4 text-slate-400" />}
-                label="Add to Featured"
-                onToggle={() => toggle(p)}
+                isFeatured={false}
+                isTrending={!!p.isTrending}
+                onToggleFeatured={() => toggleFeatured(p)}
+                onToggleTrending={() => toggleTrending(p)}
               />
             ))}
           </div>
@@ -98,20 +101,17 @@ export default function AdminFeaturedPage() {
 }
 
 function PropertyToggleCard({
-  p, active, activeColor, icon, label, onToggle,
+  p, isFeatured, isTrending, onToggleFeatured, onToggleTrending,
 }: {
   p: PropertyData & { _type: "buy" | "rent" }
-  active: boolean
-  activeColor: "amber" | "emerald"
-  icon: React.ReactNode
-  label: string
-  onToggle: () => void
+  isFeatured: boolean
+  isTrending: boolean
+  onToggleFeatured: () => void
+  onToggleTrending: () => void
 }) {
   return (
     <div className={`bg-white border rounded-2xl overflow-hidden shadow-sm transition-all ${
-      active
-        ? activeColor === "amber" ? "border-amber-300 ring-1 ring-amber-200" : "border-emerald-300 ring-1 ring-emerald-200"
-        : "border-slate-100 hover:border-slate-200"
+      isFeatured ? "border-amber-300 ring-1 ring-amber-200" : "border-slate-100 hover:border-slate-200"
     }`}>
       {/* Image */}
       <div className="relative h-36 bg-slate-100">
@@ -138,18 +138,28 @@ function PropertyToggleCard({
         {/* Actions */}
         <div className="flex items-center gap-2 mt-3">
           <button
-            onClick={onToggle}
-            title={label}
+            onClick={onToggleFeatured}
+            title={isFeatured ? "Remove from Featured" : "Add to Featured"}
             className={`flex-1 flex items-center justify-center gap-1.5 text-xs font-semibold py-1.5 rounded-lg border transition-colors ${
-              active
-                ? activeColor === "amber"
-                  ? "bg-amber-50 border-amber-200 text-amber-700 hover:bg-amber-100"
-                  : "bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100"
+              isFeatured
+                ? "bg-amber-50 border-amber-200 text-amber-700 hover:bg-amber-100"
                 : "bg-slate-50 border-slate-200 text-slate-500 hover:bg-slate-100"
             }`}
           >
-            {icon}
-            {active ? "Remove" : "Feature"}
+            <Star className={`h-3.5 w-3.5 ${isFeatured ? "fill-amber-500 text-amber-500" : ""}`} />
+            {isFeatured ? "Featured" : "Feature"}
+          </button>
+          <button
+            onClick={onToggleTrending}
+            title={isTrending ? "Remove from Trending" : "Add to Trending"}
+            className={`flex-1 flex items-center justify-center gap-1.5 text-xs font-semibold py-1.5 rounded-lg border transition-colors ${
+              isTrending
+                ? "bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100"
+                : "bg-slate-50 border-slate-200 text-slate-500 hover:bg-slate-100"
+            }`}
+          >
+            <TrendingUp className="h-3.5 w-3.5" />
+            {isTrending ? "Trending" : "Trend"}
           </button>
           <Link
             href={`/admin/properties/${p._type}-${p.id}/edit`}
