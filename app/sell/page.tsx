@@ -45,8 +45,8 @@ export default function SellPage() {
                 Free Property Valuation
               </div>
               <h1 className="text-4xl md:text-[60px] font-black text-white leading-[1.0] tracking-tight mb-4">
-                Your Home Deserves<br />
-                <span className="text-primary">the Right Buyer.</span>
+                Your Next Chapter<br />
+                <span className="text-primary">Starts Here.</span>
               </h1>
               <p className="text-base text-white/60 max-w-lg leading-relaxed">
                 We&apos;ve helped 500+ families across Ambernath &amp; MMR sell their homes — at the right price, with zero stress.
