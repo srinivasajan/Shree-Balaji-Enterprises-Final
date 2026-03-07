@@ -3,162 +3,196 @@
 import Image from "next/image"
 import Link from "next/link"
 import {
-  Users, DollarSign, Home, BarChart3,
-  CheckCircle2, ArrowRight, Star, Clock, Shield, Target
+  CheckCircle2, ArrowRight, MessageCircle, Phone,
+  BadgeCheck, FileText, Users, Landmark,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const steps = [
-  {
-    icon: Target,
-    title: "Get Free Valuation",
-    description: "Share your property details and get a free market valuation from our experienced team.",
-  },
-  {
-    icon: Users,
-    title: "Connect with Our Agent",
-    description: "Get in touch with Anju Jangiti, our expert agent who specializes in properties across the MMR.",
-  },
-  {
-    icon: BarChart3,
-    title: "Price It Right",
-    description: "We create a competitive pricing strategy based on current market trends and comparable sales.",
-  },
-  {
-    icon: DollarSign,
-    title: "Close the Deal",
-    description: "From listing to closing, our team guides you through every step of the transaction.",
-  },
+  { n: "01", title: "Free Valuation", body: "We visit, assess and give you an honest market price — no inflation, no obligation." },
+  { n: "02", title: "Buyer Matching", body: "We match your property to pre-qualified buyers from our private network." },
+  { n: "03", title: "Negotiation", body: "Our agent handles every offer and counter-offer on your behalf." },
+  { n: "04", title: "Close & Register", body: "We manage all paperwork, stamp duty and registration end-to-end." },
 ]
 
-const sellerResources = [
-  { title: "Free Property Valuation", description: "Get an honest market valuation for your property from our expert — no obligation, no charges.", href: "/contact" },
-  { title: "Assisted Documentation", description: "We help you prepare and verify all necessary property documents for a smooth, dispute-free sale.", href: "/contact" },
-  { title: "Wide Buyer Network", description: "Access Shree Balaji Enterprises' network of serious, pre-qualified buyers across the Mumbai Metropolitan Region.", href: "/contact" },
-  { title: "Loan Assistance for Buyers", description: "We help the buyers of your property secure the right home loan, speeding up the closing process.", href: "/home-loans" },
+const perks = [
+  { icon: BadgeCheck, label: "RERA Registered", sub: "Reg No: A51700023633" },
+  { icon: Users, label: "1000+ Clients Served", sub: "Since 2008" },
+  { icon: FileText, label: "Full Documentation", sub: "Zero legal stress" },
+  { icon: Landmark, label: "Buyer Loan Help", sub: "Faster closings" },
 ]
+
+const WHATSAPP = "917767805544"
 
 export default function SellPage() {
+  const wa = () => {
+    const msg = encodeURIComponent("Hi, I'd like to sell my property. Please get in touch for a free valuation.")
+    window.open(`https://wa.me/${WHATSAPP}?text=${msg}`, "_blank")
+  }
+
   return (
     <>
-
-      {/* Hero */}
-      <section className="relative overflow-hidden">
+      {/* ── Hero ─────────────────────────────────────────── */}
+      <section className="relative overflow-hidden min-h-[520px] flex items-end">
         <div className="absolute inset-0">
-          <Image src="/images/sell-hero.jpg" alt="Couple with sold sign" fill className="object-cover" priority />
-          <div className="absolute inset-0 bg-foreground/60" />
+          <Image src="/images/sell-hero.jpg" alt="Sell your property" fill className="object-cover" priority />
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/70 to-foreground/20" />
         </div>
-        <div className="relative z-10 mx-auto max-w-[1280px] px-4 py-16 md:py-24">
-          <div className="max-w-2xl">
-            <h1 className="text-3xl md:text-5xl font-bold text-card leading-tight mb-4 text-balance">
-              Sell Your Home with Confidence
-            </h1>
-            <p className="text-base md:text-lg text-card/80 mb-8 max-w-lg">
-              Get a free property valuation and connect with our expert agent to maximize your sale price.
-            </p>
-
-
+        <div className="relative z-10 mx-auto max-w-[1280px] px-4 pt-32 pb-16 w-full">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
+                Free Property Valuation
+              </div>
+              <h1 className="text-4xl md:text-[60px] font-black text-white leading-[1.0] tracking-tight mb-4">
+                Sell Smarter.<br />
+                <span className="text-primary">Get More.</span>
+              </h1>
+              <p className="text-base text-white/60 max-w-lg leading-relaxed">
+                Ambernath&apos;s most trusted real estate agency. 500+ properties sold across the MMR in 15+ years.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+              <Button size="lg" onClick={wa} className="h-12 px-7 text-sm font-bold gap-2 shadow-lg shadow-primary/30">
+                <MessageCircle className="h-4 w-4" /> Get Free Valuation
+              </Button>
+              <a href="tel:7767805544" className="w-full sm:w-auto">
+                <Button size="lg" variant="outline" className="h-12 px-7 text-sm font-bold bg-white/10 border-white/60 text-white hover:bg-white/20 hover:border-white gap-2 w-full">
+                  <Phone className="h-4 w-4" /> Call Us
+                </Button>
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* How it works */}
-      <section className="py-14 md:py-20">
+      {/* ── Stats bar ────────────────────────────────────── */}
+      <section className="py-10 border-b border-border bg-card">
         <div className="mx-auto max-w-[1280px] px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground text-center mb-3 text-balance">
-            How Selling Works
-          </h2>
-          <p className="text-sm text-muted-foreground text-center mb-12 max-w-md mx-auto">
-            Four simple steps to sell your home for the best price
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {steps.map((step, idx) => (
-              <div key={step.title} className="relative text-center">
-                <div className="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10 mx-auto mb-4">
-                  <step.icon className="h-8 w-8 text-primary" />
-                </div>
-                <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1 text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full">
-                  Step {idx + 1}
-                </span>
-                <h3 className="text-base font-bold text-foreground mb-2">{step.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
-                {idx < steps.length - 1 && (
-                  <ArrowRight className="hidden md:block absolute top-8 -right-4 h-5 w-5 text-border" />
-                )}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden">
+            {[
+              { value: "500+", label: "Properties Sold", sub: "Across MMR" },
+              { value: "15+", label: "Years Experience", sub: "Est. 2008" },
+              { value: "1000+", label: "Happy Clients", sub: "Residential & Commercial" },
+              { value: "5.0 ★", label: "Average Rating", sub: "Google Reviews" },
+            ].map((s) => (
+              <div key={s.label} className="flex flex-col items-center justify-center py-8 px-4 gap-0.5 text-center bg-card">
+                <p className="text-3xl md:text-4xl font-black text-foreground">{s.value}</p>
+                <p className="text-sm font-semibold text-foreground">{s.label}</p>
+                <p className="text-xs text-muted-foreground">{s.sub}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Stats bar */}
-      <section className="bg-primary py-10">
+      {/* ── How it works ─────────────────────────────────── */}
+      <section className="py-16 md:py-24">
         <div className="mx-auto max-w-[1280px] px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <p className="text-2xl md:text-3xl font-bold text-primary-foreground">500+</p>
-              <p className="text-sm text-primary-foreground/70 mt-1">Properties Sold</p>
-            </div>
-            <div>
-              <p className="text-2xl md:text-3xl font-bold text-primary-foreground">13+</p>
-              <p className="text-sm text-primary-foreground/70 mt-1">Cities Covered</p>
-            </div>
-            <div>
-              <p className="text-2xl md:text-3xl font-bold text-primary-foreground">1000+</p>
-              <p className="text-sm text-primary-foreground/70 mt-1">Happy Clients</p>
-            </div>
-            <div>
-              <p className="text-2xl md:text-3xl font-bold text-primary-foreground">5.0</p>
-              <p className="text-sm text-primary-foreground/70 mt-1">Average Rating</p>
-            </div>
+          <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-4">The Process</p>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+            <h2 className="text-3xl md:text-5xl font-black text-foreground leading-tight">
+              Four steps to<br />
+              <span className="text-muted-foreground font-light italic">your best sale.</span>
+            </h2>
+            <p className="text-sm text-muted-foreground max-w-xs leading-relaxed md:text-right">
+              We handle everything — from first call to keys handover.
+            </p>
           </div>
-        </div>
-      </section>
 
-      {/* Seller resources */}
-      <section className="py-14 md:py-20" id="guide">
-        <div className="mx-auto max-w-[1280px] px-4">
-          <h2 className="text-2xl font-bold text-foreground mb-8">Seller Resources</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {sellerResources.map((resource) => (
-              <Link
-                key={resource.title}
-                href={resource.href}
-                className="flex items-start gap-4 p-5 border border-border rounded-lg bg-card hover:shadow-md transition-shadow group"
-              >
-                <div className="flex items-center justify-center h-10 w-10 rounded-full bg-primary/10 shrink-0 mt-0.5">
-                  <CheckCircle2 className="h-5 w-5 text-primary" />
-                </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {steps.map((s) => (
+              <div key={s.n} className="group flex flex-col gap-4 p-6 rounded-2xl border border-border bg-card hover:border-primary/40 hover:shadow-md transition-all">
+                <span className="text-5xl font-black text-primary/15 leading-none select-none group-hover:text-primary/25 transition-colors">{s.n}</span>
                 <div>
-                  <h3 className="text-sm font-bold text-foreground group-hover:text-primary transition-colors">{resource.title}</h3>
-                  <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{resource.description}</p>
+                  <h3 className="font-black text-foreground text-base mb-1.5">{s.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{s.body}</p>
                 </div>
-                <ArrowRight className="h-4 w-4 text-muted-foreground shrink-0 mt-1 group-hover:text-primary transition-colors" />
-              </Link>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-14 bg-muted/50">
-        <div className="mx-auto max-w-[1280px] px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">Ready to Sell?</h2>
-          <p className="text-sm text-muted-foreground mb-8 max-w-md mx-auto">
-            Get started with a free property valuation and connect with our agent today.
-          </p>
-          <div className="flex items-center justify-center gap-3">
-            <Button size="lg" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-              Get Free Valuation
-            </Button>
-            <Link href="/about">
-              <Button size="lg" variant="outline">Meet Our Expert</Button>
-            </Link>
+      {/* ── Why Us — split ───────────────────────────────── */}
+      <section className="py-16 md:py-24 bg-muted/40">
+        <div className="mx-auto max-w-[1280px] px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Left — text */}
+            <div>
+              <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-4">Why Shree Balaji</p>
+              <h2 className="text-3xl md:text-4xl font-black text-foreground leading-tight mb-6">
+                We don&apos;t just list.<br />We sell.
+              </h2>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-8 max-w-md">
+                Most brokers put up a listing and wait. We actively match your property to verified buyers, negotiate on your behalf and stay accountable until the deal is closed and registered.
+              </p>
+              <ul className="flex flex-col gap-3 mb-8">
+                {[
+                  "Honest valuation — not an inflated number to win your listing",
+                  "Private buyer network built over 15 years across the MMR",
+                  "Dedicated agent — one point of contact, always reachable",
+                  "End-to-end documentation & legal support included",
+                  "Buyer loan assistance to prevent last-minute deal failures",
+                  "Zero hidden charges — transparent fees, always",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-foreground">
+                    <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Button onClick={wa} size="lg" className="gap-2">
+                <MessageCircle className="h-4 w-4" /> Start with Free Valuation
+              </Button>
+            </div>
+
+            {/* Right — perks grid + agent card */}
+            <div className="flex flex-col gap-5">
+              <div className="grid grid-cols-2 gap-4">
+                {perks.map((p) => (
+                  <div key={p.label} className="flex flex-col gap-3 p-5 bg-card rounded-2xl border border-border">
+                    <p.icon className="h-5 w-5 text-primary" />
+                    <div>
+                      <p className="text-sm font-black text-foreground">{p.label}</p>
+                      <p className="text-xs text-muted-foreground mt-0.5">{p.sub}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+            </div>
           </div>
         </div>
       </section>
 
+      {/* ── CTA ──────────────────────────────────────────── */}
+      <section className="py-20 md:py-28">
+        <div className="mx-auto max-w-[1280px] px-4">
+          <div className="relative overflow-hidden bg-foreground rounded-3xl px-8 md:px-16 py-16 md:py-20">
+            <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+              <div className="max-w-lg">
+                <h2 className="text-3xl md:text-5xl font-black text-background leading-tight mb-4">
+                  Ready when<br />you are.
+                </h2>
+                <p className="text-background/50 text-sm leading-relaxed">
+                  No fees. No pressure. Just a free, honest conversation about your property and what it could get on the market today.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+                <Button size="lg" onClick={wa} className="gap-2 text-base px-8 font-bold bg-white text-foreground hover:bg-white/90">
+                  <MessageCircle className="h-5 w-5" /> WhatsApp Us
+                </Button>
+                <Link href="/contact" className="w-full sm:w-auto">
+                  <Button size="lg" variant="outline" className="gap-2 text-base px-8 font-bold bg-transparent border-white/50 text-white hover:bg-white/15 hover:border-white w-full">
+                    Contact Page <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   )
 }
