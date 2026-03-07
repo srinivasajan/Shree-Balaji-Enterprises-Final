@@ -18,9 +18,9 @@ const ANIM_MS = 480
 // ---------------------------------------------------------------------------
 function PlaceholderCard() {
   return (
-    <div className="flex h-full w-full rounded-xl border border-border bg-muted/40 overflow-hidden">
-      <div className="w-[45%] shrink-0 bg-muted animate-pulse" />
-      <div className="flex-1 p-6 flex flex-col gap-3">
+    <div className="flex flex-col md:flex-row h-full w-full rounded-xl border border-border bg-muted/40 overflow-hidden">
+      <div className="h-44 w-full md:h-full md:w-[45%] md:shrink-0 bg-muted animate-pulse" />
+      <div className="flex-1 p-4 md:p-6 flex flex-col gap-3">
         <div className="h-5 w-28 bg-muted rounded animate-pulse" />
         <div className="h-4 w-44 bg-muted rounded animate-pulse mt-1" />
         <div className="h-3 w-32 bg-muted rounded animate-pulse" />
@@ -39,14 +39,14 @@ function PlaceholderCard() {
 // ---------------------------------------------------------------------------
 function PropertyCard({ prop }: { prop: PropertyData }) {
   return (
-    <div className="flex h-full w-full rounded-xl border border-border shadow-md bg-card overflow-hidden">
-      <div className="relative w-[45%] shrink-0">
+    <div className="flex flex-col md:flex-row h-full w-full rounded-xl border border-border shadow-md bg-card overflow-hidden">
+      <div className="relative h-44 w-full md:h-full md:w-[45%] md:shrink-0">
         <Image
           src={prop.image}
           alt={prop.address}
           fill
           className="object-cover"
-          sizes="(max-width: 768px) 45vw, 576px"
+          sizes="(max-width: 768px) 100vw, 576px"
           draggable={false}
         />
         {prop.tag && (
@@ -55,7 +55,7 @@ function PropertyCard({ prop }: { prop: PropertyData }) {
           </span>
         )}
       </div>
-      <div className="flex-1 p-6 flex flex-col justify-between min-w-0">
+      <div className="flex-1 p-4 md:p-6 flex flex-col justify-between min-w-0">
         <div>
           <p className="text-xl font-bold text-primary mb-1 truncate">{prop.price}</p>
           <p className="text-sm font-semibold text-foreground truncate">{prop.address}</p>
@@ -64,12 +64,12 @@ function PropertyCard({ prop }: { prop: PropertyData }) {
             {prop.city}
           </p>
           {prop.description && (
-            <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
+            <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2 md:line-clamp-3">
               {prop.description}
             </p>
           )}
         </div>
-        <div className="flex flex-col sm:flex-row gap-2 mt-4">
+        <div className="flex flex-row gap-2 mt-4">
           <Link href={`/buy/${prop.id}`} className="flex-1">
             <Button size="sm" className="w-full">View Details</Button>
           </Link>
@@ -160,8 +160,7 @@ export function TrendingHomes() {
 
         {/* Deck */}
         <div
-          className="relative overflow-visible"
-          style={{ height: `calc(300px + ${(DECK_DEPTH - 1) * LAYER_OFFSET}px)` }}
+          className="relative overflow-visible h-[480px] md:h-[320px]"
         >
           {/* Background ghost layers */}
           {[...bgLayers].reverse().map(({ depth, prop, offsetPx, scale }) => (

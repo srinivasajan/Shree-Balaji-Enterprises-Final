@@ -36,7 +36,7 @@ export function HeroSection() {
           </div>
 
           {/* Search box */}
-          <div className="w-full max-w-2xl animate-fade-up [animation-delay:100ms]">
+          <div className="w-full max-w-2xl animate-fade-up [animation-delay:100ms] px-1">
             <div className="flex bg-card overflow-hidden shadow-xl rounded-lg">
               <div className="flex-1 flex items-center px-4">
                 <Search className="h-5 w-5 text-muted-foreground shrink-0" />
@@ -45,14 +45,14 @@ export function HeroSection() {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-                  placeholder="Search by location, property type, or project name"
+                  placeholder="Search city, area or property type..."
                   className="w-full px-3 py-4 text-sm md:text-base text-foreground bg-transparent placeholder:text-muted-foreground focus:outline-none"
                   aria-label="Search for properties"
                 />
               </div>
               <button
                 onClick={handleSearch}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 md:px-8 py-4 text-sm font-bold transition-colors"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground px-5 md:px-8 py-4 text-sm font-bold transition-colors shrink-0"
                 aria-label="Search"
               >
                 <Search className="h-5 w-5 md:hidden" />
@@ -62,7 +62,7 @@ export function HeroSection() {
           </div>
 
           {/* Trust badges */}
-          <div className="flex items-center gap-3 mt-6 flex-wrap justify-center animate-fade-up [animation-delay:200ms]">
+          <div className="flex items-center gap-2 mt-5 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] w-full pb-1 animate-fade-up [animation-delay:200ms]">
             {[
               "✓ RERA A51700023633",
               "15+ Years Experience",
@@ -71,7 +71,7 @@ export function HeroSection() {
             ].map((badge) => (
               <span
                 key={badge}
-                className="text-xs font-semibold text-white/90 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/20"
+                className="shrink-0 text-xs font-semibold text-white/90 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/20 whitespace-nowrap"
               >
                 {badge}
               </span>

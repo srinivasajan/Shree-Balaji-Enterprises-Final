@@ -4,7 +4,7 @@ export function WhatsAppButton() {
       href="https://wa.me/917767805544?text=Hello%2C%20I%20am%20interested%20in%20a%20property.%20Please%20share%20more%20details."
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 bg-[#25D366] text-white rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-200 px-4 py-3"
+      className="fixed bottom-5 right-4 md:bottom-6 md:right-6 z-50 flex items-center gap-2.5 bg-[#25D366] text-white rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-200 px-4 py-3"
       aria-label="Chat on WhatsApp"
     >
       <svg

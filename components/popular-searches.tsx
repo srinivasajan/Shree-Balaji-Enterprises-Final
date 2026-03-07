@@ -29,12 +29,12 @@ export function PopularSearches() {
             <Link
               key={city.name}
               href={`/buy?q=${encodeURIComponent(city.name)}`}
-              className="flex items-center justify-between py-2.5 border-b border-border hover:border-primary transition-colors group"
+              className="flex items-center justify-between py-3 border-b border-border hover:border-primary transition-colors group"
             >
               <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
                 {city.name}
               </span>
-              <span className="text-xs text-muted-foreground">
+              <span className="hidden sm:block text-xs text-muted-foreground shrink-0 ml-2">
                 {city.homes}
               </span>
             </Link>

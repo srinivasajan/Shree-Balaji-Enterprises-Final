@@ -21,17 +21,17 @@ export function ExploreTypes() {
           Residential, Commercial &amp; Industrial properties across Mumbai Metropolitan Region
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
           {homeTypes.map((type) => (
             <Link
               key={type.label}
               href={type.href}
-              className="flex flex-col items-center gap-3 p-6 bg-card rounded-lg border border-border hover:border-primary hover:shadow-md transition-all group"
+              className="flex flex-col items-center gap-2 md:gap-3 p-4 md:p-6 bg-card rounded-xl border border-border hover:border-primary hover:shadow-md transition-all group"
             >
-              <type.icon className="h-8 w-8 text-primary group-hover:scale-110 transition-transform" />
+              <type.icon className="h-7 w-7 md:h-8 md:w-8 text-primary group-hover:scale-110 transition-transform" />
               <div className="text-center">
-                <p className="text-sm font-semibold text-foreground">{type.label}</p>
-                <p className="text-xs text-muted-foreground mt-0.5">{type.count}</p>
+                <p className="text-xs md:text-sm font-semibold text-foreground">{type.label}</p>
+                <p className="hidden sm:block text-xs text-muted-foreground mt-0.5">{type.count}</p>
               </div>
             </Link>
           ))}

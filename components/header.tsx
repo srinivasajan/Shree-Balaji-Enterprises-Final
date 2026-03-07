@@ -22,7 +22,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-card border-b border-border">
-      <div className="w-full px-16 flex items-center justify-between h-[52px]">
+      <div className="w-full px-4 sm:px-8 lg:px-16 flex items-center justify-between h-[60px] md:h-[56px]">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 shrink-0" aria-label="Shree Balaji Enterprises">
           <Image
@@ -32,7 +32,7 @@ export function Header() {
             height={52}
             className="h-[48px] w-[48px] object-contain"
           />
-          <span className="text-xl font-bold text-foreground leading-tight whitespace-nowrap">
+          <span className="text-base sm:text-xl font-bold text-foreground leading-tight whitespace-nowrap">
             <span className="text-amber-500">Shree</span> <span className="text-primary">Balaji</span> Enterprises
           </span>
         </Link>

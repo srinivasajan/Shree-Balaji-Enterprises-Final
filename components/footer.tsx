@@ -43,7 +43,7 @@ export function Footer() {
     <footer className="bg-foreground text-card mt-auto">
       <div className="mx-auto max-w-[1280px] px-4 py-12 md:py-16">
         {/* Footer links grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10 mb-12">
           {footerSections.map((section) => (
             <div key={section.title}>
               <h3 className="text-sm font-bold mb-4">{section.title}</h3>
