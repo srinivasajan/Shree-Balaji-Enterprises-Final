@@ -66,8 +66,7 @@ const locations = [
     id: "kalyan",
     name: "Kalyan",
     region: "Thane District",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Kala_Talao_1.jpg/960px-Kala_Talao_1.jpg",
+    image: "/images/kalyan.jpg",
     tagline: "The Growth Corridor",
     description:
       "A major rail junction and Tier-2 urban centre, Kalyan is expanding fast. New residential projects, malls and highways are driving strong appreciation.",
@@ -82,8 +81,7 @@ const locations = [
     id: "dombivli",
     name: "Dombivli",
     region: "Thane District",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Dombivli%2C_Maharashtra_421201_to_204%2C_India_-_panoramio.jpg/960px-Dombivli%2C_Maharashtra_421201_to_204%2C_India_-_panoramio.jpg",
+    image: "/images/dombivli.jpg",
     tagline: "Planned & Peaceful",
     description:
       "Known for its clean, well-planned layout and middle-class residential character, Dombivli offers great value with excellent schools, hospitals and railways.",
@@ -114,8 +112,7 @@ const locations = [
     id: "mumbai",
     name: "Mumbai",
     region: "Mumbai District",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Mumbai_Skyline_Marine_Drive_Night.jpg/960px-Mumbai_Skyline_Marine_Drive_Night.jpg",
+    image: "/images/mumbai.jpg",
     tagline: "The Maximum City",
     description:
       "India's commercial capital — where every square foot is prime. We assist with residential, commercial and investment properties across Mumbai's diverse neighbourhoods.",
@@ -221,6 +218,36 @@ const locations = [
     searchQuery: "Murbad",
     distance: "82 km from CST",
     icon: Trees,
+  },
+  {
+    id: "vasai",
+    name: "Vasai",
+    region: "Palghar District",
+    image: "/images/vasai.jpg",
+    tagline: "Heritage Meets Growth",
+    description:
+      "Vasai blends Portuguese-era heritage with rapid modern development. Affordable flats, spacious bungalows and excellent road connectivity make it a smart buy.",
+    highlights: ["Bungalows", "Affordable Flats", "Plots", "New Projects"],
+    badge: "Growing Fast",
+    badgeClass: "bg-teal-500 text-white",
+    searchQuery: "Vasai",
+    distance: "55 km from CST",
+    icon: Home,
+  },
+  {
+    id: "mira-road",
+    name: "Mira Road",
+    region: "Thane District",
+    image: "/images/mira.jpg",
+    tagline: "Suburban Sweet Spot",
+    description:
+      "One of Mumbai's most popular suburban destinations, Mira Road offers well-planned residential societies, great amenities and strong Western Railway connectivity.",
+    highlights: ["2 & 3 BHK Flats", "Gated Societies", "Commercial", "Resale"],
+    badge: "Well Connected",
+    badgeClass: "bg-indigo-500 text-white",
+    searchQuery: "Mira Road",
+    distance: "45 km from CST",
+    icon: Train,
   },
 ]
 
