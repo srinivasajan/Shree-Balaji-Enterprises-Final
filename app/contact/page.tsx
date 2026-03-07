@@ -159,7 +159,7 @@ export default function ContactPage() {
                         <p className="text-sm text-foreground leading-relaxed">{item.value}</p>
                       </div>
                       {item.href && (
-                        <a href={item.href} target="_blank" rel="noopener noreferrer" className="shrink-0 text-primary hover:opacity-80">
+                        <a href={item.href} target="_blank" rel="noopener noreferrer" aria-label={`Open ${item.label} in maps`} className="shrink-0 text-primary hover:opacity-80">
                           <ArrowUpRight className="h-4 w-4" />
                         </a>
                       )}

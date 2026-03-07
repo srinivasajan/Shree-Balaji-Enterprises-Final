@@ -97,11 +97,11 @@ export default function PropertyDetailPage() {
               {currentImage + 1} / {images.length}
             </div>
             <div className="absolute top-4 right-4 flex items-center gap-2">
-              <button onClick={() => setSaved(!saved)} className="flex items-center gap-1.5 px-3 py-2 bg-card/90 hover:bg-card rounded-full text-sm font-semibold transition-colors">
+              <button onClick={() => setSaved(!saved)} aria-label={saved ? "Remove from saved" : "Save property"} className="flex items-center gap-1.5 px-3 py-2 bg-card/90 hover:bg-card rounded-full text-sm font-semibold transition-colors">
                 <Heart className={`h-4 w-4 ${saved ? "fill-destructive text-destructive" : "text-foreground"}`} />
                 <span className="hidden md:inline text-foreground">Save</span>
               </button>
-              <button className="flex items-center gap-1.5 px-3 py-2 bg-card/90 hover:bg-card rounded-full text-sm font-semibold transition-colors">
+              <button aria-label="Share property" className="flex items-center gap-1.5 px-3 py-2 bg-card/90 hover:bg-card rounded-full text-sm font-semibold transition-colors">
                 <Share2 className="h-4 w-4 text-foreground" />
                 <span className="hidden md:inline text-foreground">Share</span>
               </button>
@@ -113,6 +113,7 @@ export default function PropertyDetailPage() {
               {images.map((img, idx) => (
                 <button
                   key={idx}
+                  aria-label={`View image ${idx + 1}`}
                   onClick={() => setCurrentImage(idx)}
                   className={`relative w-20 h-14 rounded-md overflow-hidden border-2 transition-colors ${idx === currentImage ? "border-primary" : "border-transparent hover:border-border"}`}
                 >
