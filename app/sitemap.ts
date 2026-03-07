@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next"
 import { buyProperties, rentalProperties } from "@/lib/data"
 
-const BASE = "https://www.shreebalajienterprises.com"
+const BASE = "https://www.shreebalajienterprises.live"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
