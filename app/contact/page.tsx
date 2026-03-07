@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Phone, Mail, MapPin, Clock, CheckCircle2, MessageCircle, Shield, ArrowUpRight } from "lucide-react"
+import { Phone, Mail, MapPin, Clock, CheckCircle2, Shield, ArrowUpRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const propertyTypes = [
@@ -47,7 +47,7 @@ export default function ContactPage() {
               </a>
               <a href="https://wa.me/917767805544?text=Hello%2C%20I%20have%20an%20enquiry." target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-green-500 px-6 py-2.5 text-sm font-bold text-white hover:bg-green-600 transition-colors">
-                <MessageCircle className="h-4 w-4" /> WhatsApp Us
+                <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp Us
               </a>
               <a href="mailto:shreebalajienterprisesamb@gmail.com"
                 className="inline-flex items-center gap-2 rounded-full border-2 border-border px-6 py-2.5 text-sm font-bold text-foreground hover:border-primary hover:text-primary transition-colors">
@@ -117,7 +117,7 @@ export default function ContactPage() {
                   </div>
                   <button type="submit"
                     className="flex items-center justify-center gap-2 w-full bg-primary text-primary-foreground font-bold text-base py-4 rounded-2xl hover:opacity-90 transition-opacity mt-1">
-                    <MessageCircle className="h-5 w-5" />
+                    <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                     Send via WhatsApp
                   </button>
                   <p className="text-xs text-muted-foreground text-center -mt-2">
@@ -131,15 +131,25 @@ export default function ContactPage() {
 
                 {/* Map */}
                 <div className="rounded-2xl overflow-hidden border-2 border-border h-52">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.0!2d73.1909!3d19.1969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7f0b2c4d0a5c9%3A0x1a2b3c4d5e6f7890!2sAmbernath+West%2C+Maharashtra+421505!5e0!3m2!1sen!2sin!4v1000000000000"
-                    width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Office" />
+                  <iframe
+                    src="https://maps.google.com/maps?q=19.1895593,73.2230161&z=17&output=embed"
+                    width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Shree Balaji Enterprises Office" />
                 </div>
+                <a
+                  href="https://maps.app.goo.gl/xESVmiEK2GtM3XBDA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 rounded-xl border-2 border-border py-3 text-sm font-bold text-foreground hover:border-primary hover:text-primary transition-colors"
+                >
+                  <MapPin className="h-4 w-4" />
+                  Get Directions
+                </a>
 
                 {/* Info list */}
                 <div className="flex flex-col divide-y divide-border border-2 border-border rounded-2xl overflow-hidden">
                   {[
-                    { icon: MapPin, label: "Address", value: "Shop No. 6, Vallabh Bldg, Avdhoot Residency, Ambernath-West 421505", href: "https://maps.google.com/?q=Ambernath+West+421505" },
-                    { icon: Clock, label: "Hours", value: "MonÔÇôSat 9AMÔÇô7PM  ┬À  Sun 10AMÔÇô5PM", href: null },
+                    { icon: MapPin, label: "Address", value: "Shop No. 6, Vallabh Bldg, Avdhoot Residency, Ambernath-West 421505", href: "https://maps.app.goo.gl/xESVmiEK2GtM3XBDA" },
+                    { icon: Clock, label: "Hours", value: "Everyday 9AM – 9PM", href: null },
                     { icon: Shield, label: "RERA", value: "Reg No: A51700023633", href: null },
                   ].map((item) => (
                     <div key={item.label} className="flex items-start gap-4 px-5 py-4">
