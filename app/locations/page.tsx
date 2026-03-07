@@ -34,8 +34,8 @@ const locations = [
     id: "badlapur",
     name: "Badlapur",
     region: "Thane District",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/City_of_Lights%2C_Shadows_of_Hills.jpg/960px-City_of_Lights%2C_Shadows_of_Hills.jpg",
+    image: "/images/badlapur.jpg",
+    imgClass: "object-[center_30%]",
     tagline: "Nature's Address",
     description:
       "Surrounded by hills, rivers and open greenery — Badlapur is the go-to for affordable 1-3 BHK flats and scenic farmhouses. Ideal for first-time homebuyers.",
@@ -232,7 +232,7 @@ export default function LocationsPage() {
         <div className="absolute inset-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1600&q=85"
+            src="/images/mumbai-night.jpg"
             alt="Mumbai Metropolitan Region cityscape"
             className="w-full h-full object-cover"
           />
@@ -240,8 +240,8 @@ export default function LocationsPage() {
         </div>
 
         <div className="relative z-10 mx-auto max-w-[1280px] px-4 pt-32 pb-16 w-full">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
-            <div className="max-w-2xl">
+          <div className="flex flex-col md:items-end gap-8">
+            <div className="max-w-2xl md:text-right">
               <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
                 <MapPin className="h-3.5 w-3.5" />
                 Mumbai Metropolitan Region
@@ -250,26 +250,10 @@ export default function LocationsPage() {
                 Areas We<br />
                 <span className="text-primary">Proudly Serve.</span>
               </h1>
-              <p className="text-base text-white/60 max-w-lg leading-relaxed">
+              <p className="text-base text-white/60 max-w-lg leading-relaxed md:ml-auto">
                 15+ years of on-the-ground expertise across 13+ cities — from Ambernath to Mumbai,
                 Karjat to Navi Mumbai. We know every neighbourhood, every price point.
               </p>
-            </div>
-            <div className="flex gap-3 shrink-0">
-              <Link href="/contact">
-                <Button size="lg" className="h-12 px-7 text-sm font-bold shadow-lg shadow-primary/30">
-                  Talk to Us <ArrowRight className="h-4 w-4 ml-1.5" />
-                </Button>
-              </Link>
-              <Link href="/buy">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="h-12 px-7 text-sm font-bold bg-white/10 border-white/60 text-white hover:bg-white/20 hover:border-white"
-                >
-                  Browse All
-                </Button>
-              </Link>
             </div>
           </div>
         </div>
@@ -332,7 +316,7 @@ export default function LocationsPage() {
                   <img
                     src={loc.image}
                     alt={`${loc.name} real estate — Shree Balaji Enterprises`}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${(loc as any).imgClass ?? ""}`}
                   />
                   {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
