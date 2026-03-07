@@ -1,8 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import Link from "next/link"
-import { Star, TrendingUp, Building2, Pencil } from "lucide-react"
+import { Star, TrendingUp, Building2, Search } from "lucide-react"
 import { useAdminAuth } from "@/hooks/use-admin-auth"
 import { getBuyProperties, getRentProperties, saveProperty } from "@/lib/admin-store"
 import { PropertyData } from "@/lib/data"
@@ -13,6 +12,7 @@ export default function AdminFeaturedPage() {
   const authed = useAdminAuth()
   const [mounted, setMounted] = useState(false)
   const [properties, setProperties] = useState<TaggedProperty[]>([])
+  const [search, setSearch] = useState("")
 
   function loadData() {
     const buy = getBuyProperties().map(p => ({ ...p, _type: "buy" as const }))
@@ -24,151 +24,124 @@ export default function AdminFeaturedPage() {
 
   if (!mounted || !authed) return null
 
-  function toggleFeatured(p: TaggedProperty) {
-    saveProperty({ ...p, isFeatured: !p.isFeatured }, p._type)
+  function toggle(p: TaggedProperty, field: "isFeatured" | "isTrending") {
+    saveProperty({ ...p, [field]: !p[field] }, p._type)
     loadData()
   }
 
-  function toggleTrending(p: TaggedProperty) {
-    saveProperty({ ...p, isTrending: !p.isTrending }, p._type)
-    loadData()
-  }
+  const filtered = properties.filter(p =>
+    !search.trim() ||
+    p.address.toLowerCase().includes(search.toLowerCase()) ||
+    p.city.toLowerCase().includes(search.toLowerCase())
+  )
 
-  const featured = properties.filter(p => p.isFeatured)
-  const notFeatured = properties.filter(p => !p.isFeatured)
+  const featuredCount = properties.filter(p => p.isFeatured).length
+  const trendingCount = properties.filter(p => p.isTrending).length
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-black text-slate-800 flex items-center gap-2">
-            <Star className="h-6 w-6 text-amber-500 fill-amber-500" /> Featured Properties
-          </h1>
-          <p className="text-slate-500 text-sm mt-0.5">
-            {featured.length} featured · {notFeatured.length} not featured · {properties.length} total
-          </p>
+      <div>
+        <h1 className="text-2xl font-black text-slate-800">Featured &amp; Trending</h1>
+        <p className="text-slate-500 text-sm mt-0.5">
+          {featuredCount} featured · {trendingCount} trending · {properties.length} total properties
+        </p>
+      </div>
+
+      {/* Search */}
+      <div className="bg-white border border-slate-100 rounded-2xl shadow-sm p-4">
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+          <input
+            type="text"
+            placeholder="Search properties…"
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            className="w-full pl-9 pr-4 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+          />
         </div>
       </div>
 
-      {/* Currently Featured */}
-      <section>
-        <h2 className="text-xs font-bold uppercase tracking-widest text-amber-600 mb-3 flex items-center gap-2">
-          <Star className="h-3.5 w-3.5 fill-amber-500" /> Currently Featured ({featured.length})
-        </h2>
-        {featured.length === 0 ? (
-          <div className="bg-amber-50 border border-amber-100 rounded-2xl p-8 text-center text-amber-600 text-sm">
-            No featured properties yet. Toggle any property below to feature it on the homepage.
+      {/* Table */}
+      <div className="bg-white border border-slate-100 rounded-2xl shadow-sm overflow-hidden">
+        {filtered.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-16 text-slate-400">
+            <Building2 className="h-10 w-10 mb-3 opacity-30" />
+            <p className="font-semibold">No properties found</p>
           </div>
         ) : (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {featured.map(p => (
-              <PropertyToggleCard
-                key={`${p._type}-${p.id}`}
-                p={p}
-                isFeatured
-                isTrending={!!p.isTrending}
-                onToggleFeatured={() => toggleFeatured(p)}
-                onToggleTrending={() => toggleTrending(p)}
-              />
-            ))}
-          </div>
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-slate-100 bg-slate-50 text-slate-500 text-xs uppercase tracking-wide">
+                <th className="text-left px-5 py-3 font-semibold">Property</th>
+                <th className="text-left px-5 py-3 font-semibold hidden sm:table-cell">City</th>
+                <th className="text-left px-5 py-3 font-semibold hidden md:table-cell">Price</th>
+                <th className="text-left px-5 py-3 font-semibold hidden md:table-cell">Type</th>
+                <th className="text-center px-5 py-3 font-semibold">
+                  <span className="flex items-center justify-center gap-1 text-amber-600">
+                    <Star className="h-3.5 w-3.5 fill-amber-500" /> Featured
+                  </span>
+                </th>
+                <th className="text-center px-5 py-3 font-semibold">
+                  <span className="flex items-center justify-center gap-1 text-emerald-600">
+                    <TrendingUp className="h-3.5 w-3.5" /> Trending
+                  </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-50">
+              {filtered.map(p => (
+                <tr key={`${p._type}-${p.id}`} className="hover:bg-slate-50/60 transition-colors">
+                  <td className="px-5 py-3.5">
+                    <div className="flex items-center gap-3">
+                      <div className="h-10 w-14 rounded-lg overflow-hidden flex-shrink-0 bg-slate-100">
+                        {p.image
+                          ? <img src={p.image} alt={p.address} className="h-full w-full object-cover" />
+                          : <div className="h-full w-full flex items-center justify-center"><Building2 className="h-5 w-5 text-slate-300" /></div>
+                        }
+                      </div>
+                      <p className="font-semibold text-slate-800 truncate max-w-[180px]">{p.address}</p>
+                    </div>
+                  </td>
+                  <td className="px-5 py-3.5 text-slate-600 hidden sm:table-cell">{p.city}</td>
+                  <td className="px-5 py-3.5 font-semibold text-slate-800 hidden md:table-cell">{p.price || "—"}</td>
+                  <td className="px-5 py-3.5 hidden md:table-cell">
+                    <span className={`text-xs font-semibold px-2 py-1 rounded-full border ${
+                      p._type === "buy" ? "bg-blue-50 text-blue-700 border-blue-200" : "bg-purple-50 text-purple-700 border-purple-200"
+                    }`}>
+                      {p._type === "buy" ? "For Sale" : "For Rent"}
+                    </span>
+                  </td>
+                  <td className="px-5 py-3.5 text-center">
+                    <button
+                      onClick={() => toggle(p, "isFeatured")}
+                      className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-lg text-sm font-bold border-2 transition-all ${
+                        p.isFeatured
+                          ? "bg-amber-500 border-amber-500 text-white hover:bg-amber-600"
+                          : "bg-white border-slate-200 text-slate-400 hover:border-amber-400 hover:text-amber-600"
+                      }`}
+                    >
+                      <Star className={`h-4 w-4 ${p.isFeatured ? "fill-white" : ""}`} />
+                      {p.isFeatured ? "Remove" : "Add"}
+                    </button>
+                  </td>
+                  <td className="px-5 py-3.5 text-center">
+                    <button
+                      onClick={() => toggle(p, "isTrending")}
+                      className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-lg text-sm font-bold border-2 transition-all ${
+                        p.isTrending
+                          ? "bg-emerald-500 border-emerald-500 text-white hover:bg-emerald-600"
+                          : "bg-white border-slate-200 text-slate-400 hover:border-emerald-400 hover:text-emerald-600"
+                      }`}
+                    >
+                      <TrendingUp className="h-4 w-4" />
+                      {p.isTrending ? "Remove" : "Add"}
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         )}
-      </section>
-
-      {/* Not Featured */}
-      {notFeatured.length > 0 && (
-        <section>
-          <h2 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">
-            Not Featured ({notFeatured.length})
-          </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {notFeatured.map(p => (
-              <PropertyToggleCard
-                key={`${p._type}-${p.id}`}
-                p={p}
-                isFeatured={false}
-                isTrending={!!p.isTrending}
-                onToggleFeatured={() => toggleFeatured(p)}
-                onToggleTrending={() => toggleTrending(p)}
-              />
-            ))}
-          </div>
-        </section>
-      )}
-    </div>
-  )
-}
-
-function PropertyToggleCard({
-  p, isFeatured, isTrending, onToggleFeatured, onToggleTrending,
-}: {
-  p: PropertyData & { _type: "buy" | "rent" }
-  isFeatured: boolean
-  isTrending: boolean
-  onToggleFeatured: () => void
-  onToggleTrending: () => void
-}) {
-  return (
-    <div className={`bg-white border rounded-2xl overflow-hidden shadow-sm transition-all ${
-      isFeatured ? "border-amber-300 ring-1 ring-amber-200" : "border-slate-100 hover:border-slate-200"
-    }`}>
-      {/* Image */}
-      <div className="relative h-36 bg-slate-100">
-        {p.image ? (
-          <img src={p.image} alt={p.address} className="h-full w-full object-cover" />
-        ) : (
-          <div className="h-full w-full flex items-center justify-center">
-            <Building2 className="h-8 w-8 text-slate-300" />
-          </div>
-        )}
-        <span className={`absolute top-2 left-2 text-[10px] font-bold px-2 py-0.5 rounded-full ${
-          p._type === "buy" ? "bg-blue-600 text-white" : "bg-purple-600 text-white"
-        }`}>
-          {p._type === "buy" ? "For Sale" : "For Rent"}
-        </span>
-      </div>
-
-      {/* Info */}
-      <div className="p-3">
-        <p className="font-semibold text-slate-800 text-sm truncate">{p.address}</p>
-        <p className="text-xs text-slate-400 truncate">{p.city}</p>
-        <p className="text-sm font-bold text-primary mt-1">{p.price}</p>
-
-        {/* Actions */}
-        <div className="flex items-center gap-2 mt-3">
-          <button
-            onClick={onToggleFeatured}
-            title={isFeatured ? "Remove from Featured" : "Add to Featured"}
-            className={`flex-1 flex items-center justify-center gap-1.5 text-xs font-semibold py-1.5 rounded-lg border transition-colors ${
-              isFeatured
-                ? "bg-amber-50 border-amber-200 text-amber-700 hover:bg-amber-100"
-                : "bg-slate-50 border-slate-200 text-slate-500 hover:bg-slate-100"
-            }`}
-          >
-            <Star className={`h-3.5 w-3.5 ${isFeatured ? "fill-amber-500 text-amber-500" : ""}`} />
-            {isFeatured ? "Featured" : "Feature"}
-          </button>
-          <button
-            onClick={onToggleTrending}
-            title={isTrending ? "Remove from Trending" : "Add to Trending"}
-            className={`flex-1 flex items-center justify-center gap-1.5 text-xs font-semibold py-1.5 rounded-lg border transition-colors ${
-              isTrending
-                ? "bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100"
-                : "bg-slate-50 border-slate-200 text-slate-500 hover:bg-slate-100"
-            }`}
-          >
-            <TrendingUp className="h-3.5 w-3.5" />
-            {isTrending ? "Trending" : "Trend"}
-          </button>
-          <Link
-            href={`/admin/properties/${p._type}-${p.id}/edit`}
-            className="p-1.5 rounded-lg border border-slate-200 text-slate-400 hover:text-blue-600 hover:border-blue-200 hover:bg-blue-50 transition-colors"
-            title="Edit"
-          >
-            <Pencil className="h-3.5 w-3.5" />
-          </Link>
-        </div>
       </div>
     </div>
   )
