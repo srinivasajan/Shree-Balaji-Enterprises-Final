@@ -1,9 +1,10 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Star, Building2, Search } from "lucide-react"
+import Link from "next/link"
+import { Star, Building2, Search, Plus, Trash2 } from "lucide-react"
 import { useAdminAuth } from "@/hooks/use-admin-auth"
-import { getBuyProperties, getRentProperties, saveProperty } from "@/lib/admin-store"
+import { getBuyProperties, getRentProperties, saveProperty, deleteProperty } from "@/lib/admin-store"
 import { PropertyData } from "@/lib/data"
 
 type TaggedProperty = PropertyData & { _type: "buy" | "rent" }
@@ -28,6 +29,12 @@ export default function AdminFeaturedPage() {
     loadData()
   }
 
+  function handleDelete(p: TaggedProperty) {
+    if (!confirm(`Delete "${p.address}"? This cannot be undone.`)) return
+    deleteProperty(p.id, p._type)
+    loadData()
+  }
+
   const filtered = properties.filter(p =>
     !search.trim() ||
     p.address.toLowerCase().includes(search.toLowerCase()) ||
@@ -38,13 +45,21 @@ export default function AdminFeaturedPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-black text-slate-800 flex items-center gap-2">
-          <Star className="h-6 w-6 text-amber-500 fill-amber-500" /> Featured Properties
-        </h1>
-        <p className="text-slate-500 text-sm mt-0.5">
-          {featuredCount} featured · {properties.length} total
-        </p>
+      <div className="flex items-center justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-black text-slate-800 flex items-center gap-2">
+            <Star className="h-6 w-6 text-amber-500 fill-amber-500" /> Featured Properties
+          </h1>
+          <p className="text-slate-500 text-sm mt-0.5">
+            {featuredCount} featured · {properties.length} total
+          </p>
+        </div>
+        <Link
+          href="/admin/properties/new"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm font-bold hover:bg-primary/90 transition-colors flex-shrink-0"
+        >
+          <Plus className="h-4 w-4" /> Add Property
+        </Link>
       </div>
 
       <div className="bg-white border border-slate-100 rounded-2xl shadow-sm p-4">
@@ -74,6 +89,7 @@ export default function AdminFeaturedPage() {
                 <th className="text-left px-5 py-3 font-semibold hidden sm:table-cell">City</th>
                 <th className="text-left px-5 py-3 font-semibold hidden md:table-cell">Price</th>
                 <th className="text-right px-5 py-3 font-semibold">Featured</th>
+                <th className="px-5 py-3"></th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50">
@@ -108,6 +124,15 @@ export default function AdminFeaturedPage() {
                     >
                       <Star className={`h-4 w-4 ${p.isFeatured ? "fill-white" : ""}`} />
                       {p.isFeatured ? "Remove" : "Add to Featured"}
+                    </button>
+                  </td>
+                  <td className="px-5 py-3.5">
+                    <button
+                      onClick={() => handleDelete(p)}
+                      className="inline-flex items-center justify-center h-8 w-8 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition-colors"
+                      title="Delete property"
+                    >
+                      <Trash2 className="h-4 w-4" />
                     </button>
                   </td>
                 </tr>

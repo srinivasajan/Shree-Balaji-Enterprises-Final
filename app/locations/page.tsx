@@ -331,9 +331,8 @@ export default function LocationsPage() {
         <div className="mx-auto max-w-[1280px] px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {locations.map((loc) => (
-              <Link
+              <div
                 key={loc.id}
-                href={`/buy?q=${encodeURIComponent(loc.searchQuery)}`}
                 className="group relative rounded-2xl overflow-hidden border border-border bg-card shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
                 {/* Image */}
@@ -393,16 +392,24 @@ export default function LocationsPage() {
                   </div>
 
                   {/* CTA row */}
-                  <div className="flex items-center justify-between pt-3 border-t border-border">
-                    <span className="text-sm font-bold text-foreground group-hover:text-primary transition-colors">
-                      Browse Properties
-                    </span>
-                    <span className="h-8 w-8 rounded-full bg-primary/10 group-hover:bg-primary flex items-center justify-center transition-colors">
-                      <ArrowRight className="h-4 w-4 text-primary group-hover:text-white transition-colors" />
-                    </span>
+                  <div className="flex items-center gap-2 pt-3 border-t border-border">
+                    <Link
+                      href={`/buy?q=${encodeURIComponent(loc.searchQuery)}`}
+                      className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 bg-primary text-primary-foreground rounded-lg text-xs font-bold hover:bg-primary/90 transition-colors"
+                    >
+                      Buy
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                    <Link
+                      href={`/rent?q=${encodeURIComponent(loc.searchQuery)}`}
+                      className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 border border-primary text-primary rounded-lg text-xs font-bold hover:bg-primary/10 transition-colors"
+                    >
+                      Rent
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>

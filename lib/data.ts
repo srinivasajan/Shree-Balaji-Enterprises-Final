@@ -13,7 +13,10 @@ export interface PropertyData {
   zip?: string
   tag?: string
   tagColor?: string
-  type?: "house" | "apartment" | "condo" | "townhome" | "land" | "multi-family"
+  /** Full subtype string e.g. "Apartment", "Office Space", "Factory / Industrial Shed" */
+  type?: string
+  /** Top-level category */
+  category?: "residential" | "commercial" | "industrial"
   yearBuilt?: number
   lotSize?: string
   description?: string
@@ -35,6 +38,22 @@ export interface PropertyData {
   lng?: number
   isFeatured?: boolean
   isTrending?: boolean
+  /** Listing placement flags */
+  isForSale?: boolean
+  isForRent?: boolean
+  /** Property-specific details */
+  facing?: string
+  furnishing?: string
+  floor?: number
+  totalFloors?: number
+  availableFrom?: string
+  securityDeposit?: string
+  maintenanceCharges?: string
+  lockInPeriod?: string
+  landmark?: string
+  locality?: string
+  possessionDate?: string
+  ageOfProperty?: string
 }
 
 export interface AgentData {

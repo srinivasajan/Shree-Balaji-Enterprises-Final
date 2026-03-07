@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, use } from "react"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { useAdminAuth } from "@/hooks/use-admin-auth"
@@ -8,7 +8,8 @@ import { PropertyFormComponent } from "@/components/admin/property-form"
 import { getBuyProperties, getRentProperties, getAgents } from "@/lib/admin-store"
 import { PropertyData, AgentData } from "@/lib/data"
 
-export default function EditPropertyPage({ params }: { params: { id: string } }) {
+export default function EditPropertyPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id: rawId } = use(params)
   const authed = useAdminAuth()
   const [mounted, setMounted] = useState(false)
   const [property, setProperty] = useState<PropertyData | null>(null)
@@ -19,7 +20,7 @@ export default function EditPropertyPage({ params }: { params: { id: string } })
     setMounted(true)
     setAgents(getAgents())
     // params.id format: "buy-1" or "rent-2"
-    const id = params.id
+    const id = rawId
     const match = id.match(/^(buy|rent)-(\d+)$/)
     if (!match) return
     const type = match[1] as "buy" | "rent"
@@ -28,7 +29,7 @@ export default function EditPropertyPage({ params }: { params: { id: string } })
     const list = type === "buy" ? getBuyProperties() : getRentProperties()
     const found = list.find(p => p.id === numId)
     if (found) setProperty(found)
-  }, [params.id])
+  }, [rawId])
 
   if (!mounted || !authed) return null
 
