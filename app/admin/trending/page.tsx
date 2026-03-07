@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { TrendingUp, Star, Building2, Search } from "lucide-react"
+import { TrendingUp, Building2, Search } from "lucide-react"
 import { useAdminAuth } from "@/hooks/use-admin-auth"
 import { getBuyProperties, getRentProperties, saveProperty } from "@/lib/admin-store"
 import { PropertyData } from "@/lib/data"
@@ -21,11 +21,10 @@ export default function AdminTrendingPage() {
   }
 
   useEffect(() => { setMounted(true); loadData() }, [])
-
   if (!mounted || !authed) return null
 
-  function toggle(p: TaggedProperty, field: "isFeatured" | "isTrending") {
-    saveProperty({ ...p, [field]: !p[field] }, p._type)
+  function toggle(p: TaggedProperty) {
+    saveProperty({ ...p, isTrending: !p.isTrending }, p._type)
     loadData()
   }
 
@@ -35,25 +34,25 @@ export default function AdminTrendingPage() {
     p.city.toLowerCase().includes(search.toLowerCase())
   )
 
-  const featuredCount = properties.filter(p => p.isFeatured).length
   const trendingCount = properties.filter(p => p.isTrending).length
 
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-black text-slate-800">Featured &amp; Trending</h1>
+        <h1 className="text-2xl font-black text-slate-800 flex items-center gap-2">
+          <TrendingUp className="h-6 w-6 text-emerald-600" /> Trending Homes
+        </h1>
         <p className="text-slate-500 text-sm mt-0.5">
-          {featuredCount} featured · {trendingCount} trending · {properties.length} total properties
+          {trendingCount} trending · {properties.length} total
         </p>
       </div>
 
-      {/* Search */}
       <div className="bg-white border border-slate-100 rounded-2xl shadow-sm p-4">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
           <input
             type="text"
-            placeholder="Search properties…"
+            placeholder="Search by name or city…"
             value={search}
             onChange={e => setSearch(e.target.value)}
             className="w-full pl-9 pr-4 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
@@ -61,7 +60,6 @@ export default function AdminTrendingPage() {
         </div>
       </div>
 
-      {/* Table */}
       <div className="bg-white border border-slate-100 rounded-2xl shadow-sm overflow-hidden">
         {filtered.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-slate-400">
@@ -75,17 +73,7 @@ export default function AdminTrendingPage() {
                 <th className="text-left px-5 py-3 font-semibold">Property</th>
                 <th className="text-left px-5 py-3 font-semibold hidden sm:table-cell">City</th>
                 <th className="text-left px-5 py-3 font-semibold hidden md:table-cell">Price</th>
-                <th className="text-left px-5 py-3 font-semibold hidden md:table-cell">Type</th>
-                <th className="text-center px-5 py-3 font-semibold">
-                  <span className="flex items-center justify-center gap-1 text-amber-600">
-                    <Star className="h-3.5 w-3.5 fill-amber-500" /> Featured
-                  </span>
-                </th>
-                <th className="text-center px-5 py-3 font-semibold">
-                  <span className="flex items-center justify-center gap-1 text-emerald-600">
-                    <TrendingUp className="h-3.5 w-3.5" /> Trending
-                  </span>
-                </th>
+                <th className="text-right px-5 py-3 font-semibold">Trending</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50">
@@ -99,42 +87,27 @@ export default function AdminTrendingPage() {
                           : <div className="h-full w-full flex items-center justify-center"><Building2 className="h-5 w-5 text-slate-300" /></div>
                         }
                       </div>
-                      <p className="font-semibold text-slate-800 truncate max-w-[180px]">{p.address}</p>
+                      <div className="min-w-0">
+                        <p className="font-semibold text-slate-800 truncate max-w-[180px]">{p.address}</p>
+                        <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${
+                          p._type === "buy" ? "bg-blue-50 text-blue-600" : "bg-purple-50 text-purple-600"
+                        }`}>{p._type === "buy" ? "For Sale" : "For Rent"}</span>
+                      </div>
                     </div>
                   </td>
                   <td className="px-5 py-3.5 text-slate-600 hidden sm:table-cell">{p.city}</td>
                   <td className="px-5 py-3.5 font-semibold text-slate-800 hidden md:table-cell">{p.price || "—"}</td>
-                  <td className="px-5 py-3.5 hidden md:table-cell">
-                    <span className={`text-xs font-semibold px-2 py-1 rounded-full border ${
-                      p._type === "buy" ? "bg-blue-50 text-blue-700 border-blue-200" : "bg-purple-50 text-purple-700 border-purple-200"
-                    }`}>
-                      {p._type === "buy" ? "For Sale" : "For Rent"}
-                    </span>
-                  </td>
-                  <td className="px-5 py-3.5 text-center">
+                  <td className="px-5 py-3.5 text-right">
                     <button
-                      onClick={() => toggle(p, "isFeatured")}
-                      className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-lg text-sm font-bold border-2 transition-all ${
-                        p.isFeatured
-                          ? "bg-amber-500 border-amber-500 text-white hover:bg-amber-600"
-                          : "bg-white border-slate-200 text-slate-400 hover:border-amber-400 hover:text-amber-600"
-                      }`}
-                    >
-                      <Star className={`h-4 w-4 ${p.isFeatured ? "fill-white" : ""}`} />
-                      {p.isFeatured ? "Remove" : "Add"}
-                    </button>
-                  </td>
-                  <td className="px-5 py-3.5 text-center">
-                    <button
-                      onClick={() => toggle(p, "isTrending")}
-                      className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-lg text-sm font-bold border-2 transition-all ${
+                      onClick={() => toggle(p)}
+                      className={`inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-bold border-2 transition-all ${
                         p.isTrending
-                          ? "bg-emerald-500 border-emerald-500 text-white hover:bg-emerald-600"
-                          : "bg-white border-slate-200 text-slate-400 hover:border-emerald-400 hover:text-emerald-600"
+                          ? "bg-emerald-500 border-emerald-500 text-white hover:bg-red-500 hover:border-red-500"
+                          : "bg-white border-slate-200 text-slate-500 hover:border-emerald-400 hover:text-emerald-600 hover:bg-emerald-50"
                       }`}
                     >
                       <TrendingUp className="h-4 w-4" />
-                      {p.isTrending ? "Remove" : "Add"}
+                      {p.isTrending ? "Remove" : "Add to Trending"}
                     </button>
                   </td>
                 </tr>
