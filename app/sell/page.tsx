@@ -1,10 +1,9 @@
 "use client"
 
-import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import {
-  Search, Users, DollarSign, Home, BarChart3,
+  Users, DollarSign, Home, BarChart3,
   CheckCircle2, ArrowRight, Star, Clock, Shield, Target
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -40,15 +39,6 @@ const sellerResources = [
 ]
 
 export default function SellPage() {
-  const [address, setAddress] = useState("")
-
-  const handleEstimate = () => {
-    if (address.trim()) {
-      const msg = encodeURIComponent(`Hi, I would like a free property valuation for: ${address}. Please get in touch.`)
-      window.open(`https://wa.me/917767805544?text=${msg}`, "_blank")
-    }
-  }
-
   return (
     <>
 
@@ -67,27 +57,7 @@ export default function SellPage() {
               Get a free property valuation and connect with our expert agent to maximize your sale price.
             </p>
 
-              {/* Valuation search */}
-              <div className="bg-card rounded-xl p-6 shadow-xl max-w-lg">
-                <h2 className="text-lg font-bold text-foreground mb-1">What is your property worth?</h2>
-                <p className="text-sm text-muted-foreground mb-4">Enter your property details for a free valuation</p>
-              <div className="flex gap-2">
-                <div className="flex-1 flex items-center border border-border rounded-lg px-3">
-                  <Search className="h-4 w-4 text-muted-foreground shrink-0" />
-                  <input
-                    type="text"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                    onKeyDown={(e) => e.key === "Enter" && handleEstimate()}
-                    placeholder="Enter your home address"
-                    className="w-full px-3 py-3 text-sm bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none"
-                  />
-                </div>
-                <Button onClick={handleEstimate} className="px-6">
-                  Request Valuation
-                </Button>
-              </div>
-            </div>
+
           </div>
         </div>
       </section>

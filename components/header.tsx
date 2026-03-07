@@ -12,6 +12,7 @@ const navLinks = [
   { label: "Rent", href: "/rent" },
   { label: "Sell", href: "/sell" },
   { label: "Home Loans", href: "/home-loans" },
+  { label: "Locations", href: "/locations" },
   { label: "About Us", href: "/about" },
 ]
 

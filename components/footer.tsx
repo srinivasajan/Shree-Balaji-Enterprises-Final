@@ -17,7 +17,7 @@ const footerSections = [
     title: "Resources",
     links: [
       { label: "Home Loans", href: "/home-loans" },
-      { label: "Areas We Serve", href: "/buy" },
+      { label: "Areas We Serve", href: "/locations" },
       { label: "RERA Information", href: "/about" },
     ],
   },
