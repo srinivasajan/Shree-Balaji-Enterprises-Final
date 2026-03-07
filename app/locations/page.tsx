@@ -333,7 +333,7 @@ export default function LocationsPage() {
             {locations.map((loc) => (
               <div
                 key={loc.id}
-                className="group relative rounded-2xl overflow-hidden border border-border bg-card shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="group relative flex flex-col rounded-2xl overflow-hidden border border-border bg-card shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
                 {/* Image */}
                 <div className="relative h-56 overflow-hidden">
@@ -371,7 +371,7 @@ export default function LocationsPage() {
                 </div>
 
                 {/* Card body */}
-                <div className="p-5">
+                <div className="flex flex-col flex-1 p-5">
                   <p className="text-xs font-extrabold uppercase tracking-widest text-primary mb-1">
                     {loc.tagline}
                   </p>
@@ -392,7 +392,7 @@ export default function LocationsPage() {
                   </div>
 
                   {/* CTA row */}
-                  <div className="flex items-center gap-2 pt-3 border-t border-border">
+                  <div className="flex items-center gap-2 mt-auto pt-3 border-t border-border">
                     <Link
                       href={`/buy?q=${encodeURIComponent(loc.searchQuery)}`}
                       className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 bg-primary text-primary-foreground rounded-lg text-xs font-bold hover:bg-primary/90 transition-colors"
