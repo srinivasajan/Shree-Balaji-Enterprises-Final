@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { Save, X, Plus, Trash2, Image as ImageIcon } from "lucide-react"
+import { Save, X, Plus, Trash2, Image as ImageIcon, Upload } from "lucide-react"
 import { PropertyData, AgentData } from "@/lib/data"
 import { saveProperty, nextPropertyId } from "@/lib/admin-store"
 
@@ -28,6 +28,8 @@ export function PropertyFormComponent({ initialData, initialType = "buy", agents
   const [form, setForm] = useState<Partial<PropertyData>>({ ...BLANK, ...initialData })
   const [featureInput, setFeatureInput] = useState("")
   const [imageInput, setImageInput] = useState("")
+  const [uploading, setUploading] = useState(false)
+  const [uploadError, setUploadError] = useState("")
   const [saving, setSaving] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
 
@@ -67,6 +69,30 @@ export function PropertyFormComponent({ initialData, initialType = "buy", agents
     const imgs = (form.images ?? []).filter((_, idx) => idx !== i)
     set("images", imgs)
     if (i === 0) set("image", imgs[0] ?? "")
+  }
+
+  async function uploadFiles(files: FileList) {
+    setUploading(true)
+    setUploadError("")
+    const newUrls: string[] = []
+    for (const file of Array.from(files)) {
+      const fd = new FormData()
+      fd.append("file", file)
+      const res = await fetch("/api/imagekit/upload", { method: "POST", body: fd })
+      const json = await res.json()
+      if (res.ok) {
+        newUrls.push(json.url)
+      } else {
+        setUploadError(json.error ?? "Upload failed")
+      }
+    }
+    if (newUrls.length) {
+      const current = form.images ?? []
+      const merged = [...current, ...newUrls]
+      set("images", merged)
+      if (!form.image) set("image", merged[0])
+    }
+    setUploading(false)
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -319,21 +345,53 @@ export function PropertyFormComponent({ initialData, initialType = "buy", agents
 
       {/* Images */}
       <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm">
-        <h2 className="font-bold text-slate-700 mb-4 text-sm uppercase tracking-wide">Images (URLs)</h2>
-        <div className="flex gap-2 mb-3">
+        <h2 className="font-bold text-slate-700 mb-4 text-sm uppercase tracking-wide">Property Images</h2>
+        {/* File upload area */}
+        <label
+          className={`flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-xl cursor-pointer transition-colors mb-3 ${
+            uploading ? "border-primary/60 bg-primary/5" : "border-slate-200 hover:border-primary hover:bg-primary/5"
+          }`}
+        >
           <input
-            type="url"
-            value={imageInput}
-            onChange={e => setImageInput(e.target.value)}
-            onKeyDown={e => { if (e.key === "Enter") { e.preventDefault(); addImage() } }}
-            className="flex-1 px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
-            placeholder="https://example.com/image.jpg"
+            type="file"
+            accept="image/*"
+            multiple
+            className="hidden"
+            onChange={e => e.target.files && uploadFiles(e.target.files)}
+            disabled={uploading}
           />
-          <button type="button" onClick={addImage} aria-label="Add image"
-            className="px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors">
-            <Plus className="h-4 w-4" />
-          </button>
-        </div>
+          {uploading ? (
+            <div className="flex flex-col items-center gap-2 text-primary">
+              <div className="h-6 w-6 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+              <p className="text-xs font-medium">Uploading to ImageKit…</p>
+            </div>
+          ) : (
+            <div className="flex flex-col items-center gap-1.5 text-slate-400">
+              <Upload className="h-7 w-7" />
+              <p className="text-sm font-medium text-slate-600">Click to upload images</p>
+              <p className="text-xs">PNG, JPG, WEBP up to 20 MB each</p>
+            </div>
+          )}
+        </label>
+        {uploadError && <p className="text-xs text-red-500 mb-3">{uploadError}</p>}
+        {/* Paste URL fallback */}
+        <details className="mb-3">
+          <summary className="text-xs text-slate-400 cursor-pointer hover:text-slate-600 select-none">Or paste an image URL</summary>
+          <div className="flex gap-2 mt-2">
+            <input
+              type="url"
+              value={imageInput}
+              onChange={e => setImageInput(e.target.value)}
+              onKeyDown={e => { if (e.key === "Enter") { e.preventDefault(); addImage() } }}
+              className="flex-1 px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+              placeholder="https://ik.imagekit.io/shreebalaji/…"
+            />
+            <button type="button" onClick={addImage} aria-label="Add image URL"
+              className="px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors">
+              <Plus className="h-4 w-4" />
+            </button>
+          </div>
+        </details>
         <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
           {(form.images ?? []).map((url, i) => (
             <div key={i} className="relative aspect-video rounded-lg overflow-hidden border border-slate-200 group">
