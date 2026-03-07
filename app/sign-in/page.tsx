@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { Phone, User, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { saveInquiry, nextInquiryId } from "@/lib/admin-store"
 
 export default function SignInPage() {
   const [name, setName] = useState("")
@@ -15,6 +16,16 @@ export default function SignInPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (!name.trim() || !phone.trim()) return
+    saveInquiry({
+      id: nextInquiryId(),
+      name,
+      phone,
+      email: "",
+      interest: `Callback Request – ${interest}`,
+      message: `Best time to call: ${time || "Anytime"}`,
+      status: "new",
+      date: new Date().toISOString(),
+    })
     const msg = encodeURIComponent(`Hi, I would like to request a callback.\nName: ${name}\nPhone: ${phone}\nBest time to call: ${time || "Anytime"}\nInterested in: ${interest}`)
     window.open(`https://wa.me/917767805544?text=${msg}`, "_blank")
     setSubmitted(true)

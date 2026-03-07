@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Search, Building2, Building, Warehouse, Phone, MapPin, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { saveInquiry, nextInquiryId } from "@/lib/admin-store"
 
 const rentalTypes = [
   { icon: Building2, label: "Residential" },
@@ -24,6 +25,18 @@ export default function RentPage() {
   const [budget, setBudget] = useState("")
 
   const handleEnquiry = () => {
+    if (name.trim() || phone.trim()) {
+      saveInquiry({
+        id: nextInquiryId(),
+        name: name || "Anonymous",
+        phone,
+        email: "",
+        interest: `Rental – ${activeType !== "All" ? activeType : "Any type"} in ${rentArea || "MMR"}`,
+        message: `Budget: ${budget || "Not specified"}`,
+        status: "new",
+        date: new Date().toISOString(),
+      })
+    }
     const msg = `Hi, I am looking for a rental property.%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0APreferred Area: ${encodeURIComponent(rentArea)}%0AMonthly Budget: ${encodeURIComponent(budget)}%0AType: ${encodeURIComponent(activeType)}`
     window.open(`https://wa.me/917767805544?text=${msg}`, "_blank")
   }

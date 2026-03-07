@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { Phone, User, Mail, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { saveInquiry, nextInquiryId } from "@/lib/admin-store"
 
 export default function SignUpPage() {
   const [name, setName] = useState("")
@@ -18,6 +19,16 @@ export default function SignUpPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (!name.trim() || !phone.trim()) return
+    saveInquiry({
+      id: nextInquiryId(),
+      name,
+      phone,
+      email,
+      interest: propType || "Property Requirement",
+      message: `Budget: ${budget || "Not specified"} | Location: ${location || "Not specified"} | ${message}`.trim(),
+      status: "new",
+      date: new Date().toISOString(),
+    })
     const msg = encodeURIComponent(
       `Hi, I want to register my property requirement.\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nProperty Type: ${propType || "Not specified"}\nBudget: ${budget || "Not specified"}\nPreferred Location: ${location}\nMessage: ${message}`
     )

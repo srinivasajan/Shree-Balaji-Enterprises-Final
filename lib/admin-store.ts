@@ -141,6 +141,10 @@ export function saveInquiry(i: Inquiry): void {
 export function deleteInquiry(id: number): void {
   save(INQUIRIES_KEY, getInquiries().filter((x) => x.id !== id))
 }
+export function nextInquiryId(): number {
+  const list = getInquiries()
+  return list.length > 0 ? Math.max(...list.map((i) => i.id)) + 1 : 1
+}
 
 // ─── Settings ─────────────────────────────────────────────────────────────
 export interface SiteSettings {

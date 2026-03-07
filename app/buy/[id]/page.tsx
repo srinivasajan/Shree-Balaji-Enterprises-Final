@@ -12,7 +12,7 @@ import {
 import { PropertyCard } from "@/components/property-card"
 import { Button } from "@/components/ui/button"
 import { getPropertyById as getStaticById, formatAddress } from "@/lib/data"
-import { getPropertyById, getSimilarProperties } from "@/lib/admin-store"
+import { getPropertyById, getSimilarProperties, saveInquiry, nextInquiryId } from "@/lib/admin-store"
 import { PropertyData } from "@/lib/data"
 
 export default function PropertyDetailPage() {
@@ -47,6 +47,18 @@ export default function PropertyDetailPage() {
   }
 
   const handleContact = () => {
+    if (contactName.trim() || contactPhone.trim()) {
+      saveInquiry({
+        id: nextInquiryId(),
+        name: contactName || "Anonymous",
+        phone: contactPhone,
+        email: "",
+        interest: `Property Enquiry – ${property.address}, ${property.city}`,
+        message: `Interested in property #${property.id}`,
+        status: "new",
+        date: new Date().toISOString(),
+      })
+    }
     const msg = encodeURIComponent(`Hi, I am interested in ${property.address}, ${property.city}.\nName: ${contactName}\nPhone: ${contactPhone}\nPlease share more details.`)
     window.open(`https://wa.me/917767805544?text=${msg}`, "_blank")
   }

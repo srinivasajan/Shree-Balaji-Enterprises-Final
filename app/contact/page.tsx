@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { Phone, Mail, MapPin, Clock, CheckCircle2, Shield, ArrowUpRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { saveInquiry, nextInquiryId } from "@/lib/admin-store"
 
 const propertyTypes = [
   "Residential (Flat / Bungalow / Row House)",
@@ -20,6 +21,16 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    saveInquiry({
+      id: nextInquiryId(),
+      name: form.name,
+      phone: form.phone,
+      email: form.email,
+      interest: form.interest || "General Enquiry",
+      message: form.message || "",
+      status: "new",
+      date: new Date().toISOString(),
+    })
     const msg = encodeURIComponent(`Hello, I am ${form.name}.\n\nInterest: ${form.interest || "General Enquiry"}\n\nMessage: ${form.message || "Please contact me."}\n\nContact: ${form.phone || form.email}`)
     window.open(`https://wa.me/917767805544?text=${msg}`, "_blank")
     setSubmitted(true)
