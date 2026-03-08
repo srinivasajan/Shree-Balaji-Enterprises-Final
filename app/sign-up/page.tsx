@@ -43,7 +43,7 @@ export default function SignUpPage() {
           {/* Logo */}
           <div className="flex justify-center mb-8">
             <Link href="/" aria-label="Shree Balaji Enterprises Home" className="text-xl font-bold tracking-tight">
-              <span className="text-foreground">Shree </span><span className="text-primary">Balaji</span><span className="text-foreground"> Enterprises</span>
+              <span className="text-amber-500">Shree </span><span className="text-primary">Balaji</span><span className="text-foreground"> Enterprises</span>
             </Link>
           </div>
 

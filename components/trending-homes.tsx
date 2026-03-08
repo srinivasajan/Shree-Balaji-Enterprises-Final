@@ -57,7 +57,7 @@ function PropertyCard({ prop }: { prop: PropertyData }) {
       </div>
       <div className="flex-1 p-4 md:p-6 flex flex-col justify-between min-w-0">
         <div>
-          <p className="text-xl font-bold text-primary mb-1 truncate">{prop.price}</p>
+          <p className="text-xl font-black text-primary mb-1 truncate">{prop.price}</p>
           <p className="text-sm font-semibold text-foreground truncate">{prop.address}</p>
           <p className="flex items-center gap-1 text-xs text-muted-foreground mt-1 mb-3">
             <MapPin className="h-3.5 w-3.5 shrink-0" />
