@@ -60,8 +60,7 @@ export function Header() {
             href="https://wa.me/917767805544"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-1.5 rounded-md text-sm font-semibold text-white transition-colors hover:opacity-90"
-            style={{ backgroundColor: "#25D366" }}
+            className="flex items-center gap-2 px-4 py-1.5 rounded-md text-sm font-semibold bg-primary text-primary-foreground transition-colors hover:opacity-90"
             aria-label="Chat on WhatsApp"
           >
             <svg

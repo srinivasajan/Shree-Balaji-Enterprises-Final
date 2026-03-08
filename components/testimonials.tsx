@@ -29,13 +29,14 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="py-10 md:py-14 bg-muted/50">
+    <section className="py-14 md:py-20 bg-muted/40">
       <div className="mx-auto max-w-[1280px] px-4">
-        <div className="text-center mb-10">
-          <h2 className="text-xl md:text-2xl font-bold text-foreground mb-2">
+        <div className="mb-10">
+          <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-4">Client Stories</p>
+          <h2 className="text-2xl md:text-4xl font-black text-foreground mb-3">
             What Our Clients Say
           </h2>
-          <p className="text-sm text-muted-foreground max-w-lg mx-auto">
+          <p className="text-sm text-muted-foreground max-w-lg">
             Over 1000 happy families across Mumbai Metropolitan Region trust Shree Balaji Enterprises
           </p>
         </div>

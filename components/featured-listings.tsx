@@ -100,14 +100,15 @@ export function FeaturedListings() {
   }))
 
   return (
-    <section className="py-10 md:py-14">
+    <section className="py-14 md:py-20">
       <div className="mx-auto max-w-[1280px] px-4">
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-start justify-between mb-10">
           <div>
-            <h2 className="text-xl md:text-2xl font-bold text-foreground">
+            <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-3">Handpicked</p>
+            <h2 className="text-2xl md:text-4xl font-black text-foreground">
               Featured Properties
             </h2>
-            <p className="text-sm text-muted-foreground mt-1">
+            <p className="text-sm text-muted-foreground mt-1.5">
               Handpicked listings from Shree Balaji Enterprises
             </p>
           </div>

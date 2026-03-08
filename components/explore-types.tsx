@@ -12,12 +12,13 @@ const homeTypes = [
 
 export function ExploreTypes() {
   return (
-    <section className="py-10 md:py-14 bg-muted/50">
+    <section className="py-14 md:py-20 bg-muted/40">
       <div className="mx-auto max-w-[1280px] px-4">
-        <h2 className="text-xl md:text-2xl font-bold text-foreground mb-2">
+        <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-4">Browse by Type</p>
+        <h2 className="text-2xl md:text-4xl font-black text-foreground mb-3">
           Property Types We Deal In
         </h2>
-        <p className="text-sm text-muted-foreground mb-8">
+        <p className="text-sm text-muted-foreground mb-10 max-w-lg">
           Residential, Commercial &amp; Industrial properties across Mumbai Metropolitan Region
         </p>
 

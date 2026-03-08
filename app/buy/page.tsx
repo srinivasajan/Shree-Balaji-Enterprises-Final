@@ -2,6 +2,7 @@
 
 import { useState, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
+import Image from "next/image"
 import { Search, Map, List } from "lucide-react"
 import { PropertyCard } from "@/components/property-card"
 import { SearchFilters } from "@/components/search-filters"
@@ -23,40 +24,63 @@ function BuyPageContent() {
 
   return (
     <div className="flex flex-col flex-1">
-      {/* Top search bar */}
-      <div className="bg-card border-b border-border px-4 py-3">
-        <div className="mx-auto max-w-[1280px] flex items-center gap-3">
-          <div className="flex-1 flex items-center bg-muted rounded-lg px-3">
-            <Search className="h-4 w-4 text-muted-foreground shrink-0" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search by address, city, ZIP, or neighborhood"
-              className="w-full px-3 py-2.5 text-sm bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none"
-            />
+      {/* Hero */}
+      <section className="relative overflow-hidden min-h-[420px] flex items-end">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero-bg.jpg"
+            alt="Properties for sale across Mumbai Metropolitan Region"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/75 to-foreground/20" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-[1280px] px-4 pt-20 pb-10 w-full">
+          <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
+            Buy · RERA A51700023633 · 500+ Listings
           </div>
-          <button className="hidden md:flex items-center gap-1.5 px-4 py-2.5 text-sm font-semibold text-primary-foreground bg-primary rounded-lg hover:bg-primary/90 transition-colors">
-            Search
-          </button>
-          <div className="hidden md:flex items-center gap-0 border border-border rounded-lg overflow-hidden">
-            <button
-              onClick={() => setShowMap(true)}
-              className={`p-2.5 transition-colors ${showMap ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted"}`}
-              aria-label="Map view"
-            >
-              <Map className="h-4 w-4" />
+          <h1 className="text-3xl md:text-5xl font-black text-white leading-[1.05] tracking-tight mb-3">
+            Properties for Sale<br />
+            <span className="text-primary">in MMR.</span>
+          </h1>
+          <p className="text-sm text-white/60 max-w-lg mb-6">
+            Browse residential, commercial and industrial properties across Ambernath, Badlapur, Kalyan and 13+ cities.
+          </p>
+          {/* Search bar */}
+          <div className="flex items-center gap-3 max-w-2xl">
+            <div className="flex-1 flex items-center bg-card rounded-lg px-3 shadow-lg">
+              <Search className="h-4 w-4 text-muted-foreground shrink-0" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search by city, area or property type..."
+                className="w-full px-3 py-3 text-sm bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none"
+              />
+            </div>
+            <button className="hidden md:flex items-center gap-1.5 px-6 py-3 text-sm font-semibold text-primary-foreground bg-primary rounded-lg hover:bg-primary/90 transition-colors shrink-0 shadow-lg shadow-primary/30">
+              Search
             </button>
-            <button
-              onClick={() => setShowMap(false)}
-              className={`p-2.5 transition-colors ${!showMap ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted"}`}
-              aria-label="List view"
-            >
-              <List className="h-4 w-4" />
-            </button>
+            <div className="hidden md:flex items-center gap-0 border border-border bg-card rounded-lg overflow-hidden shrink-0 shadow-lg">
+              <button
+                onClick={() => setShowMap(true)}
+                className={`p-2.5 transition-colors ${showMap ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted"}`}
+                aria-label="Map view"
+              >
+                <Map className="h-4 w-4" />
+              </button>
+              <button
+                onClick={() => setShowMap(false)}
+                className={`p-2.5 transition-colors ${!showMap ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted"}`}
+                aria-label="List view"
+              >
+                <List className="h-4 w-4" />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
       <SearchFilters />
 

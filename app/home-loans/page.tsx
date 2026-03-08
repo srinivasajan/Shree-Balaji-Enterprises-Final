@@ -5,8 +5,8 @@ import {
   Shield, CheckCircle2,
   Phone,
   FileText, Handshake, UserCheck, Building2,
-  BadgeIndianRupee, ClipboardList, Users, Heart,
-  ArrowRight, Sparkles, Star
+  BadgeIndianRupee, ClipboardList,
+  Sparkles, Star
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -16,40 +16,32 @@ const steps = [
     icon: UserCheck,
     title: "Eligibility Check",
     description: "We review your income, CIBIL score and profile — and tell you honestly what you qualify for before you approach any bank.",
-    color: "bg-blue-600",
-    text: "text-blue-600",
   },
   {
     num: "02",
     icon: Building2,
     title: "Bank Comparison",
     description: "We approach 4–6 banks simultaneously and bring you the best rate and terms — not just the first offer.",
-    color: "bg-violet-600",
-    text: "text-violet-600",
   },
   {
     num: "03",
     icon: FileText,
     title: "Document Handling",
     description: "We guide you on every document, review your file before submission, and make sure there are zero surprises.",
-    color: "bg-emerald-600",
-    text: "text-emerald-600",
   },
   {
     num: "04",
     icon: Handshake,
     title: "End-to-End Follow-up",
     description: "We stay with you from application day to disbursement day — following up with the bank so you never have to wonder.",
-    color: "bg-orange-500",
-    text: "text-orange-500",
   },
 ]
 
 const stats = [
-  { value: "500+", label: "Families Helped", icon: Users },
-  { value: "6+", label: "Partner Banks", icon: Building2 },
-  { value: "Rs.0", label: "Cost to You", icon: BadgeIndianRupee },
-  { value: "RERA", label: "A51700023633", icon: Shield },
+  { value: "500+", label: "Families Helped", sub: "Since 2008" },
+  { value: "6+", label: "Partner Banks", sub: "All Major Lenders" },
+  { value: "₹0", label: "Cost to You", sub: "Always Free" },
+  { value: "RERA", label: "A51700023633", sub: "Verified Agency" },
 ]
 
 const banks = [
@@ -62,45 +54,45 @@ const banks = [
 ]
 
 const reasons = [
-  { icon: Star, title: "Multiple bank options", desc: "We compare 4–6 banks so you get choices — not just whatever one bank decides to offer.", accent: "bg-yellow-400" },
-  { icon: BadgeIndianRupee, title: "Completely free", desc: "Zero charges to you. We earn a small referral fee from the bank on your behalf.", accent: "bg-green-400" },
-  { icon: Shield, title: "RERA Registered", desc: "We are a verified, regulated agency — not a random middleman. Reg: A51700023633.", accent: "bg-blue-400" },
-  { icon: ClipboardList, title: "One-stop service", desc: "Property search, loan, paperwork, and registration — all handled together by us.", accent: "bg-purple-400" },
+  { icon: Star, title: "Multiple bank options", desc: "We compare 4–6 banks so you get choices — not just whatever one bank decides to offer." },
+  { icon: BadgeIndianRupee, title: "Completely free", desc: "Zero charges to you. We earn a small referral fee from the bank on your behalf." },
+  { icon: Shield, title: "RERA Registered", desc: "We are a verified, regulated agency — not a random middleman. Reg: A51700023633." },
+  { icon: ClipboardList, title: "One-stop service", desc: "Property search, loan, paperwork, and registration — all handled together by us." },
 ]
 
 export default function HomeLoansPage() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative min-h-[80vh] flex items-end">
+      {/* ── Hero ─────────────────────────────────────────── */}
+      <section className="relative overflow-hidden min-h-[520px] flex items-end">
         <div className="absolute inset-0">
           <Image src="/images/mortgage-hero.jpg" alt="Home loan assistance" fill className="object-cover" priority />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/30" />
-          <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/70 to-foreground/20" />
         </div>
-        <div className="relative z-10 w-full mx-auto max-w-[1280px] px-4 pb-20 pt-32">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 mb-6 bg-primary text-primary-foreground text-[11px] font-extrabold uppercase tracking-widest px-4 py-2 rounded-full shadow-lg">
-              <Sparkles className="h-3.5 w-3.5" />
-              Free Service · RERA Registered · Est. Ambernath
+        <div className="relative z-10 mx-auto max-w-[1280px] px-4 pt-32 pb-16 w-full">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
+                <Sparkles className="h-3.5 w-3.5" />
+                Free Service · RERA Registered
+              </div>
+              <h1 className="text-4xl md:text-[60px] font-black text-white leading-[1.0] tracking-tight mb-4">
+                Your Home Loan,<br />
+                <span className="text-primary">Handled For You.</span>
+              </h1>
+              <p className="text-base text-white/60 max-w-lg leading-relaxed">
+                500+ families in Ambernath, Badlapur &amp; MMR guided through the home loan process — from CIBIL check to disbursement. We charge you nothing.
+              </p>
             </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05] mb-6 tracking-tight">
-              Because Every<br />
-              <span className="text-primary">Home Loan</span><br />
-              Is Personal.
-            </h1>
-            <p className="text-base md:text-lg text-white/75 mb-10 max-w-lg leading-relaxed">
-              We have guided 500+ families in Ambernath, Badlapur and across MMR through the home loan process — handling everything from CIBIL checks to disbursement. And we charge you <strong className="text-white">nothing.</strong>
-            </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-col sm:flex-row gap-3 shrink-0">
               <a href="https://wa.me/917767805544?text=Hi%2C%20I%20need%20help%20getting%20a%20home%20loan.%20Please%20guide%20me." target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="h-12 px-7 text-sm font-bold shadow-2xl gap-2">
-                  <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Let us Talk on WhatsApp
+                <Button size="lg" className="h-12 px-7 text-sm font-bold gap-2 shadow-lg shadow-primary/30">
+                  <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Get Free Guidance
                 </Button>
               </a>
               <a href="tel:7767805544">
-                <Button size="lg" className="h-12 px-7 text-sm font-bold gap-2 bg-white/10 border border-white/30 text-white hover:bg-white/20 hover:border-white/50 backdrop-blur-sm">
-                  <Phone className="h-4 w-4" /> Call 7767805544
+                <Button size="lg" variant="outline" className="h-12 px-7 text-sm font-bold bg-white/10 border-white/60 text-white hover:bg-white/20 hover:border-white gap-2">
+                  <Phone className="h-4 w-4" /> Call Us
                 </Button>
               </a>
             </div>
@@ -108,104 +100,115 @@ export default function HomeLoansPage() {
         </div>
       </section>
 
-      {/* STATS BAR */}
-      <section className="bg-primary">
+      {/* ── Stats bar ────────────────────────────────────── */}
+      <section className="py-10 border-b border-border bg-card">
         <div className="mx-auto max-w-[1280px] px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-primary-foreground/20">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden">
             {stats.map((s) => (
-              <div key={s.label} className="flex flex-col items-center justify-center py-7 px-4 gap-1 text-center">
-                <s.icon className="h-5 w-5 text-primary-foreground/60 mb-1" />
-                <p className="text-2xl md:text-3xl font-extrabold text-primary-foreground">{s.value}</p>
-                <p className="text-[11px] text-primary-foreground/70 font-medium uppercase tracking-widest">{s.label}</p>
+              <div key={s.label} className="flex flex-col items-center justify-center py-8 px-4 gap-0.5 text-center bg-card">
+                <p className="text-3xl md:text-4xl font-black text-foreground">{s.value}</p>
+                <p className="text-sm font-semibold text-foreground">{s.label}</p>
+                <p className="text-xs text-muted-foreground">{s.sub}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* PERSONAL QUOTE */}
-      <section className="py-14 bg-muted/40 border-b border-border">
-        <div className="mx-auto max-w-[820px] px-4 text-center">
-          <div className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-primary/10 mb-5">
-            <Heart className="h-5 w-5 text-primary" />
-          </div>
-          <blockquote className="text-lg md:text-xl text-foreground/80 italic leading-relaxed mb-4">
-            "We know this is one of the biggest financial decisions of your life. So we do not just process your loan — we sit with you, explain every step, and make sure you feel confident throughout. That is how we have always worked."
-          </blockquote>
-          <p className="text-sm font-semibold text-muted-foreground">— Shree Balaji Enterprises Team, Ambernath</p>
-        </div>
-      </section>
-
-      {/* HOW WE HELP */}
-      <section className="py-20 md:py-28">
+      {/* ── How We Help ──────────────────────────────────── */}
+      <section className="py-16 md:py-24">
         <div className="mx-auto max-w-[1280px] px-4">
-          <div className="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-            <div>
-              <p className="text-xs font-extrabold text-primary uppercase tracking-[0.2em] mb-2">Step by Step</p>
-              <h2 className="text-4xl md:text-5xl font-extrabold text-foreground leading-tight">
-                Here is What We<br />Actually Do
-              </h2>
-            </div>
-            <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
-              From your first call to the day the money hits your account — we handle it all.
+          <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-4">Step by Step</p>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+            <h2 className="text-3xl md:text-5xl font-black text-foreground leading-tight">
+              Here is What We<br />
+              <span className="text-muted-foreground font-light italic">Actually Do.</span>
+            </h2>
+            <p className="text-sm text-muted-foreground max-w-xs leading-relaxed md:text-right">
+              From your first call to the day the money hits your account.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {steps.map((s, i) => (
-              <div key={s.title} className="group relative bg-card border border-border rounded-3xl p-7 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 overflow-hidden">
-                <span className="absolute top-4 right-5 text-7xl font-black text-foreground/5 leading-none select-none">{s.num}</span>
-                <div className={`inline-flex items-center justify-center h-14 w-14 rounded-2xl ${s.color} mb-5 shadow-lg`}>
-                  <s.icon className="h-7 w-7 text-white" />
+            {steps.map((s) => (
+              <div key={s.title} className="group flex flex-col gap-4 p-6 rounded-2xl border border-border bg-card hover:border-primary/40 hover:shadow-md transition-all">
+                <span className="text-5xl font-black text-primary/15 leading-none select-none group-hover:text-primary/25 transition-colors">{s.num}</span>
+                <div className="flex items-center justify-center h-12 w-12 rounded-xl bg-primary/10">
+                  <s.icon className="h-6 w-6 text-primary" />
                 </div>
-                <p className={`text-[10px] font-extrabold uppercase tracking-widest ${s.text} mb-1.5`}>Step {s.num}</p>
-                <h3 className="text-lg font-extrabold text-foreground mb-3">{s.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{s.description}</p>
-                {i < steps.length - 1 && (
-                  <ArrowRight className="hidden lg:block absolute top-12 -right-3 h-5 w-5 text-border z-10" />
-                )}
+                <div>
+                  <h3 className="font-black text-foreground text-base mb-1.5">{s.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{s.description}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* WHY CHOOSE US — dark */}
-      <section className="py-20 md:py-28 bg-foreground">
+      {/* ── Why Choose Us ────────────────────────────────── */}
+      <section className="py-16 md:py-24 bg-muted/40">
         <div className="mx-auto max-w-[1280px] px-4">
-          <div className="text-center mb-14">
-            <p className="text-xs font-extrabold text-primary uppercase tracking-[0.2em] mb-2">Why Families Trust Us</p>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">
-              We are Not a Portal.<br />
-              <span className="text-primary">We are Your People.</span>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-4">Why Families Trust Us</p>
+              <h2 className="text-3xl md:text-4xl font-black text-foreground leading-tight mb-6">
+                We are Not a Portal.<br />We are Your People.
+              </h2>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-8 max-w-md">
+                Most loan agents push you to one bank and disappear. We compare multiple lenders, handle your paperwork, follow up on your behalf, and stay till the loan is in your account.
+              </p>
+              <ul className="flex flex-col gap-3 mb-8">
+                {[
+                  "We compare 4–6 banks — not just the first offer",
+                  "Complete document guidance — no surprises at submission",
+                  "CIBIL score check & improvement advice included",
+                  "We follow up with the bank until disbursement",
+                  "Zero charges — we earn a referral fee from the bank",
+                  "RERA registered, verified agency — not a random middleman",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-foreground">
+                    <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <a href="https://wa.me/917767805544?text=Hi%2C%20I%20need%20help%20getting%20a%20home%20loan.%20Please%20guide%20me." target="_blank" rel="noopener noreferrer">
+                <Button size="lg" className="gap-2">
+                  <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Get Free Loan Guidance
+                </Button>
+              </a>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              {reasons.map((r) => (
+                <div key={r.title} className="flex flex-col gap-3 p-5 bg-card rounded-2xl border border-border">
+                  <r.icon className="h-5 w-5 text-primary" />
+                  <div>
+                    <p className="text-sm font-black text-foreground">{r.title}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">{r.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Banks ────────────────────────────────────────── */}
+      <section className="py-16 md:py-24">
+        <div className="mx-auto max-w-[1280px] px-4">
+          <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-4">Our Lender Network</p>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+            <h2 className="text-3xl md:text-5xl font-black text-foreground leading-tight">
+              Banks We<br />
+              <span className="text-muted-foreground font-light italic">Work With.</span>
             </h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {reasons.map((r) => (
-              <div key={r.title} className="bg-white/5 border border-white/10 rounded-3xl p-7 hover:bg-white/10 transition-colors">
-                <div className={`inline-flex items-center justify-center h-11 w-11 rounded-xl ${r.accent} mb-5`}>
-                  <r.icon className="h-5 w-5 text-white" />
-                </div>
-                <h3 className="text-base font-extrabold text-white mb-2">{r.title}</h3>
-                <p className="text-sm text-white/55 leading-relaxed">{r.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* BANKS */}
-      <section className="py-20 md:py-28 bg-muted/30">
-        <div className="mx-auto max-w-[1280px] px-4">
-          <div className="text-center mb-12">
-            <p className="text-xs font-extrabold text-primary uppercase tracking-[0.2em] mb-2">Our Lender Network</p>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-foreground">Banks We Work With</h2>
-            <p className="text-sm text-muted-foreground mt-3 max-w-md mx-auto">
+            <p className="text-sm text-muted-foreground max-w-xs leading-relaxed md:text-right">
               Established relationships with all major lenders — so we know who moves fast and who gives the best terms.
             </p>
           </div>
           <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
             {banks.map((b) => (
-              <div key={b.name} className="flex flex-col items-center gap-3 bg-card border border-border rounded-2xl py-6 px-3 hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+              <div key={b.name} className="flex flex-col items-center gap-3 bg-card border border-border rounded-2xl py-6 px-3 hover:shadow-md transition-all duration-200">
                 <div className="h-14 w-full rounded-xl bg-white border border-border flex items-center justify-center shadow-sm overflow-hidden px-3 py-2">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={b.logo} alt={b.name} className="max-h-full max-w-full object-contain" />
@@ -217,39 +220,33 @@ export default function HomeLoansPage() {
         </div>
       </section>
 
-      {/* BOTTOM CTA */}
-      <section className="py-20 md:py-28 bg-primary">
-        <div className="mx-auto max-w-[1280px] px-4 text-center">
-          <div className="inline-flex items-center justify-center h-14 w-14 rounded-full bg-primary-foreground/10 mb-6">
-            <Heart className="h-6 w-6 text-primary-foreground/80" />
+      {/* ── CTA ──────────────────────────────────────────── */}
+      <section className="py-20 md:py-28">
+        <div className="mx-auto max-w-[1280px] px-4">
+          <div className="relative overflow-hidden bg-foreground rounded-3xl px-8 md:px-16 py-16 md:py-20">
+            <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+              <div className="max-w-lg">
+                <h2 className="text-3xl md:text-5xl font-black text-background leading-tight mb-4">
+                  Already Found<br />a Home?
+                </h2>
+                <p className="text-background/50 text-sm leading-relaxed">
+                  One call or message is all it takes. We will understand your situation, compare your options, and guide you — step by step, no pressure, no charge.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+                <a href="https://wa.me/917767805544?text=Hi%2C%20I%20need%20help%20getting%20a%20home%20loan.%20Please%20guide%20me." target="_blank" rel="noopener noreferrer">
+                  <Button size="lg" className="gap-2 text-base px-8 font-bold bg-white text-foreground hover:bg-white/90">
+                    <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp Us
+                  </Button>
+                </a>
+                <a href="tel:7767805544">
+                  <Button size="lg" variant="outline" className="gap-2 text-base px-8 font-bold bg-transparent border-white/50 text-white hover:bg-white/15 hover:border-white">
+                    <Phone className="h-4 w-4" /> Call Us
+                  </Button>
+                </a>
+              </div>
+            </div>
           </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-primary-foreground leading-tight mb-4">
-            Already Found a Home?<br />Let Us Handle the Loan.
-          </h2>
-          <p className="text-base text-primary-foreground/70 mb-10 max-w-lg mx-auto leading-relaxed">
-            One call or message is all it takes. We will understand your situation, compare your options, and guide you — step by step, no pressure, no charge.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <a href="https://wa.me/917767805544?text=Hi%2C%20I%20need%20help%20getting%20a%20home%20loan.%20Please%20guide%20me." target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="h-12 px-8 text-sm font-bold bg-primary-foreground text-primary hover:bg-primary-foreground/90 gap-2 shadow-xl">
-                <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Chat on WhatsApp
-              </Button>
-            </a>
-            <a href="tel:7767805544">
-              <Button size="lg" className="h-12 px-8 text-sm font-bold bg-transparent border-2 border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10 gap-2">
-                <Phone className="h-4 w-4" /> Call 7767805544
-              </Button>
-            </a>
-          </div>
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-2">
-            {["We compare 4–6 banks for you", "Zero cost — ever", "CIBIL score guidance included", "We follow up till disbursement"].map((item) => (
-              <span key={item} className="flex items-center gap-2 text-sm text-primary-foreground/70">
-                <CheckCircle2 className="h-4 w-4 text-primary-foreground/50 shrink-0" />
-                {item}
-              </span>
-            ))}
-          </div>
-          <p className="text-xs text-primary-foreground/40 mt-8">Mon–Sat · 9 AM – 8 PM · We pick up.</p>
         </div>
       </section>
     </>

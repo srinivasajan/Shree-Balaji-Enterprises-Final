@@ -14,7 +14,7 @@ export function PropertyCard({ property }: { property: PropertyData }) {
     : `/buy/${property.id}`
 
   return (
-    <article className="group relative bg-card rounded-lg overflow-hidden border border-border hover:shadow-lg transition-shadow">
+    <article className="group relative bg-card rounded-2xl overflow-hidden border border-border hover:shadow-xl hover:-translate-y-1 transition-all duration-200">
       {/* Image */}
       <Link href={detailHref} className="block relative aspect-[4/3] overflow-hidden">
         <Image
@@ -57,8 +57,8 @@ export function PropertyCard({ property }: { property: PropertyData }) {
       </Link>
 
       {/* Info */}
-      <Link href={detailHref} className="block p-3">
-        <p className="text-lg font-bold text-foreground">{property.price}</p>
+      <Link href={detailHref} className="block p-4">
+        <p className="text-lg font-black text-foreground">{property.price}</p>
         {property.beds > 0 || property.baths > 0 ? (
           <div className="flex items-center gap-3 mt-1 text-sm text-foreground">
             {property.beds > 0 && (

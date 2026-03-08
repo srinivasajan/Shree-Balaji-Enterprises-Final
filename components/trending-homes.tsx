@@ -125,13 +125,14 @@ export function TrendingHomes() {
   })
 
   return (
-    <section className="py-10 md:py-14">
+    <section className="py-14 md:py-20">
       <div className="mx-auto max-w-[1280px] px-4">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-start justify-between mb-10">
           <div>
-            <h2 className="text-xl md:text-2xl font-bold text-foreground">Trending Properties</h2>
-            <p className="text-sm text-muted-foreground mt-1">Our latest listings in {topProp.city}</p>
+            <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-3">New Listings</p>
+            <h2 className="text-2xl md:text-4xl font-black text-foreground">Trending Properties</h2>
+            <p className="text-sm text-muted-foreground mt-1.5">Our latest listings in {topProp.city}</p>
           </div>
           {total > 1 && (
             <div className="flex items-center gap-2">

@@ -2,6 +2,7 @@
 
 import { useState, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
+import Image from "next/image"
 import { Search, Building2, Building, Warehouse, Phone, MapPin, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { PropertyCard } from "@/components/property-card"
@@ -65,17 +66,31 @@ function RentPageContent() {
 
   return (
     <div className="flex flex-col flex-1">
-      {/* Hero banner */}
-      <div className="bg-primary/5 border-b border-border">
-        <div className="mx-auto max-w-[1280px] px-4 py-8 md:py-12">
-          <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-2 text-balance">
-            Find Your Perfect Rental in MMR
+      {/* Hero */}
+      <section className="relative overflow-hidden min-h-[420px] flex items-end">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero-bg.jpg"
+            alt="Rental properties across Mumbai Metropolitan Region"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/75 to-foreground/20" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-[1280px] px-4 pt-20 pb-10 w-full">
+          <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
+            Rent · Residential · Commercial · Industrial
+          </div>
+          <h1 className="text-3xl md:text-5xl font-black text-white leading-[1.05] tracking-tight mb-3">
+            Find Your Perfect<br />
+            <span className="text-primary">Rental in MMR.</span>
           </h1>
-          <p className="text-sm text-muted-foreground mb-6 max-w-lg">
+          <p className="text-sm text-white/60 max-w-lg mb-6">
             Shree Balaji Enterprises assists you in finding residential, commercial and industrial rental properties across Ambernath, Badlapur, Ulhasnagar and 13+ cities.
           </p>
-          <div className="flex items-center gap-3 max-w-2xl">
-            <div className="flex-1 flex items-center bg-card border border-border rounded-lg px-3">
+          <div className="flex items-center gap-3 max-w-2xl mb-5">
+            <div className="flex-1 flex items-center bg-card rounded-lg px-3 shadow-lg">
               <Search className="h-4 w-4 text-muted-foreground shrink-0" />
               <input
                 type="text"
@@ -86,13 +101,13 @@ function RentPageContent() {
               />
             </div>
             <a href="https://wa.me/917767805544?text=Hi%2C%20I%20am%20looking%20for%20a%20rental%20property.%20Please%20help." target="_blank" rel="noopener noreferrer">
-              <Button className="px-6 py-3 h-auto">Search via WhatsApp</Button>
+              <Button className="px-6 py-3 h-auto shrink-0 shadow-lg shadow-primary/30">Search via WhatsApp</Button>
             </a>
           </div>
-          <div className="flex items-center gap-3 mt-6 overflow-x-auto [scrollbar-width:none]">
+          <div className="flex items-center gap-3 overflow-x-auto [scrollbar-width:none]">
             <button
               onClick={() => setActiveType("All")}
-              className={`px-4 py-2 text-sm font-semibold rounded-full border transition-colors shrink-0 ${activeType === "All" ? "border-primary bg-primary text-primary-foreground" : "border-border text-foreground hover:border-primary"}`}
+              className={`px-4 py-2 text-sm font-semibold rounded-full border transition-colors shrink-0 ${activeType === "All" ? "border-primary bg-primary text-primary-foreground" : "border-white/30 text-white/80 hover:border-white/60 hover:text-white"}`}
             >
               All Rentals
             </button>
@@ -100,7 +115,7 @@ function RentPageContent() {
               <button
                 key={type.label}
                 onClick={() => setActiveType(type.label)}
-                className={`flex items-center gap-1.5 px-4 py-2 text-sm font-semibold rounded-full border transition-colors shrink-0 ${activeType === type.label ? "border-primary bg-primary text-primary-foreground" : "border-border text-foreground hover:border-primary"}`}
+                className={`flex items-center gap-1.5 px-4 py-2 text-sm font-semibold rounded-full border transition-colors shrink-0 ${activeType === type.label ? "border-primary bg-primary text-primary-foreground" : "border-white/30 text-white/80 hover:border-white/60 hover:text-white"}`}
               >
                 <type.icon className="h-4 w-4" />
                 {type.label}
@@ -108,7 +123,7 @@ function RentPageContent() {
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
       <div className="mx-auto max-w-[1280px] px-4 py-10 w-full">
         {hasListings ? (
