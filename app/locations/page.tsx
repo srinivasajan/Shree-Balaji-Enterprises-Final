@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import {
   MapPin,
@@ -254,13 +255,14 @@ export default function LocationsPage() {
   return (
     <>
       {/* ── HERO ──────────────────────────────────────────── */}
-      <section className="relative overflow-hidden min-h-[480px] flex items-end">
+      <section className="relative overflow-hidden min-h-[520px] xl:min-h-[620px] 2xl:min-h-[700px] flex items-end">
         <div className="absolute inset-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src="/images/mumbai-night.jpg"
             alt="Mumbai Metropolitan Region cityscape"
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/70 to-foreground/20" />
         </div>

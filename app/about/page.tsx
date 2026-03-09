@@ -43,7 +43,7 @@ export default function AboutPage() {
   return (
     <>
       {/* ── HERO ─────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden min-h-[560px] flex items-end">
+      <section className="relative overflow-hidden min-h-[520px] xl:min-h-[620px] 2xl:min-h-[700px] flex items-end">
         <div className="absolute inset-0">
           <Image
             src="/images/hero-bg.jpg"
@@ -52,7 +52,7 @@ export default function AboutPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/75 to-foreground/25" />
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/70 to-foreground/20" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-[1440px] px-4 pt-32 pb-16 w-full">

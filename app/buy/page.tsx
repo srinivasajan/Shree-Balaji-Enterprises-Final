@@ -25,7 +25,7 @@ function BuyPageContent() {
   return (
     <div className="flex flex-col flex-1">
       {/* Hero */}
-      <section className="relative overflow-hidden min-h-[420px] flex items-end">
+      <section className="relative overflow-hidden min-h-[520px] xl:min-h-[620px] 2xl:min-h-[700px] flex items-end">
         <div className="absolute inset-0">
           <Image
             src="/images/hero-bg.jpg"
@@ -34,17 +34,17 @@ function BuyPageContent() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/75 to-foreground/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/70 to-foreground/20" />
         </div>
-        <div className="relative z-10 mx-auto max-w-[1440px] px-4 pt-20 pb-10 w-full">
+        <div className="relative z-10 mx-auto max-w-[1440px] px-4 pt-32 pb-16 w-full">
           <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
             Buy · RERA A51700023633 · 500+ Listings
           </div>
-          <h1 className="text-3xl md:text-5xl font-black text-white leading-[1.05] tracking-tight mb-3">
+          <h1 className="text-4xl md:text-[60px] font-black text-white leading-[1.0] tracking-tight mb-4">
             Properties for Sale<br />
             <span className="text-primary">in MMR.</span>
           </h1>
-          <p className="text-sm text-white/60 max-w-lg mb-6">
+          <p className="text-base text-white/60 max-w-lg mb-6">
             Browse residential, commercial and industrial properties across Ambernath, Badlapur, Kalyan and 13+ cities.
           </p>
           {/* Search bar */}
