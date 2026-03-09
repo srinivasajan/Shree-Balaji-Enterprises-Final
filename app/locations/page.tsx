@@ -265,7 +265,7 @@ export default function LocationsPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/70 to-foreground/20" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-[1280px] px-4 pt-32 pb-16 w-full">
+        <div className="relative z-10 mx-auto max-w-[1440px] px-4 pt-32 pb-16 w-full">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
@@ -287,7 +287,7 @@ export default function LocationsPage() {
 
       {/* ── STATS BAR ─────────────────────────────────────── */}
       <section className="py-10 border-b border-border bg-card">
-        <div className="mx-auto max-w-[1280px] px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden">
             {[
               { value: "13+", label: "Cities Covered", sub: "Across Maharashtra" },
@@ -310,7 +310,7 @@ export default function LocationsPage() {
 
       {/* ── INTRO ─────────────────────────────────────────── */}
       <section className="py-16 md:py-20">
-        <div className="mx-auto max-w-[1280px] px-4 text-center">
+        <div className="mx-auto max-w-[1440px] px-4 text-center">
           <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-4">Explore Locations</p>
           <h2 className="text-3xl md:text-5xl font-black text-foreground leading-tight mb-4">
             Find Your City,<br />
@@ -328,7 +328,7 @@ export default function LocationsPage() {
 
       {/* ── LOCATIONS GRID ────────────────────────────────── */}
       <section className="pb-24 md:pb-32">
-        <div className="mx-auto max-w-[1280px] px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {locations.map((loc) => (
               <div
@@ -417,7 +417,7 @@ export default function LocationsPage() {
 
       {/* ── CTA SECTION ───────────────────────────────────── */}
       <section className="py-20 bg-foreground">
-        <div className="mx-auto max-w-[1280px] px-4 text-center">
+        <div className="mx-auto max-w-[1440px] px-4 text-center">
           <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-4">
             Need Local Guidance?
           </p>

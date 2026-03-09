@@ -19,7 +19,7 @@ export default function Home() {
 
         {/* ── CTA Strip ─────────────────────────────────── */}
         <section className="py-20 md:py-28">
-          <div className="mx-auto max-w-[1280px] px-4">
+          <div className="mx-auto max-w-[1440px] px-4">
             <div className="relative overflow-hidden bg-foreground rounded-3xl px-8 md:px-16 py-16 md:py-20">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
                 <div className="max-w-lg">

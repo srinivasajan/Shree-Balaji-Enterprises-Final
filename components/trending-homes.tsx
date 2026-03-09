@@ -126,7 +126,7 @@ export function TrendingHomes() {
 
   return (
     <section className="py-14 md:py-20">
-      <div className="mx-auto max-w-[1280px] px-4">
+      <div className="mx-auto max-w-[1440px] px-4">
         {/* Header */}
         <div className="flex items-start justify-between mb-10">
           <div>

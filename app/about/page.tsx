@@ -55,7 +55,7 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/75 to-foreground/25" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-[1280px] px-4 pt-32 pb-16 w-full">
+        <div className="relative z-10 mx-auto max-w-[1440px] px-4 pt-32 pb-16 w-full">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
@@ -89,7 +89,7 @@ export default function AboutPage() {
 
       {/* ── STATS ────────────────────────────────────────────── */}
       <section className="py-10 border-b border-border bg-card">
-        <div className="mx-auto max-w-[1280px] px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden">
             {stats.map((s) => (
               <div key={s.label} className="flex flex-col items-center justify-center py-8 px-4 gap-0.5 text-center bg-card">
@@ -105,7 +105,7 @@ export default function AboutPage() {
 
       {/* ── OUR STORY + FOUNDER ──────────────────────────────── */}
       <section className="py-24 md:py-32">
-        <div className="mx-auto max-w-[1280px] px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24 items-center">
 
             {/* Left — Story */}
@@ -215,7 +215,7 @@ export default function AboutPage() {
 
       {/* ── MILESTONES ───────────────────────────────────────── */}
       <section className="py-20 md:py-28 bg-muted/30 border-y border-border">
-        <div className="mx-auto max-w-[1280px] px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <div className="text-center mb-12">
             <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-3">Our Journey</p>
             <h2 className="text-3xl md:text-4xl font-black text-foreground">
@@ -237,7 +237,7 @@ export default function AboutPage() {
 
       {/* ── VALUES ───────────────────────────────────────────── */}
       <section className="py-20 md:py-28">
-        <div className="mx-auto max-w-[1280px] px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <div className="text-center mb-12">
             <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-3">What We Stand For</p>
             <h2 className="text-3xl md:text-4xl font-black text-foreground">Our Core Values</h2>
@@ -259,7 +259,7 @@ export default function AboutPage() {
 
       {/* ── SERVICES + CTA ───────────────────────────────────── */}
       <section className="py-20 md:py-28 bg-foreground">
-        <div className="mx-auto max-w-[1280px] px-4">
+        <div className="mx-auto max-w-[1440px] px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 xl:gap-20 items-center">
 
             <div>
@@ -327,7 +327,7 @@ export default function AboutPage() {
 
       {/* ── RERA TRUST BAR ───────────────────────────────────── */}
       <section className="py-10 bg-primary/5 border-t border-primary/15">
-        <div className="mx-auto max-w-[1280px] px-4 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mx-auto max-w-[1440px] px-4 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4">
             <div className="flex items-center justify-center h-11 w-11 rounded-full bg-primary/10 shrink-0">
               <Shield className="h-5 w-5 text-primary" />

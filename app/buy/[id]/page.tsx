@@ -75,7 +75,7 @@ export default function PropertyDetailPage() {
 
   return (
     <>
-      <main className="mx-auto max-w-[1280px] px-4 w-full">
+      <main className="mx-auto max-w-[1440px] px-4 w-full">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 py-4 text-sm text-muted-foreground" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-primary transition-colors">Home</Link>

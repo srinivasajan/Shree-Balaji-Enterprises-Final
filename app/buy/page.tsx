@@ -36,7 +36,7 @@ function BuyPageContent() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/75 to-foreground/20" />
         </div>
-        <div className="relative z-10 mx-auto max-w-[1280px] px-4 pt-20 pb-10 w-full">
+        <div className="relative z-10 mx-auto max-w-[1440px] px-4 pt-20 pb-10 w-full">
           <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
             Buy · RERA A51700023633 · 500+ Listings
           </div>
@@ -86,7 +86,7 @@ function BuyPageContent() {
 
       {/* Results count */}
       <div className="bg-card px-4 py-2 border-b border-border">
-        <div className="mx-auto max-w-[1280px] flex items-center justify-between">
+        <div className="mx-auto max-w-[1440px] flex items-center justify-between">
           <p className="text-sm text-foreground">
             <span className="font-bold">{filtered.length}</span> {filtered.length === 1 ? "result" : "results"}
             {searchQuery.trim() && <span className="text-muted-foreground"> for &ldquo;{searchQuery}&rdquo;</span>}
@@ -105,7 +105,7 @@ function BuyPageContent() {
       <div className="flex-1 flex">
         {/* Property list */}
         <div className={`${showMap ? "w-full lg:w-1/2 xl:w-[55%]" : "w-full"} overflow-y-auto bg-background`}>
-          <div className={`p-4 grid gap-4 ${showMap ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-[1280px] mx-auto"}`}>
+          <div className={`p-4 grid gap-4 ${showMap ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-[1440px] mx-auto"}`}>
             {filtered.length > 0 ? (
               filtered.map((property) => (
                 <PropertyCard key={property.id} property={property} />

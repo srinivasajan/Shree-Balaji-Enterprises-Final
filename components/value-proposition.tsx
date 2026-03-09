@@ -26,7 +26,7 @@ const features = [
 export function ValueProposition() {
   return (
     <section className="py-14 md:py-20 bg-muted/40">
-      <div className="mx-auto max-w-[1280px] px-4">
+      <div className="mx-auto max-w-[1440px] px-4">
         <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-4">Why Choose Us</p>
         <h2 className="text-2xl md:text-4xl font-black text-foreground mb-3">
           Your Trusted Real Estate Partner

@@ -16,7 +16,7 @@ export function HeroSection() {
 
   return (
     <section className="relative overflow-hidden">
-      <div className="relative h-[480px] md:h-[520px] lg:h-[580px] overflow-hidden">
+        <div className="relative h-[480px] md:h-[520px] lg:h-[580px] xl:h-[640px] 2xl:h-[720px] overflow-hidden">
         <Image
           src="/images/hero-bg.jpg"
           alt="Ambernath residential neighbourhood — find your perfect property"

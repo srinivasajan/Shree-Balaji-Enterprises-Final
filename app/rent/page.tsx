@@ -78,7 +78,7 @@ function RentPageContent() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/75 to-foreground/20" />
         </div>
-        <div className="relative z-10 mx-auto max-w-[1280px] px-4 pt-20 pb-10 w-full">
+        <div className="relative z-10 mx-auto max-w-[1440px] px-4 pt-20 pb-10 w-full">
           <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
             Rent · Residential · Commercial · Industrial
           </div>
@@ -125,7 +125,7 @@ function RentPageContent() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-[1280px] px-4 py-10 w-full">
+      <div className="mx-auto max-w-[1440px] px-4 py-10 w-full">
         {hasListings ? (
           /* ── LISTINGS VIEW ────────────────────────────────────── */
           <div className="flex flex-col lg:flex-row gap-8">

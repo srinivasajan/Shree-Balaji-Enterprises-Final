@@ -40,7 +40,7 @@ export default function ContactPage() {
     <>
       {/* ── Page Header ──────────────────────────────────────── */}
       <section className="bg-foreground">
-        <div className="mx-auto max-w-[1280px] px-4 pt-16 pb-14 md:pb-20">
+        <div className="mx-auto max-w-[1440px] px-4 pt-16 pb-14 md:pb-20">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">

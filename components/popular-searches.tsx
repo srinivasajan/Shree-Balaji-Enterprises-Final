@@ -19,7 +19,7 @@ const popularCities = [
 export function PopularSearches() {
   return (
     <section className="py-14 md:py-20">
-      <div className="mx-auto max-w-[1280px] px-4">
+      <div className="mx-auto max-w-[1440px] px-4">
         <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-4">Coverage</p>
         <h2 className="text-2xl md:text-4xl font-black text-foreground mb-8">
           Areas We Serve
