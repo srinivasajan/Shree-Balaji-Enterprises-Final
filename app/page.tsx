@@ -1,6 +1,5 @@
 import Link from "next/link"
 import { HeroSection } from "@/components/hero-section"
-import { TrendingHomes } from "@/components/trending-homes"
 import { ExploreTypes } from "@/components/explore-types"
 import { FeaturedListings } from "@/components/featured-listings"
 import { ValueProposition } from "@/components/value-proposition"
@@ -12,7 +11,6 @@ export default function Home() {
     <>
       <main>
         <HeroSection />
-        <TrendingHomes />
         <ExploreTypes />
         <FeaturedListings />
         <ValueProposition />

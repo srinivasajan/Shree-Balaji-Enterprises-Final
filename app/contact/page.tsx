@@ -43,7 +43,7 @@ export default function ContactPage() {
         <div className="mx-auto max-w-[1280px] px-4 pt-16 pb-14 md:pb-20">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
+              <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
                 Contact Us &middot; Ambernath, Maharashtra
               </div>
               <h1 className="text-4xl md:text-[60px] font-black text-background leading-[1.0] tracking-tight mb-4">

@@ -26,26 +26,28 @@ export function HeroSection() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/65 to-foreground/15" />
 
-        <div className="relative z-10 flex flex-col justify-end h-full px-4 pb-12 md:pb-16">
-          <div className="mx-auto w-full max-w-[1280px]">
+        <div className="relative z-10 flex flex-col items-center justify-end h-full px-4 pb-12 md:pb-16">
+          <div className="w-full max-w-3xl text-center">
 
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
-              RERA A51700023633 · 15+ Years · Ambernath
+            {/* Text block with backdrop blur */}
+            <div className="backdrop-blur-sm bg-foreground/20 rounded-2xl px-6 pt-8 pb-6 mb-5">
+              <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
+                RERA A51700023633 · 15+ Years · Ambernath
+              </div>
+
+              {/* Headline */}
+              <h1 className="text-4xl md:text-[56px] font-black text-white leading-[1.0] tracking-tight mb-4">
+                Find Your Perfect<br />
+                <span className="text-primary">Property With Us.</span>
+              </h1>
+
+              <p className="text-base text-white/70 max-w-lg mx-auto leading-relaxed">
+                500+ properties sold across Ambernath, Badlapur, Kalyan &amp; 13+ cities in the Mumbai Metropolitan Region.
+              </p>
             </div>
 
-            {/* Headline */}
-            <h1 className="text-4xl md:text-[56px] font-black text-white leading-[1.0] tracking-tight mb-4 max-w-2xl">
-              Find Your Perfect<br />
-              <span className="text-primary">Property With Us.</span>
-            </h1>
-
-            <p className="text-base text-white/60 max-w-lg leading-relaxed mb-7">
-              500+ properties sold across Ambernath, Badlapur, Kalyan &amp; 13+ cities in the Mumbai Metropolitan Region.
-            </p>
-
             {/* Search box */}
-            <div className="w-full max-w-2xl">
+            <div className="w-full max-w-2xl mx-auto">
               <div className="flex bg-card overflow-hidden shadow-xl rounded-lg">
                 <div className="flex-1 flex items-center px-4">
                   <Search className="h-5 w-5 text-muted-foreground shrink-0" />
@@ -71,7 +73,7 @@ export function HeroSection() {
             </div>
 
             {/* Quick links */}
-            <div className="flex items-center gap-3 mt-6 flex-wrap">
+            <div className="flex items-center justify-center gap-3 mt-6 flex-wrap">
               <Link href="/buy" className="flex items-center gap-1.5 text-sm font-semibold text-white/80 hover:text-white transition-colors group">
                 Browse listings <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
               </Link>

@@ -58,7 +58,7 @@ export default function AboutPage() {
         <div className="relative z-10 mx-auto max-w-[1280px] px-4 pt-32 pb-16 w-full">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
+              <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
                 <Shield className="h-3.5 w-3.5" />
                 RERA Reg: A51700023633
               </div>

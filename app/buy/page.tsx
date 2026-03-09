@@ -37,7 +37,7 @@ function BuyPageContent() {
           <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/75 to-foreground/20" />
         </div>
         <div className="relative z-10 mx-auto max-w-[1280px] px-4 pt-20 pb-10 w-full">
-          <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 text-primary text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
+          <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
             Buy · RERA A51700023633 · 500+ Listings
           </div>
           <h1 className="text-3xl md:text-5xl font-black text-white leading-[1.05] tracking-tight mb-3">
