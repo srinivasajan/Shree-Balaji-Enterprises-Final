@@ -1,3 +1,4 @@
+import { Metadata } from "next"
 import Link from "next/link"
 import { HeroSection } from "@/components/hero-section"
 import { ExploreTypes } from "@/components/explore-types"
@@ -6,9 +7,48 @@ import { ValueProposition } from "@/components/value-proposition"
 import { Testimonials } from "@/components/testimonials"
 import { PopularSearches } from "@/components/popular-searches"
 
+export const metadata: Metadata = {
+  title: "Shree Balaji Enterprises — Real Estate in Ambernath & MMR",
+  description: "RERA-registered real estate agency in Ambernath (A51700023633). View our latest properties for sale and rent across Badlapur, Thane, and Mumbai.",
+  openGraph: {
+    title: "Shree Balaji Enterprises — Top Real Estate Agents in Ambernath",
+    description: "Browse verified residential and commercial properties in Ambernath, Badlapur, and MMR.",
+    url: "https://www.shreebalajienterprises.live",
+    images: [{ url: "/images/hero-bg.jpg" }]
+  }
+}
+
 export default function Home() {
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "Shree Balaji Enterprises",
+    "image": "https://www.shreebalajienterprises.live/images/placeholder-logo.png",
+    "@id": "https://www.shreebalajienterprises.live",
+    "url": "https://www.shreebalajienterprises.live",
+    "telephone": "+917767805544",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Ambernath",
+      "addressRegion": "Maharashtra",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 19.1970,
+      "longitude": 73.1910
+    },
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=100091469033284"
+    ]
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
       <main>
         <HeroSection />
         <ExploreTypes />
