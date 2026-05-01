@@ -6,6 +6,7 @@ import { FeaturedListings } from "@/components/featured-listings"
 import { ValueProposition } from "@/components/value-proposition"
 import { Testimonials } from "@/components/testimonials"
 import { PopularSearches } from "@/components/popular-searches"
+import { ArrowRight, BookOpen, Sparkles } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Shree Balaji Enterprises — Real Estate in Ambernath & MMR",
@@ -55,6 +56,37 @@ export default function Home() {
         <FeaturedListings />
         <ValueProposition />
         <Testimonials />
+        <section className="py-16 md:py-20">
+          <div className="mx-auto max-w-[1440px] px-4">
+            <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-6 md:p-10 shadow-sm">
+              <div className="absolute right-[-4rem] top-[-4rem] h-40 w-40 rounded-full bg-primary/10 blur-3xl" />
+              <div className="relative grid gap-6 md:grid-cols-[1.2fr_0.8fr] md:items-center">
+                <div>
+                  <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-primary mb-4">
+                    <Sparkles className="h-3.5 w-3.5" />
+                    Published Paper
+                  </div>
+                  <h2 className="text-3xl md:text-5xl font-black text-foreground leading-tight mb-3">
+                    Read the research paper on the MMR corridor
+                  </h2>
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-2xl">
+                    Explore the published paper covering local market dynamics, the firm's
+                    operating model, and the Next.js architecture powering the site.
+                  </p>
+                </div>
+                <div className="flex md:justify-end">
+                  <Link
+                    href="/research-paper"
+                    className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-foreground px-6 text-sm font-bold text-background transition-opacity hover:opacity-90"
+                  >
+                    Open Paper <BookOpen className="h-4 w-4" />
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         <PopularSearches />
 
         {/* ── CTA Strip ─────────────────────────────────── */}
