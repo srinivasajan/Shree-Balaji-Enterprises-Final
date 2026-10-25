@@ -2,7 +2,7 @@ import React from "react"
 import Image from "next/image"
 
 export function BrandLogo({
-  className = "h-[46px] w-auto aspect-[820/528]",
+  className = "h-9 w-auto aspect-[820/528]",
   priority = false,
 }: {
   className?: string

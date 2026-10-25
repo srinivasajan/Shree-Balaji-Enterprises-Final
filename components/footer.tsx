@@ -93,9 +93,9 @@ export function Footer() {
         <div className="border-t border-card/20 pt-8">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-1.5" aria-label="Shree Balaji Enterprises">
-              <BrandLogo className="h-[46px] w-auto aspect-[820/528] -ml-2" />
-              <span className="text-[19px] sm:text-[20px] font-bold text-card leading-tight">
+            <Link href="/" className="flex items-center gap-0.5" aria-label="Shree Balaji Enterprises">
+              <BrandLogo className="h-9 w-auto aspect-[820/528] -ml-1.5" />
+              <span className="text-[19px] sm:text-[20px] font-bold text-card leading-none tracking-tight whitespace-nowrap">
                 <span className="text-amber-500">Shree</span> <span className="text-primary">Balaji</span> Enterprises
               </span>
             </Link>

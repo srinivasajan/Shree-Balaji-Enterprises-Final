@@ -92,178 +92,158 @@ function ContactForm() {
   }
 
   return (
-    <main className="min-h-screen bg-background text-foreground py-6 sm:py-8 lg:py-10">
+    <main className="min-h-screen bg-background text-foreground py-6 sm:py-8">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         
         {/* ── Compact Introduction ─────────────────────────────────── */}
-        <div className="mb-6 sm:mb-8">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground">
+        <div className="mb-6 sm:mb-7">
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
             Contact Us
           </h1>
-          <p className="mt-1 text-sm sm:text-base text-muted-foreground max-w-2xl">
+          <p className="mt-1 text-sm text-muted-foreground">
             Have questions or need assistance? Reach out to our team in Ambernath or send us an enquiry below.
           </p>
         </div>
 
-        {/* ── Balanced Two-Column Layout ───────────────────────────── */}
+        {/* ── Clean Two-Column Layout ──────────────────────────────── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
           
           {/* Left Column: Contact Details (5 cols) */}
-          <div className="lg:col-span-5 rounded-2xl border border-border bg-card p-5 sm:p-6 shadow-xs flex flex-col justify-between">
-            <div>
-              <h2 className="text-lg sm:text-xl font-bold text-foreground">Get in Touch</h2>
-              <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
-                Visit our office or contact us directly.
-              </p>
+          <div className="lg:col-span-5 rounded-2xl border border-border bg-card p-6 shadow-xs space-y-5">
+            <h2 className="text-lg font-bold text-foreground">Get in Touch</h2>
 
-              <div className="my-5 border-t border-border" />
-
-              <div className="space-y-4">
-                {/* Phone Numbers */}
-                <div className="flex items-start gap-3">
-                  <div className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 text-primary mt-0.5">
-                    <Phone className="h-4 w-4" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Phone</p>
-                    <div className="mt-0.5 space-y-0.5 text-sm font-semibold">
-                      <a href="tel:+917767805544" className="text-foreground hover:text-primary transition-colors block">
-                        +91 7767805544
-                      </a>
-                      <a href="tel:+919168588575" className="text-foreground hover:text-primary transition-colors block">
-                        +91 9168588575
-                      </a>
-                    </div>
-                  </div>
+            {/* Contact Details List */}
+            <div className="space-y-4 text-sm">
+              {/* Phone Numbers */}
+              <div className="flex items-start gap-3">
+                <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 text-primary mt-0.5">
+                  <Phone className="h-4 w-4" />
                 </div>
+                <div>
+                  <a href="tel:+917767805544" className="font-semibold text-foreground hover:text-primary transition-colors block">
+                    +91 7767805544
+                  </a>
+                  <a href="tel:+919168588575" className="font-semibold text-foreground hover:text-primary transition-colors block mt-0.5">
+                    +91 9168588575
+                  </a>
+                </div>
+              </div>
 
-                {/* Email */}
-                <div className="flex items-start gap-3">
-                  <div className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 text-primary mt-0.5">
-                    <Mail className="h-4 w-4" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Email</p>
-                    <a
-                      href="mailto:shreebalajienterprisesamb@gmail.com"
-                      className="text-sm font-semibold text-foreground hover:text-primary transition-colors block truncate mt-0.5"
-                      title="shreebalajienterprisesamb@gmail.com"
+              {/* Email Address */}
+              <div className="flex items-start gap-3">
+                <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 text-primary mt-0.5">
+                  <Mail className="h-4 w-4" />
+                </div>
+                <div>
+                  <a
+                    href="mailto:shreebalajienterprisesamb@gmail.com"
+                    className="font-semibold text-foreground hover:text-primary transition-colors block break-all"
+                  >
+                    shreebalajienterprisesamb@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              {/* Full Office Address */}
+              <div className="flex items-start gap-3">
+                <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 text-primary mt-0.5">
+                  <MapPin className="h-4 w-4" />
+                </div>
+                <div>
+                  <p className="text-foreground leading-relaxed">
+                    Shop No. 6, Vallabh Building, Avdhoot Residency, Opp. Shiv Mandir Road, Ambernath-West, District Thane, Maharashtra &ndash; 421505
+                  </p>
+                  
+                  {/* Copy Address & Directions Actions */}
+                  <div className="mt-2.5 flex flex-wrap gap-2 text-xs">
+                    <button
+                      type="button"
+                      onClick={handleCopyAddress}
+                      className="h-8 px-3 rounded-lg border border-border bg-background hover:bg-muted font-medium text-foreground inline-flex items-center gap-1.5 transition-colors cursor-pointer"
                     >
-                      shreebalajienterprisesamb@gmail.com
+                      {copiedAddress ? (
+                        <>
+                          <Check className="h-3.5 w-3.5 text-emerald-600" />
+                          <span>Copied</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="h-3.5 w-3.5 text-muted-foreground" />
+                          <span>Copy Address</span>
+                        </>
+                      )}
+                    </button>
+                    <a
+                      href="https://maps.app.goo.gl/xESVmiEK2GtM3XBDA"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="h-8 px-3 rounded-lg border border-border bg-background hover:bg-muted font-medium text-foreground inline-flex items-center gap-1.5 transition-colors"
+                    >
+                      <span>Directions</span>
+                      <ExternalLink className="h-3.5 w-3.5 text-muted-foreground" />
                     </a>
                   </div>
                 </div>
-
-                {/* Office Address */}
-                <div className="flex items-start gap-3">
-                  <div className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 text-primary mt-0.5">
-                    <MapPin className="h-4 w-4" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Office Address</p>
-                    <p className="text-xs sm:text-sm text-foreground leading-relaxed mt-0.5">
-                      Shop No. 6, Vallabh Building, Avdhoot Residency, Opp. Shiv Mandir Road, Ambernath-West, District Thane, Maharashtra &ndash; 421505
-                    </p>
-                    
-                    {/* Copy & Directions Actions */}
-                    <div className="mt-2.5 flex flex-wrap gap-2 text-xs">
-                      <button
-                        type="button"
-                        onClick={handleCopyAddress}
-                        className="h-8 px-3 rounded-lg border border-border bg-background hover:bg-muted font-medium text-foreground inline-flex items-center gap-1.5 transition-colors cursor-pointer"
-                      >
-                        {copiedAddress ? (
-                          <>
-                            <Check className="h-3.5 w-3.5 text-emerald-600" />
-                            <span>Copied</span>
-                          </>
-                        ) : (
-                          <>
-                            <Copy className="h-3.5 w-3.5 text-muted-foreground" />
-                            <span>Copy Address</span>
-                          </>
-                        )}
-                      </button>
-                      <a
-                        href="https://maps.app.goo.gl/xESVmiEK2GtM3XBDA"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="h-8 px-3 rounded-lg border border-border bg-background hover:bg-muted font-medium text-foreground inline-flex items-center gap-1.5 transition-colors"
-                      >
-                        <span>Directions</span>
-                        <ExternalLink className="h-3.5 w-3.5 text-muted-foreground" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* WhatsApp Quick Action */}
-              <div className="mt-5 pt-4 border-t border-border">
-                <a
-                  href="https://wa.me/917767805544?text=Hi%20Shree%20Balaji%20Enterprises%2C%20I%20would%20like%20to%20enquire%20about%20properties."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full h-10 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs sm:text-sm inline-flex items-center justify-center gap-2 transition-colors shadow-xs"
-                >
-                  <MessageSquare className="h-4 w-4" />
-                  <span>Chat on WhatsApp</span>
-                </a>
-              </div>
-
-              {/* Map Preview */}
-              <div className="mt-4 rounded-xl border border-border overflow-hidden h-40 bg-muted relative shadow-xs">
-                <iframe
-                  src="https://maps.google.com/maps?q=19.1895593,73.2230161&z=17&output=embed"
-                  width="100%"
-                  height="100%"
-                  className="border-0 w-full h-full"
-                  allowFullScreen
-                  loading="lazy"
-                  title="Shree Balaji Enterprises Office Map"
-                />
               </div>
             </div>
 
-            {/* Discreet MahaRERA note */}
-            <div className="mt-3 px-1 text-[11px] text-muted-foreground flex items-center justify-between">
-              <span>MahaRERA Registration No:</span>
-              <span className="font-semibold text-foreground font-mono">A51700023633</span>
+            {/* WhatsApp Action */}
+            <a
+              href="https://wa.me/917767805544?text=Hi%20Shree%20Balaji%20Enterprises%2C%20I%20would%20like%20to%20enquire%20about%20properties."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full h-10 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm inline-flex items-center justify-center gap-2 transition-colors shadow-xs"
+            >
+              <MessageSquare className="h-4 w-4" />
+              <span>Chat on WhatsApp</span>
+            </a>
+
+            {/* Compact Map Preview */}
+            <div className="rounded-xl border border-border overflow-hidden h-36 bg-muted relative">
+              <iframe
+                src="https://maps.google.com/maps?q=19.1895593,73.2230161&z=17&output=embed"
+                width="100%"
+                height="100%"
+                className="border-0 w-full h-full"
+                allowFullScreen
+                loading="lazy"
+                title="Office Location Map"
+              />
             </div>
+
+            {/* Discreet MahaRERA notice */}
+            <p className="text-xs text-muted-foreground pt-0.5">
+              MahaRERA Reg: <span className="font-semibold text-foreground font-mono">A51700023633</span>
+            </p>
           </div>
 
           {/* Right Column: Enquiry Form (7 cols) */}
-          <div className="lg:col-span-7 rounded-2xl border border-border bg-card p-5 sm:p-6 lg:p-7 shadow-xs">
-            <h2 className="text-lg sm:text-xl font-bold text-foreground">Send an Enquiry</h2>
-            <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
-              Fill out the form below and our team will get back to you promptly.
-            </p>
-
-            <div className="my-5 border-t border-border" />
+          <div className="lg:col-span-7 rounded-2xl border border-border bg-card p-6 shadow-xs space-y-4">
+            <h2 className="text-lg font-bold text-foreground">Send an Enquiry</h2>
 
             {isSubmitted ? (
-              <div className="py-10 text-center space-y-4">
-                <div className="h-12 w-12 rounded-full bg-emerald-500/10 text-emerald-600 flex items-center justify-center mx-auto">
-                  <Check className="h-6 w-6" />
+              <div className="py-8 text-center space-y-3">
+                <div className="h-10 w-10 rounded-full bg-emerald-500/10 text-emerald-600 flex items-center justify-center mx-auto">
+                  <Check className="h-5 w-5" />
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold text-foreground">
+                <h3 className="text-xl font-bold text-foreground">
                   Thank You, {name}!
                 </h3>
-                <p className="text-xs sm:text-sm text-muted-foreground max-w-md mx-auto">
+                <p className="text-xs sm:text-sm text-muted-foreground max-w-sm mx-auto">
                   Your enquiry has been received. Our team will contact you shortly on{" "}
                   <strong className="text-foreground">{phone}</strong>.
                 </p>
-                <div className="pt-3 flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm">
+                <div className="pt-2 flex flex-wrap items-center justify-center gap-2 text-xs sm:text-sm">
                   <button
                     type="button"
                     onClick={handleReset}
-                    className="h-9 px-4 border border-border rounded-lg hover:bg-muted font-medium text-foreground transition-colors cursor-pointer"
+                    className="h-8 px-3 border border-border rounded-lg hover:bg-muted font-medium text-foreground transition-colors cursor-pointer"
                   >
                     Send Another Enquiry
                   </button>
                   <Link
                     href="/buy"
-                    className="h-9 px-4 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 font-medium inline-flex items-center transition-colors"
+                    className="h-8 px-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 font-medium inline-flex items-center transition-colors"
                   >
                     Browse Properties &rarr;
                   </Link>
@@ -272,9 +252,9 @@ function ContactForm() {
             ) : (
               <form onSubmit={(e) => handleSubmit(e, false)} className="space-y-4">
                 
-                {/* Category Pills */}
+                {/* Interest Selection */}
                 <div>
-                  <label className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
+                  <label className="text-xs font-medium text-muted-foreground block mb-1.5">
                     I am interested in
                   </label>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -283,7 +263,7 @@ function ContactForm() {
                         key={c.id}
                         type="button"
                         onClick={() => setCategory(c.id)}
-                        className={`h-9 px-2.5 rounded-lg border text-xs font-semibold text-center transition-all cursor-pointer flex items-center justify-center ${
+                        className={`h-9 px-2.5 rounded-lg border text-xs font-medium text-center transition-all cursor-pointer flex items-center justify-center ${
                           category === c.id
                             ? "border-primary bg-primary text-primary-foreground shadow-xs"
                             : "border-border bg-background text-muted-foreground hover:text-foreground hover:bg-muted/50"
@@ -295,10 +275,10 @@ function ContactForm() {
                   </div>
                 </div>
 
-                {/* Name and Phone Inputs */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Name & Phone Inputs */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   <div>
-                    <label htmlFor="contact-name" className="text-xs font-semibold text-foreground block mb-1">
+                    <label htmlFor="contact-name" className="text-xs font-medium text-foreground block mb-1">
                       Your Name <span className="text-destructive">*</span>
                     </label>
                     <input
@@ -313,7 +293,7 @@ function ContactForm() {
                   </div>
 
                   <div>
-                    <label htmlFor="contact-phone" className="text-xs font-semibold text-foreground block mb-1">
+                    <label htmlFor="contact-phone" className="text-xs font-medium text-foreground block mb-1">
                       Phone Number <span className="text-destructive">*</span>
                     </label>
                     <div className="relative flex items-center">
@@ -333,9 +313,9 @@ function ContactForm() {
                   </div>
                 </div>
 
-                {/* Email Input */}
+                {/* Email Address */}
                 <div>
-                  <label htmlFor="contact-email" className="text-xs font-semibold text-foreground block mb-1">
+                  <label htmlFor="contact-email" className="text-xs font-medium text-foreground block mb-1">
                     Email Address <span className="text-muted-foreground font-normal">(Optional)</span>
                   </label>
                   <input
@@ -350,7 +330,7 @@ function ContactForm() {
 
                 {/* Message / Requirements */}
                 <div>
-                  <label htmlFor="contact-message" className="text-xs font-semibold text-foreground block mb-1">
+                  <label htmlFor="contact-message" className="text-xs font-medium text-foreground block mb-1">
                     Message / Requirements <span className="text-muted-foreground font-normal">(Optional)</span>
                   </label>
                   <textarea
@@ -359,12 +339,12 @@ function ContactForm() {
                     value={specifications}
                     onChange={(e) => setSpecifications(e.target.value)}
                     placeholder="Tell us what you're looking for (e.g., 2 BHK in Ambernath-East, budget ₹45 Lakhs)..."
-                    className="w-full p-3 border border-border rounded-lg bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all resize-none min-h-[88px]"
+                    className="w-full p-3 border border-border rounded-lg bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all resize-none min-h-[80px]"
                   />
                 </div>
 
-                {/* Form Action Buttons */}
-                <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                {/* Action Buttons */}
+                <div className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
                   <button
                     type="submit"
                     disabled={isSubmitting}
@@ -377,7 +357,7 @@ function ContactForm() {
                   <button
                     type="button"
                     onClick={(e) => handleSubmit(e, true)}
-                    className="h-10 px-4 border border-border rounded-lg text-sm font-semibold text-foreground hover:bg-muted transition-colors inline-flex items-center justify-center gap-2 cursor-pointer"
+                    className="h-10 px-4 border border-border rounded-lg text-sm font-medium text-foreground hover:bg-muted transition-colors inline-flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <MessageSquare className="h-4 w-4 text-emerald-600" />
                     <span>Send via WhatsApp</span>

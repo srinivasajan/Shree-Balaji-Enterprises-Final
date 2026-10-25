@@ -59,7 +59,7 @@ export function AdminSidebar() {
     <div className="flex h-full flex-col bg-[#0f172a] text-white">
       {/* Logo */}
       <div className="flex items-center gap-2 px-5 py-4 border-b border-white/10">
-        <BrandLogo className="h-10 w-auto aspect-[820/528] -ml-1.5" />
+        <BrandLogo className="h-8 w-auto aspect-[820/528] -ml-1" />
         <div className="min-w-0">
           <p className="text-sm font-bold leading-tight truncate">Shree Balaji</p>
           <p className="text-[11px] text-slate-400 leading-tight">Admin Panel</p>
