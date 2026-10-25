@@ -6,6 +6,7 @@ import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { BrandLogo } from "@/components/brand-logo"
 
 const navLinks = [
   { label: "Buy", href: "/buy" },
@@ -25,14 +26,8 @@ export function Header() {
       <div className="w-full px-4 sm:px-8 lg:px-16 flex items-center justify-between h-[60px] md:h-[56px]">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 shrink-0" aria-label="Shree Balaji Enterprises">
-          <Image
-            src="https://raw.githubusercontent.com/srinivasajan/shreebalajienterprises/main/images/logo.png"
-            alt="Shree Balaji Enterprises Logo"
-            width={52}
-            height={52}
-            className="h-[48px] w-[48px] object-contain"
-          />
-          <span className="text-base sm:text-xl font-bold text-foreground leading-tight whitespace-nowrap">
+          <BrandLogo className="h-8 w-8" />
+          <span className="text-base sm:text-lg font-bold text-foreground leading-tight whitespace-nowrap">
             <span className="text-amber-500">Shree</span> <span className="text-primary">Balaji</span> Enterprises
           </span>
         </Link>

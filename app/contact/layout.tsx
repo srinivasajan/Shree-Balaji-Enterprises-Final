@@ -1,13 +1,16 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Contact Us — Shree Balaji Enterprises, Ambernath",
+  title: "Contact Us | Shree Balaji Enterprises, Ambernath",
   description:
-    "Get in touch with Shree Balaji Enterprises for property enquiries, site visits, or home loan assistance. Call 7767805544 or WhatsApp us — our Ambernath team responds fast.",
+    "Get in touch with Shree Balaji Enterprises (MahaRERA: A51700023633) for property enquiries, site visits, or home loan assistance in Ambernath & MMR. Call +91 7767805544.",
+  alternates: {
+    canonical: "https://www.shreebalajienterprises.live/contact",
+  },
   openGraph: {
-    title: "Contact Shree Balaji Enterprises",
+    title: "Contact Shree Balaji Enterprises — Real Estate in Ambernath",
     description:
-      "Reach our Ambernath team by phone, WhatsApp or email. Available Mon–Sat 9 AM–7 PM for all property and home loan enquiries.",
+      "Reach our Ambernath team by phone, WhatsApp or email. Open 7 days a week, 9 AM–9 PM for all residential and commercial property consultations.",
   },
 }
 
