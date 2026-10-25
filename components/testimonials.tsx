@@ -1,4 +1,8 @@
+"use client"
+
 import { Star, Quote } from "lucide-react"
+import { InView } from "@/components/core/in-view"
+import { AnimatedGroup } from "@/components/core/animated-group"
 
 const testimonials = [
   {
@@ -31,7 +35,16 @@ export function Testimonials() {
   return (
     <section className="py-14 md:py-20">
       <div className="mx-auto max-w-[1440px] px-4">
-        <div className="mb-10">
+        <InView
+          once
+          viewOptions={{ margin: "0px 0px -40px 0px" }}
+          variants={{
+            hidden: { opacity: 0, y: 16 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="mb-10"
+        >
           <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-4">Client Stories</p>
           <h2 className="text-2xl md:text-4xl font-black text-foreground mb-3">
             What Our Clients Say
@@ -39,42 +52,47 @@ export function Testimonials() {
           <p className="text-sm text-muted-foreground max-w-lg">
             Over 1000 happy families across Mumbai Metropolitan Region trust Shree Balaji Enterprises
           </p>
-        </div>
+        </InView>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t) => (
-            <div
-              key={t.name}
-              className="bg-card border border-border rounded-xl p-6 flex flex-col gap-4 hover:shadow-md transition-shadow"
-            >
-              {/* Stars */}
-              <div className="flex items-center gap-1">
-                {Array.from({ length: t.rating }).map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
-                ))}
-              </div>
-
-              {/* Quote */}
-              <div className="relative">
-                <Quote className="h-6 w-6 text-primary/20 absolute -top-1 -left-1" aria-hidden="true" />
-                <p className="text-sm text-foreground leading-relaxed pl-4 italic">
-                  &ldquo;{t.text}&rdquo;
-                </p>
-              </div>
-
-              {/* Person */}
-              <div className="flex items-center gap-3 mt-auto pt-2 border-t border-border">
-                <div className="flex items-center justify-center h-10 w-10 rounded-full bg-primary/10 text-primary font-bold text-sm shrink-0">
-                  {t.initial}
+        <InView once viewOptions={{ margin: "0px 0px -50px 0px" }}>
+          <AnimatedGroup
+            preset="slide"
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          >
+            {testimonials.map((t) => (
+              <div
+                key={t.name}
+                className="bg-card border border-border rounded-xl p-6 flex flex-col gap-4 hover:shadow-md hover:-translate-y-1 transition-all"
+              >
+                {/* Stars */}
+                <div className="flex items-center gap-1">
+                  {Array.from({ length: t.rating }).map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
+                  ))}
                 </div>
-                <div>
-                  <p className="text-sm font-bold text-foreground">{t.name}</p>
-                  <p className="text-xs text-muted-foreground">{t.type} · {t.location}</p>
+
+                {/* Quote */}
+                <div className="relative">
+                  <Quote className="h-6 w-6 text-primary/20 absolute -top-1 -left-1" aria-hidden="true" />
+                  <p className="text-sm text-foreground leading-relaxed pl-4 italic">
+                    &ldquo;{t.text}&rdquo;
+                  </p>
+                </div>
+
+                {/* Person */}
+                <div className="flex items-center gap-3 mt-auto pt-2 border-t border-border">
+                  <div className="flex items-center justify-center h-10 w-10 rounded-full bg-primary/10 text-primary font-bold text-sm shrink-0">
+                    {t.initial}
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-foreground">{t.name}</p>
+                    <p className="text-xs text-muted-foreground">{t.type} · {t.location}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </AnimatedGroup>
+        </InView>
       </div>
     </section>
   )

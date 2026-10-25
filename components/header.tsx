@@ -5,6 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
+import { motion, AnimatePresence } from "motion/react"
 import { Button } from "@/components/ui/button"
 import { BrandLogo } from "@/components/brand-logo"
 
@@ -59,43 +60,52 @@ export function Header() {
         </div>
 
         {/* Mobile menu button */}
-        <button
+        <motion.button
+          whileTap={{ scale: 0.9 }}
           className="lg:hidden p-2 text-foreground"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
         >
           {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        </motion.button>
       </div>
 
       {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="lg:hidden border-t border-border bg-card">
-          <nav className="flex flex-col p-4 gap-1" aria-label="Mobile navigation">
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className={`px-3 py-3 text-sm font-semibold rounded-md ${
-                  pathname.startsWith(link.href)
-                    ? "text-primary bg-primary/5"
-                    : "text-foreground hover:bg-muted"
-                }`}
-                onClick={() => setMobileOpen(false)}
-              >
-                {link.label}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.22, ease: "easeInOut" }}
+            className="lg:hidden border-t border-border bg-card overflow-hidden"
+          >
+            <nav className="flex flex-col p-4 gap-1" aria-label="Mobile navigation">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className={`px-3 py-3 text-sm font-semibold rounded-md ${
+                    pathname.startsWith(link.href)
+                      ? "text-primary bg-primary/5"
+                      : "text-foreground hover:bg-muted"
+                  }`}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <div className="border-t border-border my-2" />
+              <Link href="/contact" className="px-3 py-3 text-sm font-semibold text-foreground hover:bg-muted rounded-md" onClick={() => setMobileOpen(false)}>
+                Enquiry
               </Link>
-            ))}
-            <div className="border-t border-border my-2" />
-            <Link href="/contact" className="px-3 py-3 text-sm font-semibold text-foreground hover:bg-muted rounded-md" onClick={() => setMobileOpen(false)}>
-              Enquiry
-            </Link>
-            <Link href="/contact" className="px-3 py-3 text-sm font-semibold text-primary hover:bg-primary/5 rounded-md" onClick={() => setMobileOpen(false)}>
-              Contact Us
-            </Link>
-          </nav>
-        </div>
-      )}
+              <Link href="/contact" className="px-3 py-3 text-sm font-semibold text-primary hover:bg-primary/5 rounded-md" onClick={() => setMobileOpen(false)}>
+                Contact Us
+              </Link>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }

@@ -1,5 +1,9 @@
+"use client"
+
 import Link from "next/link"
 import { Home, Building2, Trees, Building, Warehouse, TentTree } from "lucide-react"
+import { InView } from "@/components/core/in-view"
+import { AnimatedGroup } from "@/components/core/animated-group"
 
 const homeTypes = [
   { icon: Home, label: "Residential", count: "Flats, Bungalows, Villas", href: "/buy?q=Residential" },
@@ -14,29 +18,44 @@ export function ExploreTypes() {
   return (
     <section className="py-14 md:py-20 bg-muted/40">
       <div className="mx-auto max-w-[1440px] px-4">
-        <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-4">Browse by Type</p>
-        <h2 className="text-2xl md:text-4xl font-black text-foreground mb-3">
-          Property Types We Deal In
-        </h2>
-        <p className="text-sm text-muted-foreground mb-10 max-w-lg">
-          Residential, Commercial &amp; Industrial properties across Mumbai Metropolitan Region
-        </p>
+        <InView
+          once
+          viewOptions={{ margin: "0px 0px -40px 0px" }}
+          variants={{
+            hidden: { opacity: 0, y: 16 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+          <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-4">Browse by Type</p>
+          <h2 className="text-2xl md:text-4xl font-black text-foreground mb-3">
+            Property Types We Deal In
+          </h2>
+          <p className="text-sm text-muted-foreground mb-10 max-w-lg">
+            Residential, Commercial &amp; Industrial properties across Mumbai Metropolitan Region
+          </p>
+        </InView>
 
-        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
-          {homeTypes.map((type) => (
-            <Link
-              key={type.label}
-              href={type.href}
-              className="flex flex-col items-center gap-2 md:gap-3 p-4 md:p-6 bg-card rounded-2xl border border-border hover:border-primary hover:shadow-md transition-all group"
-            >
-              <type.icon className="h-7 w-7 md:h-8 md:w-8 text-primary group-hover:scale-110 transition-transform" />
-              <div className="text-center">
-                <p className="text-xs md:text-sm font-semibold text-foreground">{type.label}</p>
-                <p className="hidden sm:block text-xs text-muted-foreground mt-0.5">{type.count}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
+        <InView once viewOptions={{ margin: "0px 0px -60px 0px" }}>
+          <AnimatedGroup
+            preset="blur-slide"
+            className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4"
+          >
+            {homeTypes.map((type) => (
+              <Link
+                key={type.label}
+                href={type.href}
+                className="flex flex-col items-center gap-2 md:gap-3 p-4 md:p-6 bg-card rounded-2xl border border-border hover:border-primary hover:shadow-md hover:-translate-y-1 active:scale-[0.98] transition-all group"
+              >
+                <type.icon className="h-7 w-7 md:h-8 md:w-8 text-primary group-hover:scale-110 transition-transform" />
+                <div className="text-center">
+                  <p className="text-xs md:text-sm font-semibold text-foreground">{type.label}</p>
+                  <p className="hidden sm:block text-xs text-muted-foreground mt-0.5">{type.count}</p>
+                </div>
+              </Link>
+            ))}
+          </AnimatedGroup>
+        </InView>
       </div>
     </section>
   )
