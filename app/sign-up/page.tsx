@@ -43,9 +43,9 @@ export default function SignUpPage() {
         <div className="w-full max-w-md">
           {/* Logo */}
           <div className="flex justify-center mb-8">
-            <Link href="/" aria-label="Shree Balaji Enterprises Home" className="flex items-center gap-2.5 text-xl font-bold tracking-tight">
-              <BrandLogo className="h-8 w-8" />
-              <span>
+            <Link href="/" aria-label="Shree Balaji Enterprises Home" className="flex items-center gap-1.5 text-xl font-bold tracking-tight">
+              <BrandLogo className="h-[46px] w-auto aspect-[820/528] -ml-2" />
+              <span className="text-[20px] font-bold leading-tight">
                 <span className="text-amber-500">Shree </span><span className="text-primary">Balaji</span><span className="text-foreground"> Enterprises</span>
               </span>
             </Link>

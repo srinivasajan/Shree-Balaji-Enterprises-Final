@@ -2,7 +2,7 @@ import React from "react"
 import Image from "next/image"
 
 export function BrandLogo({
-  className = "h-9 w-9",
+  className = "h-[46px] w-auto aspect-[820/528]",
   priority = false,
 }: {
   className?: string
@@ -16,7 +16,7 @@ export function BrandLogo({
         width={820}
         height={528}
         priority={priority}
-        className="h-full w-full object-contain"
+        className="h-full w-auto object-contain"
       />
     </div>
   )
