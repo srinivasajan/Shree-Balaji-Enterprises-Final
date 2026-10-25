@@ -6,6 +6,8 @@ import {
   Sparkles,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { InView } from "@/components/core/in-view"
+import { AnimatedGroup } from "@/components/core/animated-group"
 
 const steps = [
   {
@@ -104,57 +106,77 @@ export default function HomeLoansPage() {
       {/* ── How We Help ──────────────────────────────────── */}
       <section className="py-16 md:py-24">
         <div className="mx-auto max-w-[1440px] px-4">
-          <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-4">Step by Step</p>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
-            <h2 className="text-3xl md:text-5xl font-black text-foreground leading-tight">
-              Here is What We<br />
-              <span className="text-muted-foreground font-light italic">Actually Do.</span>
-            </h2>
-            <p className="text-sm text-muted-foreground max-w-xs leading-relaxed md:text-right">
-              From your first call to the day the money hits your account.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {steps.map((s) => (
-              <div key={s.title} className="group flex flex-col gap-4 p-6 rounded-2xl border border-border bg-card hover:border-primary/40 hover:shadow-md transition-all">
-                <span className="text-5xl font-black text-primary/15 leading-none select-none group-hover:text-primary/25 transition-colors">{s.num}</span>
-                <div className="flex items-center justify-center h-12 w-12 rounded-xl bg-primary/10">
-                  <s.icon className="h-6 w-6 text-primary" />
+          <InView
+            once
+            viewOptions={{ margin: "0px 0px -40px 0px" }}
+            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-4">Step by Step</p>
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+              <h2 className="text-3xl md:text-5xl font-black text-foreground leading-tight">
+                Here is What We<br />
+                <span className="text-muted-foreground font-light italic">Actually Do.</span>
+              </h2>
+              <p className="text-sm text-muted-foreground max-w-xs leading-relaxed md:text-right">
+                From your first call to the day the money hits your account.
+              </p>
+            </div>
+          </InView>
+
+          <InView once viewOptions={{ margin: "0px 0px -50px 0px" }}>
+            <AnimatedGroup preset="slide" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {steps.map((s) => (
+                <div key={s.title} className="group flex flex-col gap-4 p-6 rounded-2xl border border-border bg-card hover:border-primary/40 hover:shadow-md hover:-translate-y-1 transition-all">
+                  <span className="text-5xl font-black text-primary/15 leading-none select-none group-hover:text-primary/25 transition-colors">{s.num}</span>
+                  <div className="flex items-center justify-center h-12 w-12 rounded-xl bg-primary/10">
+                    <s.icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-black text-foreground text-base mb-1.5">{s.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{s.description}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-black text-foreground text-base mb-1.5">{s.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{s.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </AnimatedGroup>
+          </InView>
         </div>
       </section>
 
       {/* ── Banks ────────────────────────────────────────── */}
       <section className="py-16 md:py-24">
         <div className="mx-auto max-w-[1440px] px-4">
-          <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-4">Our Lender Network</p>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-            <h2 className="text-3xl md:text-5xl font-black text-foreground leading-tight">
-              Banks We<br />
-              <span className="text-muted-foreground font-light italic">Work With.</span>
-            </h2>
-            <p className="text-sm text-muted-foreground max-w-xs leading-relaxed md:text-right">
-              Established relationships with all major lenders — so we know who moves fast and who gives the best terms.
-            </p>
-          </div>
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
-            {banks.map((b) => (
-              <div key={b.name} className="flex flex-col items-center gap-3 bg-card border border-border rounded-2xl py-6 px-3 hover:shadow-md transition-all duration-200">
-                <div className="h-14 w-full rounded-xl bg-white border border-border flex items-center justify-center shadow-sm overflow-hidden px-3 py-2">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={b.logo} alt={b.name} className="max-h-full max-w-full object-contain" />
+          <InView
+            once
+            viewOptions={{ margin: "0px 0px -40px 0px" }}
+            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-4">Our Lender Network</p>
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+              <h2 className="text-3xl md:text-5xl font-black text-foreground leading-tight">
+                Banks We<br />
+                <span className="text-muted-foreground font-light italic">Work With.</span>
+              </h2>
+              <p className="text-sm text-muted-foreground max-w-xs leading-relaxed md:text-right">
+                Established relationships with all major lenders — so we know who moves fast and who gives the best terms.
+              </p>
+            </div>
+          </InView>
+
+          <InView once viewOptions={{ margin: "0px 0px -50px 0px" }}>
+            <AnimatedGroup preset="scale" className="grid grid-cols-3 md:grid-cols-6 gap-4">
+              {banks.map((b) => (
+                <div key={b.name} className="flex flex-col items-center gap-3 bg-card border border-border rounded-2xl py-6 px-3 hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+                  <div className="h-14 w-full rounded-xl bg-white border border-border flex items-center justify-center shadow-sm overflow-hidden px-3 py-2">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={b.logo} alt={b.name} className="max-h-full max-w-full object-contain" />
+                  </div>
+                  <p className="text-[10px] text-muted-foreground text-center font-medium leading-tight">{b.name}</p>
                 </div>
-                <p className="text-[10px] text-muted-foreground text-center font-medium leading-tight">{b.name}</p>
-              </div>
-            ))}
-          </div>
+              ))}
+            </AnimatedGroup>
+          </InView>
         </div>
       </section>
 

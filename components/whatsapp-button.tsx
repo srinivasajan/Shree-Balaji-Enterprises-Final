@@ -1,13 +1,25 @@
+"use client"
+
+import { motion } from "motion/react"
+
 export function WhatsAppButton() {
   return (
-    <a
+    <motion.a
       href="https://wa.me/917767805544?text=Hello%20Shree%20Balaji%20Enterprises%2C%20I%20wish%20to%20inquire%20regarding%20property%20advisory."
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 px-4 py-2.5 border border-slate-700/80 group"
+      initial={{ opacity: 0, scale: 0.85, y: 15 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={{ scale: 1.04 }}
+      whileTap={{ scale: 0.96 }}
+      className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-full shadow-md hover:shadow-xl transition-all duration-200 px-4 py-2.5 border border-slate-700/80 group"
       aria-label="Direct Client Advisory on WhatsApp"
     >
-      <span className="h-2 w-2 rounded-full bg-emerald-500 shrink-0" />
+      <span className="relative flex h-2 w-2 shrink-0">
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+      </span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -20,6 +32,6 @@ export function WhatsAppButton() {
       <span className="text-xs font-medium tracking-wide whitespace-nowrap">
         Client Advisory
       </span>
-    </a>
+    </motion.a>
   )
 }

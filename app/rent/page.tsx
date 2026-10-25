@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button"
 import { PropertyCard } from "@/components/property-card"
 import { saveInquiry, nextInquiryId } from "@/lib/admin-store"
 import { useRentProperties } from "@/hooks/use-properties"
+import { motion, useReducedMotion } from "motion/react"
+import { AnimatedGroup } from "@/components/core/animated-group"
 
 const rentalTypes = [
   { icon: Building2, label: "Residential" },
@@ -23,6 +25,7 @@ const serviceAreas = [
 
 function RentPageContent() {
   const searchParams = useSearchParams()
+  const shouldReduceMotion = useReducedMotion()
   const [activeType, setActiveType] = useState("All")
   const [searchQuery, setSearchQuery] = useState(searchParams.get("q") ?? "")
   const [name, setName] = useState("")
@@ -78,7 +81,12 @@ function RentPageContent() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/70 to-foreground/20" />
         </div>
-        <div className="relative z-10 mx-auto max-w-[1440px] px-4 pt-32 pb-16 w-full">
+        <motion.div
+          className="relative z-10 mx-auto max-w-[1440px] px-4 pt-32 pb-16 w-full"
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+        >
           <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
             Rent · Residential · Commercial · Industrial
           </div>
@@ -106,7 +114,7 @@ function RentPageContent() {
           <div className="flex items-center gap-3 overflow-x-auto [scrollbar-width:none]">
             <button
               onClick={() => setActiveType("All")}
-              className={`px-4 py-2 text-sm font-semibold rounded-full border transition-colors shrink-0 ${activeType === "All" ? "border-primary bg-primary text-primary-foreground" : "border-white/30 text-white/80 hover:border-white/60 hover:text-white"}`}
+              className={`px-4 py-2 text-sm font-semibold rounded-full border transition-all active:scale-95 shrink-0 ${activeType === "All" ? "border-primary bg-primary text-primary-foreground" : "border-white/30 text-white/80 hover:border-white/60 hover:text-white"}`}
             >
               All Rentals
             </button>
@@ -114,14 +122,14 @@ function RentPageContent() {
               <button
                 key={type.label}
                 onClick={() => setActiveType(type.label)}
-                className={`flex items-center gap-1.5 px-4 py-2 text-sm font-semibold rounded-full border transition-colors shrink-0 ${activeType === type.label ? "border-primary bg-primary text-primary-foreground" : "border-white/30 text-white/80 hover:border-white/60 hover:text-white"}`}
+                className={`flex items-center gap-1.5 px-4 py-2 text-sm font-semibold rounded-full border transition-all active:scale-95 shrink-0 ${activeType === type.label ? "border-primary bg-primary text-primary-foreground" : "border-white/30 text-white/80 hover:border-white/60 hover:text-white"}`}
               >
                 <type.icon className="h-4 w-4" />
                 {type.label}
               </button>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <div className="mx-auto max-w-[1440px] px-4 py-10 w-full">
@@ -143,11 +151,15 @@ function RentPageContent() {
                   <p className="text-sm mt-1">Try a different category or clear the search</p>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+                <AnimatedGroup
+                  key={activeType + searchQuery}
+                  preset="fade"
+                  className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5"
+                >
                   {filtered.map(p => (
                     <PropertyCard key={p.id} property={p} />
                   ))}
-                </div>
+                </AnimatedGroup>
               )}
             </div>
 

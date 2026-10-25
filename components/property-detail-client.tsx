@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button"
 import { formatAddress } from "@/lib/data"
 import { getPropertyById, getSimilarProperties, saveInquiry, nextInquiryId } from "@/lib/admin-store"
 import { PropertyData } from "@/lib/data"
+import { motion, AnimatePresence } from "motion/react"
 
 export function PropertyDetailClient({
   initialProperty,
@@ -95,36 +96,66 @@ export function PropertyDetailClient({
 
         {/* Image Gallery */}
         <div className="relative rounded-xl overflow-hidden mb-6">
-          <div className="relative aspect-[16/9] md:aspect-[2.4/1]">
-            <Image
-              src={images[currentImage]}
-              alt={`${property.address} - Photo ${currentImage + 1}`}
-              fill
-              className="object-cover"
-              priority
-            />
+          <div className="relative aspect-[16/9] md:aspect-[2.4/1] bg-muted overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentImage}
+                initial={{ opacity: 0.7 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0.7 }}
+                transition={{ duration: 0.22, ease: "easeOut" }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={images[currentImage]}
+                  alt={`${property.address} - Photo ${currentImage + 1}`}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </motion.div>
+            </AnimatePresence>
             {images.length > 1 && (
               <>
-                <button onClick={prevImage} className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-card/80 hover:bg-card rounded-full transition-colors" aria-label="Previous image">
+                <motion.button
+                  whileTap={{ scale: 0.9 }}
+                  onClick={prevImage}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-card/80 hover:bg-card rounded-full transition-colors z-10"
+                  aria-label="Previous image"
+                >
                   <ChevronLeft className="h-5 w-5 text-foreground" />
-                </button>
-                <button onClick={nextImage} className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-card/80 hover:bg-card rounded-full transition-colors" aria-label="Next image">
+                </motion.button>
+                <motion.button
+                  whileTap={{ scale: 0.9 }}
+                  onClick={nextImage}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-card/80 hover:bg-card rounded-full transition-colors z-10"
+                  aria-label="Next image"
+                >
                   <ChevronRight className="h-5 w-5 text-foreground" />
-                </button>
+                </motion.button>
               </>
             )}
-            <div className="absolute bottom-4 right-4 bg-foreground/70 text-card px-3 py-1 rounded-full text-xs font-semibold">
+            <div className="absolute bottom-4 right-4 bg-foreground/70 text-card px-3 py-1 rounded-full text-xs font-semibold z-10">
               {currentImage + 1} / {images.length}
             </div>
-            <div className="absolute top-4 right-4 flex items-center gap-2">
-              <button onClick={() => setSaved(!saved)} aria-label={saved ? "Remove from saved" : "Save property"} className="flex items-center gap-1.5 px-3 py-2 bg-card/90 hover:bg-card rounded-full text-sm font-semibold transition-colors">
-                <Heart className={`h-4 w-4 ${saved ? "fill-destructive text-destructive" : "text-foreground"}`} />
+            <div className="absolute top-4 right-4 flex items-center gap-2 z-10">
+              <motion.button
+                whileTap={{ scale: 0.88 }}
+                onClick={() => setSaved(!saved)}
+                aria-label={saved ? "Remove from saved" : "Save property"}
+                className="flex items-center gap-1.5 px-3 py-2 bg-card/90 hover:bg-card rounded-full text-sm font-semibold transition-colors"
+              >
+                <Heart className={`h-4 w-4 transition-colors ${saved ? "fill-destructive text-destructive" : "text-foreground"}`} />
                 <span className="hidden md:inline text-foreground">Save</span>
-              </button>
-              <button aria-label="Share property" className="flex items-center gap-1.5 px-3 py-2 bg-card/90 hover:bg-card rounded-full text-sm font-semibold transition-colors">
+              </motion.button>
+              <motion.button
+                whileTap={{ scale: 0.88 }}
+                aria-label="Share property"
+                className="flex items-center gap-1.5 px-3 py-2 bg-card/90 hover:bg-card rounded-full text-sm font-semibold transition-colors"
+              >
                 <Share2 className="h-4 w-4 text-foreground" />
                 <span className="hidden md:inline text-foreground">Share</span>
-              </button>
+              </motion.button>
             </div>
           </div>
 
@@ -135,7 +166,7 @@ export function PropertyDetailClient({
                   key={idx}
                   aria-label={`View image ${idx + 1}`}
                   onClick={() => setCurrentImage(idx)}
-                  className={`relative w-20 h-14 rounded-md overflow-hidden border-2 transition-colors ${idx === currentImage ? "border-primary" : "border-transparent hover:border-border"}`}
+                  className={`relative w-20 h-14 rounded-md overflow-hidden border-2 hover:scale-[1.03] active:scale-95 transition-all ${idx === currentImage ? "border-primary shadow-sm" : "border-transparent opacity-80 hover:opacity-100 hover:border-border"}`}
                 >
                   <Image src={img} alt={`Thumbnail ${idx + 1}`} fill className="object-cover" sizes="80px" />
                 </button>

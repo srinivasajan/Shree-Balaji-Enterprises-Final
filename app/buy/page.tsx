@@ -8,12 +8,15 @@ import { PropertyCard } from "@/components/property-card"
 import { SearchFilters } from "@/components/search-filters"
 import { MapView } from "@/components/map-view"
 import { useBuyProperties } from "@/hooks/use-properties"
+import { motion, useReducedMotion } from "motion/react"
+import { AnimatedGroup } from "@/components/core/animated-group"
 
 function BuyPageContent() {
   const searchParams = useSearchParams()
   const [searchQuery, setSearchQuery] = useState(searchParams.get("q") ?? "")
   const [showMap, setShowMap] = useState(true)
   const buyProperties = useBuyProperties()
+  const shouldReduceMotion = useReducedMotion()
 
   const filtered = searchQuery.trim()
     ? buyProperties.filter((p) => {
@@ -36,7 +39,12 @@ function BuyPageContent() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/70 to-foreground/20" />
         </div>
-        <div className="relative z-10 mx-auto max-w-[1440px] px-4 pt-32 pb-16 w-full">
+        <motion.div
+          className="relative z-10 mx-auto max-w-[1440px] px-4 pt-32 pb-16 w-full"
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+        >
           <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
             Buy · RERA A51700023633 · 500+ Listings
           </div>
@@ -59,27 +67,27 @@ function BuyPageContent() {
                 className="w-full px-3 py-3 text-sm bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none"
               />
             </div>
-            <button className="hidden md:flex items-center gap-1.5 px-6 py-3 text-sm font-semibold text-primary-foreground bg-primary rounded-lg hover:bg-primary/90 transition-colors shrink-0 shadow-lg shadow-primary/30">
+            <button className="hidden md:flex items-center gap-1.5 px-6 py-3 text-sm font-semibold text-primary-foreground bg-primary rounded-lg hover:bg-primary/90 active:scale-95 transition-all shrink-0 shadow-lg shadow-primary/30">
               Search
             </button>
             <div className="hidden md:flex items-center gap-0 border border-border bg-card rounded-lg overflow-hidden shrink-0 shadow-lg">
               <button
                 onClick={() => setShowMap(true)}
-                className={`p-2.5 transition-colors ${showMap ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted"}`}
+                className={`p-2.5 transition-colors active:scale-95 ${showMap ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted"}`}
                 aria-label="Map view"
               >
                 <Map className="h-4 w-4" />
               </button>
               <button
                 onClick={() => setShowMap(false)}
-                className={`p-2.5 transition-colors ${!showMap ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted"}`}
+                className={`p-2.5 transition-colors active:scale-95 ${!showMap ? "bg-primary text-primary-foreground" : "text-foreground hover:bg-muted"}`}
                 aria-label="List view"
               >
                 <List className="h-4 w-4" />
               </button>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <SearchFilters />
@@ -104,19 +112,23 @@ function BuyPageContent() {
       {/* Main content */}
       <div className="flex-1 flex">
         {/* Property list */}
-        <div className={`${showMap ? "w-full lg:w-1/2 xl:w-[55%]" : "w-full"} overflow-y-auto bg-background`}>
-          <div className={`p-4 grid gap-4 ${showMap ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-[1440px] mx-auto"}`}>
-            {filtered.length > 0 ? (
-              filtered.map((property) => (
+        <div className={`${showMap ? "w-full lg:w-1/2 xl:w-[55%]" : "w-full"} overflow-y-auto bg-background p-4`}>
+          {filtered.length > 0 ? (
+            <AnimatedGroup
+              key={searchQuery}
+              preset="fade"
+              className={`grid gap-4 ${showMap ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-[1440px] mx-auto"}`}
+            >
+              {filtered.map((property) => (
                 <PropertyCard key={property.id} property={property} />
-              ))
-            ) : (
-              <div className="col-span-full py-16 text-center">
-                <p className="text-base font-semibold text-foreground mb-2">No properties found</p>
-                <p className="text-sm text-muted-foreground mb-4">Try a different search term or <button onClick={() => setSearchQuery("")} className="text-primary hover:underline">clear your search</button></p>
-              </div>
-            )}
-          </div>
+              ))}
+            </AnimatedGroup>
+          ) : (
+            <div className="py-16 text-center">
+              <p className="text-base font-semibold text-foreground mb-2">No properties found</p>
+              <p className="text-sm text-muted-foreground mb-4">Try a different search term or <button onClick={() => setSearchQuery("")} className="text-primary hover:underline">clear your search</button></p>
+            </div>
+          )}
         </div>
 
         {showMap && (

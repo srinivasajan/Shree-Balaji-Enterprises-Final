@@ -42,13 +42,20 @@ export function HeroSection() {
   return (
     <section className="relative overflow-hidden">
       <div className="relative h-[480px] md:h-[520px] lg:h-[580px] xl:h-[640px] 2xl:h-[720px] overflow-hidden">
-        <Image
-          src="/images/hero-bg.jpg"
-          alt="Ambernath residential neighbourhood — find your perfect property"
-          fill
-          className="object-cover"
-          priority
-        />
+        <motion.div
+          className="absolute inset-0"
+          initial={shouldReduceMotion ? { scale: 1, opacity: 1 } : { scale: 1.05, opacity: 0.8 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <Image
+            src="/images/hero-bg.jpg"
+            alt="Ambernath residential neighbourhood — find your perfect property"
+            fill
+            className="object-cover"
+            priority
+          />
+        </motion.div>
         <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/65 to-foreground/15" />
 
         <div className="relative z-10 flex flex-col items-center justify-end h-full px-4 pb-12 md:pb-16">
@@ -67,10 +74,28 @@ export function HeroSection() {
                 RERA A51700023633 · 15+ Years · Ambernath
               </div>
 
-              {/* Headline */}
+              {/* Headline with coordinated reveal */}
               <h1 className="text-4xl md:text-[56px] font-black text-white leading-[1.0] tracking-tight mb-4">
-                Find Your Perfect<br />
-                <span className="text-primary">Property With Us.</span>
+                <span className="block overflow-hidden">
+                  <motion.span
+                    className="block"
+                    initial={shouldReduceMotion ? { y: 0, opacity: 1 } : { y: "100%", opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.65, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    Find Your Perfect
+                  </motion.span>
+                </span>
+                <span className="block overflow-hidden">
+                  <motion.span
+                    className="block text-primary"
+                    initial={shouldReduceMotion ? { y: 0, opacity: 1 } : { y: "100%", opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.65, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    Property With Us.
+                  </motion.span>
+                </span>
               </h1>
 
               <p className="text-base text-white/70 max-w-lg mx-auto leading-relaxed">

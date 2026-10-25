@@ -6,6 +6,8 @@ import {
   Star, TrendingUp, Users, Clock, ArrowRight, Handshake
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { InView } from "@/components/core/in-view"
+import { AnimatedGroup } from "@/components/core/animated-group"
 
 const stats = [
   { value: "15+", label: "Years Active", sub: "Since 2010", icon: Clock },
@@ -56,7 +58,12 @@ export default function AboutPage() {
         </div>
 
         <div className="relative z-10 mx-auto max-w-[1440px] px-4 pt-32 pb-16 w-full">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+          <InView
+            once
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="flex flex-col md:flex-row md:items-end md:justify-between gap-8"
+          >
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
                 <Shield className="h-3.5 w-3.5" />
@@ -83,23 +90,25 @@ export default function AboutPage() {
                 </Button>
               </Link>
             </div>
-          </div>
+          </InView>
         </div>
       </section>
 
       {/* ── STATS ────────────────────────────────────────────── */}
       <section className="py-10 border-b border-border bg-card">
         <div className="mx-auto max-w-[1440px] px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden">
-            {stats.map((s) => (
-              <div key={s.label} className="flex flex-col items-center justify-center py-8 px-4 gap-0.5 text-center bg-card">
-                <s.icon className="h-5 w-5 text-primary mb-2" />
-                <p className="text-3xl md:text-4xl font-black text-foreground">{s.value}</p>
-                <p className="text-sm font-semibold text-foreground">{s.label}</p>
-                <p className="text-xs text-muted-foreground">{s.sub}</p>
-              </div>
-            ))}
-          </div>
+          <InView once viewOptions={{ margin: "0px 0px -40px 0px" }}>
+            <AnimatedGroup preset="scale" className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden">
+              {stats.map((s) => (
+                <div key={s.label} className="flex flex-col items-center justify-center py-8 px-4 gap-0.5 text-center bg-card">
+                  <s.icon className="h-5 w-5 text-primary mb-2" />
+                  <p className="text-3xl md:text-4xl font-black text-foreground">{s.value}</p>
+                  <p className="text-sm font-semibold text-foreground">{s.label}</p>
+                  <p className="text-xs text-muted-foreground">{s.sub}</p>
+                </div>
+              ))}
+            </AnimatedGroup>
+          </InView>
         </div>
       </section>
 
@@ -216,44 +225,60 @@ export default function AboutPage() {
       {/* ── MILESTONES ───────────────────────────────────────── */}
       <section className="py-20 md:py-28 bg-muted/30 border-y border-border">
         <div className="mx-auto max-w-[1440px] px-4">
-          <div className="text-center mb-12">
+          <InView
+            once
+            viewOptions={{ margin: "0px 0px -40px 0px" }}
+            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="text-center mb-12"
+          >
             <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-3">Our Journey</p>
             <h2 className="text-3xl md:text-4xl font-black text-foreground">
               From One Office to MMR&apos;s Most Trusted
             </h2>
-          </div>
+          </InView>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {milestones.map((m) => (
-              <div key={m.year} className="bg-card border border-border rounded-2xl p-6">
-                <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-primary mb-3">{m.year}</p>
-                <h3 className="text-base font-bold text-foreground mb-2">{m.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{m.desc}</p>
-              </div>
-            ))}
-          </div>
+          <InView once viewOptions={{ margin: "0px 0px -50px 0px" }}>
+            <AnimatedGroup preset="slide" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {milestones.map((m) => (
+                <div key={m.year} className="bg-card border border-border rounded-2xl p-6 hover:shadow-md hover:-translate-y-1 transition-all">
+                  <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-primary mb-3">{m.year}</p>
+                  <h3 className="text-base font-bold text-foreground mb-2">{m.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{m.desc}</p>
+                </div>
+              ))}
+            </AnimatedGroup>
+          </InView>
         </div>
       </section>
 
       {/* ── VALUES ───────────────────────────────────────────── */}
       <section className="py-20 md:py-28">
         <div className="mx-auto max-w-[1440px] px-4">
-          <div className="text-center mb-12">
+          <InView
+            once
+            viewOptions={{ margin: "0px 0px -40px 0px" }}
+            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="text-center mb-12"
+          >
             <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-3">What We Stand For</p>
             <h2 className="text-3xl md:text-4xl font-black text-foreground">Our Core Values</h2>
-          </div>
+          </InView>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {values.map((v) => (
-              <div key={v.title} className="group bg-card border border-border rounded-2xl p-6 hover:border-primary/40 hover:shadow-xl transition-all duration-200 cursor-default">
-                <div className="flex items-center justify-center h-12 w-12 rounded-2xl bg-primary/10 group-hover:bg-primary transition-all mb-5">
-                  <v.icon className="h-5 w-5 text-primary group-hover:text-white transition-colors" />
+          <InView once viewOptions={{ margin: "0px 0px -50px 0px" }}>
+            <AnimatedGroup preset="slide" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {values.map((v) => (
+                <div key={v.title} className="group bg-card border border-border rounded-2xl p-6 hover:border-primary/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 cursor-default">
+                  <div className="flex items-center justify-center h-12 w-12 rounded-2xl bg-primary/10 group-hover:bg-primary transition-all mb-5">
+                    <v.icon className="h-5 w-5 text-primary group-hover:text-white transition-colors" />
+                  </div>
+                  <h3 className="text-base font-bold text-foreground mb-2">{v.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{v.description}</p>
                 </div>
-                <h3 className="text-base font-bold text-foreground mb-2">{v.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{v.description}</p>
-              </div>
-            ))}
-          </div>
+              ))}
+            </AnimatedGroup>
+          </InView>
         </div>
       </section>
 
