@@ -22,6 +22,7 @@ import {
 } from "lucide-react"
 import { logout } from "@/lib/admin-auth"
 import { cn } from "@/lib/utils"
+import { BrandLogo } from "@/components/brand-logo"
 
 const navItems = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true, group: null },
@@ -58,9 +59,7 @@ export function AdminSidebar() {
     <div className="flex h-full flex-col bg-[#0f172a] text-white">
       {/* Logo */}
       <div className="flex items-center gap-3 px-6 py-5 border-b border-white/10">
-        <div className="h-9 w-9 rounded-lg bg-primary flex items-center justify-center flex-shrink-0">
-          <Building2 className="h-5 w-5 text-white" />
-        </div>
+        <BrandLogo className="h-9 w-9" />
         <div className="min-w-0">
           <p className="text-sm font-bold leading-tight truncate">Shree Balaji</p>
           <p className="text-[11px] text-slate-400 leading-tight">Admin Panel</p>

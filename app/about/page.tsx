@@ -166,10 +166,10 @@ export default function AboutPage() {
               <div className="w-full max-w-[360px] rounded-3xl overflow-hidden border border-border bg-card shadow-2xl">
                 <div className="relative h-52 w-full bg-gradient-to-br from-primary/15 via-primary/5 to-transparent flex items-center justify-center">
                   <Image
-                    src="https://raw.githubusercontent.com/srinivasajan/shreebalajienterprises/main/images/logo.png"
+                    src="/images/logo.png"
                     alt="Shree Balaji Enterprises"
-                    width={130}
-                    height={130}
+                    width={180}
+                    height={116}
                     className="object-contain drop-shadow-md"
                   />
                   <div className="absolute top-4 right-4 flex items-center gap-1 bg-card/90 border border-border rounded-full px-2.5 py-1 text-xs font-bold text-foreground">

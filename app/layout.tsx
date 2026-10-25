@@ -16,7 +16,13 @@ export const metadata: Metadata = {
   },
   description:
     "RERA-registered real estate agency in Ambernath (Reg No: A51700023633). Buy, sell or rent residential, commercial and industrial properties across Ambernath, Badlapur, Thane, Mumbai and 13+ cities.",
-  icons: { icon: "/favicon.ico" },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-dark-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",

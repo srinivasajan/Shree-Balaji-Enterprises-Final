@@ -76,7 +76,7 @@ export const agents: AgentData[] = [
   {
     id: 1,
     name: "Anju Jangiti",
-    image: "https://raw.githubusercontent.com/srinivasajan/shreebalajienterprises/main/images/logo.png",
+    image: "/images/logo.png",
     phone: "7767805544",
     email: "anjujangiti@gmail.com",
     company: "Shree Balaji Enterprises",

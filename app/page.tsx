@@ -25,7 +25,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
     "name": "Shree Balaji Enterprises",
-    "image": "https://www.shreebalajienterprises.live/images/placeholder-logo.png",
+    "image": "https://www.shreebalajienterprises.live/images/logo.png",
     "@id": "https://www.shreebalajienterprises.live",
     "url": "https://www.shreebalajienterprises.live",
     "telephone": "+917767805544",

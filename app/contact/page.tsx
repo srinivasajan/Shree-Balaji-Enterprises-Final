@@ -3,18 +3,19 @@
 import React, { useState, useEffect, Suspense } from "react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
+import { Phone, Mail, MapPin, MessageSquare, Check, Copy, ExternalLink, Send } from "lucide-react"
 import { saveInquiry, nextInquiryId } from "@/lib/admin-store"
 
-const engagementCategories = [
-  { id: "residential", label: "Residential Acquisition" },
-  { id: "commercial", label: "Commercial / Office Suite" },
-  { id: "disposition", label: "Property Disposition (Sell)" },
-  { id: "tenancy", label: "Tenancy & Leasing" },
-  { id: "mortgage", label: "Mortgage Facilitation" },
-  { id: "inspection", label: "Private Site Inspection" },
+const enquiryCategories = [
+  { id: "residential", label: "Buy Residential" },
+  { id: "commercial", label: "Commercial" },
+  { id: "disposition", label: "Sell Property" },
+  { id: "tenancy", label: "Rent / Lease" },
+  { id: "mortgage", label: "Home Loan" },
+  { id: "inspection", label: "Site Visit" },
 ]
 
-function ContactFormDossier() {
+function ContactForm() {
   const searchParams = useSearchParams()
   const initialProp = searchParams.get("property") || searchParams.get("ref") || ""
   const initialType = searchParams.get("type") || ""
@@ -26,11 +27,11 @@ function ContactFormDossier() {
   const [specifications, setSpecifications] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const [copiedCoordinates, setCopiedCoordinates] = useState(false)
+  const [copiedAddress, setCopiedAddress] = useState(false)
 
   useEffect(() => {
     if (initialType) {
-      const match = engagementCategories.find(
+      const match = enquiryCategories.find(
         (c) =>
           c.label.toLowerCase().includes(initialType.toLowerCase()) ||
           c.id === initialType.toLowerCase()
@@ -38,16 +39,16 @@ function ContactFormDossier() {
       if (match) setCategory(match.id)
     }
     if (initialProp) {
-      setSpecifications(`Client reference regarding property portfolio record: ${initialProp}`)
+      setSpecifications(`Enquiry regarding property: ${initialProp}`)
     }
   }, [initialProp, initialType])
 
-  const handleCopyChambers = () => {
+  const handleCopyAddress = () => {
     navigator.clipboard.writeText(
-      "Shree Balaji Enterprises, Shop No. 6, Vallabh Bldg, Avdhoot Residency, Ambernath-West, Maharashtra 421505"
+      "Shop No. 6, Vallabh Building, Avdhoot Residency, Opp. Shiv Mandir Road, Ambernath-West, District Thane, Maharashtra – 421505"
     )
-    setCopiedCoordinates(true)
-    setTimeout(() => setCopiedCoordinates(false), 2500)
+    setCopiedAddress(true)
+    setTimeout(() => setCopiedAddress(false), 2500)
   }
 
   const handleSubmit = (e: React.FormEvent, viaWhatsApp = false) => {
@@ -56,7 +57,7 @@ function ContactFormDossier() {
 
     setIsSubmitting(true)
     const selectedCategory =
-      engagementCategories.find((c) => c.id === category)?.label || "General Advisory"
+      enquiryCategories.find((c) => c.id === category)?.label || "General Enquiry"
 
     saveInquiry({
       id: nextInquiryId(),
@@ -64,14 +65,14 @@ function ContactFormDossier() {
       phone: phone.trim(),
       email: email.trim(),
       interest: selectedCategory,
-      message: specifications.trim() || "Private consultation requested.",
+      message: specifications.trim() || "General enquiry.",
       status: "new",
       date: new Date().toISOString(),
     })
 
     if (viaWhatsApp) {
       const text = encodeURIComponent(
-        `[Private Consultation Request]\n\nClient Name: ${name.trim()}\nContact: ${phone.trim()}${email ? `\nEmail: ${email.trim()}` : ""}\nEngagement Scope: ${selectedCategory}\nSpecifications: ${specifications.trim() || "Requesting advisory session."}\n\nTo: Shree Balaji Enterprises (MahaRERA: A51700023633)`
+        `Hi Shree Balaji Enterprises,\n\nName: ${name.trim()}\nPhone: ${phone.trim()}${email ? `\nEmail: ${email.trim()}` : ""}\nInterest: ${selectedCategory}\nMessage: ${specifications.trim() || "Interested in your properties."}`
       )
       window.open(`https://wa.me/917767805544?text=${text}`, "_blank")
     }
@@ -79,7 +80,7 @@ function ContactFormDossier() {
     setTimeout(() => {
       setIsSubmitting(false)
       setIsSubmitted(true)
-    }, 350)
+    }, 300)
   }
 
   const handleReset = () => {
@@ -92,111 +93,192 @@ function ContactFormDossier() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* ── Institutional Header ────────────────────────────────────── */}
-      <header className="border-b border-border/80 bg-card/60">
-        <div className="mx-auto max-w-[1140px] px-6 sm:px-8 pt-12 pb-10">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-[11px] font-mono uppercase tracking-[0.2em] text-muted-foreground pb-4 border-b border-border/60">
-            <span>Shree Balaji Enterprises &bull; Client Advisory Chambers</span>
-            <span className="text-foreground font-semibold">MahaRERA Reg. Certificate: A51700023633</span>
-          </div>
+      {/* ── Direct Header ────────────────────────────────────────── */}
+      <section className="border-b border-border bg-card/50 py-10 sm:py-14">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground">
+            Contact Us
+          </h1>
+          <p className="mt-2 text-base text-muted-foreground max-w-2xl">
+            Have questions or need assistance? Reach out to our team in Ambernath or send us an enquiry below.
+          </p>
+        </div>
+      </section>
 
-          <div className="mt-8 max-w-3xl">
-            <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-semibold tracking-tight text-foreground leading-[1.15]">
-              Institutional Property Advisory &amp; Client Representation
-            </h1>
-            <p className="mt-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
-              Direct consultation for acquisitions, property disposition, commercial leasing, and mortgage facilitation across Ambernath, Badlapur, and the Mumbai Metropolitan Region.
+      {/* ── Main Section ─────────────────────────────────────────── */}
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          
+          {/* Left: Contact Information & Map (5 cols) */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="rounded-2xl border border-border bg-card p-6 shadow-xs space-y-5">
+              <h2 className="text-xl font-bold text-foreground">Get in Touch</h2>
+
+              {/* Phone Numbers */}
+              <div className="flex items-start gap-3.5">
+                <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 text-primary">
+                  <Phone className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Phone</p>
+                  <div className="mt-0.5 space-y-0.5">
+                    <div>
+                      <a href="tel:+917767805544" className="text-sm font-semibold text-foreground hover:text-primary transition-colors">
+                        +91 7767805544
+                      </a>
+                    </div>
+                    <div>
+                      <a href="tel:+919168588575" className="text-sm font-semibold text-foreground hover:text-primary transition-colors">
+                        +91 9168588575
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Email */}
+              <div className="flex items-start gap-3.5">
+                <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 text-primary">
+                  <Mail className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Email</p>
+                  <a
+                    href="mailto:shreebalajienterprisesamb@gmail.com"
+                    className="text-sm font-semibold text-foreground hover:text-primary transition-colors break-all"
+                  >
+                    shreebalajienterprisesamb@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              {/* Address */}
+              <div className="flex items-start gap-3.5">
+                <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 text-primary">
+                  <MapPin className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Office Address</p>
+                  <p className="text-sm text-foreground leading-relaxed mt-0.5">
+                    Shop No. 6, Vallabh Building, Avdhoot Residency, Opp. Shiv Mandir Road, Ambernath-West, District Thane, Maharashtra &ndash; 421505
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2 text-xs">
+                    <button
+                      type="button"
+                      onClick={handleCopyAddress}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-background hover:bg-muted font-medium text-foreground transition-colors cursor-pointer"
+                    >
+                      {copiedAddress ? (
+                        <>
+                          <Check className="h-3.5 w-3.5 text-emerald-600" />
+                          <span>Copied</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="h-3.5 w-3.5 text-muted-foreground" />
+                          <span>Copy Address</span>
+                        </>
+                      )}
+                    </button>
+                    <a
+                      href="https://maps.app.goo.gl/xESVmiEK2GtM3XBDA"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-background hover:bg-muted font-medium text-foreground transition-colors"
+                    >
+                      <span>Directions</span>
+                      <ExternalLink className="h-3.5 w-3.5 text-muted-foreground" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* WhatsApp Quick Action */}
+              <div className="pt-2 border-t border-border">
+                <a
+                  href="https://wa.me/917767805544?text=Hi%20Shree%20Balaji%20Enterprises%2C%20I%20would%20like%20to%20enquire%20about%20properties."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm transition-colors shadow-xs"
+                >
+                  <MessageSquare className="h-4 w-4" />
+                  <span>Chat on WhatsApp</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Map Preview */}
+            <div className="rounded-2xl border border-border overflow-hidden h-56 bg-muted relative shadow-xs">
+              <iframe
+                src="https://maps.google.com/maps?q=19.1895593,73.2230161&z=17&output=embed"
+                width="100%"
+                height="100%"
+                className="border-0 w-full h-full"
+                allowFullScreen
+                loading="lazy"
+                title="Shree Balaji Enterprises Location Map"
+              />
+            </div>
+
+            {/* Discreet MahaRERA compliance note */}
+            <p className="text-xs text-muted-foreground text-center sm:text-left px-1">
+              MahaRERA Registration No: <span className="font-semibold text-foreground">A51700023633</span>
             </p>
           </div>
 
-          {/* Institutional Contact Pillars (Clean Rule Grid, No Bubbly Cards) */}
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-border/80 border-t border-b border-border/80 py-4">
-            <div className="py-3 md:py-0 md:pr-6">
-              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground block">Registered Chambers</span>
-              <p className="text-xs text-foreground font-medium mt-1 leading-relaxed">
-                Shop No. 6, Vallabh Bldg, Avdhoot Residency, Ambernath-West 421505
-              </p>
-            </div>
-            <div className="py-3 md:py-0 md:px-6">
-              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground block">Principal Telephone Lines</span>
-              <p className="text-xs text-foreground font-medium mt-1">
-                <a href="tel:7767805544" className="hover:underline font-mono">+91 7767805544</a> &bull; <a href="tel:9168588575" className="hover:underline font-mono">+91 9168588575</a>
-              </p>
-            </div>
-            <div className="py-3 md:py-0 md:pl-6">
-              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground block">Advisory Desk</span>
-              <p className="text-xs text-foreground font-medium mt-1">
-                <a href="mailto:shreebalajienterprisesamb@gmail.com" className="hover:underline font-mono">shreebalajienterprisesamb@gmail.com</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* ── Main Section: Form & Chambers Dossier ──────────────────── */}
-      <section className="mx-auto max-w-[1140px] px-6 sm:px-8 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-
-          {/* Left Column: Formal Advisory Dossier Form (7 cols) */}
+          {/* Right: Enquiry Form (7 cols) */}
           <div className="lg:col-span-7">
-            <div className="border border-border/80 rounded-lg p-6 sm:p-8 bg-card/40">
-              <div className="pb-6 border-b border-border/60">
-                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground block">
-                  Confidential Intake
-                </span>
-                <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-foreground mt-1">
-                  Advisory Request Dossier
-                </h2>
-                <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">
-                  Submit engagement specifications below. A licensed senior advisor will review your criteria and present verified title options.
-                </p>
-              </div>
+            <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-xs">
+              <h2 className="text-xl font-bold text-foreground">Send an Enquiry</h2>
+              <p className="text-sm text-muted-foreground mt-1 mb-6">
+                Fill out the form and our team will get back to you promptly.
+              </p>
 
               {isSubmitted ? (
                 <div className="py-12 text-center space-y-4">
-                  <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-emerald-600 block">
-                    Transmission Received
-                  </span>
-                  <h3 className="text-2xl font-semibold text-foreground">
-                    Consultation Scheduled, {name}
+                  <div className="h-12 w-12 rounded-full bg-emerald-500/10 text-emerald-600 flex items-center justify-center mx-auto">
+                    <Check className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground">
+                    Thank You, {name}!
                   </h3>
-                  <p className="text-xs text-muted-foreground max-w-md mx-auto leading-relaxed">
-                    Your advisory file has been logged into our chambers registry. An authorized partner will contact you directly on <strong className="font-mono text-foreground">{phone}</strong>.
+                  <p className="text-sm text-muted-foreground max-w-md mx-auto">
+                    Your enquiry has been received. Our team will contact you shortly on{" "}
+                    <strong className="text-foreground">{phone}</strong>.
                   </p>
-                  <div className="pt-4 flex items-center justify-center gap-4 text-xs">
+                  <div className="pt-4 flex flex-wrap items-center justify-center gap-3 text-sm">
                     <button
                       type="button"
                       onClick={handleReset}
-                      className="px-4 py-2 border border-border/80 rounded hover:bg-muted font-medium transition-colors"
+                      className="px-4 py-2 border border-border rounded-xl hover:bg-muted font-medium text-foreground transition-colors cursor-pointer"
                     >
-                      Submit Another Filing
+                      Send Another Enquiry
                     </button>
                     <Link
                       href="/buy"
-                      className="px-4 py-2 bg-slate-900 text-white rounded hover:bg-slate-800 font-medium transition-colors"
+                      className="px-4 py-2 bg-primary text-primary-foreground rounded-xl hover:bg-primary/90 font-medium transition-colors"
                     >
-                      Examine Portfolio Listings &rarr;
+                      Browse Properties &rarr;
                     </Link>
                   </div>
                 </div>
               ) : (
-                <form onSubmit={(e) => handleSubmit(e, false)} className="space-y-6 pt-6">
-
-                  {/* Section I: Engagement Classification */}
+                <form onSubmit={(e) => handleSubmit(e, false)} className="space-y-5">
+                  {/* Category Pills */}
                   <div>
-                    <span className="text-[11px] font-mono text-muted-foreground uppercase tracking-widest block mb-2.5">
-                      I. Engagement Classification
-                    </span>
+                    <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
+                      I am interested in
+                    </label>
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                      {engagementCategories.map((c) => (
+                      {enquiryCategories.map((c) => (
                         <button
                           key={c.id}
                           type="button"
                           onClick={() => setCategory(c.id)}
-                          className={`p-2.5 rounded border text-left text-xs transition-all ${
+                          className={`px-3 py-2 rounded-xl border text-xs font-semibold text-center transition-all cursor-pointer ${
                             category === c.id
-                              ? "border-slate-900 bg-slate-900 text-white font-medium"
-                              : "border-border/80 bg-background text-muted-foreground hover:border-slate-400 hover:text-foreground"
+                              ? "border-primary bg-primary text-primary-foreground shadow-xs"
+                              : "border-border bg-background text-muted-foreground hover:text-foreground hover:border-foreground/30"
                           }`}
                         >
                           {c.label}
@@ -205,181 +287,97 @@ function ContactFormDossier() {
                     </div>
                   </div>
 
-                  {/* Section II: Client Identification */}
-                  <div>
-                    <span className="text-[11px] font-mono text-muted-foreground uppercase tracking-widest block mb-2.5">
-                      II. Client Identification
-                    </span>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div>
-                        <label className="text-xs font-medium text-foreground block mb-1">
-                          Full Legal Name <span className="text-destructive">*</span>
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          value={name}
-                          onChange={(e) => setName(e.target.value)}
-                          placeholder="Individual or Corporate Entity"
-                          className="w-full px-3 py-2 border border-border/80 rounded bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="text-xs font-medium text-foreground block mb-1">
-                          Direct Contact Number <span className="text-destructive">*</span>
-                        </label>
-                        <div className="relative flex items-center">
-                          <span className="absolute left-3 text-xs font-mono text-muted-foreground pointer-events-none">
-                            +91
-                          </span>
-                          <input
-                            type="tel"
-                            required
-                            value={phone}
-                            onChange={(e) => setPhone(e.target.value)}
-                            placeholder="Primary Mobile"
-                            className="w-full pl-11 pr-3 py-2 border border-border/80 rounded bg-background text-sm text-foreground font-mono placeholder:text-muted-foreground/50 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="mt-4">
-                      <label className="text-xs font-medium text-foreground block mb-1">
-                        Corporate / Personal Email <span className="text-muted-foreground font-normal">(Optional)</span>
+                  {/* Name and Phone */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="contact-name" className="text-xs font-semibold text-foreground block mb-1.5">
+                        Your Name <span className="text-destructive">*</span>
                       </label>
                       <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="client@organization.com"
-                        className="w-full px-3 py-2 border border-border/80 rounded bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all"
+                        id="contact-name"
+                        type="text"
+                        required
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="John Doe"
+                        className="w-full px-3.5 py-2.5 border border-border rounded-xl bg-background text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
                       />
+                    </div>
+
+                    <div>
+                      <label htmlFor="contact-phone" className="text-xs font-semibold text-foreground block mb-1.5">
+                        Phone Number <span className="text-destructive">*</span>
+                      </label>
+                      <div className="relative flex items-center">
+                        <span className="absolute left-3.5 text-sm font-medium text-muted-foreground pointer-events-none">
+                          +91
+                        </span>
+                        <input
+                          id="contact-phone"
+                          type="tel"
+                          required
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                          placeholder="9876543210"
+                          className="w-full pl-12 pr-3.5 py-2.5 border border-border rounded-xl bg-background text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-mono"
+                        />
+                      </div>
                     </div>
                   </div>
 
-                  {/* Section III: Engagement Specifications */}
+                  {/* Email */}
                   <div>
-                    <span className="text-[11px] font-mono text-muted-foreground uppercase tracking-widest block mb-2.5">
-                      III. Engagement Specifications
-                    </span>
-                    <textarea
-                      rows={4}
-                      value={specifications}
-                      onChange={(e) => setSpecifications(e.target.value)}
-                      placeholder="Specify parameters: Target micro-market, capital budget, unit configuration (BHK / carpet area), commercial requirements, or desired inspection dates..."
-                      className="w-full px-3 py-2 border border-border/80 rounded bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 transition-all resize-none"
+                    <label htmlFor="contact-email" className="text-xs font-semibold text-foreground block mb-1.5">
+                      Email Address <span className="text-muted-foreground font-normal">(Optional)</span>
+                    </label>
+                    <input
+                      id="contact-email"
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="you@example.com"
+                      className="w-full px-3.5 py-2.5 border border-border rounded-xl bg-background text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
                     />
                   </div>
 
-                  {/* Submission Row */}
-                  <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+                  {/* Message / Requirements */}
+                  <div>
+                    <label htmlFor="contact-message" className="text-xs font-semibold text-foreground block mb-1.5">
+                      Message / Requirements <span className="text-muted-foreground font-normal">(Optional)</span>
+                    </label>
+                    <textarea
+                      id="contact-message"
+                      rows={4}
+                      value={specifications}
+                      onChange={(e) => setSpecifications(e.target.value)}
+                      placeholder="Tell us what you're looking for (e.g., 2 BHK in Ambernath-East, budget ₹45 Lakhs)..."
+                      className="w-full px-3.5 py-2.5 border border-border rounded-xl bg-background text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all resize-none"
+                    />
+                  </div>
+
+                  {/* Submit Buttons */}
+                  <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="px-6 py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded text-xs font-medium uppercase tracking-wider transition-all disabled:opacity-50"
+                      className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl text-sm font-semibold hover:bg-primary/90 transition-all shadow-xs disabled:opacity-50 cursor-pointer"
                     >
-                      {isSubmitting ? "Processing Submission..." : "Submit Advisory Dossier"}
+                      <Send className="h-4 w-4" />
+                      <span>{isSubmitting ? "Sending..." : "Submit Enquiry"}</span>
                     </button>
 
                     <button
                       type="button"
                       onClick={(e) => handleSubmit(e, true)}
-                      className="text-xs text-muted-foreground hover:text-foreground underline decoration-border hover:decoration-foreground transition-colors text-center sm:text-right"
+                      className="inline-flex items-center justify-center gap-2 px-4 py-3 border border-border rounded-xl text-sm font-semibold text-foreground hover:bg-muted transition-colors cursor-pointer"
                     >
-                      Or initiate direct WhatsApp transmission &rarr;
+                      <MessageSquare className="h-4 w-4 text-emerald-600" />
+                      <span>Send via WhatsApp</span>
                     </button>
                   </div>
-
-                  <p className="text-[11px] font-mono text-muted-foreground pt-2 border-t border-border/60">
-                    Client Confidentiality Guaranteed &bull; Zero Third-Party Syndication &bull; MahaRERA: A51700023633
-                  </p>
                 </form>
               )}
             </div>
-          </div>
-
-          {/* Right Column: Chambers Dossier & Compliance Seal (5 cols) */}
-          <div className="lg:col-span-5 space-y-8">
-
-            {/* Chambers Coordinates Card */}
-            <div className="border border-border/80 rounded-lg p-6 bg-card/40 space-y-4">
-              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground block">
-                Chambers Location
-              </span>
-              <h3 className="text-base font-semibold text-foreground">
-                Shree Balaji Enterprises Headquarters
-              </h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                Shop No. 6, Vallabh Building, Avdhoot Residency,<br />
-                Opp. Shiv Mandir Road, Ambernath-West,<br />
-                District Thane, Maharashtra &ndash; 421505
-              </p>
-
-              <div className="pt-2 flex items-center justify-between border-t border-border/60 text-xs font-mono">
-                <button
-                  type="button"
-                  onClick={handleCopyChambers}
-                  className="text-foreground hover:underline"
-                >
-                  {copiedCoordinates ? "Coordinates Copied &check;" : "Copy Address Dossier"}
-                </button>
-                <a
-                  href="https://maps.app.goo.gl/xESVmiEK2GtM3XBDA"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Open in Google Maps &rarr;
-                </a>
-              </div>
-            </div>
-
-            {/* Satellite Coordinates Preview */}
-            <div className="border border-border/80 rounded-lg overflow-hidden h-52 relative bg-muted/20">
-              <iframe
-                src="https://maps.google.com/maps?q=19.1895593,73.2230161&z=17&output=embed"
-                width="100%"
-                height="100%"
-                className="border-0 w-full h-full grayscale-[30%] contrast-[1.05]"
-                allowFullScreen
-                loading="lazy"
-                title="Shree Balaji Enterprises Location Coordinates"
-              />
-              <div className="absolute bottom-2 left-2 bg-background/90 backdrop-blur-xs border border-border/80 px-2 py-1 text-[10px] font-mono text-muted-foreground">
-                GEO: 19.1896° N, 73.2230° E
-              </div>
-            </div>
-
-            {/* Corporate Operating Schedule & Governance */}
-            <div className="border border-border/80 rounded-lg p-6 bg-card/40 space-y-4">
-              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground block">
-                Consultation Protocol
-              </span>
-
-              <div className="space-y-2 text-xs border-b border-border/60 pb-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground">Chambers Consultation:</span>
-                  <span className="font-mono text-foreground">Monday &ndash; Sunday, 09:00 &ndash; 21:00 IST</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground">Accompanied Site Escort:</span>
-                  <span className="font-mono text-foreground">10:00 &ndash; 18:30 IST</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground">Consultation Retainer:</span>
-                  <span className="font-mono text-foreground font-semibold">Zero Advance Fee</span>
-                </div>
-              </div>
-
-              <div className="text-[11px] text-muted-foreground space-y-2 leading-relaxed">
-                <p>
-                  <strong>Statutory Brokerage Registration:</strong> MahaRERA Certificate No. <strong>A51700023633</strong>. All property listings subject to verified title search and developer approvals.
-                </p>
-              </div>
-            </div>
-
           </div>
 
         </div>
@@ -392,12 +390,12 @@ export default function ContactPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen flex items-center justify-center text-xs font-mono text-muted-foreground">
-          Loading client advisory portal...
+        <div className="min-h-screen flex items-center justify-center text-sm text-muted-foreground">
+          Loading contact page...
         </div>
       }
     >
-      <ContactFormDossier />
+      <ContactForm />
     </Suspense>
   )
 }

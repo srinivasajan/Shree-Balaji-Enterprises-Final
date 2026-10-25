@@ -1,6 +1,7 @@
 {
-  "name": "my-project",
+  "name": "shree-balaji-enterprises",
   "version": "0.1.0",
+  "description": "Official website and property platform for Shree Balaji Enterprises, RERA-registered real estate agency in Ambernath & MMR.",
   "private": true,
   "scripts": {
     "dev": "next dev",

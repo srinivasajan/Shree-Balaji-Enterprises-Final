@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { Building2, Eye, EyeOff, Lock, ShieldCheck } from "lucide-react"
+import { Eye, EyeOff, Lock, ShieldCheck } from "lucide-react"
+import { BrandLogo } from "@/components/brand-logo"
 import { login, isAuthenticated } from "@/lib/admin-auth"
 
 export default function AdminLoginPage() {
@@ -35,8 +36,8 @@ export default function AdminLoginPage() {
       <div className="w-full max-w-sm">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-primary shadow-lg shadow-primary/30 mb-4">
-            <Building2 className="h-8 w-8 text-white" />
+          <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15 shadow-xl mb-4">
+            <BrandLogo className="h-12 w-16" priority />
           </div>
           <h1 className="text-2xl font-black text-white">SBE Admin</h1>
           <p className="text-slate-400 text-sm mt-1">Shree Balaji Enterprises</p>
