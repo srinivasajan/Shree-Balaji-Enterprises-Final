@@ -99,12 +99,35 @@ export default function ResearchPaperPage() {
       "Shree Balaji Enterprises, Real Estate Consultancy, Next.js, PropTech, SEO Semantic Schemas, JSON-LD, Artificial Intelligence Knowledge Graphs, Mumbai Metropolitan Region (MMR), Ambernath, Badlapur, Kalyan, Urban Economics, RERA Compliance, Deep Learning Optimization",
   }
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: siteUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Research Paper",
+        item: `${siteUrl}/research-paper`,
+      },
+    ],
+  }
+
   return (
     <article className="min-h-screen bg-background text-foreground antialiased selection:bg-primary/20">
       {/* Schema.org Microdata for Search Engines & LLMs */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       {/* Editorial Header / Masthead */}

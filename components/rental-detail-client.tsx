@@ -73,7 +73,13 @@ export function RentalDetailClient({
         {/* Gallery */}
         <div className="relative rounded-xl overflow-hidden mb-6">
           <div className="relative aspect-[16/9] md:aspect-[2.4/1]">
-            <Image src={images[currentImage]} alt={property.address} fill className="object-cover" priority />
+            <Image
+              src={images[currentImage]}
+              alt={`${property.beds > 0 ? `${property.beds} BHK ` : ""}${property.type || "Rental"} for Rent at ${property.address}, ${property.city} - Photo ${currentImage + 1}`}
+              fill
+              className="object-cover"
+              priority
+            />
             {images.length > 1 && (
               <>
                 <button onClick={() => setCurrentImage((p) => (p - 1 + images.length) % images.length)} className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-card/80 hover:bg-card rounded-full" aria-label="Previous image">
@@ -104,7 +110,10 @@ export function RentalDetailClient({
           {/* Left */}
           <div className="flex-1 min-w-0">
             <div className="mb-6">
-              <h1 className="text-3xl md:text-4xl font-bold text-foreground">{property.price}</h1>
+              <h1 className="text-2xl md:text-3xl font-extrabold text-foreground tracking-tight">
+                {property.beds > 0 ? `${property.beds} BHK ` : ""}{property.type ? property.type.charAt(0).toUpperCase() + property.type.slice(1) : "Property"} for Rent in {property.address}, {property.city}
+              </h1>
+              <p className="text-3xl md:text-4xl font-bold text-primary mt-1.5">{property.price}</p>
               <div className="flex items-center gap-6 mt-3 text-foreground">
                 <span className="flex items-center gap-1.5">
                   <BedDouble className="h-5 w-5 text-muted-foreground" />

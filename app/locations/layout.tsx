@@ -1,16 +1,57 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Areas We Serve — Ambernath, Thane, Mumbai & 13+ Cities | Shree Balaji Enterprises",
+  title: "Areas We Serve — Ambernath, Badlapur, Thane & MMR",
   description:
-    "Shree Balaji Enterprises serves 13+ cities across the Mumbai Metropolitan Region — Ambernath, Badlapur, Ulhasnagar, Kalyan, Dombivli, Thane, Mumbai, Navi Mumbai, Panvel and more. Explore properties in your area.",
+    "Explore 15 key real estate markets served by Shree Balaji Enterprises across the Mumbai Metropolitan Region — Ambernath, Badlapur, Ulhasnagar, Kalyan, Dombivli, Thane, Mumbai, Navi Mumbai, and Panvel.",
+  alternates: {
+    canonical: "https://www.shreebalajienterprises.live/locations",
+  },
   openGraph: {
-    title: "Areas We Serve — Ambernath, Thane, Mumbai & MMR",
+    title: "Areas We Serve — Ambernath, Badlapur, Thane & MMR | Shree Balaji Enterprises",
     description:
-      "Explore all locations served by Shree Balaji Enterprises — 13+ cities across the Mumbai Metropolitan Region.",
+      "Explore all locations served by Shree Balaji Enterprises — 15 key localities across the Mumbai Metropolitan Region.",
+    url: "https://www.shreebalajienterprises.live/locations",
+    type: "website",
+    images: [
+      {
+        url: "https://www.shreebalajienterprises.live/images/hero-bg.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Areas We Serve - Shree Balaji Enterprises",
+      },
+    ],
   },
 }
 
 export default function LocationsLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.shreebalajienterprises.live",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Areas We Serve",
+        item: "https://www.shreebalajienterprises.live/locations",
+      },
+    ],
+  }
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      {children}
+    </>
+  )
 }
+

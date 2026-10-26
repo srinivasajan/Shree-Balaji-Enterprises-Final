@@ -20,7 +20,7 @@ export function PropertyCard({ property }: { property: PropertyData }) {
       <Link href={detailHref} className="block relative aspect-[4/3] overflow-hidden">
         <Image
           src={property.image}
-          alt={`${property.address}, ${property.city}`}
+          alt={`${property.beds > 0 ? `${property.beds} BHK ` : ""}${property.type || "Property"} for ${property.isRental ? "Rent" : "Sale"} in ${property.address}, ${property.city}`}
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"

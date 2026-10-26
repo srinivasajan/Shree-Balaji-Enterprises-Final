@@ -11,45 +11,121 @@ import { InView } from "@/components/core/in-view"
 
 export const metadata: Metadata = {
   title: "Shree Balaji Enterprises — Real Estate in Ambernath & MMR",
-  description: "RERA-registered real estate agency in Ambernath (A51700023633). View our latest properties for sale and rent across Badlapur, Thane, and Mumbai.",
+  description:
+    "RERA-registered real estate agency in Ambernath established in 2016 (MahaRERA: A51700023633). View verified properties for sale and rent across Ambernath, Badlapur, Thane, and MMR.",
+  alternates: {
+    canonical: "https://www.shreebalajienterprises.live",
+  },
   openGraph: {
-    title: "Shree Balaji Enterprises — Top Real Estate Agents in Ambernath",
+    title: "Shree Balaji Enterprises — Real Estate in Ambernath & MMR",
     description: "Browse verified residential and commercial properties in Ambernath, Badlapur, and MMR.",
     url: "https://www.shreebalajienterprises.live",
-    images: [{ url: "/images/hero-bg.jpg" }]
-  }
+    images: [
+      {
+        url: "https://www.shreebalajienterprises.live/images/hero-bg.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Shree Balaji Enterprises Real Estate in Ambernath",
+      },
+    ],
+  },
 }
 
 export default function Home() {
   const localBusinessSchema = {
     "@context": "https://schema.org",
-    "@type": "RealEstateAgent",
-    "name": "Shree Balaji Enterprises",
-    "image": "https://www.shreebalajienterprises.live/images/logo.png",
-    "@id": "https://www.shreebalajienterprises.live",
-    "url": "https://www.shreebalajienterprises.live",
-    "telephone": "+917767805544",
-    "address": {
+    "@type": ["RealEstateAgent", "LocalBusiness"],
+    "@id": "https://www.shreebalajienterprises.live/#realestateagent",
+    name: "Shree Balaji Enterprises",
+    legalName: "Shree Balaji Enterprises",
+    url: "https://www.shreebalajienterprises.live",
+    logo: "https://www.shreebalajienterprises.live/images/logo.png",
+    image: "https://www.shreebalajienterprises.live/images/hero-bg.jpg",
+    description:
+      "RERA-registered real estate agency in Ambernath established in 2016 (MahaRERA: A51700023633). Assisting clients with buying, selling, and renting residential, commercial, and industrial properties.",
+    foundingDate: "2016",
+    founder: {
+      "@type": "Person",
+      name: "Anju Jangiti",
+    },
+    telephone: ["+917767805544", "+919168588575"],
+    email: "shreebalajienterprisesamb@gmail.com",
+    priceRange: "₹₹ - ₹₹₹₹",
+    hasMap: "https://maps.app.goo.gl/xESVmiEK2GtM3XBDA",
+    address: {
       "@type": "PostalAddress",
-      "addressLocality": "Ambernath",
-      "addressRegion": "Maharashtra",
-      "addressCountry": "IN"
+      streetAddress:
+        "Shop No. 6, Vallabh Building, Avdhoot Residency, Opp. Shiv Mandir Road, Ambernath-West",
+      addressLocality: "Ambernath",
+      addressRegion: "Maharashtra",
+      postalCode: "421505",
+      addressCountry: "IN",
     },
-    "geo": {
+    geo: {
       "@type": "GeoCoordinates",
-      "latitude": 19.1970,
-      "longitude": 73.1910
+      latitude: 19.197,
+      longitude: 73.191,
     },
-    "sameAs": [
-      "https://www.facebook.com/profile.php?id=100091469033284"
-    ]
-  };
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ],
+        opens: "09:00",
+        closes: "21:00",
+      },
+    ],
+    areaServed: [
+      { "@type": "City", name: "Ambernath" },
+      { "@type": "City", name: "Badlapur" },
+      { "@type": "City", name: "Ulhasnagar" },
+      { "@type": "City", name: "Kalyan" },
+      { "@type": "City", name: "Dombivli" },
+      { "@type": "City", name: "Thane" },
+      { "@type": "City", name: "Mumbai" },
+      { "@type": "City", name: "Navi Mumbai" },
+      { "@type": "City", name: "Panvel" },
+    ],
+    identifier: {
+      "@type": "PropertyValue",
+      name: "MahaRERA Registration Number",
+      value: "A51700023633",
+    },
+    sameAs: [
+      "https://www.facebook.com/profile.php?id=100091469033284",
+      "https://maps.app.goo.gl/xESVmiEK2GtM3XBDA",
+    ],
+  }
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.shreebalajienterprises.live",
+      },
+    ],
+  }
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <main>
         <HeroSection />

@@ -252,8 +252,27 @@ const locations = [
 ]
 
 export default function LocationsPage() {
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Real Estate Markets Served by Shree Balaji Enterprises",
+    description: "Key real estate investment and residential locations across the Mumbai Metropolitan Region (MMR).",
+    numberOfItems: locations.length,
+    itemListElement: locations.map((loc, idx) => ({
+      "@type": "ListItem",
+      position: idx + 1,
+      name: loc.name,
+      description: loc.description,
+      url: `https://www.shreebalajienterprises.live/locations#${loc.id}`,
+    })),
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
       {/* ── HERO ──────────────────────────────────────────── */}
       <section className="relative overflow-hidden min-h-[520px] xl:min-h-[620px] 2xl:min-h-[700px] flex items-end">
         <div className="absolute inset-0">
@@ -279,8 +298,8 @@ export default function LocationsPage() {
                 <span className="text-primary">Proudly Serve.</span>
               </h1>
               <p className="text-base text-white/60 max-w-lg leading-relaxed">
-                15+ years of on-the-ground expertise across 13+ cities — from Ambernath to Mumbai,
-                Karjat to Navi Mumbai. We know every neighbourhood, every price point.
+                Boots-on-the-ground expertise across 15+ areas — from Ambernath to Mumbai,
+                Karjat to Navi Mumbai. We know every neighbourhood and every price point.
               </p>
             </div>
           </div>
@@ -292,10 +311,10 @@ export default function LocationsPage() {
         <div className="mx-auto max-w-[1440px] px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden">
             {[
-              { value: "13+", label: "Cities Covered", sub: "Across Maharashtra" },
-              { value: "500+", label: "Properties Sold", sub: "Across MMR" },
-              { value: "65+", label: "Km Radius", sub: "From Ambernath" },
-              { value: "15+", label: "Years Local Know-How", sub: "Since 2010" },
+              { value: "15+", label: "Areas Covered", sub: "Across MMR & Maharashtra" },
+              { value: "RERA", label: "A51700023633", sub: "Registered Brokerage" },
+              { value: "65+", label: "Km Radius", sub: "From Ambernath HQ" },
+              { value: "2016", label: "Year Established", sub: "10 Years in MMR" },
             ].map((s) => (
               <div
                 key={s.label}
@@ -335,7 +354,8 @@ export default function LocationsPage() {
             {locations.map((loc) => (
               <div
                 key={loc.id}
-                className="group relative flex flex-col rounded-2xl overflow-hidden border border-border bg-card shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                id={loc.id}
+                className="group relative flex flex-col rounded-2xl overflow-hidden border border-border bg-card shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 scroll-mt-24"
               >
                 {/* Image */}
                 <div className="relative h-56 overflow-hidden">

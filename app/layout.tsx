@@ -15,7 +15,10 @@ export const metadata: Metadata = {
     template: "%s | Shree Balaji Enterprises",
   },
   description:
-    "RERA-registered real estate agency in Ambernath (Reg No: A51700023633). Buy, sell or rent residential, commercial and industrial properties across Ambernath, Badlapur, Thane, Mumbai and 13+ cities.",
+    "RERA-registered real estate agency in Ambernath established in 2016 (MahaRERA: A51700023633). Buy, sell, or rent residential, commercial, and industrial properties across Ambernath, Badlapur, Thane, Mumbai and 13+ cities.",
+  alternates: {
+    canonical: siteUrl,
+  },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -30,10 +33,10 @@ export const metadata: Metadata = {
     siteName: "Shree Balaji Enterprises",
     title: "Shree Balaji Enterprises — Real Estate in Ambernath & MMR",
     description:
-      "RERA-registered agency with 15+ years of experience. 1000+ happy clients. Buy, sell or rent properties across Ambernath, Badlapur, Thane & Mumbai.",
+      "RERA-registered real estate agency established in 2016 (MahaRERA: A51700023633). Buy, sell, or rent residential, commercial, and industrial properties across Ambernath, Badlapur, Thane & MMR.",
     images: [
       {
-        url: "/images/hero-bg.jpg",
+        url: `${siteUrl}/images/hero-bg.jpg`,
         width: 1200,
         height: 630,
         alt: "Shree Balaji Enterprises — Real Estate in Ambernath",
@@ -44,8 +47,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Shree Balaji Enterprises — Real Estate in Ambernath & MMR",
     description:
-      "RERA-registered agency. Buy, sell or rent in Ambernath, Badlapur, Thane & Mumbai.",
-    images: ["/images/hero-bg.jpg"],
+      "RERA-registered real estate agency in Ambernath (MahaRERA: A51700023633). Buy, sell, or rent properties across Ambernath, Badlapur, Thane & Mumbai.",
+    images: [`${siteUrl}/images/hero-bg.jpg`],
   },
   robots: {
     index: true,

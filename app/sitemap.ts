@@ -5,16 +5,17 @@ const BASE = "https://www.shreebalajienterprises.live"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
-    { url: BASE, lastModified: new Date(), changeFrequency: "weekly", priority: 1.0 },
-    { url: `${BASE}/research-paper`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: BASE, lastModified: new Date(), changeFrequency: "daily", priority: 1.0 },
     { url: `${BASE}/buy`, lastModified: new Date(), changeFrequency: "daily", priority: 0.9 },
     { url: `${BASE}/rent`, lastModified: new Date(), changeFrequency: "daily", priority: 0.9 },
-    { url: `${BASE}/sell`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE}/home-loans`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/locations`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
+    { url: `${BASE}/sell`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
+    { url: `${BASE}/home-loans`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE}/about`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${BASE}/contact`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${BASE}/privacy`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
-    { url: `${BASE}/terms`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
+    { url: `${BASE}/contact`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/research-paper`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/privacy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
+    { url: `${BASE}/terms`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
   ]
 
   const buyRoutes: MetadataRoute.Sitemap = buyProperties.map((p) => ({

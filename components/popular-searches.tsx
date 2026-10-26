@@ -33,10 +33,18 @@ export function PopularSearches() {
           }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-4">Coverage</p>
-          <h2 className="text-2xl md:text-4xl font-black text-foreground mb-8">
-            Areas We Serve
-          </h2>
+          <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-3">Coverage</p>
+          <div className="flex items-end justify-between mb-8">
+            <h2 className="text-2xl md:text-4xl font-black text-foreground">
+              Areas We Serve
+            </h2>
+            <Link
+              href="/locations"
+              className="text-sm font-semibold text-primary hover:underline self-end"
+            >
+              Explore All Locations &rarr;
+            </Link>
+          </div>
         </InView>
 
         <InView once viewOptions={{ margin: "0px 0px -50px 0px" }}>

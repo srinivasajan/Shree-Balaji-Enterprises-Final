@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Terms of Advisory & Brokerage | Shree Balaji Enterprises",
+  title: "Terms of Advisory & Brokerage",
   description:
     "Institutional Terms of Advisory and Real Estate Brokerage for Shree Balaji Enterprises (MahaRERA: A51700023633). Governing client representation, inspections, and transactions across MMR.",
   alternates: {
@@ -11,8 +11,31 @@ export const metadata: Metadata = {
 }
 
 export default function TermsPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.shreebalajienterprises.live",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Terms of Advisory & Brokerage",
+        item: "https://www.shreebalajienterprises.live/terms",
+      },
+    ],
+  }
+
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* ── Institutional Document Header ──────────────────────────── */}
       <header className="border-b border-border/80 bg-card/60">
         <div className="mx-auto max-w-[1140px] px-6 sm:px-8 pt-12 pb-10">

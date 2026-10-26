@@ -13,6 +13,7 @@ const footerSections = [
     links: [
       { label: "Home", href: "/" },
       { label: "Browse Properties", href: "/buy" },
+      { label: "Rent Properties", href: "/rent" },
       { label: "Sell Your Property", href: "/sell" },
       { label: "About Us", href: "/about" },
       { label: "Contact Us", href: "/contact" },
@@ -30,12 +31,12 @@ const footerSections = [
   {
     title: "Locations",
     links: [
-      { label: "Ambernath", href: "/buy?q=Ambernath" },
-      { label: "Badlapur", href: "/buy?q=Badlapur" },
-      { label: "Ulhasnagar", href: "/buy?q=Ulhasnagar" },
-      { label: "Thane", href: "/buy?q=Thane" },
-      { label: "Mumbai", href: "/buy?q=Mumbai" },
-      { label: "Navi Mumbai", href: "/buy?q=Navi+Mumbai" },
+      { label: "Ambernath (HQ)", href: "/locations#ambernath" },
+      { label: "Badlapur", href: "/locations#badlapur" },
+      { label: "Ulhasnagar", href: "/locations#ulhasnagar" },
+      { label: "Kalyan & Dombivli", href: "/locations#kalyan" },
+      { label: "Thane & Mumbai", href: "/locations#thane" },
+      { label: "All Serviced Areas", href: "/locations" },
     ],
   },
 ]

@@ -108,7 +108,7 @@ export function PropertyDetailClient({
               >
                 <Image
                   src={images[currentImage]}
-                  alt={`${property.address} - Photo ${currentImage + 1}`}
+                  alt={`${property.beds > 0 ? `${property.beds} BHK ` : ""}${property.type || "Property"} at ${property.address}, ${property.city} - Photo ${currentImage + 1}`}
                   fill
                   className="object-cover"
                   priority
@@ -183,12 +183,17 @@ export function PropertyDetailClient({
             <div className="mb-6">
               <div className="flex items-start justify-between gap-4 flex-wrap">
                 <div>
-                  <h1 className="text-3xl md:text-4xl font-bold text-foreground">{property.price}</h1>
-                  {property.zestimate && (
-                    <p className="text-sm text-muted-foreground mt-1">
-                      Market Valuation: <span className="font-semibold text-foreground">{property.zestimate}</span>
-                    </p>
-                  )}
+                  <h1 className="text-2xl md:text-3xl font-extrabold text-foreground tracking-tight">
+                    {property.beds > 0 ? `${property.beds} BHK ` : ""}{property.type ? property.type.charAt(0).toUpperCase() + property.type.slice(1) : "Property"} in {property.address}, {property.city}
+                  </h1>
+                  <div className="flex items-baseline gap-3 mt-1.5 flex-wrap">
+                    <p className="text-3xl md:text-4xl font-bold text-primary">{property.price}</p>
+                    {property.zestimate && (
+                      <p className="text-sm text-muted-foreground">
+                        Valuation: <span className="font-semibold text-foreground">{property.zestimate}</span>
+                      </p>
+                    )}
+                  </div>
                 </div>
                 {property.tag && (
                   <span className={`px-3 py-1.5 text-xs font-bold rounded-full ${
