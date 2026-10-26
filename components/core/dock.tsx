@@ -114,7 +114,7 @@ export function DockItem({
   const paddingTransform = useTransform(
     mouseDistance,
     [-distance, 0, distance],
-    shouldReduceMotion ? [14, 14, 14] : [14, 18, 14]
+    shouldReduceMotion ? [12, 12, 12] : [12, 16, 12]
   );
 
   // Gentle vertical lift for tactile feel

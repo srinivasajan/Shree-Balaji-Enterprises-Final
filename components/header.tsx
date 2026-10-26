@@ -15,6 +15,7 @@ const navItems = [
   { label: "Sell", href: "/sell" },
   { label: "Home Loans", href: "/home-loans" },
   { label: "Locations", href: "/locations" },
+  { label: "Research Paper", href: "/research-paper" },
   { label: "About Us", href: "/about" },
 ]
 
