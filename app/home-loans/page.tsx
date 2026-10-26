@@ -37,7 +37,7 @@ const steps = [
 ]
 
 const stats = [
-  { value: "Established 2016", label: "In Ambernath", sub: "Serving MMR Clients" },
+  { value: "500+", label: "Families Helped", sub: "Established 2016" },
   { value: "6+", label: "Partner Banks", sub: "All Major Lenders" },
   { value: "₹0", label: "Cost to You", sub: "Always Free" },
   { value: "RERA", label: "A51700023633", sub: "Verified Agency" },
@@ -74,7 +74,7 @@ export default function HomeLoansPage() {
                 <span className="text-primary">Handled For You.</span>
               </h1>
               <p className="text-base text-white/60 max-w-lg leading-relaxed">
-                Families across Ambernath, Badlapur &amp; MMR guided through the home loan process — from CIBIL check to disbursement. We charge you nothing.
+                500+ families in Ambernath, Badlapur &amp; MMR guided through the home loan process — from CIBIL check to disbursement. We charge you nothing.
               </p>
             </div>
             <div className="shrink-0">

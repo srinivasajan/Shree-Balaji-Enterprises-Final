@@ -194,7 +194,7 @@ export default function Home() {
                     Ready to find<br />your next home?
                   </h2>
                   <p className="text-background/50 text-sm leading-relaxed">
-                    Verified property advisory and transparent legal support (Established 2016). Talk to our team today &mdash; free, no pressure.
+                    Over 500 properties sold. 1000+ happy families (Established 2016). Talk to our team today &mdash; free, no pressure.
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3 shrink-0">

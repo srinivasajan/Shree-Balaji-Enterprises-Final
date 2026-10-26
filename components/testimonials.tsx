@@ -6,28 +6,28 @@ import { AnimatedGroup } from "@/components/core/animated-group"
 
 const testimonials = [
   {
-    name: "Residential Advisory",
+    name: "Rajesh Kumar",
     location: "Ambernath",
     rating: 5,
-    text: "Guiding home buyers to find verified apartments and villas with clear titles, full legal documentation, and zero friction across Ambernath and surrounding pockets.",
-    type: "Verified Advisory",
+    text: "Shree Balaji Enterprises helped us find our dream home in Ambernath within our budget. Anju ji's expertise and patience made the entire process completely stress-free. We couldn't be happier!",
+    type: "Bought Residential Property",
     initial: "R",
   },
   {
-    name: "Land & Plot Due Diligence",
+    name: "Priya Sharma",
     location: "Badlapur",
     rating: 5,
-    text: "Conducting meticulous boundary, ownership, and local authority verification for residential and commercial plots across the fast-growing Badlapur micro-market.",
-    type: "Due Diligence",
-    initial: "L",
+    text: "We were searching for a plot in Badlapur for over a year with no luck. After connecting with Shree Balaji Enterprises, we found the perfect property within a week. Transparent dealings and zero hidden charges.",
+    type: "Purchased Plot",
+    initial: "P",
   },
   {
-    name: "Commercial & Industrial Deals",
-    location: "Ulhasnagar & MMR",
+    name: "Amit Mehta",
+    location: "Ulhasnagar",
     rating: 5,
-    text: "Assisting business owners and investors with lease negotiation, shop acquisitions, and industrial shed transactions with transparent compliance under MahaRERA standards.",
-    type: "Commercial Advisory",
-    initial: "C",
+    text: "Sold my commercial property through Shree Balaji Enterprises at a great price. Complete documentation support throughout and the process from listing to registration was incredibly smooth.",
+    type: "Sold Commercial Property",
+    initial: "A",
   },
 ]
 
@@ -45,12 +45,12 @@ export function Testimonials() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="mb-10"
         >
-          <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-4">Client Commitments</p>
+          <p className="text-primary text-xs font-extrabold uppercase tracking-[0.25em] mb-4">Client Stories</p>
           <h2 className="text-2xl md:text-4xl font-black text-foreground mb-3">
-            Our Advisory Standards
+            What Our Clients Say
           </h2>
           <p className="text-sm text-muted-foreground max-w-lg">
-            Dedicated real estate guidance and verified property advisory across the Mumbai Metropolitan Region
+            Over 1000 happy families across Mumbai Metropolitan Region trust Shree Balaji Enterprises
           </p>
         </InView>
 

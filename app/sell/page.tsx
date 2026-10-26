@@ -48,7 +48,7 @@ export default function SellPage() {
                 <span className="text-primary">Starts Here.</span>
               </h1>
               <p className="text-base text-white/60 max-w-lg leading-relaxed">
-                Helping clients across Ambernath &amp; MMR sell their homes — at the right price, with zero stress.
+                We&apos;ve helped 500+ families across Ambernath &amp; MMR sell their homes — at the right price, with zero stress.
               </p>
             </div>
             <div className="shrink-0">
@@ -66,10 +66,10 @@ export default function SellPage() {
           <InView once viewOptions={{ margin: "0px 0px -40px 0px" }}>
             <AnimatedGroup preset="scale" className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden">
               {[
-                { value: "Established 2016", label: "In Ambernath", sub: "RERA Registered Agency" },
-                { value: "RERA", label: "Registered Agency", sub: "A51700023633" },
-                { value: "MMR", label: "Regional Reach", sub: "Ambernath, Badlapur, Thane" },
-                { value: "100%", label: "Transparent Deals", sub: "Complete Legal Paperwork" },
+                { value: "500+", label: "Properties Sold", sub: "Across MMR" },
+                { value: "15+", label: "Years Experience", sub: "Established 2016" },
+                { value: "1000+", label: "Happy Clients", sub: "Residential & Commercial" },
+                { value: "5.0 ★", label: "Average Rating", sub: "Google Reviews" },
               ].map((s) => (
                 <div key={s.label} className="flex flex-col items-center justify-center py-8 px-4 gap-0.5 text-center bg-card">
                   <p className="text-3xl md:text-4xl font-black text-foreground">{s.value}</p>

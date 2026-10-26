@@ -71,7 +71,7 @@ export function HeroSection() {
               className="backdrop-blur-sm bg-foreground/20 rounded-2xl px-6 pt-8 pb-6 mb-5"
             >
               <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
-                RERA A51700023633 · Established 2016 · Ambernath
+                RERA A51700023633 · 15+ Years Experience · Established 2016
               </div>
 
               {/* Headline with coordinated reveal */}
@@ -99,7 +99,7 @@ export function HeroSection() {
               </h1>
 
               <p className="text-base text-white/70 max-w-lg mx-auto leading-relaxed">
-                Trusted real estate advisory across Ambernath, Badlapur, Kalyan &amp; the Mumbai Metropolitan Region.
+                500+ properties sold across Ambernath, Badlapur, Kalyan &amp; 13+ cities in the Mumbai Metropolitan Region.
               </p>
             </motion.div>
 

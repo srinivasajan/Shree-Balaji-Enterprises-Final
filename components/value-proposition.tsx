@@ -12,18 +12,18 @@ const features = [
   },
   {
     icon: Users,
-    title: "Client-Centric Advisory",
-    description: "Trusted guidance tailored to home buyers and investors across the Mumbai Metropolitan Region.",
+    title: "1000+ Happy Clients",
+    description: "Trusted by families across the Mumbai Metropolitan Region for their property needs.",
   },
   {
     icon: TrendingUp,
-    title: "Established 2016",
-    description: "Deep local market knowledge ensuring transparent, verified residential, commercial and industrial property deals.",
+    title: "15+ Years Experience",
+    description: "Deep local market knowledge ensuring you get the best deals on residential, commercial and industrial properties (Established 2016).",
   },
   {
     icon: Calculator,
-    title: "Secure Transactions",
-    description: "All dealings with proper documentation and legal assistance for your complete peace of mind.",
+    title: "Home Loan Assistance",
+    description: "Partnerships with leading banks to get you the lowest interest rates and fast approvals.",
   },
 ]
 
@@ -45,7 +45,7 @@ export function ValueProposition() {
             Your Trusted Real Estate Partner
           </h2>
           <p className="text-sm text-muted-foreground mb-10 max-w-lg text-pretty">
-            Shree Balaji Enterprises – RERA registered agency serving the Mumbai Metropolitan Region (Established 2016)
+            Shree Balaji Enterprises – RERA registered agency serving Mumbai Metropolitan Region for 15+ years (Established 2016)
           </p>
         </InView>
 

@@ -298,8 +298,8 @@ export default function LocationsPage() {
                 <span className="text-primary">Proudly Serve.</span>
               </h1>
               <p className="text-base text-white/60 max-w-lg leading-relaxed">
-                Boots-on-the-ground expertise across 15+ areas — from Ambernath to Mumbai,
-                Karjat to Navi Mumbai. We know every neighbourhood and every price point.
+                15+ years of on-the-ground expertise across 13+ cities — from Ambernath to Mumbai,
+                Karjat to Navi Mumbai. We know every neighbourhood, every price point.
               </p>
             </div>
           </div>
@@ -311,10 +311,10 @@ export default function LocationsPage() {
         <div className="mx-auto max-w-[1440px] px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden">
             {[
-              { value: "15+", label: "Areas Covered", sub: "Across MMR & Maharashtra" },
-              { value: "RERA", label: "A51700023633", sub: "Registered Brokerage" },
-              { value: "65+", label: "Km Radius", sub: "From Ambernath HQ" },
-              { value: "Established 2016", label: "In Ambernath", sub: "RERA Registered Agency" },
+              { value: "13+", label: "Cities Covered", sub: "Across Maharashtra" },
+              { value: "500+", label: "Properties Sold", sub: "Across MMR" },
+              { value: "65+", label: "Km Radius", sub: "From Ambernath" },
+              { value: "15+", label: "Years Local Know-How", sub: "Established 2016" },
             ].map((s) => (
               <div
                 key={s.label}
@@ -448,7 +448,7 @@ export default function LocationsPage() {
             <span className="text-primary">Is Right for You?</span>
           </h2>
           <p className="text-[15px] text-white/60 max-w-xl mx-auto leading-relaxed mb-8">
-            With boots-on-the-ground market advisory across the MMR (Established 2016), we&apos;ll help you find
+            With 15+ years of boots-on-the-ground experience across the MMR (Established 2016), we&apos;ll help you find
             the area that fits your budget, lifestyle and commute — for free, no obligation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
