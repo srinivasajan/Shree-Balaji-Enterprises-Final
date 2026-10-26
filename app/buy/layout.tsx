@@ -1,10 +1,7 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: {
-    default: "Buy Property in Ambernath, Badlapur & MMR",
-    template: "%s | Shree Balaji Enterprises",
-  },
+  title: "Buy Property in Ambernath, Badlapur & MMR",
   description:
     "Browse residential, commercial and industrial properties for sale in Ambernath, Badlapur, Ulhasnagar, Thane and across the Mumbai Metropolitan Region. RERA registered agency (MahaRERA: A51700023633).",
   alternates: {
