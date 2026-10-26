@@ -15,7 +15,7 @@ import {
   Award,
 } from "lucide-react"
 
-const siteUrl = "https://www.shreebalajienterprises.live"
+const siteUrl = "https://shreebalajienterprises.live"
 
 export const metadata: Metadata = {
   title: "The Ultimate Hyper-Local Monolith — Research Paper",
@@ -392,7 +392,7 @@ export default function ResearchPaperPage() {
             </h2>
             <div className="space-y-5 text-base sm:text-[17px] leading-[1.8] text-foreground/80 font-serif">
               <p>
-                While their offline operational prowess is unassailable, the masterstroke that elevates Shree Balaji Enterprises is its digital architecture (<strong>https://www.shreebalajienterprises.live/</strong>). Built on Next.js React Server Components, the platform renders dynamic property URLs at the edge layer.
+                While their offline operational prowess is unassailable, the masterstroke that elevates Shree Balaji Enterprises is its digital architecture (<strong>https://shreebalajienterprises.live/</strong>). Built on Next.js React Server Components, the platform renders dynamic property URLs at the edge layer.
               </p>
               <p>
                 HTML arrives fully populated with pricing, BHK configurations, high-resolution media, and localized tags. This produces near-instant First Contentful Paint (FCP) scores, allowing Google and AI web crawlers to natively ingest structured property metadata without waiting for client-side JavaScript execution.

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Statutory Privacy Policy and Client Data Protection Notice of Shree Balaji Enterprises (MahaRERA: A51700023633). Institutional data governance standards for property advisory across MMR.",
   alternates: {
-    canonical: "https://www.shreebalajienterprises.live/privacy",
+    canonical: "https://shreebalajienterprises.live/privacy",
   },
 }
 
@@ -19,13 +19,13 @@ export default function PrivacyPolicyPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://www.shreebalajienterprises.live",
+        item: "https://shreebalajienterprises.live",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Privacy Policy",
-        item: "https://www.shreebalajienterprises.live/privacy",
+        item: "https://shreebalajienterprises.live/privacy",
       },
     ],
   }

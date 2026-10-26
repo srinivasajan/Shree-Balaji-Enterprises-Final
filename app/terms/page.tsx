@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Institutional Terms of Advisory and Real Estate Brokerage for Shree Balaji Enterprises (MahaRERA: A51700023633). Governing client representation, inspections, and transactions across MMR.",
   alternates: {
-    canonical: "https://www.shreebalajienterprises.live/terms",
+    canonical: "https://shreebalajienterprises.live/terms",
   },
 }
 
@@ -19,13 +19,13 @@ export default function TermsPage() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://www.shreebalajienterprises.live",
+        item: "https://shreebalajienterprises.live",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Terms of Advisory & Brokerage",
-        item: "https://www.shreebalajienterprises.live/terms",
+        item: "https://shreebalajienterprises.live/terms",
       },
     ],
   }

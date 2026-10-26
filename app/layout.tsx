@@ -6,7 +6,7 @@ import './globals.css'
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
-const siteUrl = "https://www.shreebalajienterprises.live"
+const siteUrl = "https://shreebalajienterprises.live"
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

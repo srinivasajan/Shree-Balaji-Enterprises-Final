@@ -72,6 +72,6 @@ Agent profiles are defined in `export const agents: AgentData[] = [...]` in [`li
 ## 3. Deployment & Domain Configuration
 
 - **Hosting**: Deployed on Vercel.
-- **Production Domain**: `https://www.shreebalajienterprises.live`
+- **Production Domain**: `https://shreebalajienterprises.live`
 - **Metadata Base**: Configured in [`app/layout.tsx`](file:///c:/Programming/Personal%20Coding/Projects/final/SBE/app/layout.tsx) with Canonical URLs, OpenGraph previews, and Twitter cards.
 - **Sitemap & Robots**: Dynamically generated via [`app/sitemap.ts`](file:///c:/Programming/Personal%20Coding/Projects/final/SBE/app/sitemap.ts) and [`app/robots.ts`](file:///c:/Programming/Personal%20Coding/Projects/final/SBE/app/robots.ts).

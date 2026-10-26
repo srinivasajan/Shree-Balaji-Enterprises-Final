@@ -39,7 +39,7 @@ export async function generateMetadata({
     ? property.images[0] 
     : property.image
 
-  const canonicalUrl = `https://www.shreebalajienterprises.live/buy/${id}`
+  const canonicalUrl = `https://shreebalajienterprises.live/buy/${id}`
 
   return {
     title,
@@ -88,10 +88,10 @@ export default async function PropertyDetailPage({
   const listingSchema = {
     "@context": "https://schema.org",
     "@type": "RealEstateListing",
-    "@id": `https://www.shreebalajienterprises.live/buy/${property.id}#listing`,
+    "@id": `https://shreebalajienterprises.live/buy/${property.id}#listing`,
     name: `${property.beds ? property.beds + " BHK " : ""}${property.type || "Property"} for Sale in ${property.city}`,
     description: property.description,
-    url: `https://www.shreebalajienterprises.live/buy/${property.id}`,
+    url: `https://shreebalajienterprises.live/buy/${property.id}`,
     image: property.images || [property.image],
     datePosted: "2026-02-24",
     about: {
@@ -127,7 +127,7 @@ export default async function PropertyDetailPage({
     },
     offers: {
       "@type": "Offer",
-      url: `https://www.shreebalajienterprises.live/buy/${property.id}`,
+      url: `https://shreebalajienterprises.live/buy/${property.id}`,
       priceCurrency: "INR",
       ...(property.priceNum && property.priceNum > 0 ? { price: property.priceNum } : {}),
       priceSpecification: {
@@ -142,7 +142,7 @@ export default async function PropertyDetailPage({
         "@type": "RealEstateAgent",
         name: "Shree Balaji Enterprises",
         telephone: "+917767805544",
-        url: "https://www.shreebalajienterprises.live",
+        url: "https://shreebalajienterprises.live",
       },
     },
   }
@@ -155,19 +155,19 @@ export default async function PropertyDetailPage({
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://www.shreebalajienterprises.live",
+        item: "https://shreebalajienterprises.live",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Buy",
-        item: "https://www.shreebalajienterprises.live/buy",
+        item: "https://shreebalajienterprises.live/buy",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: property.address,
-        item: `https://www.shreebalajienterprises.live/buy/${property.id}`,
+        item: `https://shreebalajienterprises.live/buy/${property.id}`,
       },
     ],
   }

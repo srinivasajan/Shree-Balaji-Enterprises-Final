@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     title, description,
     openGraph: {
       title, description,
-      url: `https://www.shreebalajienterprises.live/buy/${id}`,
+      url: `https://shreebalajienterprises.live/buy/${id}`,
       type: "article",
       images: [{ url: images, width: 1200, height: 630, alt: `Property located at ${property.address}` }],
     },
@@ -71,7 +71,7 @@ export default function PropertyDetailPage({ params }: { params: { id: string } 
     },
     "offers": {
       "@type": "Offer",
-      "url": `https://www.shreebalajienterprises.live/buy/${property.id}`,
+      "url": `https://shreebalajienterprises.live/buy/${property.id}`,
       "priceCurrency": "INR",
       "price": property.priceNum || 0,
       "itemCondition": "https://schema.org/NewCondition",

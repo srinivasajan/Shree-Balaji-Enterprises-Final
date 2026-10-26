@@ -263,7 +263,7 @@ export default function LocationsPage() {
       position: idx + 1,
       name: loc.name,
       description: loc.description,
-      url: `https://www.shreebalajienterprises.live/locations#${loc.id}`,
+      url: `https://shreebalajienterprises.live/locations#${loc.id}`,
     })),
   }
 

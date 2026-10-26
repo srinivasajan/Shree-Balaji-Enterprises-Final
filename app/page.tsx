@@ -14,15 +14,15 @@ export const metadata: Metadata = {
   description:
     "RERA-registered real estate agency in Ambernath (Established 2016, MahaRERA: A51700023633). View verified properties for sale and rent across Ambernath, Badlapur, Thane, and MMR.",
   alternates: {
-    canonical: "https://www.shreebalajienterprises.live",
+    canonical: "https://shreebalajienterprises.live",
   },
   openGraph: {
     title: "Shree Balaji Enterprises — Real Estate in Ambernath & MMR",
     description: "Browse verified residential and commercial properties in Ambernath, Badlapur, and MMR.",
-    url: "https://www.shreebalajienterprises.live",
+    url: "https://shreebalajienterprises.live",
     images: [
       {
-        url: "https://www.shreebalajienterprises.live/images/hero-bg.jpg",
+        url: "https://shreebalajienterprises.live/images/hero-bg.jpg",
         width: 1200,
         height: 630,
         alt: "Shree Balaji Enterprises Real Estate in Ambernath",
@@ -35,12 +35,12 @@ export default function Home() {
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": ["RealEstateAgent", "LocalBusiness"],
-    "@id": "https://www.shreebalajienterprises.live/#realestateagent",
+    "@id": "https://shreebalajienterprises.live/#realestateagent",
     name: "Shree Balaji Enterprises",
     legalName: "Shree Balaji Enterprises",
-    url: "https://www.shreebalajienterprises.live",
-    logo: "https://www.shreebalajienterprises.live/images/logo.png",
-    image: "https://www.shreebalajienterprises.live/images/hero-bg.jpg",
+    url: "https://shreebalajienterprises.live",
+    logo: "https://shreebalajienterprises.live/images/logo.png",
+    image: "https://shreebalajienterprises.live/images/hero-bg.jpg",
     description:
       "RERA-registered real estate agency in Ambernath (Established 2016, MahaRERA: A51700023633). Assisting clients with buying, selling, and renting residential, commercial, and industrial properties.",
     foundingDate: "2016",
@@ -112,7 +112,7 @@ export default function Home() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://www.shreebalajienterprises.live",
+        item: "https://shreebalajienterprises.live",
       },
     ],
   }

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next"
 import { buyProperties, rentalProperties } from "@/lib/data"
 
-const BASE = "https://www.shreebalajienterprises.live"
+const BASE = "https://shreebalajienterprises.live"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Only include active, available listings from the source of truth

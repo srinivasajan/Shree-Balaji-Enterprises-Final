@@ -5,17 +5,17 @@ export const metadata: Metadata = {
   description:
     "Get free home loan guidance from Shree Balaji Enterprises. We compare SBI, HDFC, ICICI, Axis and more to find the best rates for you — zero charges, personalised service from Ambernath.",
   alternates: {
-    canonical: "https://www.shreebalajienterprises.live/home-loans",
+    canonical: "https://shreebalajienterprises.live/home-loans",
   },
   openGraph: {
     title: "Home Loan Assistance | Shree Balaji Enterprises",
     description:
       "Free home loan comparison across 6+ partner banks. SBI, HDFC, ICICI, LIC HFL and more. Guided support from eligibility check to loan disbursement at zero cost.",
-    url: "https://www.shreebalajienterprises.live/home-loans",
+    url: "https://shreebalajienterprises.live/home-loans",
     type: "website",
     images: [
       {
-        url: "https://www.shreebalajienterprises.live/images/mortgage-hero.jpg",
+        url: "https://shreebalajienterprises.live/images/mortgage-hero.jpg",
         width: 1200,
         height: 630,
         alt: "Home Loan Assistance - Shree Balaji Enterprises",
@@ -33,13 +33,13 @@ export default function HomeLoansLayout({ children }: { children: React.ReactNod
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://www.shreebalajienterprises.live",
+        item: "https://shreebalajienterprises.live",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Home Loans",
-        item: "https://www.shreebalajienterprises.live/home-loans",
+        item: "https://shreebalajienterprises.live/home-loans",
       },
     ],
   }
