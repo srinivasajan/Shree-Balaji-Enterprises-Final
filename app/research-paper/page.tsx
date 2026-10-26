@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowRight, BookOpen, FileText, Globe, Shield, Sparkles } from "lucide-react"
+import { ArrowRight, BookOpen, Download, FileText, Globe, Shield, Sparkles } from "lucide-react"
 
 const siteUrl = "https://www.shreebalajienterprises.live"
 
@@ -109,9 +109,16 @@ export default function ResearchPaperPage() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="/research-paper.pdf"
+                download="Shree_Balaji_Enterprises_Research_Paper.pdf"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-6 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90 shadow-sm"
+              >
+                <Download className="h-4 w-4" /> Download PDF (310 KB)
+              </a>
               <Link
                 href="/buy"
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-6 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-border bg-card px-6 text-sm font-bold text-foreground transition-colors hover:border-primary hover:text-primary"
               >
                 Explore Properties <ArrowRight className="h-4 w-4" />
               </Link>
@@ -184,8 +191,19 @@ export default function ResearchPaperPage() {
               <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
                 This page publishes the paper as a readable web article so it can be accessed
                 directly from the site, indexed by search engines, and shared with clients or
-                collaborators without needing a LaTeX viewer.
+                collaborators without needing a LaTeX viewer. You can also download the complete
+                academic manuscript as an IEEE-formatted PDF.
               </p>
+              <div className="mt-5">
+                <a
+                  href="/research-paper.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline"
+                >
+                  <Download className="h-4 w-4" /> Download Academic PDF (310 KB)
+                </a>
+              </div>
             </article>
 
             <aside className="rounded-3xl border border-border bg-foreground p-6 md:p-8 text-card">
