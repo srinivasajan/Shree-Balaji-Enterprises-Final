@@ -46,7 +46,7 @@ function BuyPageContent() {
           transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
-            Buy · RERA A51700023633 · 500+ Listings
+            Buy · RERA A51700023633 · Verified Listings
           </div>
           <h1 className="text-4xl md:text-[60px] font-black text-white leading-[1.0] tracking-tight mb-4">
             Properties for Sale<br />

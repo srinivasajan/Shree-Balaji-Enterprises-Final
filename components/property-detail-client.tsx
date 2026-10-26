@@ -384,11 +384,17 @@ export function PropertyDetailClient({
                     <div className="min-w-0">
                       <p className="text-sm font-bold text-foreground">{property.listingAgent.name}</p>
                       <p className="text-xs text-muted-foreground">{property.listingAgent.company}</p>
-                      <div className="flex items-center gap-1 mt-0.5">
-                        <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
-                        <span className="text-xs font-semibold text-foreground">{property.listingAgent.rating}</span>
-                        <span className="text-xs text-muted-foreground">({property.listingAgent.reviewCount} reviews)</span>
-                      </div>
+                      {property.listingAgent.rating && property.listingAgent.reviewCount ? (
+                        <div className="flex items-center gap-1 mt-0.5">
+                          <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
+                          <span className="text-xs font-semibold text-foreground">{property.listingAgent.rating}</span>
+                          <span className="text-xs text-muted-foreground">({property.listingAgent.reviewCount} reviews)</span>
+                        </div>
+                      ) : (
+                        <div className="flex items-center gap-1 mt-0.5">
+                          <span className="text-xs font-semibold text-primary">RERA Registered Agent</span>
+                        </div>
+                      )}
                     </div>
                   </div>
 

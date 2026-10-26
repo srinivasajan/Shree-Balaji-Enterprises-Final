@@ -25,7 +25,9 @@ export async function generateMetadata({
     }
   }
 
-  const title = `Rent ${property.type?.toUpperCase() || 'Property'} in ${property.city} | ${property.price}`
+  const typeStr = property.type ? property.type.charAt(0).toUpperCase() + property.type.slice(1) : "Property"
+  const bedStr = property.beds && property.beds > 0 ? `${property.beds} BHK ` : ""
+  const title = `${bedStr}${typeStr} for Rent in ${property.address}, ${property.city} | ${property.price}`
   const description = property.description 
     ? property.description.slice(0, 155) + "..."
     : `Rent this beautiful ${property.beds ? property.beds + ' BHK ' : ''}property located at ${formatAddress(property)}. Available now. Contact Shree Balaji Enterprises today.`
@@ -124,11 +126,11 @@ export default async function RentalDetailPage({
       "@type": "Offer",
       url: `https://www.shreebalajienterprises.live/rent/${property.id}`,
       priceCurrency: "INR",
-      price: property.priceNum || 0,
+      ...(property.priceNum && property.priceNum > 0 ? { price: property.priceNum } : {}),
       priceSpecification: {
         "@type": "PriceSpecification",
         priceCurrency: "INR",
-        price: property.priceNum || 0,
+        ...(property.priceNum && property.priceNum > 0 ? { price: property.priceNum } : {}),
         description: property.price,
       },
       itemCondition: "https://schema.org/NewCondition",

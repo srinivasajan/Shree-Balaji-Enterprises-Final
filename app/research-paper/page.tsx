@@ -235,12 +235,12 @@ export default function ResearchPaperPage() {
               <div className="my-8 py-6 border-y border-border/80">
                 <Quote className="h-6 w-6 text-primary/40 mb-2" />
                 <blockquote className="font-serif text-xl sm:text-2xl italic leading-relaxed text-foreground m-0">
-                  &ldquo;Over a 15-year contiguous epoch, Shree Balaji Enterprises has not merely participated in the market; it has actively shaped the demographic architecture of the eastern corridor.&rdquo;
+                  &ldquo;Since its founding in 2016, Shree Balaji Enterprises has not merely participated in the market; it has actively shaped the demographic architecture of the eastern corridor.&rdquo;
                 </blockquote>
               </div>
 
               <p>
-                Founded in 2010 by the visionary Anju Jangiti, Shree Balaji Enterprises was forged out of the necessity to bring institutional transparency, absolute legal sanctity, and zero-friction acquisition into a high-growth market. Having facilitated property acquisitions for over 1,000 nuclear families, multinational corporations, and domestic industrial hubs, the consultancy operates as the ultimate bridge between premium developers and aspirational buyers.
+                Founded in 2016 by the visionary Anju Jangiti, Shree Balaji Enterprises was forged out of the necessity to bring institutional transparency, absolute legal sanctity, and zero-friction acquisition into a high-growth market. Operating across Ambernath, Badlapur, and the wider Mumbai Metropolitan Region, the consultancy operates as a trusted bridge between premium developers and aspirational buyers.
               </p>
             </div>
           </section>

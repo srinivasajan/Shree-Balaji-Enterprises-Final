@@ -37,7 +37,7 @@ const steps = [
 ]
 
 const stats = [
-  { value: "500+", label: "Families Helped", sub: "Since 2008" },
+  { value: "2016", label: "Established Agency", sub: "Serving MMR Clients" },
   { value: "6+", label: "Partner Banks", sub: "All Major Lenders" },
   { value: "₹0", label: "Cost to You", sub: "Always Free" },
   { value: "RERA", label: "A51700023633", sub: "Verified Agency" },

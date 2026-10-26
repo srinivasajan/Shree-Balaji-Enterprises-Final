@@ -66,10 +66,10 @@ export default function SellPage() {
           <InView once viewOptions={{ margin: "0px 0px -40px 0px" }}>
             <AnimatedGroup preset="scale" className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden">
               {[
-                { value: "500+", label: "Properties Sold", sub: "Across MMR" },
-                { value: "15+", label: "Years Experience", sub: "Est. 2008" },
-                { value: "1000+", label: "Happy Clients", sub: "Residential & Commercial" },
-                { value: "5.0 ★", label: "Average Rating", sub: "Google Reviews" },
+                { value: "2016", label: "Established", sub: "In Ambernath" },
+                { value: "RERA", label: "Registered Agency", sub: "A51700023633" },
+                { value: "MMR", label: "Regional Reach", sub: "Ambernath, Badlapur, Thane" },
+                { value: "100%", label: "Transparent Deals", sub: "Complete Legal Paperwork" },
               ].map((s) => (
                 <div key={s.label} className="flex flex-col items-center justify-center py-8 px-4 gap-0.5 text-center bg-card">
                   <p className="text-3xl md:text-4xl font-black text-foreground">{s.value}</p>

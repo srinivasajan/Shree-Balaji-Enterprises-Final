@@ -448,7 +448,7 @@ export default function LocationsPage() {
             <span className="text-primary">Is Right for You?</span>
           </h2>
           <p className="text-[15px] text-white/60 max-w-xl mx-auto leading-relaxed mb-8">
-            With 15+ years of boots-on-the-ground experience across the MMR, we&apos;ll help you find
+            With boots-on-the-ground experience across the MMR since 2016, we&apos;ll help you find
             the area that fits your budget, lifestyle and commute — for free, no obligation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

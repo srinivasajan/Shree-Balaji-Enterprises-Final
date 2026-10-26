@@ -25,9 +25,11 @@ export async function generateMetadata({
     }
   }
 
+  const typeStr = property.type ? property.type.charAt(0).toUpperCase() + property.type.slice(1) : "Property"
+  const bedStr = property.beds && property.beds > 0 ? `${property.beds} BHK ` : ""
   const title = property.tag === "New Launch" 
-    ? `New Launch: ${property.type?.toUpperCase()} in ${property.city} | ${property.price}`
-    : `${property.type?.toUpperCase() || 'Property'} for Sale in ${property.city} | ${property.price}`
+    ? `New Launch: ${bedStr}${typeStr} in ${property.address}, ${property.city} | ${property.price}`
+    : `${bedStr}${typeStr} for Sale in ${property.address}, ${property.city} | ${property.price}`
 
   const description = property.description 
     ? property.description.slice(0, 155) + "..."
@@ -127,11 +129,11 @@ export default async function PropertyDetailPage({
       "@type": "Offer",
       url: `https://www.shreebalajienterprises.live/buy/${property.id}`,
       priceCurrency: "INR",
-      price: property.priceNum || 0,
+      ...(property.priceNum && property.priceNum > 0 ? { price: property.priceNum } : {}),
       priceSpecification: {
         "@type": "PriceSpecification",
         priceCurrency: "INR",
-        price: property.priceNum || 0,
+        ...(property.priceNum && property.priceNum > 0 ? { price: property.priceNum } : {}),
         description: property.price,
       },
       itemCondition: "https://schema.org/NewCondition",

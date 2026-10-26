@@ -63,9 +63,9 @@ export interface AgentData {
   phone: string
   email: string
   company: string
-  rating: number
-  reviewCount: number
-  salesCount: number
+  rating?: number
+  reviewCount?: number
+  salesCount?: number
   bio: string
   specialties: string[]
   areas: string[]
@@ -80,13 +80,10 @@ export const agents: AgentData[] = [
     phone: "7767805544",
     email: "anjujangiti@gmail.com",
     company: "Shree Balaji Enterprises",
-    rating: 5.0,
-    reviewCount: 1000,
-    salesCount: 500,
-    bio: "With over 15 years of experience in real estate, Anju has built Shree Balaji Enterprises on the foundation of trust and customer service. Her deep understanding of the local market and commitment to client satisfaction has helped thousands of families find their perfect property across the Mumbai Metropolitan Region.",
+    bio: "Anju Jangiti founded Shree Balaji Enterprises in 2016 on the foundation of trust, transparency, and personal service. Her deep understanding of the local market and commitment to client satisfaction has guided families and businesses to secure verified properties across the Mumbai Metropolitan Region.",
     specialties: ["Residential", "Commercial", "Industrial"],
     areas: ["Ambernath", "Badlapur", "Thane", "Mumbai", "Navi Mumbai"],
-    yearsExperience: 15,
+    yearsExperience: 10,
   },
 ]
 
@@ -130,6 +127,7 @@ export const buyProperties: PropertyData[] = [
     id: 2,
     image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=600&fit=crop&auto=format",
     price: "₹45 Lakh",
+    priceNum: 4500000,
     beds: 2,
     baths: 1,
     sqft: "850",
@@ -153,6 +151,7 @@ export const buyProperties: PropertyData[] = [
     id: 3,
     image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&h=600&fit=crop&auto=format",
     price: "₹72 Lakh",
+    priceNum: 7200000,
     beds: 3,
     baths: 2,
     sqft: "1200",
