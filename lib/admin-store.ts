@@ -170,7 +170,7 @@ const DEFAULT_SETTINGS: SiteSettings = {
   reraNo: "A51700023633",
   tagline: "Your Trusted Real Estate Partner",
   heroTitle: "Find Your Dream Property in Ambernath & MMR",
-  heroSubtitle: "Trusted real estate expertise across Ambernath, Badlapur, Thane and Mumbai since 2016.",
+  heroSubtitle: "Trusted real estate expertise across Ambernath, Badlapur, Thane and Mumbai (Established 2016).",
   enableWhatsAppButton: true,
   enableAnalytics: true,
 }

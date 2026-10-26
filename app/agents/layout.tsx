@@ -3,11 +3,11 @@ import type { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Our Real Estate Expert — Anju Jangiti",
   description:
-    "Meet Anju Jangiti, founder of Shree Balaji Enterprises, established in 2016 and serving Ambernath, Badlapur and the Mumbai Metropolitan Region (MahaRERA: A51700023633).",
+    "Meet Anju Jangiti, founder of Shree Balaji Enterprises (Established 2016), serving Ambernath, Badlapur and the Mumbai Metropolitan Region (MahaRERA: A51700023633).",
   openGraph: {
     title: "Meet Our Expert — Anju Jangiti | Shree Balaji Enterprises",
     description:
-      "Anju Jangiti — Founder of Shree Balaji Enterprises (Est. 2016, MahaRERA: A51700023633) serving Ambernath & MMR.",
+      "Anju Jangiti — Founder of Shree Balaji Enterprises (Established 2016, MahaRERA: A51700023633) serving Ambernath & MMR.",
   },
 }
 

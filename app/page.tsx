@@ -12,7 +12,7 @@ import { InView } from "@/components/core/in-view"
 export const metadata: Metadata = {
   title: "Shree Balaji Enterprises — Real Estate in Ambernath & MMR",
   description:
-    "RERA-registered real estate agency in Ambernath established in 2016 (MahaRERA: A51700023633). View verified properties for sale and rent across Ambernath, Badlapur, Thane, and MMR.",
+    "RERA-registered real estate agency in Ambernath (Established 2016, MahaRERA: A51700023633). View verified properties for sale and rent across Ambernath, Badlapur, Thane, and MMR.",
   alternates: {
     canonical: "https://www.shreebalajienterprises.live",
   },
@@ -42,7 +42,7 @@ export default function Home() {
     logo: "https://www.shreebalajienterprises.live/images/logo.png",
     image: "https://www.shreebalajienterprises.live/images/hero-bg.jpg",
     description:
-      "RERA-registered real estate agency in Ambernath established in 2016 (MahaRERA: A51700023633). Assisting clients with buying, selling, and renting residential, commercial, and industrial properties.",
+      "RERA-registered real estate agency in Ambernath (Established 2016, MahaRERA: A51700023633). Assisting clients with buying, selling, and renting residential, commercial, and industrial properties.",
     foundingDate: "2016",
     founder: {
       "@type": "Person",
@@ -194,7 +194,7 @@ export default function Home() {
                     Ready to find<br />your next home?
                   </h2>
                   <p className="text-background/50 text-sm leading-relaxed">
-                    Over 500 properties sold. 1000+ happy families. Talk to our team today &mdash; free, no pressure.
+                    Verified property advisory and transparent legal support (Established 2016). Talk to our team today &mdash; free, no pressure.
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3 shrink-0">

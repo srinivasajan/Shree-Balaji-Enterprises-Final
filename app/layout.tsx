@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s | Shree Balaji Enterprises",
   },
   description:
-    "RERA-registered real estate agency in Ambernath established in 2016 (MahaRERA: A51700023633). Buy, sell, or rent residential, commercial, and industrial properties across Ambernath, Badlapur, Thane, Mumbai and 13+ cities.",
+    "RERA-registered real estate agency in Ambernath (Established 2016, MahaRERA: A51700023633). Buy, sell, or rent residential, commercial, and industrial properties across Ambernath, Badlapur, Thane, Mumbai and 13+ cities.",
   alternates: {
     canonical: siteUrl,
   },
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: "Shree Balaji Enterprises",
     title: "Shree Balaji Enterprises — Real Estate in Ambernath & MMR",
     description:
-      "RERA-registered real estate agency established in 2016 (MahaRERA: A51700023633). Buy, sell, or rent residential, commercial, and industrial properties across Ambernath, Badlapur, Thane & MMR.",
+      "RERA-registered real estate agency (Established 2016, MahaRERA: A51700023633). Buy, sell, or rent residential, commercial, and industrial properties across Ambernath, Badlapur, Thane & MMR.",
     images: [
       {
         url: `${siteUrl}/images/hero-bg.jpg`,

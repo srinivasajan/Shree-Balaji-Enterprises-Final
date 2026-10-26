@@ -133,7 +133,7 @@ export default function AdminSettingsPage() {
               onChange={e => set("heroSubtitle", e.target.value)}
               rows={3}
               className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary resize-none"
-              placeholder="15+ years of trusted real estate experience…"
+              placeholder="Established 2016 — trusted real estate advisory…"
             />
           </div>
         </div>

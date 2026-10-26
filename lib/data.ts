@@ -80,7 +80,7 @@ export const agents: AgentData[] = [
     phone: "7767805544",
     email: "anjujangiti@gmail.com",
     company: "Shree Balaji Enterprises",
-    bio: "Anju Jangiti founded Shree Balaji Enterprises in 2016 on the foundation of trust, transparency, and personal service. Her deep understanding of the local market and commitment to client satisfaction has guided families and businesses to secure verified properties across the Mumbai Metropolitan Region.",
+    bio: "Anju Jangiti founded Shree Balaji Enterprises (Established 2016) on the foundation of trust, transparency, and personal service. Her deep understanding of the local market and commitment to client satisfaction has guided families and businesses to secure verified properties across the Mumbai Metropolitan Region.",
     specialties: ["Residential", "Commercial", "Industrial"],
     areas: ["Ambernath", "Badlapur", "Thane", "Mumbai", "Navi Mumbai"],
     yearsExperience: 10,

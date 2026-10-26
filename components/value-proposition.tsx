@@ -17,7 +17,7 @@ const features = [
   },
   {
     icon: TrendingUp,
-    title: "Established in 2016",
+    title: "Established 2016",
     description: "Deep local market knowledge ensuring transparent, verified residential, commercial and industrial property deals.",
   },
   {
@@ -45,7 +45,7 @@ export function ValueProposition() {
             Your Trusted Real Estate Partner
           </h2>
           <p className="text-sm text-muted-foreground mb-10 max-w-lg text-pretty">
-            Shree Balaji Enterprises – RERA registered agency serving the Mumbai Metropolitan Region since 2016
+            Shree Balaji Enterprises – RERA registered agency serving the Mumbai Metropolitan Region (Established 2016)
           </p>
         </InView>
 

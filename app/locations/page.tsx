@@ -314,7 +314,7 @@ export default function LocationsPage() {
               { value: "15+", label: "Areas Covered", sub: "Across MMR & Maharashtra" },
               { value: "RERA", label: "A51700023633", sub: "Registered Brokerage" },
               { value: "65+", label: "Km Radius", sub: "From Ambernath HQ" },
-              { value: "2016", label: "Year Established", sub: "10 Years in MMR" },
+              { value: "Established 2016", label: "In Ambernath", sub: "RERA Registered Agency" },
             ].map((s) => (
               <div
                 key={s.label}
@@ -448,7 +448,7 @@ export default function LocationsPage() {
             <span className="text-primary">Is Right for You?</span>
           </h2>
           <p className="text-[15px] text-white/60 max-w-xl mx-auto leading-relaxed mb-8">
-            With boots-on-the-ground experience across the MMR since 2016, we&apos;ll help you find
+            With boots-on-the-ground market advisory across the MMR (Established 2016), we&apos;ll help you find
             the area that fits your budget, lifestyle and commute — for free, no obligation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

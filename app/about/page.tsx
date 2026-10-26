@@ -10,17 +10,17 @@ import { InView } from "@/components/core/in-view"
 import { AnimatedGroup } from "@/components/core/animated-group"
 
 const stats = [
-  { value: "2016", label: "Established", sub: "In Ambernath", icon: Clock },
+  { value: "Established 2016", label: "In Ambernath", sub: "RERA Registered Agency", icon: Clock },
   { value: "RERA", label: "Registered Agency", sub: "A51700023633", icon: Shield },
   { value: "100%", label: "Client Transparency", sub: "Clear Documentation", icon: Users },
   { value: "15+", label: "Areas Covered", sub: "Across MMR & Maharashtra", icon: MapPin },
 ]
 
 const milestones = [
-  { year: "2016", title: "Founded in Ambernath", desc: "Established with a clear mission — make property deals honest, transparent, and simple for everyday people." },
+  { year: "2016", title: "Established 2016", desc: "Established with a clear mission — make property deals honest, transparent, and simple for everyday people." },
   { year: "2018", title: "MahaRERA Registration", desc: "Formally registered under MahaRERA (A51700023633), cementing full regulatory compliance and client protection." },
   { year: "2022", title: "Regional Growth", desc: "Expanded active property advisory across the Kalyan–Badlapur corridor, Thane, and industrial pockets." },
-  { year: "2026", title: "A Decade of Excellence", desc: "Serving clients across the Mumbai Metropolitan Region with the same honest, personal approach established in 2016." },
+  { year: "2026", title: "Continued Excellence", desc: "Serving clients across the Mumbai Metropolitan Region with the same honest, personal approach (Established 2016)." },
 ]
 
 const values = [
@@ -74,7 +74,7 @@ export default function AboutPage() {
                 <span className="text-primary">Trusted Agency.</span>
               </h1>
               <p className="text-base text-white/60 max-w-lg leading-relaxed">
-                Established in 2016 with one mission — make real estate honest, simple, and
+                Established 2016 with one mission — make real estate honest, simple, and
                 stress‑free across the Mumbai Metropolitan Region.
               </p>
             </div>
@@ -132,7 +132,7 @@ export default function AboutPage() {
                   be honest, be available, always put the client first.
                 </p>
                 <p>
-                  Since 2016, we&apos;ve guided families and businesses through some of the biggest
+                  Established 2016, we guide families and businesses through some of the biggest
                   financial decisions of their lives — from a first 1BHK flat to large commercial
                   warehouses. Our deep roots in Ambernath, Badlapur, Ulhasnagar, Thane and beyond give us
                   a local edge no national portal can match.
@@ -182,7 +182,7 @@ export default function AboutPage() {
                   <p className="text-sm text-primary font-bold mt-0.5 mb-5">Founder &amp; Director</p>
 
                   <div className="grid grid-cols-3 gap-2 mb-5">
-                    {[{ v: "2016", l: "Est." }, { v: "RERA", l: "A51700023633" }, { v: "MMR", l: "Region" }].map((s) => (
+                    {[{ v: "2016", l: "Established" }, { v: "RERA", l: "A51700023633" }, { v: "MMR", l: "Region" }].map((s) => (
                       <div key={s.l} className="rounded-xl bg-muted/50 py-3 text-center">
                         <p className="text-sm font-black text-primary">{s.v}</p>
                         <p className="text-[10px] text-muted-foreground font-medium mt-0.5">{s.l}</p>

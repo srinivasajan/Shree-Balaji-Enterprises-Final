@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Sell Your Property in Ambernath & MMR",
   description:
-    "Get a free property valuation and sell your home, shop or land at the best price with Shree Balaji Enterprises — trusted RERA-registered agency established in 2016 in Ambernath (MahaRERA: A51700023633).",
+    "Get a free property valuation and sell your home, shop or land at the best price with Shree Balaji Enterprises — trusted RERA-registered agency (Established 2016, MahaRERA: A51700023633) in Ambernath.",
   alternates: {
     canonical: "https://www.shreebalajienterprises.live/sell",
   },

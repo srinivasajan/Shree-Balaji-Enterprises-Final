@@ -48,7 +48,7 @@ export default function SellPage() {
                 <span className="text-primary">Starts Here.</span>
               </h1>
               <p className="text-base text-white/60 max-w-lg leading-relaxed">
-                We&apos;ve helped 500+ families across Ambernath &amp; MMR sell their homes — at the right price, with zero stress.
+                Helping clients across Ambernath &amp; MMR sell their homes — at the right price, with zero stress.
               </p>
             </div>
             <div className="shrink-0">
@@ -66,7 +66,7 @@ export default function SellPage() {
           <InView once viewOptions={{ margin: "0px 0px -40px 0px" }}>
             <AnimatedGroup preset="scale" className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden">
               {[
-                { value: "2016", label: "Established", sub: "In Ambernath" },
+                { value: "Established 2016", label: "In Ambernath", sub: "RERA Registered Agency" },
                 { value: "RERA", label: "Registered Agency", sub: "A51700023633" },
                 { value: "MMR", label: "Regional Reach", sub: "Ambernath, Badlapur, Thane" },
                 { value: "100%", label: "Transparent Deals", sub: "Complete Legal Paperwork" },

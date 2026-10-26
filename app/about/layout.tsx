@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 export const metadata: Metadata = {
   title: "About Us — Trusted Real Estate Agency in Ambernath",
   description:
-    "Learn about Shree Balaji Enterprises — RERA-registered real estate agency established in 2016 (MahaRERA: A51700023633) in Ambernath, founded by Anju Jangiti. Serving clients across Ambernath, Badlapur, Thane and MMR.",
+    "Learn about Shree Balaji Enterprises — RERA-registered real estate agency (Established 2016, MahaRERA: A51700023633) in Ambernath, founded by Anju Jangiti. Serving clients across Ambernath, Badlapur, Thane and MMR.",
   alternates: {
     canonical: "https://www.shreebalajienterprises.live/about",
   },
