@@ -2,15 +2,14 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 import { motion, AnimatePresence } from "motion/react"
 import { Button } from "@/components/ui/button"
 import { BrandLogo } from "@/components/brand-logo"
-import { NavigationDock } from "@/components/core/navigation-dock"
+import { Dock, DockItem } from "@/components/core/dock"
 
-const navLinks = [
+const navItems = [
   { label: "Buy", href: "/buy" },
   { label: "Rent", href: "/rent" },
   { label: "Sell", href: "/sell" },
@@ -36,9 +35,15 @@ export function Header() {
           </Link>
         </div>
 
-        {/* Center: Premium Navigation Dock (Desktop) */}
-        <div className="hidden lg:flex items-center justify-center shrink-0 mx-2">
-          <NavigationDock items={navLinks} />
+        {/* Center: Motion Primitives Text Navigation Dock (Desktop) */}
+        <div className="hidden lg:flex items-center justify-center shrink-0">
+          <Dock>
+            {navItems.map((item) => (
+              <DockItem key={item.href} href={item.href}>
+                {item.label}
+              </DockItem>
+            ))}
+          </Dock>
         </div>
 
         {/* Right side: Contact Us button & Mobile menu */}
@@ -72,18 +77,18 @@ export function Header() {
             className="lg:hidden border-t border-border bg-card overflow-hidden"
           >
             <nav className="flex flex-col p-4 gap-1" aria-label="Mobile navigation">
-              {navLinks.map((link) => (
+              {navItems.map((item) => (
                 <Link
-                  key={link.label}
-                  href={link.href}
-                  className={`px-3 py-3 text-sm font-semibold rounded-md ${
-                    pathname.startsWith(link.href)
+                  key={item.label}
+                  href={item.href}
+                  className={`px-3 py-3 text-sm font-semibold rounded-md transition-colors ${
+                    pathname.startsWith(item.href)
                       ? "text-primary bg-primary/5"
                       : "text-foreground hover:bg-muted"
                   }`}
                   onClick={() => setMobileOpen(false)}
                 >
-                  {link.label}
+                  {item.label}
                 </Link>
               ))}
               <div className="border-t border-border my-2" />
